@@ -1,23 +1,30 @@
-![PycraftGitHub](https://user-images.githubusercontent.com/81379254/132249951-aea22a66-b366-4c0f-badd-f4acfe4089f3.png)
+![PycraftGitHub](https://user-images.githubusercontent.com/81379254/133644694-2c1149b8-01be-40f7-88ee-6110922bcf8a.png)
 
 This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64 bit and Windows Visual Studio Code for ease of use and id strongly recommend these! This update is going to take a few days to be released fully, please bear with us. <br />
 
 Pycraft v0.9 build progress: ![Progress](https://progress-bar.dev/95) <br />
 
+## About
+
+Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that ga in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
+
+In Pycraft the plan is that you will start at sea on a boat, there you will learn that you have left your home on a separate island to find work and safety on this new one, when you arrive you are shown to your room and the next day join a small groups of trainee knights, each training to be part of the Royal Guards system that protects the island from the dangers on the island, you quickly rise in rank as your skills shine until one day all your skills are put to the test. Will you follow through? Well, you don't know yet, I've got to make the game first!
+
+
 ## Preview video
 
-For the uncompressed file format see the youtube preview here: (https://www.youtube.com/watch?v=KwgA3PLc_lA)
+For the uncompressed file format see the YouTube preview here: (https://www.youtube.com/watch?v=KwgA3PLc_lA)
 
 https://user-images.githubusercontent.com/81379254/126047144-aaf08fe2-02ee-4a89-a5db-bd17c6940ae4.mp4
 
 ## Setup
 
-When setting up and installing this project you can either run the bare bones file which is likely found above this 'README.md' file if your viewing this on the GitHub website then please follow the steps below for more information on the setup and installation of this project however where possible it is recomended that you use the executable file (.exe) under the most recent releases page as this will run regardless of where you place the file or if you have python or even if you have any of the installed modules this project depends on because its compiled into one file (hence the larger file size). which makes removing the file much easier and also sharing and transporting the file mnore easy and convenient. However if you are planning to use the project in its uncompiled format (which as mentioned will be at the top of this page if you are on the GitHub website) then it is recomended you follow the below steps to make sure the project works properly.
+When setting up and installing this project you can either run the bare bones file which is likely found above this 'README.md' file if your viewing this on the GitHub website then please follow the steps below for more information on the setup and installation of this project however where possible it is recommended that you use the executable file (.exe) under the most recent releases page as this will run regardless of where you place the file or if you have python or even if you have any of the installed modules this project depends on because its compiled into one file (hence the larger file size). which makes removing the file much easier and also sharing and transporting the file easier and more convenient. However, if you are planning to use the project in its uncompiled format (which as mentioned will be at the top of this page if you are on the GitHub website) then it is recommended you follow the below steps to make sure the project works properly.
 
-The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files ouitside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form. A video guide to this will be uploaded here and in YouTube in the coming months.
+The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files outside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form. A video guide to this will be uploaded here and in YouTube in the coming months.
 
 When running the program please make sure you have a minimum of 1GB of free space on the drive and also have Python 3 installed on your device. This can be found here: (www.python.org/downloads). The sub version of Python isn't too important in this circumstance however the project has been tested in Python 3.9.5 and is known to work. In addition to all this please make sure you have the following modules installed on your device:
-Pygame, Numpy, PyopenGL, Pillow, PyAutoGUI, psutil, PyWaveFront, cpuinfo and Ctypes. 
+Pygame, Numpy, PyOpenGL, Pillow, PyAutoGUI, Psutil, PyWaveFront, CPUinfo and Ctypes. 
 For those not familiar they can be found here: (pypi.org) and you can use the following syntax to install, update and remove these modules:
 ```
 pip install <module>
@@ -25,7 +32,7 @@ pip uninstall <module>
 pip update <module>
 ```
 
-Here is a short video toutorial explaing all this (Its really not too bad), this is the link to the youtube video and also a compressed version below for you:
+Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video and also a compressed version below for you:
 (https://youtu.be/DG5YbE-umw0)
 
 https://user-images.githubusercontent.com/81379254/131724609-c70a40ae-ef3b-4aa3-9871-22f51339cf32.mp4
@@ -92,7 +99,7 @@ In this new sub-release, we have patched a few more known bugs, although the mor
 - (.exe) releases of the project will now exist as a separate release of the project under the release’s menu with a '.1' identifier after the main update version; for example; 'v0.7.1' for reasons mentioned in that release and also attached in this file! <br />
 - General needed attention was given to the spelling and grammar of each of the separate releases of the game and suitable updates will also occur in the individual branches over the following days. <br />
 - One final change that’s happened now is the conversion of the version naming system from the older '21p1003-21a' format to the new 'v0.8' format, this is added to the documentation below! <br />
-- Fixed a visual bug when entering the credits GUI and upon leaving the selector icon wont be the accurate theme anymore, this is now corrected
+- Fixed a visual bug when entering the credits GUI and upon leaving the selector icon won’t be the accurate theme anymore, this is now corrected
 <br />
 Again, feedback would be much appreciated this update was released on; 11/07/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback. Thank you! we also apologize for the slow updates over the past few days, development has been slow due to issues with the new installer and its implementation, hence why it is not in this pre-release of Pycraft.
 
@@ -108,7 +115,7 @@ Right time to tackle some of the confusion behind the (.exe) releases that will 
 
 ## Other sources
 
-I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link:  (https://link.medium.com/Mhqd8qIAhjb). And recommendations and feedback is, as always, greatly appreciated, a lot of time and work goes into making this happen!
+I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link: (https://link.medium.com/Mhqd8qIAhjb). And recommendations and feedback are, as always, greatly appreciated, a lot of time and work goes into making this happen!
 
 ## Final Notices
 
