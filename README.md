@@ -1,8 +1,8 @@
 ![PycraftGitHub](https://user-images.githubusercontent.com/81379254/133644694-2c1149b8-01be-40f7-88ee-6110922bcf8a.png)
 
-This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64 bit and Windows Visual Studio Code for ease of use and id strongly recommend these! This update is going to take a few days to be released fully, please bear with us. <br />
+This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64 bit and Windows Visual Studio Code for ease of use and id strongly recommend these!
 
-Pycraft v0.9 build progress: ![Progress](https://progress-bar.dev/99) <br />
+Pycraft v0.9 build progress: ![Progress](https://progress-bar.dev/100)
 
 ## About
 
@@ -91,17 +91,44 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 
 ## Changes
 
-In this new sub-release, we have patched a few more known bugs, although the more data we receive with regards to errors and problems and glitches the less buggy an update will be. <br /> 
-- Discontinued attempts to get an internet connection in game, due to privacy, performance and security concerns <br /> 
-- Advanced load times have also been implemented to reduce the games start-up time if multiple runs are attempted on the same day <br /> 
-- Added settings descriptions to the settings menu in addition to updating the settings menu in general (hover over the setting for over 3 seconds for the descriptions to appear <br /> 
-- Discontinued the 'render distance' setting in the settings menu, simply because the max draw distance has to be defined by the game for some scenes and also to pave the way for future features <br />
-- (.exe) releases of the project will now exist as a separate release of the project under the release’s menu with a '.1' identifier after the main update version; for example; 'v0.7.1' for reasons mentioned in that release and also attached in this file! <br />
-- General needed attention was given to the spelling and grammar of each of the separate releases of the game and suitable updates will also occur in the individual branches over the following days. <br />
-- One final change that’s happened now is the conversion of the version naming system from the older '21p1003-21a' format to the new 'v0.8' format, this is added to the documentation below! <br />
-- Fixed a visual bug when entering the credits GUI and upon leaving the selector icon won’t be the accurate theme anymore, this is now corrected
-<br />
-Again, feedback would be much appreciated this update was released on; 11/07/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback. Thank you! we also apologize for the slow updates over the past few days, development has been slow due to issues with the new installer and its implementation, hence why it is not in this pre-release of Pycraft.
+Pycraft v0.9 is now live! This is a huge update and there are lots of new features which can be seen below!
+
+- The game has now even faster load times having removed some redundant file checks and duplicates, which makes the game more efficient to run.
+- The game now also has a feature that will automatically detect when the game is minimised and will pause all currently playing audio and also reduce the games FPS down to 15, which increases the games efficiency when not being used, this feature will be likely tweaked and adjusted as time goes on and as the game progresses, but is here to stay!
+- The screenshots section (which is used when opening your inventory when playing) has been updated to support full-screen modes and resized windows, as well as generally making it more accurate.
+- General framework improvements, now the game has been cleaned up a bit behind the scenes. In addition, all the checks and features in the game game loops (that happen every time the game refreshes) has been consolidated and many redundant features removed and misbehaving tasks have been fixed.
+- Updates have also been made to the error handling and display modules, now the window will load only at the resolution of (1280x720). In addition to this, various stages of error severity have been included in the game, some errors can be fixed automatically as the game runs, others that are worse will lead to the game erroring out, but the game will try to save you progress, should this fail, or the game fails catastrophically it will attempt to load the error display but should it can’t it will default to Tkinter to display an error message.
+- Buttons and over things in game the user can interact with have been improved for better ease of use (notably the buttons on the home screen).
+- Every menu and GUI in the game now also has a title screen so you know where you are.
+- All audio that is loaded and played is now broken down into channels and loaded as and when, not all at once, again increasing efficiency and also improving performance.
+- Footstep sounds have been added to the game engine.
+- Landing from a jump now also triggers a sound effect.
+- Sound effects for sprinting have been introduced.
+- Weather events in game have been improved upon and are now better randomised.
+- When your mouse is interacting with buttons or clickable objects in game it will now change accordingly, to the hand. A similar effect is created when GUIs are loading, with the mouse displaying the loading icon instead of the pointer.
+- The scroll bar has been added and updated in settings, as well as dynamically changing to suit window resizes.
+- There is now a crosshair in game (your mouse).
+- Only one instance of the game can now run at a time in (.exe) mode to reduce issues with overheating and unnecessary stress to your system.
+- A new achievements GUI been added, as to has a new character customizer GUI, these don’t look like much yet but preparations have been made behind the scenes for when they are needed.
+- Caption loading and displaying has been tweaked.
+- There are now more ways to interact with the GUIs on your keyboard (including the addition of the ESC or ESCAPE key to navigate back to the home screen).
+- The entire start menu has been reprogrammed.
+- All text in game is now dynamically adjusted to your window size so now text looks a bit neater.
+- Messages have been introduced for unsupported graphics and audio drivers, as well as unsupported versions of SDL and OpenGL.
+- The FPS of the game when it’s loading the 3D space is now regulated so devices should not overheat when loading the game anymore (also improving efficiency).
+- All GUIs in the game now support display resizing and full screen options.
+- Old loading graphics have been discontinued for a preferred drawing technique, reducing file size and making the game generally nicer to view.
+- When leaving full screen mode on any GUI now sets it to the size of the main menu/title screen to avoid issues with display scaling.
+- Old short load screen as been entirely removed due to concerns raised over flashing images.
+- Graphics rendering is now handled by PIL instead of Pygame, meaning when the display resizes the graphics will too.
+- Images that can’t be loaded with PIL now include the (.convert()) syntax to improve load times.
+- Added a minimum RAM requirement (1 GB or more).
+- Credits has been completely redesigned and reprogrammed, and is now fully automatic.
+- The old installer has been removed.
+- Benchmark mode has been introduced and is now fully operational, including the results page.
+- General bug fixes (of which there where many).
+
+Again, feedback would be much appreciated this update was released on; 19/09/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback. Thank you! We also apologize for the slow update.
 
 ## Our update policy
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
@@ -120,14 +147,3 @@ I have started writing an article on medium which is released at the start of ev
 ## Final Notices
 
 Thank you greatly for supporting this project simply by running it, I am sorry in advance for any spelling mistakes. The programs will be updated frequently and I shall do my best to keep this up to date too. I also want to add that you are welcome to view and change the program and share it with your friends however please may I have some credit, just a name would do and if you find any bugs or errors, please feel free to comment in the comments section any feedback so I can improve my program, it will all be much appreciated and give as much detail as you wish to give out. BY INSTALLING THIS PROJECT ONTO YOUR COMPUTER AND RUNNING IT I; Tom Jebbo DOES NOT TAKE ANY RESPONCIBILITY FOR ANY DAMAGES THIS MAY CAUSE HOWEVER UNLIKELY, AND YOU AGREE TO HAVE EXERNAL MODULES INSTALLED ONTO YOUR COMPUTER (WHEN NOT CHOOSING THE RECOMMENDED EXECUTABLE VERSION) ALSO, OF WHICH I HAVE NO CONTROL OVER, PLEASE USE THIS PROGRAM RESPONCIBLY AND DO NOT USE IT TO CAUSE HARM. YOU MUST ALSO HAVE PERMISSION FROM THE DEVICES MAGAGER OR ADMINISTRATOR TO INSTALL AND USE COMMAND PROMPT OR TERMINAL. NO DATA THIS PROGRAM COLLECTS IS STORED ANYWHERE BUT, ON YOUR DEVICE, AND AT ANY POINT NO CONNECTION TO A NETWORK IS REQUIRED. THIS PROGRAM DOES NOT SEND ANY DATA TO THE DEVELOPER OR ANYONE ELSE ABOUT THIS PROGRAM. Thank you.
-
-## Statistics Area
-
-Below are a few examples of the following claims in each release. Each test is run 100 times for each test and all necessary variables have been controlled before testing:
-
-### Shortened Start-up times
-![Screenshot 2021-07-07 184523](https://user-images.githubusercontent.com/81379254/124805502-84e7de80-df53-11eb-8aa8-04ac6f87a3a9.jpg)
-
-### Profile stats
-
-![PycraftDeveloper's GitHub stats](https://github-readme-stats.vercel.app/api?username=PycraftDeveloper&show_icons=true&theme=darcula)
