@@ -67,25 +67,15 @@ pip install <module>
 pip uninstall <module>
 pip update <module>
 ```
-Installing, uninstalling or updating the specified module respectively; pip is usually installed by default when installing Python with most versions.
+pip is usually installed by default when installing Python with most versions.
 
-- Python: Os <br />
-- Python: Sys <br />
-- Python: Random <br />
-- Python: Time <br />
-- Python: Csv <br />
-- Python: Timeit <br />
-- Python: Subprocess <br />
-- Python: Pip <br />
-- Python: Array <br />
-- Pygame >= 2.0.1 <br />
-- PyOpenGL >= 3.1.5 <br />
-- Numpy >= 1.20.3 <br />
-- PyAutoGUI >= 0.9.52 <br />
-- PyWaveFront >= 1.3.3 <br />
-- Psutil >= 5.8.0 <br />
-- PIL (Pillow) >= 8.2.0 <br />
-- Tkinter <br />
+- PIL (Pillow or Python Imgaging Libary)
+- Pygame
+- Numpy
+- PyOpenGL (and its counterpart PyopenGL-accelerate)
+- PyAutoGUI
+- PyWaveFront
+- CPUinfo
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
