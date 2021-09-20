@@ -47,7 +47,7 @@ I recommend creating a shortcut for the "PycraftRunUtil.py" file too so it’s e
 - Pypi @ www.pypi.org <br />
 - Pillow (PIL) @ www.python-pillow.org <br />
 - Pygame @ www.pygame.org <br />
-- Windows 10 - Visual Studio Code @ code.visualstudio.com <br />
+- Windows 10 - Visual Studio Code @ https://code.visualstudio.com/ <br />
 - Freesound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
 - Freesound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
 - Freesound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
