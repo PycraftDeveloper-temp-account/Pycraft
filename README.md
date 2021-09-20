@@ -2,7 +2,7 @@
 
 This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64 bit and Windows Visual Studio Code for ease of use and id strongly recommend these!
 
-Pycraft v0.9 build progress: ![Progress](https://progress-bar.dev/100)
+Pycraft v0.9.1 build progress: ![Progress](https://progress-bar.dev/50)
 
 ## About
 
@@ -127,6 +127,7 @@ Pycraft v0.9 is now live! This is a huge update and there are lots of new featur
 - The old installer has been removed.
 - Benchmark mode has been introduced and is now fully operational, including the results page.
 - General bug fixes (of which there where many).
+- Changes have also been made to the way OpenGL objects are loaded, which boosts FPS by an adverage of ~5 to ~10 FPS in testing
 
 Again, feedback would be much appreciated this update was released on; 19/09/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback. Thank you! We also apologize for the slow update.
 
