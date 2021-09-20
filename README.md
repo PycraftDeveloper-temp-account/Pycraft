@@ -43,15 +43,15 @@ I recommend creating a shortcut for the "PycraftRunUtil.py" file too so it’s e
 #### With thanks to; <br />
 - Thomas Jebson <br />
 - Python 3 @ www.python.org <br />
-- OpenGL @ www.opengl.org/ <br />
-- Pypi @ pypi.org/ <br />
-- Pillow (PIL) @ python-pillow.org/ <br />
+- OpenGL @ www.opengl.org <br />
+- Pypi @ pypi.org <br />
+- Pillow (PIL) @ python-pillow.org <br />
 - Pygame @ www.pygame.org <br />
-- Windows 10 - Visual Studio Code @ code.visualstudio.com/ <br />
-- Freesound: - Erokia's "ambient wave compilation" @ freesound.org/s/473545/ <br />
-- Freesound: - Soundholder's "ambient meadow near forest" @ freesound.org/s/425368/ <br />
-- Freesound: - monte32's "Footsteps_6_Dirt_shoe" @ freesound.org/people/monte32/sounds/353799/ <br />
-- Blender @ www.blender.org/ <br />
+- Windows 10 - Visual Studio Code @ code.visualstudio.com <br />
+- Freesound: - Erokia's "ambient wave compilation" @ freesound.org/s/473545 <br />
+- Freesound: - Soundholder's "ambient meadow near forest" @ freesound.org/s/425368 <br />
+- Freesound: - monte32's "Footsteps_6_Dirt_shoe" @ freesound.org/people/monte32/sounds/353799 <br />
+- Blender @ www.blender.org <br />
 
 ## Uncompiled Pycraft's Dependencies <br />
 
