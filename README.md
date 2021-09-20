@@ -44,7 +44,7 @@ I recommend creating a shortcut for the "PycraftRunUtil.py" file too so it’s e
 - Thomas Jebson <br />
 - Python 3 @ www.python.org <br />
 - OpenGL @ www.opengl.org <br />
-- Pypi @ pypi.org <br />
+- Pypi @ www.pypi.org <br />
 - Pillow (PIL) @ python-pillow.org <br />
 - Pygame @ www.pygame.org <br />
 - Windows 10 - Visual Studio Code @ code.visualstudio.com <br />
