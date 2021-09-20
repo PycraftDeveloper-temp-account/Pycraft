@@ -13,9 +13,7 @@ In Pycraft the plan is that you will start at sea on a boat, there you will lear
 
 ## Preview video
 
-For the uncompressed file format see the YouTube preview here: (https://www.youtube.com/watch?v=KwgA3PLc_lA)
-
-https://user-images.githubusercontent.com/81379254/126047144-aaf08fe2-02ee-4a89-a5db-bd17c6940ae4.mp4
+Here is a Youtube link to a showcase of Pycraft v0.8: (www.youtube.com/watch?v=KwgA3PLc_lA)
 
 ## Setup
 
@@ -32,10 +30,7 @@ pip uninstall <module>
 pip update <module>
 ```
 
-Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video and also a compressed version below for you:
-(https://youtu.be/DG5YbE-umw0)
-
-https://user-images.githubusercontent.com/81379254/131724609-c70a40ae-ef3b-4aa3-9871-22f51339cf32.mp4
+Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video: (youtu.be/DG5YbE-umw0)
 
 ## Running the program
 
@@ -47,20 +42,20 @@ I recommend creating a shortcut for the "PycraftRunUtil.py" file too so it’s e
 
 #### With thanks to; <br />
 - Thomas Jebson <br />
-- Python 3 @ https://www.python.org <br />
-- OpenGL @ https://www.opengl.org/ <br />
-- Pypi @ https://pypi.org/ <br />
-- Pillow (PIL) @ https://python-pillow.org/ <br />
-- Pygame @ https://www.pygame.org <br />
-- Windows 10 - Visual Studio Code @ https://code.visualstudio.com/ <br />
-- Freesound: - Erokia's "ambient wave compilation" @ https://freesound.org/s/473545/ <br />
-- Freesound: - Soundholder's "ambient meadow near forest" @ https://freesound.org/s/425368/ <br />
-- Freesound: - monte32's "Footsteps_6_Dirt_shoe" @ https://freesound.org/people/monte32/sounds/353799/ <br />
-- Blender @ https://www.blender.org/ <br />
+- Python 3 @ www.python.org <br />
+- OpenGL @ www.opengl.org/ <br />
+- Pypi @ pypi.org/ <br />
+- Pillow (PIL) @ python-pillow.org/ <br />
+- Pygame @ www.pygame.org <br />
+- Windows 10 - Visual Studio Code @ code.visualstudio.com/ <br />
+- Freesound: - Erokia's "ambient wave compilation" @ freesound.org/s/473545/ <br />
+- Freesound: - Soundholder's "ambient meadow near forest" @ freesound.org/s/425368/ <br />
+- Freesound: - monte32's "Footsteps_6_Dirt_shoe" @ freesound.org/people/monte32/sounds/353799/ <br />
+- Blender @ www.blender.org/ <br />
 
-## Dependencies <br />
+## Uncompiled Pycraft's Dependencies <br />
 
-in case you don't know you can install Pycraft's required modules manually or through the soon to be overhauled installer; named "PycraftInstaller.py" through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
+When your installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
 
 ```
 pip install <module>
@@ -69,13 +64,13 @@ pip update <module>
 ```
 pip is usually installed by default when installing Python with most versions.
 
-- PIL (Pillow or Python Imgaging Libary)
-- Pygame
-- Numpy
-- PyOpenGL (and its counterpart PyopenGL-accelerate)
-- PyAutoGUI
-- PyWaveFront
-- CPUinfo
+- PIL (Pillow or Python Imgaging Libary) <br />
+- Pygame<br />
+- Numpy <br />
+- PyOpenGL (and its counterpart PyopenGL-accelerate) <br />
+- PyAutoGUI <br />
+- PyWaveFront<br />
+- CPUinfo <br />
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
@@ -127,13 +122,13 @@ New releases will be introduced regularly, it is likely that there will be some 
 ## Version naming
 Versions have changed pretty dramatically the past few days, don’t panic I'm here to help! In sort the new version naming system more closely follows the Semantic Naming system; in short the first number in this example 'v0.8.1' stands for release number, this project has not yet been released officially so is still in development, which is why the second number increases, because that indicates each pre-release, and finally that last number which won’t appear in most releases will indicate a special release over the 'normal' file style release, which actually won’t be the typical standard actually in the far future, but that’s a (long) way off for now!
 
-## (.exe) releases.
+## (.exe) releases
 
-Right time to tackle some of the confusion behind the (.exe) releases that will now be a feature of all releases. The '.1' on the end of an update release number will signify that there will be an attached (.exe) version of the same release. Now when installing and running the (.exe) release its actually much, much easier to do, you just have to download the file attached and simply double click on the file to run it, typically the file will be downloaded to the downloads folder on your computer. The project might take a second or two to appear to start to do something (as everything it requires is loaded) then from there it will work without having any modules installed, any connection (like ALL other releases) or any extra downloads required, its all-in-one for much easier use, and this isn’t an app that installs anything onto your computer outside of the file so to remove you simply have to delete the 'Pycraft.exe' file. Simple!
+Right time to tackle some of the confusion behind the (.exe) releases that will now be a feature of all main releases. Now when installing and running the (.exe) release its actually much, much easier to do, you just have to download the file attached and simply double click on the file to run it, typically the file will be downloaded to the downloads folder on your computer. The project might take a second or two to appear to start to do something (as everything it requires is loaded) then from there it will work without having any modules installed, any connection (like ALL other releases) or any extra downloads required, its all-in-one for much easier use, and this isn’t an app that installs anything onto your computer outside of the file so to remove you simply have to delete the 'Pycraft.exe' file. Simple!
 
 ## Other sources
 
-I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link: (https://link.medium.com/Mhqd8qIAhjb). And recommendations and feedback are, as always, greatly appreciated, a lot of time and work goes into making this happen!
+I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link: (link.medium.com/Mhqd8qIAhjb). And recommendations and feedback are, as always, greatly appreciated, a lot of time and work goes into making this happen!
 
 ## Final Notices
 
