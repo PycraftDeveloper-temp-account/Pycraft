@@ -5,4 +5,4 @@ PyOpenGL
 PyopenGL-accelerate
 PyAutoGUI
 PyWaveFront
-cpuinfo
+pytorch/cpuinfo
