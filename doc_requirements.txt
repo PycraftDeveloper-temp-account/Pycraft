@@ -1,0 +1,8 @@
+Pillow
+Pygame
+Numpy
+PyOpenGL
+PyopenGL-accelerate
+PyAutoGUI
+PyWaveFront
+CPUinfo
