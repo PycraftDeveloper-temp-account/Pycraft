@@ -1,8 +1,10 @@
 ![PycraftGitHub](https://user-images.githubusercontent.com/81379254/133644694-2c1149b8-01be-40f7-88ee-6110922bcf8a.png)
 
-This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64 bit and Windows Visual Studio Code for ease of use and id strongly recommend these!
+This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64-bit and Windows Visual Studio Code for ease of use and id strongly recommend these!
 
-Pycraft v0.9.1 is here! Check out the most recent recent branch here: (github.com/PycraftDeveloper/Pycraft)
+[![](https://img.shields.io/badge/python-3.9+-blue.svg)](www.python.org/downloads/release/python-390)
+
+Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/0)
 
 ## About
 
@@ -73,45 +75,16 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 
 ## Changes
 
-Pycraft v0.9 is now live! This is a huge update and there are lots of new features which can be seen below!
+Pycraft v0.9.1 is now live! Here is a list of all the added features to this sub-release:
 
-- The game has now even faster load times having removed some redundant file checks and duplicates, which makes the game more efficient to run.
-- The game now also has a feature that will automatically detect when the game is minimised and will pause all currently playing audio and also reduce the games FPS down to 15, which increases the games efficiency when not being used, this feature will be likely tweaked and adjusted as time goes on and as the game progresses, but is here to stay!
-- The screenshots section (which is used when opening your inventory when playing) has been updated to support full-screen modes and resized windows, as well as generally making it more accurate.
-- General framework improvements, now the game has been cleaned up a bit behind the scenes. In addition, all the checks and features in the game game loops (that happen every time the game refreshes) has been consolidated and many redundant features removed and misbehaving tasks have been fixed.
-- Updates have also been made to the error handling and display modules, now the window will load only at the resolution of (1280x720). In addition to this, various stages of error severity have been included in the game, some errors can be fixed automatically as the game runs, others that are worse will lead to the game erroring out, but the game will try to save you progress, should this fail, or the game fails catastrophically it will attempt to load the error display but should it can’t it will default to Tkinter to display an error message.
-- Buttons and over things in game the user can interact with have been improved for better ease of use (notably the buttons on the home screen).
-- Every menu and GUI in the game now also has a title screen so you know where you are.
-- All audio that is loaded and played is now broken down into channels and loaded as and when, not all at once, again increasing efficiency and also improving performance.
-- Footstep sounds have been added to the game engine.
-- Landing from a jump now also triggers a sound effect.
-- Sound effects for sprinting have been introduced.
-- Weather events in game have been improved upon and are now better randomised.
-- When your mouse is interacting with buttons or clickable objects in game it will now change accordingly, to the hand. A similar effect is created when GUIs are loading, with the mouse displaying the loading icon instead of the pointer.
-- The scroll bar has been added and updated in settings, as well as dynamically changing to suit window resizes.
-- There is now a crosshair in game (your mouse).
-- Only one instance of the game can now run at a time in (.exe) mode to reduce issues with overheating and unnecessary stress to your system.
-- A new achievements GUI been added, as to has a new character customizer GUI, these don’t look like much yet but preparations have been made behind the scenes for when they are needed.
-- Caption loading and displaying has been tweaked.
-- There are now more ways to interact with the GUIs on your keyboard (including the addition of the ESC or ESCAPE key to navigate back to the home screen).
-- The entire start menu has been reprogrammed.
-- All text in game is now dynamically adjusted to your window size so now text looks a bit neater.
-- Messages have been introduced for unsupported graphics and audio drivers, as well as unsupported versions of SDL and OpenGL.
-- The FPS of the game when it’s loading the 3D space is now regulated so devices should not overheat when loading the game anymore (also improving efficiency).
-- All GUIs in the game now support display resizing and full screen options.
-- Old loading graphics have been discontinued for a preferred drawing technique, reducing file size and making the game generally nicer to view.
-- When leaving full screen mode on any GUI now sets it to the size of the main menu/title screen to avoid issues with display scaling.
-- Old short load screen as been entirely removed due to concerns raised over flashing images.
-- Graphics rendering is now handled by PIL instead of Pygame, meaning when the display resizes the graphics will too.
-- Images that can’t be loaded with PIL now include the (.convert()) syntax to improve load times.
-- Added a minimum RAM requirement (1 GB or more).
-- Credits has been completely redesigned and reprogrammed, and is now fully automatic.
-- The old installer has been removed.
-- Benchmark mode has been introduced and is now fully operational, including the results page.
-- General bug fixes (of which there where many).
-- Changes have also been made to the way OpenGL objects are loaded, which boosts FPS by an adverage of ~5 to ~10 FPS in testing
+- Some UI improvements to the home screen, which now displays an animation on the 'geometric rose' design.
+- Added OpenGL benchmarks to the benchmark function, which has seen some minor graphical changes too.
+- The ENTIRE programming structure of the game has changed, improving performance and load times, and will hopefully make adding features and inevitably debugging them much easier, also this is a feature we hope you don't notice as the games reprogramming from before to after has been extensively checked and modified to make sure everything works and is just as seamless as before.
+- Screenshots have been fixed and hopefully for the final time.
+- Windows 11 compatibility is now also added, although the game should work fine on Windows 10 as possibly earlier machines, however this hasn’t been tested at present.
+- Many, many, many bug fixes.
 
-Again, feedback would be much appreciated this update was released on; 19/09/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback. Thank you! We also apologize for the slow update.
+Again, feedback would be much appreciated this update was released on; 10/10/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
 
 ## Our update policy
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
