@@ -4,7 +4,7 @@ This is a project in which I aim to test my abilities and learn new skills, and 
 
 [![](https://img.shields.io/badge/python-3.9+-blue.svg)](www.python.org/downloads/release/python-390)
 
-Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/5)
+Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/10)
 
 ## About
 
