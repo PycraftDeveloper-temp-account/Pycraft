@@ -6,6 +6,23 @@ This is a project in which I aim to test my abilities and learn new skills, and 
 
 Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/10)
 
+Added to this update (Pycraft v0.9.2) so far:
+| Feature/BugFix/Planned | Description |
+| :---: | :---: |
+| Feature | Reprogrammed 'Devmode' graph feature, now scales with screen better (but NOT completely on resize as yet), when switching between modes of full-screen and windowed |
+| Feature | Parallelized CPU data collection to create a more accurate graph in 'Devmode' |
+| Feature | Labelled text at the top of 'Devmode' and added more useful information |
+| Feature | Tweaked caption in 'Devmode' to now include some new features |
+| Feature | Created a small sub-program that runs parallel to the main program, this checks all the variables that have the potential to hit the 32/64 bit integer limit |
+| Feature | Added better implementations of the 'Adaptive' setting mode, now this dynamically changes FPS to boost performance, detail and keeping system from running hot. This also takes data from the Benchmark mode function based on scores. (This is run in parallel) |
+| BugFix | Prevented the music in game from playing loud, and uncontrollably on start-up, and after certain menu interactions |
+| BugFix | Some internal clearing up after the big change that came with the last pre-release regarding the programming restructuring |
+| BugFix | Added and tweaked some internal values for the game and it's saves |
+| BugFix | Fixed an issue with the animation on the Home Screen changing speed with FPS changes |
+| Planned | Add in saves menu for game engine, incorporating the Inventory in game, with a new save and exit feature and a GUI when loading game |
+| Planned | Major performance improvements to the game engine |
+| Planned | Parallelization of the Collisions and Drawing algorithms |
+
 ## About
 
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that ga in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it
