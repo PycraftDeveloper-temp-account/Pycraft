@@ -4,7 +4,7 @@ This is a project in which I aim to test my abilities and learn new skills, and 
 
 [![](https://img.shields.io/badge/python-3.9+-blue.svg)](www.python.org/downloads/release/python-390)
 
-Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/10)
+Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/15)
 
 Added to this update (Pycraft v0.9.2) so far:
 | Feature/BugFix/Planned | Description |
@@ -13,6 +13,8 @@ Added to this update (Pycraft v0.9.2) so far:
 | Feature | Parallelized CPU data collection to create a more accurate graph in 'Devmode' |
 | Feature | Labelled text at the top of 'Devmode' and added more useful information |
 | Feature | Tweaked caption in 'Devmode' to now include some new features |
+| Feature | Fixed mouse movement in game to the centre of the display, and polished mouse detection effects |
+| Feature | Improved inventory backdrop snapshot with a blur effect |
 | Feature | Created a small sub-program that runs parallel to the main program, this checks all the variables that have the potential to hit the 32/64 bit integer limit |
 | Feature | Added better implementations of the 'Adaptive' setting mode, now this dynamically changes FPS to boost performance, detail and keeping system from running hot. This also takes data from the Benchmark mode function based on scores. (This is run in parallel) |
 | BugFix | Prevented the music in game from playing loud, and uncontrollably on start-up, and after certain menu interactions |
