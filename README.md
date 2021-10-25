@@ -3,6 +3,10 @@
 This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64-bit and Windows Visual Studio Code for ease of use and id strongly recommend these!
 
 [![](https://img.shields.io/badge/python-3.9+-blue.svg)](www.python.org/downloads/release/python-390)
+![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft)
+![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft)
+![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft)
+![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft)
 
 Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/75)
 
