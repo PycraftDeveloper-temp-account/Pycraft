@@ -96,7 +96,7 @@ pip is usually installed by default when installing Python with most versions.
 - GPUtil @ github.com/anderskm/gputil <br />
 - Tabulate @ github.com/p-ranav/tabulate <br />
 
-_Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately. _
+_Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 ## Changes
 
