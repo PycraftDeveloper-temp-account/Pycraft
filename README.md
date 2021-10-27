@@ -1,15 +1,11 @@
-![PycraftGitHub](https://user-images.githubusercontent.com/81379254/133644694-2c1149b8-01be-40f7-88ee-6110922bcf8a.png)
+<p align="center">
+  <a href="https://www.yushi.dev/" target="_blank" rel="noreferrer"><img src="https://user-images.githubusercontent.com/81379254/133644694-2c1149b8-01be-40f7-88ee-6110922bcf8a.png" alt="my banner"></a>
+</p>
 
 Pycraft is an OpenGL, OpenWorld, Video Game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Pythons vast amount of uses. Feel free to give this project a run, and message me if you have any feedback! | Made with Python 64-bit and Microsoft Visual Studio Code.
 
-[![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100)
-[![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390)
-[![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380)
-[![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
-![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft)
-![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft)
-![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft)
-![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft)
+[![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
+![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft)
 
 Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/75)
 
@@ -68,17 +64,15 @@ I recommend creating a shortcut for the "main.py" file too so it’s easier to l
 ## Credits
 
 #### With thanks to; <br />
-- Thomas Jebson <br />
-- Python 3 @ www.python.org <br />
-- OpenGL @ www.opengl.org <br />
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF) ![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) 	![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 	![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
+- Thomas Jebson (PycraftDeveloper) @ github.com/PycraftDeveloper <br />
+- dfchunihin @ github.com/dfchunihin <br />
 - Pypi @ www.pypi.org <br />
 - Pillow (PIL) @ www.python-pillow.org <br />
 - Pygame @ www.pygame.org <br />
-- Windows 10 - Visual Studio Code @ https://code.visualstudio.com/ <br />
 - Freesound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
 - Freesound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
 - Freesound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
-- Blender @ www.blender.org <br />
 
 ## Uncompiled Pycraft's Dependencies <br />
 
@@ -91,13 +85,16 @@ pip update <module>
 ```
 pip is usually installed by default when installing Python with most versions.
 
-- PIL (Pillow or Python Imaging Library) <br />
-- Pygame<br />
-- Numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) <br />
-- PyAutoGUI <br />
-- PyWaveFront<br />
-- CPUinfo <br />
+- PIL (Pillow or Python Imaging Library) @ github.com/python-pillow/Pillow <br />
+- Pygame @ github.com/pygame/pygame <br />
+- Numpy @ github.com/numpy/numpy <br />
+- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ github.com/mcfletch/pyopengl <br />
+- PyAutoGUI @ github.com/asweigart/pyautogui <br />
+- Psutil @ github.com/giampaolo/psutil <br />
+- PyWaveFront @ github.com/pywavefront/PyWavefront <br />
+- CPUinfo @ github.com/pytorch/cpuinfo <br />
+- GPUtil @ github.com/anderskm/gputil <br />
+- Tabulate @ github.com/p-ranav/tabulate <br />
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately. _
 
