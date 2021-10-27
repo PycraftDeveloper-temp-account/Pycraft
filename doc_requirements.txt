@@ -1,10 +1,10 @@
-PIL (Pillow or Python Imaging Library) @ github.com/python-pillow/Pillow
+PIL
 Pygame
-Numpy @ github.com/numpy/numpy
-PyOpenGL (and its counterpart PyOpenGL-accelerate) @ github.com/mcfletch/pyopengl
-PyAutoGUI @ github.com/asweigart/pyautogui
-Psutil @ github.com/giampaolo/psutil
-PyWaveFront @ github.com/pywavefront/PyWavefront
-CPUinfo @ github.com/pytorch/cpuinfo
-GPUtil @ github.com/anderskm/gputil
-Tabulate @ github.com/p-ranav/tabulate
+Numpy
+PyOpenGL
+PyAutoGUI
+Psutil
+PyWaveFront
+CPUinfo
+GPUtil
+Tabulate
