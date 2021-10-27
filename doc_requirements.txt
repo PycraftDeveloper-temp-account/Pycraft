@@ -1,5 +1,5 @@
 PIL (Pillow or Python Imaging Library) @ github.com/python-pillow/Pillow
-Pygame @ github.com/pygame/pygame
+Pygame
 Numpy @ github.com/numpy/numpy
 PyOpenGL (and its counterpart PyOpenGL-accelerate) @ github.com/mcfletch/pyopengl
 PyAutoGUI @ github.com/asweigart/pyautogui
