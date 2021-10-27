@@ -1,8 +1,11 @@
 ![PycraftGitHub](https://user-images.githubusercontent.com/81379254/133644694-2c1149b8-01be-40f7-88ee-6110922bcf8a.png)
 
-This is a project in which I aim to test my abilities and learn new skills, and show what I can do to the community thank you all very much for coming here and I hope you enjoy and are inspired to fire up IDLE yourself. Made with Python 3.9 64-bit and Windows Visual Studio Code for ease of use and id strongly recommend these!
+Pycraft is an OpenGL, OpenWorld, Video Game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Pythons vast amount of uses. Feel free to give this project a run, and message me if you have any feedback! | Made with Python 64-bit and Microsoft Visual Studio Code.
 
-[![](https://img.shields.io/badge/python-3.9+-blue.svg)](www.python.org/downloads/release/python-390)
+[![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100)
+[![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390)
+[![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380)
+[![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
 ![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft)
 ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft)
 ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft)
@@ -11,7 +14,7 @@ This is a project in which I aim to test my abilities and learn new skills, and 
 Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/75)
 
 Added to this update (Pycraft v0.9.2) so far:
-| Feature/BugFix/Planned | Description |
+| Feature/Bug Fix/Planned | Description |
 | :---: | :---: |
 | Feature | Reprogrammed 'Devmode' graph feature, now scales with screen better (but NOT completely on resize as yet), when switching between modes of full-screen and windowed |
 | Feature | Parallelized CPU data collection to create a more accurate graph in 'Devmode' |
@@ -19,12 +22,12 @@ Added to this update (Pycraft v0.9.2) so far:
 | Feature | Tweaked caption in 'Devmode' to now include some new features |
 | Feature | Fixed mouse movement in game to the centre of the display, and polished mouse detection effects |
 | Feature | Improved inventory backdrop snapshot with a blur effect |
-| Feature | Created a small sub-program that runs parallel to the main program, this checks all the variables that have the potential to hit the 32/64 bit integer limit |
+| Feature | Created a small sub-program that runs parallel to the main program, this checks all the variables that have the potential to hit the 32/64-bit integer limit |
 | Feature | Added better implementations of the 'Adaptive' setting mode, now this dynamically changes FPS to boost performance, detail and keeping system from running hot. This also takes data from the Benchmark mode function based on scores. (This is run in parallel) |
-| BugFix | Prevented the music in game from playing loud, and uncontrollably on start-up, and after certain menu interactions |
-| BugFix | Some internal clearing up after the big change that came with the last pre-release regarding the programming restructuring |
-| BugFix | Added and tweaked some internal values for the game and it's saves |
-| BugFix | Fixed an issue with the animation on the Home Screen changing speed with FPS changes |
+| Bug Fix | Prevented the music in game from playing loud, and uncontrollably on start-up, and after certain menu interactions |
+| Bug Fix | Some internal clearing up after the big change that came with the last pre-release regarding the programming restructuring |
+| Bug Fix | Added and tweaked some internal values for the game and it's saves |
+| Bug Fix | Fixed an issue with the animation on the Home Screen changing speed with FPS changes |
 | Planned | Add in saves menu for game engine, incorporating the Inventory in game, with a new save and exit feature and a GUI when loading game |
 | Planned | Major performance improvements to the game engine |
 | Planned | Parallelization of the Collisions and Drawing algorithms |
@@ -35,7 +38,7 @@ Pycraft is a 3D open-source, open-world video game made in Python. For a long ti
 
 ## Preview video
 
-Here is a Youtube link to a showcase of Pycraft v0.9.1 (Developer Build): (https://youtu.be/shAprkrcaiI)
+Here is a YouTube link to a showcase of Pycraft v0.9.1 (Developer Build): (https://youtu.be/shAprkrcaiI)
 
 ## Setup
 
@@ -79,7 +82,7 @@ I recommend creating a shortcut for the "main.py" file too so it’s easier to l
 
 ## Uncompiled Pycraft's Dependencies <br />
 
-When your installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
+When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
 
 ```
 pip install <module>
@@ -88,15 +91,15 @@ pip update <module>
 ```
 pip is usually installed by default when installing Python with most versions.
 
-- PIL (Pillow or Python Imgaging Libary) <br />
+- PIL (Pillow or Python Imaging Library) <br />
 - Pygame<br />
 - Numpy <br />
-- PyOpenGL (and its counterpart PyopenGL-accelerate) <br />
+- PyOpenGL (and its counterpart PyOpenGL-accelerate) <br />
 - PyAutoGUI <br />
 - PyWaveFront<br />
 - CPUinfo <br />
 
-_Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
+_Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately. _
 
 ## Changes
 
@@ -119,7 +122,7 @@ Versions have changed pretty dramatically the past few days, don’t panic I'm h
 
 ## Pycraft's update plan
 
-Pycraft will be continually updated for a long time yet. The next release, Pycraft v0.9.1 will not feature as a (.exe) release but only as a code release, it will feature some small UI changes and some larger code restructuring and reprogramming, most of this will go on behind the scenes and won't result in much of a change for the adverage user, then Pycraft v0.9.2 will include changes to the 3D space, and thus will continue for multiple releases to come, Pycraft will now updated gradually, not all in one go, however (.exe) releases will likely only occur at major releases like the upcoming Pycraft v0.10!
+Pycraft will be continually updated for a long time yet. The next release, Pycraft v0.9.1 will not feature as a (.exe) release but only as a code release, it will feature some small UI changes and some larger code restructuring and reprogramming, most of this will go on behind the scenes and won't result in much of a change for the average user, then Pycraft v0.9.2 will include changes to the 3D space, and thus will continue for multiple releases to come, Pycraft will now updated gradually, not all in one go, however (.exe) releases will likely only occur at major releases like the upcoming Pycraft v0.10!
 
 ## (.exe) releases
 
