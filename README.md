@@ -38,6 +38,12 @@ Here is a YouTube link to a showcase of Pycraft v0.9.1 (Developer Build): (https
 
 ## Setup
 
+### The following instructions are for installing Pycraft via the new recommended method, through Pypi:
+Installing Pycraft is now easier than ever, simply copy the command: pip install python-pycraft
+Into Terminal (on Apple devices), or Command Prompt (on Windows based machines), and then once its installed, both the project and the modules it requires simply open Python's IDLE or a code editor of your choice (I personally recommend Visual Studio Code), create a new Python file and do: import Pycraft
+It's that simple now! However if you are a fan of the Github releases then feel free to head over there and download the files as normal if you wish!
+
+### For anyone reading this README on my Github page, then the instructions below will be more helpful for you:
 When setting up and installing this project you can either run the bare bones file which is likely found above this 'README.md' file if your viewing this on the GitHub website then please follow the steps below for more information on the setup and installation of this project however where possible it is recommended that you use the executable file (.exe) under the most recent releases page as this will run regardless of where you place the file or if you have python or even if you have any of the installed modules this project depends on because its compiled into one file (hence the larger file size). which makes removing the file much easier and also sharing and transporting the file easier and more convenient. However, if you are planning to use the project in its uncompiled format (which as mentioned will be at the top of this page if you are on the GitHub website) then it is recommended you follow the below steps to make sure the project works properly.
 
 The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files outside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form. A video guide to this will be uploaded here and in YouTube in the coming months.
@@ -54,6 +60,7 @@ pip update <module>
 Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video: (youtu.be/DG5YbE-umw0)
 
 ## Running the program
+### For anyone reading this README on my Github page, then we also recommend you read through this:
 
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program. Pycraft has recently undergone some large structural redesigning, so to run the program the advice is now different:
 
@@ -65,8 +72,8 @@ I recommend creating a shortcut for the "main.py" file too so it’s easier to l
 
 #### With thanks to; <br />
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF) ![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) 	![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 	![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
-- Thomas Jebbo (PycraftDeveloper) @ github.com/PycraftDeveloper <br />
-- dfchunihin @ github.com/dfchunihin <br />
+- Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
+- dfchunihin @ www.github.com/dfchunihin <br />
 - Pypi @ www.pypi.org <br />
 - Pillow (PIL) @ www.python-pillow.org <br />
 - Pygame @ www.pygame.org <br />
@@ -85,16 +92,16 @@ pip update <module>
 ```
 pip is usually installed by default when installing Python with most versions.
 
-- PIL (Pillow or Python Imaging Library) @ github.com/python-pillow/Pillow <br />
-- Pygame @ github.com/pygame/pygame <br />
-- Numpy @ github.com/numpy/numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ github.com/mcfletch/pyopengl <br />
-- PyAutoGUI @ github.com/asweigart/pyautogui <br />
-- Psutil @ github.com/giampaolo/psutil <br />
-- PyWaveFront @ github.com/pywavefront/PyWavefront <br />
-- CPUinfo @ github.com/pytorch/cpuinfo <br />
-- GPUtil @ github.com/anderskm/gputil <br />
-- Tabulate @ github.com/p-ranav/tabulate <br />
+- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
+- Pygame @ www.github.com/pygame/pygame <br />
+- Numpy @ www.github.com/numpy/numpy <br />
+- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
+- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
+- Psutil @ www.github.com/giampaolo/psutil <br />
+- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
+- CPUinfo @ www.github.com/pytorch/cpuinfo <br />
+- GPUtil @ www.github.com/anderskm/gputil <br />
+- Tabulate @ www.github.com/p-ranav/tabulate <br />
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
