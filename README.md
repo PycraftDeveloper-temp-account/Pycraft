@@ -5,7 +5,7 @@
 Pycraft is an OpenGL, OpenWorld, Video Game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Pythons vast amount of uses. Feel free to give this project a run, and message me if you have any feedback! | Made with Python 64-bit and Microsoft Visual Studio Code.
 
 [![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
-![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/PycraftDeveloper/Pycraft/Pycraft-v0.0)
+![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/PycraftDeveloper/Pycraft/Pycraft-v0.0) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total)
 
 Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/75)
 
