@@ -5,6 +5,6 @@ PyOpenGL
 PyAutoGUI
 Psutil
 PyWaveFront
-CPUinfo
+py-CPUinfo
 GPUtil
 Tabulate
