@@ -7,7 +7,7 @@ Pycraft is an OpenGL, OpenWorld, Video Game made entirely with Python. This proj
 [![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
 ![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/PycraftDeveloper/Pycraft/Pycraft-v0.0) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/PycraftDeveloper/Pycraft)
 
-Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/75)
+Progress towards Pycraft v0.9.2: ![Progress](https://progress-bar.dev/100)
 
 Added to this update (Pycraft v0.9.2) so far:
 | Feature/Bug Fix/Planned | Description |
