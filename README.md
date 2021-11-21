@@ -10,6 +10,8 @@ Made with Python 64-bit and Microsoft Visual Studio Code.
 
 Progress towards Pycraft v0.9.3: ![Progress](https://progress-bar.dev/55)
 
+This is a minor release of Pycraft with a few small changes, this will be the last edition of Pycraft to feature the game engine written entirely with PyOpenGL!
+
 ## About
 
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that ga in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
@@ -19,13 +21,6 @@ Pycraft is a 3D open-source, open-world video game made in Python. For a long ti
 Here is a YouTube link to a showcase of Pycraft v0.9.1 (Developer Build): (https://youtu.be/shAprkrcaiI)
 
 ## Setup
-
-### The following instructions are for installing Pycraft via the new recommended method, through Pypi:
-Installing Pycraft is now easier than ever, simply copy the command: pip install python-pycraft
-Into Terminal (on Apple devices), or Command Prompt (on Windows based machines), and then once its installed, both the project and the modules it requires simply open Python's IDLE or a code editor of your choice (I personally recommend Visual Studio Code), create a new Python file and do: import Pycraft
-It's that simple now! However if you are a fan of the GitHub releases then feel free to head over there and download the files as normal if you wish!
-
-### For anyone reading this README on my GitHub page, then the instructions below will be more helpful for you:
 When setting up and installing this project you can either run the bare bones file which is likely found above this 'README.md' file if your viewing this on the GitHub website then please follow the steps below for more information on the setup and installation of this project however where possible it is recommended that you use the executable file (.exe) under the most recent releases page as this will run regardless of where you place the file or if you have python or even if you have any of the installed modules this project depends on because its compiled into one file (hence the larger file size). which makes removing the file much easier and also sharing and transporting the file easier and more convenient. However, if you are planning to use the project in its uncompiled format (which as mentioned will be at the top of this page if you are on the GitHub website) then it is recommended you follow the below steps to make sure the project works properly.
 
 The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files outside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form. A video guide to this will be uploaded here and in YouTube in the coming months.
@@ -42,7 +37,6 @@ pip update <module>
 Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video: (youtu.be/DG5YbE-umw0)
 
 ## Running The Program
-### For anyone reading this README on my GitHub page, then we also recommend you read through this:
 
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program. Pycraft has recently undergone some large structural redesigning, so to run the program the advice is now different:
 
@@ -89,29 +83,12 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 
 ## Changes
 
-Pycraft v0.9.2 is now live! Here is a list of all the added features to this sub-release: <br />
+Pycraft v0.9.2.5 is now live! Here is a list of all the added features to this minor update: <br />
 
-* Feature: Reprogrammed 'Devmode' graph feature, now scales with screen better (but NOT completely on resize as yet), when switching between modes of full-screen and windowed. <br />
-* Feature: Parallelized CPU data collection to create a more accurate graph in 'Devmode'. <br />
-* Feature: Labelled text at the top of 'Devmode' and added more useful information. <br />
-* Feature: Tweaked caption in 'Devmode' to now include some new features. <br />
-* Feature: Fixed mouse movement in game to the centre of the display, and polished mouse detection effects. <br />
-* Feature: Improved inventory backdrop snapshot with a blur effect. <br />
-* Feature: Created a small sub-program that runs parallel to the main program, this checks all the variables that have the potential to hit the 32/64-bit integer limit. <br />
-* Feature: Added better implementations of the 'Adaptive' setting mode, now this dynamically changes FPS to boost performance, detail and keeping system from running hot. This also takes data from the Benchmark mode function based on scores, this is an early feature preview so expect some changes here. (This is run in parallel.) <br />
-* Feature: Major performance improvements to the game engine. <br />
-* Feature: VBOs have been added to Pycraft! This makes way for some significant changes to come, as well as netting significant performance improvements! <br />
-* Feature: The skybox has been pinned to the players camera now. <br />
-* Feature: Rotations and movements have been tweaked, but still will need a little bit of work into Pycraft v0.0.3 <br />
-* Feature (disabled... for now): Parallelization of the Collisions and Drawing algorithms. <br />
-* Feature (disabled... for now): Pycraft’s fog and weather engine has not been working for some time, however a later edition of Pycraft is intended to address this. <br />
-* Bug Fix: Prevented the music in game from playing loud, and uncontrollably on start-up, and after certain menu interactions. <br />
-* Bug Fix: Some internal clearing up after the big change that came with the last pre-release regarding the programming restructuring. <br />
-* Bug Fix: Added and tweaked some internal values for the game and it's saves. <br />
-* Bug Fix: Fixed an issue with the animation on the Home Screen changing speed with FPS changes. <br />
-* Bug Fix: Cleaned up the game engine a touch, removing unnecessary code and variables. <br />
+* Feature: Reprogrammed the loading screen for the game engine for a large performance improvement <br />
+* Bug Fix: Minor bug fixes <br />
 
-Again, feedback would be much appreciated this update was released on; 6/11/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
+Again, feedback would be much appreciated this update was released on; 21/11/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
 
 ## Update Timeline
 Pycraft will be continually updated for a long time yet. The next few releases, Pycraft v0.9.x will not feature as a (.exe) release but only as a code release. Pycraft will now updated gradually, not all in one go, however (.exe) releases will likely only occur at major releases like the upcoming Pycraft v0.10! The following plan was taken from my Medium article: How We are Making a Video Game in Python #2 (here: https://medium.com/@PycraftDev/how-we-are-making-a-video-game-in-python-2-547b504bbd67) <br />
