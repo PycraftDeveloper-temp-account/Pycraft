@@ -27,7 +27,6 @@ Content
    guide/event_guide
    guide/resource_system
 
-
 About
 ==================
 
