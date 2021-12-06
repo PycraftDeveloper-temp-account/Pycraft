@@ -18,17 +18,11 @@ When running the program please make sure you have a minimum of 1GB of free spac
 Pygame, Numpy, PyOpenGL, Pillow, PyAutoGUI, Psutil, PyWaveFront, CPUinfo and Ctypes. 
 For those not familiar they can be found here: (pypi.org) and you can use the following syntax to install, update and remove these modules:
 
-``
-pip install <module>
-``
+``pip install <module>``
 
-``
-pip uninstall <module>
-``
+``pip uninstall <module>``
 
-``
-pip update <module>
-``
+``pip update <module>``
 
 Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video: (youtu.be/DG5YbE-umw0)
 
