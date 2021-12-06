@@ -11,16 +11,7 @@ Contents
    :maxdepth: 2
    :caption: Getting started
 
-   pages/Getting_Started/About.rst
-   pages/Getting_Started/Setup/Installing From GitHub
-   pages/Getting_Started/Setup/Installing From PyPi
-   pages/Getting_Started/Setup/Installing From Releases
-   pages/Getting_Started/Setup/The Installer
-   pages/Getting_Started/Credits
-   pages/Getting_Started/Changes
-   pages/Getting_Started/Timeline
-   pages/Getting_Started/Sources
-   pages/Getting_Started/Final Notices
+   pages/Getting_Started/index.rst
    
 .. toctree::
    :maxdepth: 2
