@@ -11,7 +11,7 @@ Contents
    :maxdepth: 2
    :caption: Getting started
 
-   pages/Getting_Started/About
+   pages/Getting_Started/About.rst
    pages/Getting_Started/Setup/Installing From GitHub
    pages/Getting_Started/Setup/Installing From PyPi
    pages/Getting_Started/Setup/Installing From Releases
