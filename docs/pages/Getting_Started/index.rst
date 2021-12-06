@@ -4,4 +4,4 @@ Install
 .. toctree::
     :maxdepth: 1
 
-    installation.rst
+    About.rst
