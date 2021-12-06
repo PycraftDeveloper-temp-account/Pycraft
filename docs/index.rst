@@ -14,11 +14,7 @@ Contents:
    pages/Getting_Started/index.rst
    
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Module Breakdown
 
-   guide/install
-   guide/basic_usage
-   guide/window_guide
-   guide/event_guide
-   guide/resource_system
+   pages/guide/Getting Started.rst
