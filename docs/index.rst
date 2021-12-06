@@ -7,9 +7,12 @@ Made with Python 64-bit and Microsoft Visual Studio Code.
 
 Contents:
 ==================
++++++++++++++++
+Overview
++++++++++++++++
 .. toctree::
    :maxdepth: 3
-   :caption: Overview
+   :caption:
 
    pages/Getting_Started/index.rst
    
