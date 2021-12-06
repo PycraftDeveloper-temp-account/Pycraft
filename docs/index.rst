@@ -10,5 +10,5 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   pages/Getting_Started/index.rst
+   pages/Introduction/index.rst
    pages/Guide/index.rst
