@@ -1,4 +1,4 @@
-Python-Pycraft's documentation!
+Python-Pycraft's documentation
 ===========================================
 
 
