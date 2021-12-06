@@ -20,4 +20,4 @@ Overview
    :maxdepth: 3
    :caption: Module Breakdown
 
-   pages/guide/Getting Started.rst
+   pages/guide/Getting_Started.rst
