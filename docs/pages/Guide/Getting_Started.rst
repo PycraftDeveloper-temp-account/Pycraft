@@ -27,3 +27,12 @@ Procedures
 
 Modules
 +++++++
+
+* All modules should be preceeded by the following code, regardless of function:
+ .. code-block:: python
+
+if not __name__ == "__main__":
+    print("Started <Pycraft_<name>>")
+    class <name>:
+        def __init__(self):
+            pass
