@@ -19,3 +19,11 @@ or
 Procedures
 +++++++
 
+* Procedures can be of any length, as there is no limit to the length of a line of code in Pycraft at present.
+* Procedures should avoid using global variables as much as possible, as this makes it easier to trace variables and possible bugs. (The exceptions here being the ``Class_Startup_variables`` and ``self`` variables which are referenced throughout the different modules for Pycraft).
+* Procedures should be named according to their function, and not be dependant on other code in a spacific module to work. (For example, making a random number generator that relies on global variables created elsewhere in a module)
+* Procedures should only have parameters if they are used withing the procedure.
+* If a procedure returns a value, then this must be implicitly stated in the documentation here.
+
+Modules
++++++++
