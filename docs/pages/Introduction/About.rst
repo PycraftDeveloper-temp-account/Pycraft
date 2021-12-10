@@ -1,11 +1,9 @@
 About
 ==================
-
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that ga in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
 
 Preview Video
 ====================
-
 Here is a YouTube link to a showcase of Pycraft v0.9.1 (Developer Build): (https://youtu.be/shAprkrcaiI)
 
 Setup
@@ -44,7 +42,6 @@ But there is a better solution on its way!
 
 Running The Program
 ====================
-
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program. Pycraft has recently undergone some large structural redesigning, so to run the program the advice is now different:
 
 Now you have the program properly installed hopefully (you’ll find out if you haven’t promptly!) you need to locate the file "main.py" basically all this program does is run the right modules, initiates the main program, and catches any errors that might arise in the program in a nicely rendered error screen, if it crashes on your first run then chances are you haven’t installed the program correctly, if it still doesn’t work then you can drop me an email @ "ThomasJebbo@gmail.com" or comment here on the repository, I do hope however that it works alright for you and you have a pleasant experience. I might also add this program has been developed on a Windows 64-bit computer however should run fine on a 32-bit Windows machine (uncompiled) or through MacOS although they remain untested for now. 
@@ -53,7 +50,6 @@ I recommend creating a shortcut for the "main.py" file too so it’s easier to l
 
 Credits
 ====================
-
 With thanks to;
 - Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper
 - Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn
@@ -66,7 +62,6 @@ With thanks to;
 
 Pycraft's Python Dependencies
 ====================
-
 When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
 
 ``pip install <module>``
@@ -89,15 +84,16 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 
 Changes
 ====================
+Pycraft v0.9.3 is now live! Here is a list of all the added features to this major update: <br />
 
-Pycraft v0.9.2.5 is a minor release of Pycraft with a few small changes, this will be the last edition of Pycraft to feature the game engine written entirely with PyOpenGL!
+* Feature: The entire game engine has been reprogrammed, removing redundant functions, improving the visual experience and making future updates much easier.
+* Feature: The project has moved over from using (.ogg) audio files to (.wav) files, this means a much larger file size, but in the current implementation Pygame does not appear to like (.ogg) files!
+* Feature: We have added a messages screen to the home screen, this will display information like events, updates, important milestones in game and more! Expect this feature to be worked on significantly!
+* Bug Fix: There have been lots of bug fixes in the course of programming this new update, however not many bugs were raised in Pycraft v0.9.2.5 so there haven't been many bug fixes that link the two updates (there have been bug fixes however to the game engine in the course of its programming and re-design). If you discover a bug, then feel free to share details with me on either Twitter or by email.
 
-Pycraft v0.9.2.5 is now live! Here is a list of all the added features to this minor update:
+_Please note there have been features REMOVED from this update at this point in time, for example the new load-screen, this will be re-added hopefully, but will take some time to work on. Also, there will likely be a small update to Pycraft over the course of December, however this will be likely bug fixes and the arrival/integration of the upcoming installer._
 
-* Feature: Reprogrammed the loading screen for the game engine for a large performance improvement
-* Bug Fix: Minor bug fixes
-
-Again, feedback would be much appreciated this update was released on; 21/11/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
+Again, feedback would be much appreciated this update was released on; 04/12/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
 
 Update Timeline
 ====================
