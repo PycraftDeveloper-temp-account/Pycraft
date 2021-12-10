@@ -1,5 +1,5 @@
 Module Breakdown
-=======
+====================
 
 .. toctree::
     :maxdepth: 1
