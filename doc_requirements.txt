@@ -1,4 +1,4 @@
-python-pillow/Pillow
+github.com/python-pillow/pillow
 Pygame
 Numpy
 PyOpenGL
