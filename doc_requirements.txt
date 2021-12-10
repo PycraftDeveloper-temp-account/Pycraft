@@ -8,3 +8,5 @@ PyWaveFront
 py-CPUinfo
 GPUtil
 Tabulate
+Moderngl
+Moderngl-window
