@@ -13,4 +13,4 @@ Contents:
    pages/Introduction/index.rst
    pages/Guide/index.rst
 
-Documentation last updated: 10/12/2021 @ 20:05 (DD/MM/YYYY @ GMT) | Most recent Pycraft version: v0.9.3 | Most recent developer version of Pycraft: v0.9.4-0
+Documentation last updated: 11/12/2021 @ 20:20 (DD/MM/YYYY @ GMT) | Most recent Pycraft version: v0.9.3 | Most recent developer version of Pycraft: v0.9.4-0
