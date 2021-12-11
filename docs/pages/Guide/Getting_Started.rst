@@ -10,10 +10,7 @@ Variables
 
 * All variables should be named in accordance to its function, or based on a description of the data it stores.
 * There is no limit to the length of the name of a variable as at current there is no limit on the length of a line of code.
-* Here are some good examples of variable names:
-``StoreRandomNumber``
-or
-``StoreMapVertexBuffer``
+* Here are some good examples of variable names: ``StoreRandomNumber`` or ``StoreMapVertexBuffer``
 
 Subroutines
 ++++++++++++++++++++
