@@ -154,56 +154,56 @@ Detailed Breakdown
 16. ``¬ ¬ ¬ ¬ AchievementsFont = InfoTitleFont.render("Achievements", self.aa, self.SecondFontCol)``
 17. ``¬ ¬ ¬ ¬ tempFPS = self.FPS``
 
-18. ``while True:``
-19. ``realWidth, realHeight = self.mod_Pygame__.display.get_window_size()``
+18. ``¬ ¬ ¬ ¬ while True:``
+19. ``¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()``
 
-20. ``if realWidth < 1280:``
-21. ``self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)``
-22. ``if realHeight < 720:``
-23. ``self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
+20. ``¬ ¬ ¬ ¬ ¬ if realWidth < 1280:``
+21. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)``
+22. ``¬ ¬ ¬ ¬ ¬ if realHeight < 720:``
+23. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
 
-24. ``self.eFPS = self.clock.get_fps()``
-25. ``self.aFPS += self.eFPS``
-26. ``self.Iteration += 1``
+24. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
+25. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
+26. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
 
-27. ``tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
+27. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
 
-28. ``for event in self.mod_Pygame__.event.get():``
-29. ``if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
-30. ``if self.sound == True:``
-31. ``self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
-32. ``return None``
-33. ``elif event.type == self.mod_Pygame__.KEYDOWN:``
-34. ``if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
-35. ``self.Devmode += 1``
-36. ``if event.key == self.mod_Pygame__.K_q:``
-37. ``self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
-38. ``if event.key == self.mod_Pygame__.K_F11:``
-39. ``self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
-40. ``if event.key == self.mod_Pygame__.K_x:``
-41. ``self.Devmode = 1``
+28. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
+29. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
+30. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
+31. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
+32. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
+33. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:``
+34. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
+35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
+36. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
+37. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
+38. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
+39. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
+40. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
+41. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
 
-42. ``self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
+42. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
 
-43. ``self.Display.fill(self.BackgroundCol)``
+43. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 
-44. ``cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
-45. ``self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
-46. ``self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
-47. ``self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+44. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
+45. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
+46. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
+47. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
 
-48. ``Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
-49. ``if not Message == None:``
-50. ``return Message``
-51. ``self.mod_Pygame__.display.flip()``
-52. ``self.clock.tick(tempFPS)``
-53. ``except Exception as Message:``
-54. ``return Message``
+48. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
+49. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
+50. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
+51. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
+52. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
+53. ``¬ ¬ ¬ except Exception as Message:``
+54. ``¬ ¬ ¬ ¬ return Message``
 55. ``else:``
-56. ``print("You need to run this as part of Pycraft")``
-57. ``import tkinter as tk``
-58. ``from tkinter import messagebox``
-59. ``root = tk.Tk()``
-60. ``root.withdraw()``
-61. ``messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-62. ``quit()``
+56. ``¬ print("You need to run this as part of Pycraft")``
+57. ``¬ import tkinter as tk``
+58. ``¬ from tkinter import messagebox``
+59. ``¬ root = tk.Tk()``
+60. ``¬ root.withdraw()``
+61. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+62. ``¬ quit()``
