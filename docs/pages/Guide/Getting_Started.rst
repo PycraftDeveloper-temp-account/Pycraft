@@ -125,7 +125,7 @@ The ``Achievements(self)`` function, like most subroutines in Pycraft, takes ``s
 
 Detailed Breakdown
 ++++++++++++++++++++
-
+.. note::
    1. ``if not __name__ == "__main__":`` For information on this consult the above guide
    2. ``¬ print("Started <Pycraft_Achievements>")``
    3. ``¬ class GenerateAchievements:``
