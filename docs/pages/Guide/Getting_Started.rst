@@ -660,26 +660,26 @@ Detailed Breakdown
 41. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
 
 42. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Character Designer")``
-43. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
-44. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 
-45. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
-46. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
-47. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
-48. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+43. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 
-49. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
-50. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
-51. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
-52. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
-53. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
-54. ``¬ ¬ ¬ except Exception as Message:``
-55. ``¬ ¬ ¬ ¬ return Message``
+44. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
+45. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
+46. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
+47. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+
+48. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
+49. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
+50. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
+51. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
+52. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
+53. ``¬ ¬ ¬ except Exception as Message:``
+54. ``¬ ¬ ¬ ¬ return Message``
 
 .. note::
     For information on this consult the above guide
-    56. ``else:``
-    55. ``¬ print("You need to run this as part of Pycraft")``
+    55. ``else:``
+    56. ``¬ print("You need to run this as part of Pycraft")``
     57. ``¬ import tkinter as tk``
     58. ``¬ from tkinter import messagebox``
     59. ``¬ root = tk.Tk()``
@@ -1265,7 +1265,7 @@ Overview
 Detailed Breakdown
 ++++++++++++++++++++
 .. note::
-For information on this consult the above guide
+    For information on this consult the above guide
     1. ``if not __name__ == "__main__":``
     2. ``¬ print("Started <Pycraft_ExBenchmark>")``
     3. ``¬ class LoadBenchmark:``
@@ -1411,7 +1411,7 @@ For information on this consult the above guide
 112. ``¬ ¬ ¬ ¬ return None, FPSlistX, FPSlistY, FPSlistX2, FPSlistY2, FPSlistX3, FPSlistY3``
 
 .. note::
-For information on this consult the above guide
+    For information on this consult the above guide
     1.   ``else:``
     2.   ``¬ print("You need to run this as part of Pycraft")``
     3.   ``¬ import tkinter as tk``
@@ -1826,7 +1826,7 @@ Detailed Breakdown
 ++++++++++++++++++++
 
 .. note::
-For information on this consult the above guide
+    For information on this consult the above guide
     1. ``if not __name__ == "__main__":``
     2. ``¬ print("Started <Pycraft_HomeScreen>")``
     3. ``¬ class GenerateHomeScreen:``
