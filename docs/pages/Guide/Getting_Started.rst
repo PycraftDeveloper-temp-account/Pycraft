@@ -136,10 +136,10 @@ Detailed Breakdown
 
 6. ``¬ ¬ def Achievements(self):``
 7. ``¬ ¬ ¬ try:``
-8. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol) ``
+8. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 9. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 10. ``¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
-11. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60) ``
+11. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
 12. ``¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)``
 13. ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 
@@ -190,7 +190,7 @@ Detailed Breakdown
 48. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
 49. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
 50. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
-51. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip() ``
+51. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 52. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 53. ``¬ ¬ ¬ except Exception as Message:``
 54. ``¬ ¬ ¬ ¬ return Message``
@@ -300,11 +300,11 @@ Detailed Breakdown
 6. ``¬ ¬ def Benchmark(self):``
 7. ``¬ ¬ ¬ try:``
 8. ``¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.Channel(2).pause()``
-9. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol) ``
+9. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 10. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 11. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: Benchmark")``
-12. ``¬ ¬ ¬ ¬ self.VersionFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15) ``
-13. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60) ``
+12. ``¬ ¬ ¬ ¬ self.VersionFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
+13. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
 14. ``¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)``
 15. ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 16. ``¬ ¬ ¬ ¬ DetailsFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 20)``
@@ -581,9 +581,9 @@ Detailed Breakdown
 
 13. ``¬ ¬ def GetNormalCaption(self, location):``
 14. ``¬ ¬ ¬ if self.Devmode >= 5 and self.Devmode <= 9:``
-15. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | you are: {10-self.Devmode} steps away from being a developer") ``
+15. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | you are: {10-self.Devmode} steps away from being a developer")``
 16. ``¬ ¬ ¬ elif self.Devmode == 10: ``
-17. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | Developer Mode | Pos: {round(self.X, 2)}, {round(self.Y, 2)}, {round(self.Z, 2)} | V: {self.Total_move_x}, {self.Total_move_y}, {self.Total_move_z} FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration} | MemUsE: {self.mod_Psutil__.virtual_memory().percent} | CPUUsE: {self.mod_Psutil__.cpu_percent()} | Theme: {self.theme} | Thread Count: {self.mod_Threading__.active_count()}") ``
+17. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | Developer Mode | Pos: {round(self.X, 2)}, {round(self.Y, 2)}, {round(self.Z, 2)} | V: {self.Total_move_x}, {self.Total_move_y}, {self.Total_move_z} FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration} | MemUsE: {self.mod_Psutil__.virtual_memory().percent} | CPUUsE: {self.mod_Psutil__.cpu_percent()} | Theme: {self.theme} | Thread Count: {self.mod_Threading__.active_count()}")``
 18. ``¬ ¬ ¬ else:``
 19. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location}")``
 
@@ -617,10 +617,10 @@ Detailed Breakdown
 
 6. ``¬ ¬ def CharacterDesigner(self):``
 7. ``¬ ¬ ¬ try:``
-8. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol) ``
+8. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 9. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 10. ``¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Character Designer")``
-11. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60) ``
+11. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
 12. ``¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)``
 13. ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 
@@ -671,7 +671,7 @@ Detailed Breakdown
 49. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
 50. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
 51. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
-52. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip() ``
+52. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 53. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 54. ``¬ ¬ ¬ except Exception as Message:``
 55. ``¬ ¬ ¬ ¬ return Message``
@@ -707,17 +707,17 @@ Detailed Breakdown
 6. ``¬ ¬ def Credits(self):``
 7. ``¬ ¬ ¬ try:``
 8. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
-9. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip() ``
+9. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 10. ``¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Credits")``
 11. ``¬ ¬ ¬ ¬ VersionFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 12. ``¬ ¬ ¬ ¬ LargeCreditsFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 20)``
-13. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60) ``
+13. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
 14. ``¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)``
 15. ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 16. ``¬ ¬ ¬ ¬ TitleFont = MainTitleFont.render("Pycraft", self.aa, self.FontCol)``
 17. ``¬ ¬ ¬ ¬ TitleWidth = TitleFont.get_width()``
 18. ``¬ ¬ ¬ ¬ TitleHeight = TitleFont.get_height()``
-19. ``¬ ¬ ¬ ¬ CreditsFont = InfoTitleFont.render("Credits", self.aa, self.SecondFontCol) ``
+19. ``¬ ¬ ¬ ¬ CreditsFont = InfoTitleFont.render("Credits", self.aa, self.SecondFontCol)``
 20. ``¬ ¬ ¬ ¬ Credits1 = LargeCreditsFont.render(f"Pycraft: v{self.version}", self.aa, self.FontCol)``
 21. ``¬ ¬ ¬ ¬ Credits1Width = Credits1.get_width()``
 22. ``¬ ¬ ¬ ¬ Credits2 = LargeCreditsFont.render("Game Director: Tom Jebbo", self.aa, self.FontCol)``
@@ -892,7 +892,7 @@ Detailed Breakdown
 183. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
 184. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
 185. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
-186. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip() ``
+186. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 187. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 188. ``¬ ¬ ¬ except Exception as Message:``
 189. ``¬ ¬ ¬ ¬ return Message``
@@ -1148,35 +1148,35 @@ Detailed Breakdown
 11.	``¬ ¬ ¬ defLargeOctagon = [(205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact)] ``
 12.	``¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2)``
 
-13.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[0], (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-14.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[1], (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-15.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[2], (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-16.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[3], (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-17.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[4], (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-18.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[5], (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-19.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[6], (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-20.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[7], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-21.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[8], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-22.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[9], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-23.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[10], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-24.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[11], (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2) ``
-25.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[12], (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-26.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[13], (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-27.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[14], (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-28.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[15], (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-29.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[16], (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-30.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[17], (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-31.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[18], (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2) ``
-32.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[19], (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-33.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[20], (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-34.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[21], (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-35.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[22], (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-36.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[23], (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-37.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[24], (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-38.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[25], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-39.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[25], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-40.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[27], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-41.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[28], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
+13.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[0], (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+14.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[1], (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+15.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[2], (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+16.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[3], (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+17.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[4], (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+18.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[5], (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+19.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[6], (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+20.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[7], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+21.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[8], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+22.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[9], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+23.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[10], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+24.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[11], (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)``
+25.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[12], (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+26.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[13], (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+27.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[14], (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+28.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[15], (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+29.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[16], (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+30.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[17], (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+31.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[18], (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)``
+32.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[19], (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+33.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[20], (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+34.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[21], (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+35.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[22], (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+36.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[23], (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+37.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[24], (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+38.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[25], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+39.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[25], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+40.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[27], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+41.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[28], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 42.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[29], (422*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 43.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[30], (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
 44.	``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[31], (575*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
@@ -1239,7 +1239,7 @@ Detailed Breakdown
 89.	``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.lines(self.Display, (0, 0, 255), False, self.Data_MemUsE)``
 90.	``¬ ¬ ¬ ¬ ¬ if len(self.Data_CPUUsE) >= 2:``
 91.	``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.lines(self.Display, (255, 0, 255), False, self.Data_CPUUsE)``
-92.	``¬ ¬ ¬ ¬ ¬ runFont = DataFont.render(f"MemUsE: {self.mod_Psutil__.virtual_memory().percent}% | CPUUsE: {self.mod_Psutil__.cpu_percent()}% | FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration}", self.aa, (255, 255, 255)) ``
+92.	``¬ ¬ ¬ ¬ ¬ runFont = DataFont.render(f"MemUsE: {self.mod_Psutil__.virtual_memory().percent}% | CPUUsE: {self.mod_Psutil__.cpu_percent()}% | FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration}", self.aa, (255, 255, 255))``
 93.	``¬ ¬ ¬ ¬ ¬ self.Display.blit(runFont, ((self.realWidth/2)+105, 0))``
 94.	``¬ ¬ ¬ ¬ except Exception as Message:``
 95.	``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
@@ -1854,19 +1854,19 @@ For information on this consult the above guide
 23. ``¬ ¬ ¬ ¬ hover6 = False``
 24. ``¬ ¬ ¬ ¬ mousebuttondown = False``
 
-25. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60) ``
+25. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
 26. ``¬ ¬ ¬ ¬ PycraftTitle = MainTitleFont.render("Pycraft", self.aa, self.FontCol)``
 27. ``¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()``
 28. ``¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()``
 29. ``¬ ¬ ¬ ¬ self.Display.blit(PycraftTitle, ((self.realWidth-TitleWidth)/2, 0))``
 30. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 
-31. ``¬ ¬ ¬ ¬ SideFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 20) ``
-32. ``¬ ¬ ¬ ¬ VersionFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 20) ``
-33. ``¬ ¬ ¬ ¬ ButtonFont1 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
-34. ``¬ ¬ ¬ ¬ ButtonFont2 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
-35. ``¬ ¬ ¬ ¬ ButtonFont3 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
-36. ``¬ ¬ ¬ ¬ ButtonFont4 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+31. ``¬ ¬ ¬ ¬ SideFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 20)``
+32. ``¬ ¬ ¬ ¬ VersionFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 20)``
+33. ``¬ ¬ ¬ ¬ ButtonFont1 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
+34. ``¬ ¬ ¬ ¬ ButtonFont2 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
+35. ``¬ ¬ ¬ ¬ ButtonFont3 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
+36. ``¬ ¬ ¬ ¬ ButtonFont4 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 37. ``¬ ¬ ¬ ¬ ButtonFont5 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 38. ``¬ ¬ ¬ ¬ ButtonFont6 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 39. ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
@@ -1958,14 +1958,14 @@ For information on this consult the above guide
 109. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
 110. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
 111. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
-112. ``¬ ¬ ¬ ¬ ¬ Mx, My = self.mod_Pygame__.mouse.get_pos() ``
+112. ``¬ ¬ ¬ ¬ ¬ Mx, My = self.mod_Pygame__.mouse.get_pos()``
 113. ``¬ ¬ ¬ ¬ ¬ PycraftTitle = MainTitleFont.render("Pycraft", self.aa, self.FontCol)``
 114. ``¬ ¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()``
 
 115. ``¬ ¬ ¬ ¬ ¬ Name = SideFont.render("By Tom Jebbo", self.aa, self.FontCol)``
 116. ``¬ ¬ ¬ ¬ ¬ NameHeight = Name.get_height()``
 
-117. ``¬ ¬ ¬ ¬ ¬ Version = VersionFont.render(f"Version: {self.version}", self.aa, self.FontCol) ``
+117. ``¬ ¬ ¬ ¬ ¬ Version = VersionFont.render(f"Version: {self.version}", self.aa, self.FontCol)``
 118. ``¬ ¬ ¬ ¬ ¬ VersionWidth = Version.get_width()``
 119. ``¬ ¬ ¬ ¬ ¬ VersionHeight = Version.get_height()``
 
@@ -2008,8 +2008,8 @@ For information on this consult the above guide
 
 150. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Home screen")``
 
-151. ``¬ ¬ ¬ ¬ ¬ ButtonFont1.set_underline(hover1) ``
-152. ``¬ ¬ ¬ ¬ ¬ ButtonFont2.set_underline(hover2) ``
+151. ``¬ ¬ ¬ ¬ ¬ ButtonFont1.set_underline(hover1)``
+152. ``¬ ¬ ¬ ¬ ¬ ButtonFont2.set_underline(hover2)``
 153. ``¬ ¬ ¬ ¬ ¬ ButtonFont3.set_underline(hover3)``
 154. ``¬ ¬ ¬ ¬ ¬ ButtonFont4.set_underline(hover4)``
 155. ``¬ ¬ ¬ ¬ ¬ ButtonFont5.set_underline(hover5)``
@@ -2195,7 +2195,7 @@ Detailed Breakdown
 9. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 10. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()``
 
-11. ``¬ ¬ ¬ ¬ MainInventoryFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60) ``
+11. ``¬ ¬ ¬ ¬ MainInventoryFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
 12. ``¬ ¬ ¬ ¬ PycraftTitle = MainInventoryFont.render("Pycraft", self.aa, self.FontCol)``
 13. ``¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()``
 
@@ -2203,7 +2203,7 @@ Detailed Breakdown
 15. ``¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()``
 16. ``¬ ¬ ¬ ¬ AlphaSurface = self.mod_Pygame__.Surface((realWidth, realHeight), self.mod_Pygame__.HWSURFACE|self.mod_Pygame__.SRCALPHA)``
 17. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_icon(icon)``
-18. ``¬ ¬ ¬ ¬ AlphaSurface.set_alpha(204) ``
+18. ``¬ ¬ ¬ ¬ AlphaSurface.set_alpha(204)``
 19. ``¬ ¬ ¬ ¬ AlphaSurface.fill(self.BackgroundCol)``
 
 20. ``¬ ¬ ¬ ¬ Selector = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, (f"Resources\\General_Resources\\selectorICON{self.theme}.jpg"))).convert()``
@@ -2219,42 +2219,42 @@ Detailed Breakdown
 29. ``¬ ¬ ¬ ¬ hover8 = False``
 30. ``¬ ¬ ¬ ¬ mousebuttondown = False``
 
-31. ``¬ ¬ ¬ ¬ ButtonFont1 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+31. ``¬ ¬ ¬ ¬ ButtonFont1 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 32. ``¬ ¬ ¬ ¬ WeaponsText = ButtonFont1.render("Weapons", self.aa, self.FontCol)``
 33. ``¬ ¬ ¬ ¬ WeaponsTextWidth = WeaponsText.get_width()``
 34. ``¬ ¬ ¬ ¬ WeaponsTextHeight = WeaponsText.get_height()``
 
-35. ``¬ ¬ ¬ ¬ ButtonFont2 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+35. ``¬ ¬ ¬ ¬ ButtonFont2 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 36. ``¬ ¬ ¬ ¬ RangedWeaponsText = ButtonFont2.render("Ranged Weapons", self.aa, self.FontCol)``
 37. ``¬ ¬ ¬ ¬ RangedWeaponsTextWidth = RangedWeaponsText.get_width()``
 38. ``¬ ¬ ¬ ¬ RangedWeaponsTextHeight= RangedWeaponsText.get_height()``
 
-39. ``¬ ¬ ¬ ¬ ButtonFont3 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+39. ``¬ ¬ ¬ ¬ ButtonFont3 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 40. ``¬ ¬ ¬ ¬ ShieldsText = ButtonFont3.render("Shields", self.aa, self.FontCol)``
 41. ``¬ ¬ ¬ ¬ ShieldsTextWidth = ShieldsText.get_width()``
 42. ``¬ ¬ ¬ ¬ ShieldsTextHeight = ShieldsText.get_height()``
 
-43. ``¬ ¬ ¬ ¬ ButtonFont4 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+43. ``¬ ¬ ¬ ¬ ButtonFont4 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 44. ``¬ ¬ ¬ ¬ ArmourText = ButtonFont4.render("Armour", self.aa, self.FontCol)``
 45. ``¬ ¬ ¬ ¬ ArmourTextWidth = ArmourText.get_width()``
 46. ``¬ ¬ ¬ ¬ ArmourTextHeight = ArmourText.get_height()``
 
-47. ``¬ ¬ ¬ ¬ ButtonFont5 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+47. ``¬ ¬ ¬ ¬ ButtonFont5 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 48. ``¬ ¬ ¬ ¬ FoodText = ButtonFont5.render("Food", self.aa, self.FontCol)``
 49. ``¬ ¬ ¬ ¬ FoodTextWidth = FoodText.get_width()``
 50. ``¬ ¬ ¬ ¬ FoodTextHeight = FoodText.get_height()``
 
-51. ``¬ ¬ ¬ ¬ ButtonFont6 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+51. ``¬ ¬ ¬ ¬ ButtonFont6 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 52. ``¬ ¬ ¬ ¬ ItemsText = ButtonFont6.render("Items", self.aa, self.FontCol)``
 53. ``¬ ¬ ¬ ¬ ItemsTextWidth = ItemsText.get_width()``
 54. ``¬ ¬ ¬ ¬ ItemsTextHeight = ItemsText.get_height()``
 
-55. ``¬ ¬ ¬ ¬ ButtonFont7 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+55. ``¬ ¬ ¬ ¬ ButtonFont7 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 56. ``¬ ¬ ¬ ¬ SpecialItemsText = ButtonFont7.render("Special Items", self.aa, self.FontCol)``
 57. ``¬ ¬ ¬ ¬ SpecialItemsTextWidth = SpecialItemsText.get_width()``
 58. ``¬ ¬ ¬ ¬ SpecialItemsTextHeight = SpecialItemsText.get_height()``
 
-59. ``¬ ¬ ¬ ¬ ButtonFont8 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30) ``
+59. ``¬ ¬ ¬ ¬ ButtonFont8 = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 30)``
 60. ``¬ ¬ ¬ ¬ OptionsText = ButtonFont7.render("Options", self.aa, self.FontCol)``
 61. ``¬ ¬ ¬ ¬ OptionsTextWidth = OptionsText.get_width()``
 62. ``¬ ¬ ¬ ¬ OptionsTextHeight = OptionsText.get_height()``
@@ -2274,7 +2274,7 @@ Detailed Breakdown
 71. ``¬ ¬ ¬ ¬ ¬ yScaleFact = realHeight/720``
 72. ``¬ ¬ ¬ ¬ ¬ xScaleFact = realWidth/1280``
 
-73. ``¬ ¬ ¬ ¬ ¬ Mx, My = self.mod_Pygame__.mouse.get_pos() ``
+73. ``¬ ¬ ¬ ¬ ¬ Mx, My = self.mod_Pygame__.mouse.get_pos()``
 74. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 
 75. ``¬ ¬ ¬ ¬ ¬ if self.aa == True:``
@@ -2309,14 +2309,14 @@ Detailed Breakdown
 100. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
 101. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
 102. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface = self.mod_Pygame__.Surface((FullscreenX, FullscreenY), self.mod_Pygame__.HWSURFACE|self.mod_Pygame__.SRCALPHA)``
-103. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.set_alpha(204) ``
+103. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.set_alpha(204)``
 104. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.fill(self.BackgroundCol)``
 105. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
 106. ``¬ ¬ ¬ ¬ ¬ if My >= 202*yScaleFact and My <= 247*yScaleFact and Mx >= 1155:``
 107. ``¬ ¬ ¬ ¬ ¬ ¬ hover1 = True``
 108. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
 109. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
-110. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip() ``
+110. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 111. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 112. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 113. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
@@ -2400,15 +2400,15 @@ Detailed Breakdown
 184. ``¬ ¬ ¬ ¬ ¬ else:``
 185. ``¬ ¬ ¬ ¬ ¬ ¬ hover8 = False``
 
-186. ``¬ ¬ ¬ ¬ ¬ ButtonFont1.set_underline(hover1) ``
-187. ``¬ ¬ ¬ ¬ ¬ ButtonFont2.set_underline(hover2) ``
+186. ``¬ ¬ ¬ ¬ ¬ ButtonFont1.set_underline(hover1)``
+187. ``¬ ¬ ¬ ¬ ¬ ButtonFont2.set_underline(hover2)``
 188. ``¬ ¬ ¬ ¬ ¬ ButtonFont3.set_underline(hover3)``
 189. ``¬ ¬ ¬ ¬ ¬ ButtonFont4.set_underline(hover4)``
 190. ``¬ ¬ ¬ ¬ ¬ ButtonFont5.set_underline(hover5)``
 191. ``¬ ¬ ¬ ¬ ¬ ButtonFont6.set_underline(hover6)``
 192. ``¬ ¬ ¬ ¬ ¬ ButtonFont7.set_underline(hover7)``
 193. ``¬ ¬ ¬ ¬ ¬ ButtonFont8.set_underline(hover8)``
-194. ``¬ ¬ ¬ ¬ ¬ AlphaSurface.fill(self.BackgroundCol) ``
+194. ``¬ ¬ ¬ ¬ ¬ AlphaSurface.fill(self.BackgroundCol)``
 
 195. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(WeaponsText, ((realWidth-WeaponsTextWidth)-2, 200*yScaleFact)) # ???``
 
@@ -3020,12 +3020,12 @@ Detailed Breakdown
 89. ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.blit(MapIcon, GenerateMapGUI.GetMapPos(self))``
 90. ``¬ ¬ ¬ ¬ ¬ ¬ x, y = 0, 0``
 91. ``¬ ¬ ¬ ¬ ¬ elif zoom == 1:``
-92. ``¬ ¬ ¬ ¬ ¬ ¬ MapPIL =  self.mod_PIL_Image_.open(self.mod_OS__.path.join(self.base_folder, ("Resources\\Map_Resources\\Full_Map.png"))).resize((int(realWidth*1.75), int(realHeight*1.75)),  self.mod_PIL_Image_.ANTIALIAS) ``
+92. ``¬ ¬ ¬ ¬ ¬ ¬ MapPIL =  self.mod_PIL_Image_.open(self.mod_OS__.path.join(self.base_folder, ("Resources\\Map_Resources\\Full_Map.png"))).resize((int(realWidth*1.75), int(realHeight*1.75)),  self.mod_PIL_Image_.ANTIALIAS)``
 93. ``¬ ¬ ¬ ¬ ¬ ¬ Map0 = self.mod_Pygame__.image.fromstring(MapPIL.tobytes(), MapPIL.size, MapPIL.mode)``
 94. ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.blit(Map0, (X,Y))``
 95.  ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.blit(MapIcon, GenerateMapGUI.GetMapPos(self))``
 96.  ``¬ ¬ ¬ ¬ ¬ elif zoom == 2:``
-97.  ``¬ ¬ ¬ ¬ ¬ ¬ MapPIL =  self.mod_PIL_Image_.open(self.mod_OS__.path.join(self.base_folder, ("Resources\\Map_Resources\\Full_Map.png"))).resize((int(realWidth*2), int(realHeight*2)),  self.mod_PIL_Image_.ANTIALIAS) ``
+97.  ``¬ ¬ ¬ ¬ ¬ ¬ MapPIL =  self.mod_PIL_Image_.open(self.mod_OS__.path.join(self.base_folder, ("Resources\\Map_Resources\\Full_Map.png"))).resize((int(realWidth*2), int(realHeight*2)),  self.mod_PIL_Image_.ANTIALIAS)``
 98.  ``¬ ¬ ¬ ¬ ¬ ¬ Map0 = self.mod_Pygame__.image.fromstring(MapPIL.tobytes(), MapPIL.size, MapPIL.mode)``
 99.  ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.blit(Map0, (X,Y))``
 100. ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.blit(MapIcon, GenerateMapGUI.GetMapPos(self))``
@@ -3182,35 +3182,35 @@ Detailed Breakdown
 54. ``¬ ¬ ¬ ¬ ¬ defLargeOctagon = [(205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact)] ``
 55. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2)``
 56. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 1)``
-57. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-58. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-59. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-60. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-61. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-62. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-63. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-64. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-65. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
+57. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+58. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+59. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+60. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+61. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+62. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+63. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+64. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+65. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
 66. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
 67. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 2)``
 68. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 3)``
-69. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
+69. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 70. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 71. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 0)``
 72. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\Error_Resources\\Error_Message.png"))).convert()``
 73. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 1)``
-74. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2) ``
+74. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)``
 75. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\Error_Resources\\Icon.jpg"))).convert()``
 76. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 2)``
-77. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
+77. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
 78. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\Folder_Resources\\FolderIcon.ico"))).convert()``
 79. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 3)``
-80. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
+80. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
 81. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 0)``
-82. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-83. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-84. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-85. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
+82. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+83. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+84. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+85. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
 86. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)``
 87. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 1)``
 88. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\skybox\\front.jpg"))).convert()``
@@ -3218,27 +3218,27 @@ Detailed Breakdown
 90. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 2)``
 91. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\skybox\\back.jpg"))).convert()``
 92. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 3)``
-93. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
+93. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
 94. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\skybox\\left.jpg"))).convert()``
 95. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 0)``
-96. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
+96. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
 97. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\skybox\\right.jpg"))).convert()``
 98. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 1)``
-99. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
+99. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 100. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\skybox\\top.jpg"))).convert()``
 101. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 2)``
-102. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
+102. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
 103. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\skybox\\bottom.jpg"))).convert()``
 104. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 3)``
 105. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
 106. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, f"Resources\\General_Resources\\selectorICONlight.jpg")).convert()``
 107. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 0)``
-108. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-109. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
+108. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+109. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
 110. ``¬ ¬ ¬ ¬ ¬ data = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, f"Resources\\General_Resources\\selectorICONdark.jpg")).convert()``
 111. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 1)``
-112. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-113. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
+112. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+113. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 114. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\InventoryGeneral.wav")))``
 115. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetLoadingCaption(self, 2)``
 116. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (422*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
@@ -3258,36 +3258,36 @@ Detailed Breakdown
 129. ``¬ ¬ ¬ ¬ ¬ yScaleFact = realHeight/720``
 130. ``¬ ¬ ¬ ¬ ¬ xScaleFact = realWidth/1280``
 131. ``¬ ¬ ¬ ¬ ¬ defLargeOctagon = [(205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact)] ``
-132. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2) ``
-133. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-134. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-135. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-136. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-137. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-138. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-139. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-140. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-141. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-142. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-143. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-144. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2) ``
-145. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-146. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-147. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-148. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-149. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-150. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-151. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2) ``
-152. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-153. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-154. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-155. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
-156. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2) ``
-157. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2) ``
-158. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2) ``
-159. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2) ``
-160. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2) ``
-161. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2) ``
+132. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2)``
+133. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+134. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+135. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+136. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+137. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+138. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+139. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+140. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+141. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+142. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+143. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+144. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)``
+145. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+146. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+147. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+148. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+149. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+150. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+151. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)``
+152. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+153. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+154. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+155. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
+156. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)``
+157. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)``
+158. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)``
+159. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)``
+160. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
+161. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 162. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (422*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
 163. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)``
 164. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, self.ShapeCol, (575*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)``
@@ -3406,9 +3406,9 @@ Detailed Breakdown
 
 70. ``¬ ¬ ¬ ¬ ¬ FPSFont = VersionFont.render(f"FPS: Actual: {int(self.eFPS)} Max: {int(self.FPS)} Average: {int((self.aFPS/self.Iteration))}", self.aa, self.FontCol)``
 71. ``¬ ¬ ¬ ¬ ¬ FOVFont = VersionFont.render(f"FOV: {self.FOV}", self.aa, self.FontCol)``
-72. ``¬ ¬ ¬ ¬ ¬ CamRotFont = VersionFont.render(f"Camera Rotation Speed: {round(self.cameraANGspeed, 1)}", self.aa, self.FontCol) ``
-73. ``¬ ¬ ¬ ¬ ¬ ModeFont = VersionFont.render("Mode;¬ ¬  ,¬ ¬ ¬ ¬  ,¬ ¬ ¬ ,¬ ¬   .", self.aa, self.FontCol) ``
-74. ``¬ ¬ ¬ ¬ ¬ AAFont = VersionFont.render(f"Anti-Aliasing: {self.aa}", self.aa, self.FontCol) ``
+72. ``¬ ¬ ¬ ¬ ¬ CamRotFont = VersionFont.render(f"Camera Rotation Speed: {round(self.cameraANGspeed, 1)}", self.aa, self.FontCol)``
+73. ``¬ ¬ ¬ ¬ ¬ ModeFont = VersionFont.render("Mode;¬ ¬  ,¬ ¬ ¬ ¬  ,¬ ¬ ¬ ,¬ ¬   .", self.aa, self.FontCol)``
+74. ``¬ ¬ ¬ ¬ ¬ AAFont = VersionFont.render(f"Anti-Aliasing: {self.aa}", self.aa, self.FontCol)``
 75. ``¬ ¬ ¬ ¬ ¬ RenderFogFont = VersionFont.render(f"Render Fog: {self.RenderFOG}", self.aa, self.FontCol)``
 76. ``¬ ¬ ¬ ¬ ¬ FancySkyFont = VersionFont.render(f"Fancy Skies: {self.FanSky}", self.aa, self.FontCol)``
 77. ``¬ ¬ ¬ ¬ ¬ FancyParticleFont = VersionFont.render(f"Fancy Partices: {self.FanPart}", self.aa, self.FontCol)``
@@ -3908,11 +3908,11 @@ Detailed Breakdown
 535. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(FPSFont, (0, 150+scroll))``
 536. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(FOVFont, (0, 200+scroll))``
 537. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(CamRotFont, (0, 250+scroll))``
-538. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ModeFont, (0, 85+scroll)) ``
+538. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ModeFont, (0, 85+scroll))``
 539. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(LOWtFont, (48, 85+scroll))``
 540. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(MEDIUMtFont, (90, 85+scroll))``
 541. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(HIGHFontText, (165, 85+scroll))``
-542. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ADAPTIVEtFont, (215, 85+scroll)) ``
+542. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ADAPTIVEtFont, (215, 85+scroll))``
 543. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AAFont, (0, 300+scroll))``
 544. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(RenderFogFont, (0, 350+scroll))``
 545. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(FancySkyFont, (0, 400+scroll))``
@@ -3945,7 +3945,7 @@ Detailed Breakdown
 569. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
 570. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
 
-571. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip() ``
+571. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
 572. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 573. ``¬ ¬ ¬ except Exception as Message:``
 574. ``¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
@@ -4455,18 +4455,18 @@ Detailed Breakdown
 6. ``¬ ¬ def CreateTkinterWindow(self):``
 7. ``¬ ¬ ¬ DataWindow = self.mod_Tkinter__tk.Tk()``
 8. ``¬ ¬ ¬ DataWindow.title("Player Information")``
-9. ``¬ ¬ ¬ DataWindow.configure(width = 500, height = 300) ``
-10. ``¬ ¬ ¬ DataWindow.configure(bg="lightblue") ``
+9. ``¬ ¬ ¬ DataWindow.configure(width = 500, height = 300)``
+10. ``¬ ¬ ¬ DataWindow.configure(bg="lightblue")``
 11. ``¬ ¬ ¬ VersionData = f"Pycraft: v{self.version}"``
 12. ``¬ ¬ ¬ CoordinatesData = f"Coordinates: x: {self.X} y: {self.Y} z: {self.Z} Facing: 0.0, 0.0, 0.0" ``
 13. ``¬ ¬ ¬ FPSData = f"FPS: Actual: {self.eFPS} Max: {self.FPS}" ``
-14. ``¬ ¬ ¬ VersionData = self.mod_Tkinter__tk.Label(DataWindow, text=VersionData) ``
-15. ``¬ ¬ ¬ CoordinatesData = self.mod_Tkinter__tk.Label(DataWindow, text=CoordinatesData) ``
-16. ``¬ ¬ ¬ FPSData = self.mod_Tkinter__tk.Label(DataWindow, text=FPSData) ``
-17. ``¬ ¬ ¬ VersionData.grid(row = 0, column = 0, columnspan = 2) ``
+14. ``¬ ¬ ¬ VersionData = self.mod_Tkinter__tk.Label(DataWindow, text=VersionData)``
+15. ``¬ ¬ ¬ CoordinatesData = self.mod_Tkinter__tk.Label(DataWindow, text=CoordinatesData)``
+16. ``¬ ¬ ¬ FPSData = self.mod_Tkinter__tk.Label(DataWindow, text=FPSData)``
+17. ``¬ ¬ ¬ VersionData.grid(row = 0, column = 0, columnspan = 2)``
 18. ``¬ ¬ ¬ CoordinatesData.grid(row = 1, column = 0, columnspan = 2)``
 19. ``¬ ¬ ¬ FPSData.grid(row = 2, column = 0, columnspan = 2)``
-20. ``¬ ¬ ¬ DataWindow.mainloop() ``
+20. ``¬ ¬ ¬ DataWindow.mainloop()``
 21. ``¬ ¬ ¬ DataWindow.quit()``
 
 .. note::
