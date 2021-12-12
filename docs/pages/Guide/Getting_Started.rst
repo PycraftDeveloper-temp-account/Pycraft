@@ -4474,16 +4474,16 @@ Detailed Breakdown
 
 .. note::
     For information on this consult the above guide
-   ``if not __name__ == "__main__":``
-   ``¬ print("Started <Pycraft_TkinterUtils>")``
-   ``¬ class TkinterInfo:``
-   ``¬ ¬ def __init__(self):``
-   ``¬ ¬ ¬ pass``
+   1. ``if not __name__ == "__main__":``
+   2. ``¬ print("Started <Pycraft_TkinterUtils>")``
+   3. ``¬ class TkinterInfo:``
+   4. ``¬ ¬ def __init__(self):``
+   5. ``¬ ¬ ¬ pass``
 
-``¬ ¬ def CreateTkinterWindow(self):``
-``¬ ¬ ¬ DataWindow = self.mod_Tkinter__tk.Tk()``
-``¬ ¬ ¬ DataWindow.title("Player Information")``
-``¬ ¬ ¬ DataWindow.configure(width = 500, height = 300) ``
+6. ``¬ ¬ def CreateTkinterWindow(self):``
+7. ``¬ ¬ ¬ DataWindow = self.mod_Tkinter__tk.Tk()``
+8. ``¬ ¬ ¬ DataWindow.title("Player Information")``
+9. ``¬ ¬ ¬ DataWindow.configure(width = 500, height = 300) ``
 ``¬ ¬ ¬ DataWindow.configure(bg="lightblue") ``
 ``¬ ¬ ¬ VersionData = f"Pycraft: v{self.version}"``
 ``¬ ¬ ¬ CoordinatesData = f"Coordinates: x: {self.X} y: {self.Y} z: {self.Z} Facing: 0.0, 0.0, 0.0" ``
