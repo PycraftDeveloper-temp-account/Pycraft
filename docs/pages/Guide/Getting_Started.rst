@@ -83,7 +83,6 @@ At the Start
 
 This code appears at the top of every module in Pycraft (with the exception of ``main.py``) as this prevents the module from running unless called from in Pycraft, this is needed because each of the modules link together from the main module means that objects this module might rely on may be defined in other programs, which can cause errors, this is the start of the if-statement that prevents this.
 
-Line Num
 1. ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not ``"__main__"``.
 2. ``¬ print("Started <Pycraft_<name>>")`` Now we output data to the terminal if the program is running, this allows us to know if there are any errors preventing this module from loading, in which case the program would crash before that is outputted to the terminal, making us aware the error is in this module.
 3. ``¬ class <name>:`` Now we are defining a class with a suitable name that represents what the subroutines in this class do; this allows us to group up our code to make it easier to edit, organise and debug later on, as well as saving on memory as not every function will need to be loaded at once.
@@ -105,15 +104,14 @@ At the End
 
 This code links to the if-statement made above at the start of the program, if the user calls this module on it's own, we can run this code to tell the user.
 
-Line Num
 1. ``else:`` This links to the if-statement above, running the indented code below if the if-statement is false.
 2. ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw ".py" file then this will be outputted to the terminal, however uses of the compiled ".exe" editions will not see this. This code is also printed first in-case the code below fails.
 3. ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, "Tkinter" with the name ``tk``, this shortens length and all references to "Tkinter" from how on in this indented block will use this name.
-3. ``¬ from tkinter import messagebox`` Here we are importing specific sections of "Tkinter", in this case; ``messagebox``, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
-4. ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size "Tkinter" has defined, and initialises the ``messagebox`` module, which we want.
-5. ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous  ``root`` is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
-6. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the ``messagebox`` module, which has several pre-made dialogue boxes, we are using the ``showerror`` pre-made dialogue box procedure here. We give it the caption of ``"Startup Fail"``, and then elaborate on the issue in the main body of the window, by displaying the text ``"You need to run this as part of Pycraft, please run the 'main.py' file"``.
-7. ``¬ quit()`` This is Python's way of closing the project, we normally use ``sys.exit`` for this, which you will see later on, because its  a bit cleaner on some IDLE's and terminals. However to reduce the length of this project, we use the built in function here instead.
+4. ``¬ from tkinter import messagebox`` Here we are importing specific sections of "Tkinter", in this case; ``messagebox``, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+5. ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size "Tkinter" has defined, and initialises the ``messagebox`` module, which we want.
+6. ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous  ``root`` is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+7. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the ``messagebox`` module, which has several pre-made dialogue boxes, we are using the ``showerror`` pre-made dialogue box procedure here. We give it the caption of ``"Startup Fail"``, and then elaborate on the issue in the main body of the window, by displaying the text ``"You need to run this as part of Pycraft, please run the 'main.py' file"``.
+8. ``¬ quit()`` This is Python's way of closing the project, we normally use ``sys.exit`` for this, which you will see later on, because its  a bit cleaner on some IDLE's and terminals. However to reduce the length of this project, we use the built in function here instead.
 
 Achievements
 ====================
@@ -127,75 +125,78 @@ The ``Achievements(self)`` function, like most subroutines in Pycraft, takes ``s
 
 Detailed Breakdown
 ++++++++++++++++++++
-Line Num
-1. ``if not __name__ == "__main__":`` For information on this consult the above guide
-2. ``¬ print("Started <Pycraft_Achievements>")``
-3. ``¬ class GenerateAchievements:``
-4. ``¬ ¬ def __init__(self):``
-5. ``¬ ¬ ¬ pass``
+
+   1. ``if not __name__ == "__main__":`` For information on this consult the above guide
+   2. ``¬ print("Started <Pycraft_Achievements>")``
+   3. ``¬ class GenerateAchievements:``
+   4. ``¬ ¬ def __init__(self):``
+   5. ``¬ ¬ ¬ pass``
+   
 6. ``¬ ¬ def Achievements(self):``
 7. ``¬ ¬ ¬ try:``
 8. ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
-9. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
-10. ``¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
-11. ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
-12. ``¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)``
-13. ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
-14. ``¬ ¬ ¬ ¬ TitleFont = MainTitleFont.render("Pycraft", self.aa, self.FontCol)``
-15. ``¬ ¬ ¬ ¬ TitleWidth = TitleFont.get_width()``
-16. ``¬ ¬ ¬ ¬ AchievementsFont = InfoTitleFont.render("Achievements", self.aa, self.SecondFontCol)``
-17. ``¬ ¬ ¬ ¬ tempFPS = self.FPS``
+9.  ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
+10.  ``¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
+11.  ``¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)``
+12.  ``¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)``
+13.  ``¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)``
 
-18. ``¬ ¬ ¬ ¬ while True:``
-19. ``¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()``
+13.  ``¬ ¬ ¬ ¬ TitleFont = MainTitleFont.render("Pycraft", self.aa, self.FontCol)``
+10. ``¬ ¬ ¬ ¬ TitleWidth = TitleFont.get_width()``
 
-20. ``¬ ¬ ¬ ¬ ¬ if realWidth < 1280:``
-21. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)``
-22. ``¬ ¬ ¬ ¬ ¬ if realHeight < 720:``
-23. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
+11. ``¬ ¬ ¬ ¬ AchievementsFont = InfoTitleFont.render("Achievements", self.aa, self.SecondFontCol)``
+12. ``¬ ¬ ¬ ¬ tempFPS = self.FPS``
 
-24. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
-25. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
-26. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
+13. ``¬ ¬ ¬ ¬ while True:``
+14. ``¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()``
 
-27. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
+15. ``¬ ¬ ¬ ¬ ¬ if realWidth < 1280:``
+16. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)``
+17. ``¬ ¬ ¬ ¬ ¬ if realHeight < 720:``
+18. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
 
-28. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
-29. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
-30. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
-31. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
-32. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
-33. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:``
-34. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
-35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
-36. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
-37. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
-38. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
-39. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
-40. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
-41. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
+19. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
+20. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
+21. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
 
-42. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
+22. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
 
-43. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
+23. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
+24. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
+25. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
+26. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
+27. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
+28. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:``
+29. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
+30. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
+31. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
+32. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
+33. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
+34. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
+35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
+36. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
 
-44. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
-45. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
-46. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
-47. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+37. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
 
-48. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
-49. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
-50. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
-51. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
-52. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
-53. ``¬ ¬ ¬ except Exception as Message:``
-54. ``¬ ¬ ¬ ¬ return Message``
-55. ``else:``
-56. ``¬ print("You need to run this as part of Pycraft")``
-57. ``¬ import tkinter as tk``
-58. ``¬ from tkinter import messagebox``
-59. ``¬ root = tk.Tk()``
-60. ``¬ root.withdraw()``
-61. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-62. ``¬ quit()``
+38. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
+
+39. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
+40. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
+41. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
+42. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+
+43. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
+44. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
+45. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
+46. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
+47. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
+48. ``¬ ¬ ¬ except Exception as Message:``
+49. ``¬ ¬ ¬ ¬ return Message``
+50. ``else:``
+51. ``¬ print("You need to run this as part of Pycraft")``
+52. ``¬ import tkinter as tk``
+53. ``¬ from tkinter import messagebox``
+54. ``¬ root = tk.Tk()``
+55. ``¬ root.withdraw()``
+56. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+57. ``¬ quit()``

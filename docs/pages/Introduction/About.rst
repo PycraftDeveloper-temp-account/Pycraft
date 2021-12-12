@@ -62,7 +62,7 @@ With thanks to;
 
 Pycraft's Python Dependencies
 ====================
-When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
+When you're installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
 
 ``pip install <module>``
 ``pip uninstall <module>``
