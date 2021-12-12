@@ -8,9 +8,9 @@ Made with Python 64-bit and Microsoft Visual Studio Code.
 Contents:
 ====================
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    pages/Introduction/index.rst
    pages/Guide/index.rst
 
-Documentation last updated: 11/12/2021 @ 20:20 (DD/MM/YYYY @ GMT) | Most recent Pycraft version: v0.9.3 | Most recent developer version of Pycraft: v0.9.4-0
+Documentation last updated: 12/12/2021 @ 20:00 (DD/MM/YYYY @ GMT) | Most recent Pycraft version: v0.9.3 | Most recent developer version of Pycraft: v0.9.4-0
