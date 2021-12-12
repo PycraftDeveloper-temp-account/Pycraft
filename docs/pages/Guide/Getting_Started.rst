@@ -194,6 +194,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ return Message``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -522,6 +523,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ ¬ self.clock.tick(self.FPS)``
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ return Message``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -562,6 +564,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | Developer Mode | Pos: {round(self.X, 2)}, {round(self.Y, 2)}, {round(self.Z, 2)} | V: {self.Total_move_x}, {self.Total_move_y}, {self.Total_move_z} FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration} | MemUsE: {self.mod_Psutil__.virtual_memory().percent} | CPUUsE: {self.mod_Psutil__.cpu_percent()} | Theme: {self.theme} | Thread Count: {self.mod_Threading__.active_count()}") ``
 ``¬ ¬ ¬ else:``
 ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location}")``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -642,6 +645,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ return Message``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -854,6 +858,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ return Message``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -1068,6 +1073,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.Channel(2).pause()``
 ``¬ ¬ ¬ return tempFPS``
 ``¬ ¬ ``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -1193,6 +1199,7 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
 ``¬ ¬ ¬ ¬ ¬ return Message``
+
 .. note::
     For information on this consult the above guide
    ``else:``
@@ -1205,11 +1212,13 @@ Detailed Breakdown
    ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_ExBenchmark>")``
-``¬ class LoadBenchmark:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_ExBenchmark>")``
+   ``¬ class LoadBenchmark:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def run(self):``
 ``¬ ¬ ¬ try:``
@@ -1350,14 +1359,17 @@ Detailed Breakdown
 ``¬ ¬ ¬ else:``
 
 ``¬ ¬ ¬ ¬ return None, FPSlistX, FPSlistY, FPSlistX2, FPSlistY2, FPSlistX3, FPSlistY3``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
 ``if not __name__ == "__main__":``
@@ -1661,21 +1673,26 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ return Message, "Undefined"``
 ``¬ ¬ ¬ ``
 ``¬ ¬ ¬ ``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_GetSavedData>")``
-``¬ class LoadSaveFiles:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_GetSavedData>")``
+   ``¬ class LoadSaveFiles:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 ``¬ ¬ ¬ ¬ ¬ ¬ ``
 ``¬ ¬ def ReadMainSave(self):``
 ``¬ ¬ ¬ with open(self.mod_OS__.path.join(self.base_folder, ("Data_Files\\SaveGameConfig.json")), 'r') as openfile:``
@@ -1732,21 +1749,26 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ return Message``
 ``¬ ¬ ¬ else:``
 ``¬ ¬ ¬ ¬ return None``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_HomeScreen>")``
-``¬ class GenerateHomeScreen:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_HomeScreen>")``
+   ``¬ class GenerateHomeScreen:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 ``¬ ¬ ``
 ``¬ ¬ def DisplayMessage(self, MessageFont, Message, Colour):``
 ``¬ ¬ ¬ MessageText = MessageFont.render(Message, self.aa, Colour)``
@@ -2045,39 +2067,49 @@ Detailed Breakdown
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
 ``¬ ¬ ¬ ¬ return Message, None``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_ImageUtils>")``
-``¬ class ConvertImage:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_ImageUtils>")``
+   ``¬ class ConvertImage:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def pilImageToSurface(self, pilImage):``
 ``¬ ¬ ¬ return self.mod_Pygame__.image.fromstring(pilImage.tobytes(), pilImage.size, pilImage.mode).convert()``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_Inventory>")``
-``¬ class GenerateInventory:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_Inventory>")``
+   ``¬ class GenerateInventory:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def Inventory(self):``
 ``¬ ¬ ¬ try:``
@@ -2338,14 +2370,20 @@ Detailed Breakdown
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
 ``¬ ¬ ¬ ¬ return Message``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()print("Started <Pycraft_main>")``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
+
+
+``print("Started <Pycraft_main>")``
 ``class Startup:``
 ``¬ def __init__(Class_Startup_variables):``
 ``¬ ¬ try:``
@@ -2784,11 +2822,16 @@ Detailed Breakdown
 ``¬ ¬ Message, Class_Startup_variables.Command = Class_Startup_variables.mod_HomeScreen__.GenerateHomeScreen.Home_Screen(Class_Startup_variables)``
 ``¬ ¬ if not Message == None:``
 ``¬ ¬ ¬ Message = "0.0.17- " + str(Message)``
-``¬ ¬ ¬ Startup.crash(Message)if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_MapGUI>")``
-``¬ class GenerateMapGUI:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+``¬ ¬ ¬ Startup.crash(Message)``
+
+
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_MapGUI>")``
+   ``¬ class GenerateMapGUI:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def GetMapPos(self):``
 ``¬ ¬ ¬ x = 0``
@@ -2916,21 +2959,26 @@ Detailed Breakdown
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
 ``¬ ¬ ¬ ¬ return Message``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_OGLBenchmark>")``
-``¬ class LoadOGLBenchmark:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_OGLBenchmark>")``
+   ``¬ class LoadOGLBenchmark:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def Cube(self, edges, vertices):``
 ``¬ ¬ ¬ self.mod_OpenGL_GL_.glBegin(self.mod_OpenGL_GL_.GL_LINES)``
@@ -2947,21 +2995,26 @@ Detailed Breakdown
 ``¬ ¬ ¬ self.mod_OpenGL_GL_.glRotatef(1, 3, 1, 1)``
 ``¬ ¬ ¬ self.mod_OpenGL_GL_.glClear(self.mod_OpenGL_GL_.GL_COLOR_BUFFER_BIT|self.mod_OpenGL_GL_.GL_DEPTH_BUFFER_BIT)``
 ``¬ ¬ ¬ LoadOGLBenchmark.Cube(self, edges, vertices)``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_PycraftStartupTest>")``
-``¬ class StartupTest:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_PycraftStartupTest>")``
+   ``¬ class StartupTest:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def PycraftSelfTest(self):``
 ``¬ ¬ ¬ try:``
@@ -3132,21 +3185,26 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()``
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ return Message``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_Settings>")``
-``¬ class GenerateSettings:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_Settings>")``
+   ``¬ class GenerateSettings:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def settings(self):``
 ``¬ ¬ ¬ try:``
@@ -3775,33 +3833,39 @@ Detailed Breakdown
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))``
 ``¬ ¬ ¬ ¬ return Message``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_ShareDataUtil>")``
-``¬ ``
-``¬ class Share:``
-``¬ ¬ ``
-``¬ ¬ ``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
-``¬ ¬ ``
-``¬ ¬ ``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_ShareDataUtil>")``
+   ``¬ class Share:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
+
 ``¬ ¬ def initialize(Data): ``
 ``¬ ¬ ¬ global Class_Startup_variables``
-``¬ ¬ ¬ Class_Startup_variables = Dataif not __name__ == "__main__":``
-``¬ print("Started <Pycraft_SoundUtils>")``
-``¬ class PlaySound:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+``¬ ¬ ¬ Class_Startup_variables = Data``
+
+
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_SoundUtils>")``
+   ``¬ class PlaySound:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def PlayClickSound(self):``
 ``¬ ¬ ¬ channel1 = self.mod_Pygame__.mixer.Channel(0)``
@@ -3829,22 +3893,27 @@ Detailed Breakdown
 ``¬ ¬ ¬ LoadAmb = self.mod_Pygame__.mixer.Sound(self.mod_OS__.path.join(self.base_folder, ("Resources\\G3_Resources\\GameSounds\\FieldAmb.wav")))``
 ``¬ ¬ ¬ channel4.set_volume(self.soundVOL/100)``
 ``¬ ¬ ¬ channel4.play(LoadAmb)``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_StartupAnimation>")``
-``¬ class GenerateStartupScreen:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
-``¬ ¬ ¬ ¬ ¬ ¬ ``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_StartupAnimation>")``
+   ``¬ class GenerateStartupScreen:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
+
 ``¬ ¬ def Start(self):``
 ``¬ ¬ ¬ try:``
 ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
@@ -3975,42 +4044,52 @@ Detailed Breakdown
 ``¬ ¬ ¬ except Exception as Message:``
 ``¬ ¬ ¬ ¬ self.RunFullStartup = False``
 ``¬ ¬ ¬ ¬ return Message``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_TextUtils>")``
-``¬ class GenerateText:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_TextUtils>")``
+   ``¬ class GenerateText:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def LoadQuickText(self):``
 ``¬ ¬ ¬ LoadingText = ["Use W,A,S,D to move", "Use W to move forward", "Use S to move backward", "Use A to move left", "Use D to move right", "Access your inventory with E", "Access your map with R", "Use SPACE to jump", "Did you know there is a light mode?", "Did you know there is a dark mode?", "Check us out on GitHub", "Use ESC to remove camera movement", "Hold W to sprint", "Did you know you can change the sound volume in settings?", "Did you know you can change the music volume in settings?", "Did you know you can use L to lock the camera"]``
 ``¬ ¬ ¬ locat = self.mod_Random__.randint(0, (len(LoadingText)-1))``
 ``¬ ¬ ¬ text = LoadingText[locat]``
 ``¬ ¬ ¬ return text``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_ThemeUtils>")``
-``¬ class DetermineThemeColours:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_ThemeUtils>")``
+   ``¬ class DetermineThemeColours:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def GetColours(self):``
 ``¬ ¬ ¬ try:``
@@ -4092,21 +4171,26 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ return Message``
 
 ``¬ ¬ ¬ return None``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
 
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_ThreadingUtils>")``
-``¬ class ThreadingUtils:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_ThreadingUtils>")``
+   ``¬ class ThreadingUtils:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def StartVariableChecking(self):``
 ``¬ ¬ ¬ while True:``
@@ -4177,22 +4261,25 @@ Detailed Breakdown
 ``¬ ¬ ¬ ¬ else:``
 ``¬ ¬ ¬ ¬ ¬ self.mod_Time__.sleep(1)``
 
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
 
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
 
-
-``if not __name__ == "__main__":``
-``¬ print("Started <Pycraft_TkinterUtils>")``
-``¬ class TkinterInfo:``
-``¬ ¬ def __init__(self):``
-``¬ ¬ ¬ pass``
+.. note::
+    For information on this consult the above guide
+   ``if not __name__ == "__main__":``
+   ``¬ print("Started <Pycraft_TkinterUtils>")``
+   ``¬ class TkinterInfo:``
+   ``¬ ¬ def __init__(self):``
+   ``¬ ¬ ¬ pass``
 
 ``¬ ¬ def CreateTkinterWindow(self):``
 ``¬ ¬ ¬ DataWindow = self.mod_Tkinter__tk.Tk()``
@@ -4210,11 +4297,14 @@ Detailed Breakdown
 ``¬ ¬ ¬ FPSData.grid(row = 2, column = 0, columnspan = 2)``
 ``¬ ¬ ¬ DataWindow.mainloop() ``
 ``¬ ¬ ¬ DataWindow.quit()``
-``else:``
-``¬ print("You need to run this as part of Pycraft")``
-``¬ import tkinter as tk``
-``¬ from tkinter import messagebox``
-``¬ root = tk.Tk()``
-``¬ root.withdraw()``
-``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-``¬ quit()``
+
+.. note::
+    For information on this consult the above guide
+   ``else:``
+   ``¬ print("You need to run this as part of Pycraft")``
+   ``¬ import tkinter as tk``
+   ``¬ from tkinter import messagebox``
+   ``¬ root = tk.Tk()``
+   ``¬ root.withdraw()``
+   ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   ``¬ quit()``
