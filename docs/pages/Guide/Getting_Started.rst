@@ -4291,52 +4291,52 @@ Detailed Breakdown
 45. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True``
 46. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONUP:``
 47. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
-48
-49. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(Title, (540, 0))``
-50. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(DarkModeFont, (320, 360))``
-51. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(LightModeFont, (890, 360))``
-52. ``¬ ¬ ¬ ¬ ¬ DarkRect = self.mod_Pygame__.Rect(260, 300, 200, 160)``
-53. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (80, 80, 80), DarkRect, 3)``
-54. ``¬ ¬ ¬ ¬ ¬ LightRect = self.mod_Pygame__.Rect(820, 300, 200, 160)``
-55. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (80, 80, 80), LightRect, 3)``
-56. ``¬ ¬ ¬ ¬ ¬ if mX >= 260 and mX <= 460 and mY >= 300 and mY <= 460:``
-57. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
-58. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.theme = "dark"``
-59. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.base_folder = self.mod_OS__.path.dirname(__file__)``
-60. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Click.wav")))``
-61. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
-62. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.set_volume(50)``
-63. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
-64. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.play()``
-65. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
-66. ``¬ ¬ ¬ ¬ ¬ elif mX >= 820 and mX <= 980 and mY >= 300 and mY <= 460:``
-67. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
-68. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.theme = "light"``
-69. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.base_folder = self.mod_OS__.path.dirname(__file__)``
-70. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Click.wav")))``
-71. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
-72. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.set_volume(50)``
-73. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
-74. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.play()``
-75. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
-76. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()``
-77. ``¬ ¬ ¬ ¬ ¬ clock.tick(60)``
-78. ``¬ ¬ ¬ except Exception as Message:``
-79. ``¬ ¬ ¬ ¬ Message = str(Message)+" in <Pycraft_ThemeUtils>"``
-80. ``¬ ¬ ¬ ¬ return Message``
 
-81. ``¬ ¬ ¬ return None``
+48. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(Title, (540, 0))``
+49. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(DarkModeFont, (320, 360))``
+50. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(LightModeFont, (890, 360))``
+51. ``¬ ¬ ¬ ¬ ¬ DarkRect = self.mod_Pygame__.Rect(260, 300, 200, 160)``
+52. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (80, 80, 80), DarkRect, 3)``
+53. ``¬ ¬ ¬ ¬ ¬ LightRect = self.mod_Pygame__.Rect(820, 300, 200, 160)``
+54. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (80, 80, 80), LightRect, 3)``
+55. ``¬ ¬ ¬ ¬ ¬ if mX >= 260 and mX <= 460 and mY >= 300 and mY <= 460:``
+56. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
+57. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.theme = "dark"``
+58. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.base_folder = self.mod_OS__.path.dirname(__file__)``
+59. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Click.wav")))``
+60. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
+61. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.set_volume(50)``
+62. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
+63. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.play()``
+64. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
+65. ``¬ ¬ ¬ ¬ ¬ elif mX >= 820 and mX <= 980 and mY >= 300 and mY <= 460:``
+66. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
+67. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.theme = "light"``
+68. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.base_folder = self.mod_OS__.path.dirname(__file__)``
+69. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Click.wav")))``
+70. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
+71. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.set_volume(50)``
+72. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
+73. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.music.play()``
+74. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
+75. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()``
+76. ``¬ ¬ ¬ ¬ ¬ clock.tick(60)``
+77. ``¬ ¬ ¬ except Exception as Message:``
+78. ``¬ ¬ ¬ ¬ Message = str(Message)+" in <Pycraft_ThemeUtils>"``
+79. ``¬ ¬ ¬ ¬ return Message``
+
+80. ``¬ ¬ ¬ return None``
 
 .. note::
     For information on this consult the above guide
-    82. ``else:``
-    83. ``¬ print("You need to run this as part of Pycraft")``
+    81. ``else:``
+    82. ``¬ print("You need to run this as part of Pycraft")``
     84. ``¬ import tkinter as tk``
-    85. ``¬ from tkinter import messagebox``
-    86. ``¬ root = tk.Tk()``
-    87. ``¬ root.withdraw()``
-    88. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-    89. ``¬ quit()``
+    84. ``¬ from tkinter import messagebox``
+    85. ``¬ root = tk.Tk()``
+    86. ``¬ root.withdraw()``
+    87. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+    88. ``¬ quit()``
 
 
 ThreadingUtils
