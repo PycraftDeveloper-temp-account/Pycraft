@@ -16,7 +16,7 @@ Subroutines
 ++++++++++++++++++++
 
 * Subroutines can be of any length, as there is no limit to the length of a of code in Pycraft at present.
-* Subroutines should avoid using global variables as much as possible, as this makes it easier to trace variables and possible bugs. (The exceptions here being the ``Class_Startup_variables`` and ``self`` variables which are referenced throughout the different modules for Pycraft).
+* Subroutines should avoid using global variables as much as possible, as this makes it easier to trace variables and possible bugs. (The exceptions here being the``Class_Startup_variables`` and ``self`` variables which are referenced throughout the different modules for Pycraft).
 * Subroutines should be named according to their function, and not be dependent on other code in a specific module to work. (For example, making a random number generator that relies on global variables created elsewhere in a module)
 * Subroutines should only have parameters if they are used within the subroutine.
 * If a function returns a value, then this must be implicitly stated in the documentation here.
@@ -58,7 +58,7 @@ Error Handling
 
 * No error should pass silently; errors should be grouped into two categories; 'fatal' and 'recoverable', errors that are deemed to be 'fatal' must immediately lead to the termination of the currently running program, and a message displayed through the crash GUI if possible. Non-'fatal' errors should be appropriately handled in the relevant module, and if expected to pass silently until a fix is available, then must be logged or printed out to the terminal, so other programmers can fix the error later on to stop it potentially causing problems.
 
-* All errors should be -where possible- stored in the variable ``message``.
+* All errors should be -where possible- stored in the variable``message``.
 
 Notices
 ====================
@@ -83,11 +83,11 @@ At the Start
 
 This code appears at the top of every module in Pycraft (with the exception of ``main.py``) as this prevents the module from running unless called from in Pycraft, this is needed because each of the modules link together from the main module means that objects this module might rely on may be defined in other programs, which can cause errors, this is the start of the if-statement that prevents this.
 
-1. ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not ``"__main__"``.
+1. ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not ``"__main__"``.
 2. ``¬ print("Started <Pycraft_<name>>")`` Now we output data to the terminal if the program is running, this allows us to know if there are any errors preventing this module from loading, in which case the program would crash before that is outputted to the terminal, making us aware the error is in this module.
 3. ``¬ class <name>:`` Now we are defining a class with a suitable name that represents what the subroutines in this class do; this allows us to group up our code to make it easier to edit, organise and debug later on, as well as saving on memory as not every function will need to be loaded at once.
 4. ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable 'self' is defined for all references in this class. This subroutine is a procedure, so does not return a value.
-5. ``¬ ¬ ¬ pass`` Now we only put code in the ``__init__`` procedure in some situations, like for example in ``GameEngine.py`` and ``main.py``, which is where the code that would go in this procedure is called, reducing the number of  the project uses.
+5. ``¬ ¬ ¬ pass`` Now we only put code in the``__init__`` procedure in some situations, like for example in ``GameEngine.py`` and ``main.py``, which is where the code that would go in this procedure is called, reducing the number of  the project uses.
 
 At the End
 ++++++++++++++++++++
@@ -106,12 +106,12 @@ This code links to the if-statement made above at the start of the program, if t
 
 1. ``else:`` This links to the if-statement above, running the indented code below if the if-statement is false.
 2. ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw ".py" file then this will be outputted to the terminal, however uses of the compiled ".exe" editions will not see this. This code is also printed first in-case the code below fails.
-3. ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, "Tkinter" with the name ``tk``, this shortens length and all references to "Tkinter" from how on in this indented block will use this name.
+3. ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, "Tkinter" with the name``tk``, this shortens length and all references to "Tkinter" from how on in this indented block will use this name.
 4. ``¬ from tkinter import messagebox`` Here we are importing specific sections of "Tkinter", in this case; ``messagebox``, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
-5. ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size "Tkinter" has defined, and initialises the ``messagebox`` module, which we want.
+5. ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size "Tkinter" has defined, and initialises the``messagebox`` module, which we want.
 6. ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous  ``root`` is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
-7. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the ``messagebox`` module, which has several pre-made dialogue boxes, we are using the ``showerror`` pre-made dialogue box procedure here. We give it the caption of ``"Startup Fail"``, and then elaborate on the issue in the main body of the window, by displaying the text ``"You need to run this as part of Pycraft, please run the 'main.py' file"``.
-8. ``¬ quit()`` This is Python's way of closing the project, we normally use ``sys.exit`` for this, which you will see later on, because its  a bit cleaner on some IDLE's and terminals. However to reduce the length of this project, we use the built in function here instead.
+7. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of ``"Startup Fail"``, and then elaborate on the issue in the main body of the window, by displaying the text ``"You need to run this as part of Pycraft, please run the 'main.py' file"``.
+8. ``¬ quit()`` This is Python's way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its  a bit cleaner on some IDLE's and terminals. However to reduce the length of this project, we use the built in function here instead.
 
 Achievements
 ====================
@@ -119,9 +119,9 @@ Overview
 ++++++++++++++++++++
 This module controls the displaying and processing of in-game achievements: This feature will be expanded upon when achievements are added and you can earn them in game.
 
-The ``GenerateAchievements`` class controls the rendering of the achievements GUI this can be accessed from the 'home screen' of Pycraft, currently this class only renders a blank window, which is coloured and has a title [Pycraft] and header [Achievements], but expect an update here when its possible to earn achievements in game!
+The``GenerateAchievements`` class controls the rendering of the achievements GUI this can be accessed from the 'home screen' of Pycraft, currently this class only renders a blank window, which is coloured and has a title [Pycraft] and header [Achievements], but expect an update here when its possible to earn achievements in game!
 
-The ``Achievements(self)`` function, like most subroutines in Pycraft, takes ``self`` to be its only input. It will return only an error, should one arise, which will be stored in the ``messages`` variable. This subroutine is where the bulk of the processing for this class is done, this subroutine is responsible for the Achievements GUI which you can access through Pycraft's home screen.
+The``Achievements(self)`` function, like most subroutines in Pycraft, takes``self`` to be its only input. It will return only an error, should one arise, which will be stored in the``messages`` variable. This subroutine is where the bulk of the processing for this class is done, this subroutine is responsible for the Achievements GUI which you can access through Pycraft's home screen.
 
 Detailed Breakdown
 ++++++++++++++++++++
@@ -158,53 +158,53 @@ Detailed Breakdown
 23. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
 
 24. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
-25. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS ``
+25. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
 26. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
-27. ``¬ ¬ ¬ ¬ ¬ ``
-28. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
 
-29. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get(): ``
-30. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE): ``
-31. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
-32. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
-33. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
-34. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN: ``
-35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10: ``
-36. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1 ``
-37. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
-38. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
-37. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
-38. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
-39. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x: ``
-40. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1 ``
+27. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
 
-41. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
-42. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
-43. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
+28. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
+29. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
+30. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
+31. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
+32. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
+33. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:``
+34. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
+35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
+36. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
+37. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
+38. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
+39. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
+40. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
+41. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
 
-44. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
-45. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
-46. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
-47. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+42. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Achievements")``
+43. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
+44. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
 
-48. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
-49. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
-50. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
-51. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
-52. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
-53. ``¬ ¬ ¬ except Exception as Message:``
-54. ``¬ ¬ ¬ ¬ return Message``
+45. ``¬ ¬ ¬ ¬ ¬ cover_Rect = self.mod_Pygame__.Rect(0, 0, 1280, 90)``
+46. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)``
+47. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(TitleFont, ((realWidth-TitleWidth)/2, 0))``
+48. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(AchievementsFont, (((realWidth-TitleWidth)/2)+55, 50))``
+
+49. ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)``
+50. ``¬ ¬ ¬ ¬ ¬ if not Message == None:``
+51. ``¬ ¬ ¬ ¬ ¬ ¬ return Message``
+52. ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()``
+53. ``¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)``
+54. ``¬ ¬ ¬ except Exception as Message:``
+55. ``¬ ¬ ¬ ¬ return Message``
 
 .. note::
     For information on this consult the above guide
-   55. ``else:``
-   56. ``¬ print("You need to run this as part of Pycraft")``
-   57. ``¬ import tkinter as tk``
-   58. ``¬ from tkinter import messagebox``
-   59. ``¬ root = tk.Tk()``
-   60. ``¬ root.withdraw()``
-   61. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-   62. ``¬ quit()``
+   56. ``else:``
+   57. ``¬ print("You need to run this as part of Pycraft")``
+   58. ``¬ import tkinter as tk``
+   59. ``¬ from tkinter import messagebox``
+   60. ``¬ root = tk.Tk()``
+   61. ``¬ root.withdraw()``
+   62. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+   63. ``¬ quit()``
 
 
 Base
@@ -524,7 +524,7 @@ Detailed Breakdown
 190. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ resize = False``
 
 191. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
-192. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and (not event.key == self.mod_Pygame__.K_SPACE) and stage <= 3) or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE): ``
+192. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and (not event.key == self.mod_Pygame__.K_SPACE) and stage <= 3) or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
 193. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 194. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 195. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
@@ -582,7 +582,7 @@ Detailed Breakdown
 13. ``¬ ¬ def GetNormalCaption(self, location):``
 14. ``¬ ¬ ¬ if self.Devmode >= 5 and self.Devmode <= 9:``
 15. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | you are: {10-self.Devmode} steps away from being a developer")``
-16. ``¬ ¬ ¬ elif self.Devmode == 10: ``
+16. ``¬ ¬ ¬ elif self.Devmode == 10:``
 17. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location} | Developer Mode | Pos: {round(self.X, 2)}, {round(self.Y, 2)}, {round(self.Z, 2)} | V: {self.Total_move_x}, {self.Total_move_y}, {self.Total_move_z} FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration} | MemUsE: {self.mod_Psutil__.virtual_memory().percent} | CPUUsE: {self.mod_Psutil__.cpu_percent()} | Theme: {self.theme} | Thread Count: {self.mod_Threading__.active_count()}")``
 18. ``¬ ¬ ¬ else:``
 19. ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: {location}")``
@@ -639,25 +639,25 @@ Detailed Breakdown
 23. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
 
 24. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
-25. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS ``
+25. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
 26. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
 
 27. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
 
-28. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get(): ``
-29. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE): ``
+28. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
+29. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
 30. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 31. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 32. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
-33. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN: ``
-34. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10: ``
-35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1 ``
+33. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:``
+34. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
+35. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
 36. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
 37. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
 38. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
 39. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
-40. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x: ``
-41. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1 ``
+40. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
+41. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
 
 42. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Character Designer")``
 43. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ``
@@ -805,25 +805,25 @@ Detailed Breakdown
 101. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)``
 
 102. ``¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()``
-103. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS ``
+103. ``¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS``
 104. ``¬ ¬ ¬ ¬ ¬ self.Iteration += 1``
 105. ``¬ ¬ ¬ ¬ ¬ ``
 106. ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)``
 
-107. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get(): ``
-108. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE): ``
+107. ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():``
+108. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):``
 109. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 110. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 111. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None``
-112. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN: ``
-113. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10: ``
-114. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1 ``
+112. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:``
+113. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
+114. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
 115. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
 116. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
 117. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
 118. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
-119. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x: ``
-120. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1 ``
+119. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
+120. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
 
 121. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Credits and Change-Log")``
 122. ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
@@ -1542,7 +1542,7 @@ Detailed Breakdown
 
 82. ``¬ ¬ ¬ ¬ ¬ CurrentWindowSize = self.window_size``
 
-83. ``¬ ¬ ¬ ¬ ¬ Prev_Mouse_Pos = Mouse_Pos ``
+83. ``¬ ¬ ¬ ¬ ¬ Prev_Mouse_Pos = Mouse_Pos``
 84. ``¬ ¬ ¬ ¬ ¬ Mouse_Pos = SharedData.mod_Pyautogui__.position()``
 85. ``¬ ¬ ¬ ¬ ¬ DeltaX, DeltaY = Mouse_Pos[0]-Prev_Mouse_Pos[0], Mouse_Pos[1]-Prev_Mouse_Pos[1]``
 
@@ -1552,7 +1552,7 @@ Detailed Breakdown
 89. ``¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.W):``
 90. ``¬ ¬ ¬ ¬ ¬ ¬ RunForwardTimer += (1/FPS)``
 91. ``¬ ¬ ¬ ¬ ¬ ¬ if RunForwardTimer <= 10:``
-92. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True: ``
+92. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:``
 93. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ WkeydownTimer += (1/FPS)``
 94. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if WkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):``
 95. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)``
@@ -1569,7 +1569,7 @@ Detailed Breakdown
 106. ``¬ ¬ ¬ ¬ ¬ ¬ RunForwardTimer = 0``
 
 107. ``¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.A):``
-108. ``¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True: ``
+108. ``¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:``
 109. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ AkeydownTimer += (1/FPS)``
 110. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if AkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):``
 111. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)``
@@ -1577,7 +1577,7 @@ Detailed Breakdown
 113. ``¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.z += 1.42``
 
 114. ``¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.S):``
-115. ``¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True: ``
+115. ``¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:``
 116. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ SkeydownTimer += (1/FPS)``
 117. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):``
 118. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)``
@@ -1585,7 +1585,7 @@ Detailed Breakdown
 120. ``¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.x -= 1.42``
 
 121. ``¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.D):``
-122. ``¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True: ``
+122. ``¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:``
 123. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ DkeydownTimer += (1/FPS)``
 124. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if DkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):``
 125. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)``
@@ -1992,18 +1992,18 @@ For information on this consult the above guide
 134. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 135. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 136. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None, "saveANDexit"``
-137. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.KEYDOWN: ``
-138. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10: ``
+137. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.KEYDOWN:``
+138. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:``
 139. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1``
 140. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:``
 141. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
 142. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
 143. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
 144. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
-145. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1 ``
-146. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONDOWN: ``
-147. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True ``
-148. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONUP: ``
+145. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
+146. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONDOWN:``
+147. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True``
+148. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONUP:``
 149. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
 
 150. ``¬ ¬ ¬ ¬ ¬ self.mod_CaptionUtils__.GenerateCaptions.GetNormalCaption(self, "Home screen")``
@@ -2024,7 +2024,7 @@ For information on this consult the above guide
 163. ``¬ ¬ ¬ ¬ ¬ else:``
 164. ``¬ ¬ ¬ ¬ ¬ ¬ hover1 = False``
 165. ``¬ ¬ ¬ ¬ ¬ ``
-166. ``¬ ¬ ¬ ¬ ¬ if My >= 252*yScaleFact and My <= 297*yScaleFact and Mx >= (self.realWidth-(SettingsWidth+SelectorWidth))-2: ``
+166. ``¬ ¬ ¬ ¬ ¬ if My >= 252*yScaleFact and My <= 297*yScaleFact and Mx >= (self.realWidth-(SettingsWidth+SelectorWidth))-2:``
 167. ``¬ ¬ ¬ ¬ ¬ ¬ hover2 = True``
 168. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
 169. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
@@ -2209,12 +2209,12 @@ Detailed Breakdown
 20. ``¬ ¬ ¬ ¬ Selector = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, (f"Resources\\General_Resources\\selectorICON{self.theme}.jpg"))).convert()``
 21. ``¬ ¬ ¬ ¬ SelectorWidth = Selector.get_width()``
 
-22. ``¬ ¬ ¬ ¬ hover1 = False ``
-23. ``¬ ¬ ¬ ¬ hover2 = False ``
-24. ``¬ ¬ ¬ ¬ hover3 = False ``
-25. ``¬ ¬ ¬ ¬ hover4 = False ``
-26. ``¬ ¬ ¬ ¬ hover5 = False ``
-27. ``¬ ¬ ¬ ¬ hover6 = False ``
+22. ``¬ ¬ ¬ ¬ hover1 = False``
+23. ``¬ ¬ ¬ ¬ hover2 = False``
+24. ``¬ ¬ ¬ ¬ hover3 = False``
+25. ``¬ ¬ ¬ ¬ hover4 = False``
+26. ``¬ ¬ ¬ ¬ hover5 = False``
+27. ``¬ ¬ ¬ ¬ hover6 = False``
 28. ``¬ ¬ ¬ ¬ hover7 = False``
 29. ``¬ ¬ ¬ ¬ hover8 = False``
 30. ``¬ ¬ ¬ ¬ mousebuttondown = False``
@@ -2302,7 +2302,7 @@ Detailed Breakdown
 93. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.set_alpha(204)``
 94. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.fill(self.BackgroundCol)``
 95. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONDOWN:``
-96. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True ``
+96. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True``
 97. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEBUTTONUP:``
 98. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
 99.  ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.KEYDOWN:``
@@ -2320,10 +2320,10 @@ Detailed Breakdown
 111. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 112. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 113. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
-114. ``¬ ¬ ¬ ¬ ¬ else: ``
-115. ``¬ ¬ ¬ ¬ ¬ ¬ hover1 = False ``
+114. ``¬ ¬ ¬ ¬ ¬ else:``
+115. ``¬ ¬ ¬ ¬ ¬ ¬ hover1 = False``
 
-116. ``¬ ¬ ¬ ¬ ¬ if My >= 252*yScaleFact and My <= 297*yScaleFact and Mx >= 1105: ``
+116. ``¬ ¬ ¬ ¬ ¬ if My >= 252*yScaleFact and My <= 297*yScaleFact and Mx >= 1105:``
 117. ``¬ ¬ ¬ ¬ ¬ ¬ hover2 = True``
 118. ``¬ ¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
 119. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)``
@@ -2412,31 +2412,31 @@ Detailed Breakdown
 
 195. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(WeaponsText, ((realWidth-WeaponsTextWidth)-2, 200*yScaleFact)) # ???``
 
-196. ``¬ ¬ ¬ ¬ ¬ if hover1 == True: ``
+196. ``¬ ¬ ¬ ¬ ¬ if hover1 == True:``
 197. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(WeaponsTextWidth+SelectorWidth)-2, 200*yScaleFact))``
 
 198. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(RangedWeaponsText, ((realWidth-RangedWeaponsTextWidth)-2, 250*yScaleFact))``
-199. ``¬ ¬ ¬ ¬ ¬ if hover2 == True: ``
+199. ``¬ ¬ ¬ ¬ ¬ if hover2 == True:``
 200. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(RangedWeaponsTextWidth+SelectorWidth)-2, 250*yScaleFact))``
 
 201. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ShieldsText, ((realWidth-ShieldsTextWidth)-2, 300*yScaleFact))``
-202. ``¬ ¬ ¬ ¬ ¬ if hover3 == True: ``
+202. ``¬ ¬ ¬ ¬ ¬ if hover3 == True:``
 203. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(ShieldsTextWidth+SelectorWidth)-2, 300*yScaleFact))``
 
 204. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ArmourText, ((realWidth-ArmourTextWidth)-2, 350*yScaleFact))``
-205. ``¬ ¬ ¬ ¬ ¬ if hover4 == True: ``
+205. ``¬ ¬ ¬ ¬ ¬ if hover4 == True:``
 206. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(FoodTextWidth+SelectorWidth)-2, 400*yScaleFact))``
 
 207. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(FoodText, ((realWidth-FoodTextWidth)-2, 400*yScaleFact))``
-208. ``¬ ¬ ¬ ¬ ¬ if hover5 == True: ``
+208. ``¬ ¬ ¬ ¬ ¬ if hover5 == True:``
 209. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(ArmourTextWidth+SelectorWidth)-2, 350*yScaleFact))``
 
 210. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(ItemsText, ((realWidth-ItemsTextWidth)-2, 450*yScaleFact))``
-211. ``¬ ¬ ¬ ¬ ¬ if hover6 == True: ``
+211. ``¬ ¬ ¬ ¬ ¬ if hover6 == True:``
 212. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(SpecialItemsTextWidth+SelectorWidth)-2, 500*yScaleFact))``
 
 213. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(SpecialItemsText, ((realWidth-SpecialItemsTextWidth)-2, 500*yScaleFact))``
-214. ``¬ ¬ ¬ ¬ ¬ if hover7 == True: ``
+214. ``¬ ¬ ¬ ¬ ¬ if hover7 == True:``
 215. ``¬ ¬ ¬ ¬ ¬ ¬ AlphaSurface.blit(Selector, (realWidth-(ItemsTextWidth+SelectorWidth)-2, 450*yScaleFact))``
 
 216. ``¬ ¬ ¬ ¬ ¬ self.Display.blit(OptionsText, ((realWidth-OptionsTextWidth)-2, 550*yScaleFact))``
@@ -3377,11 +3377,11 @@ Detailed Breakdown
 45. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)``
 46. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:``
 47. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)``
-48. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x: ``
-49. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1 ``
-50. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.MOUSEBUTTONDOWN: ``
-51. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True ``
-52. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.MOUSEBUTTONUP: ``
+48. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:``
+49. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1``
+50. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.MOUSEBUTTONDOWN:``
+51. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = True``
+52. ``¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.MOUSEBUTTONUP:``
 53. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
 54. ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.MOUSEWHEEL and realHeight <= 760:``
 55. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mouse.set_cursor(self.mod_Pygame__.SYSTEM_CURSOR_SIZENS)``
@@ -3463,9 +3463,9 @@ Detailed Breakdown
 126. ``¬ ¬ ¬ ¬ ¬ if mousebuttondown == True:``
 127. ``¬ ¬ ¬ ¬ ¬ ¬ if My > 180+scroll and My < 190+scroll:``
 128. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mouse.set_cursor(self.mod_Pygame__.SYSTEM_CURSOR_HAND)``
-129. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if Mx > TempMx and self.FPS < 445: ``
+129. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if Mx > TempMx and self.FPS < 445:``
 130. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.FPS += 1``
-131. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ elif Mx < TempMx and self.FPS > 15: ``
+131. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ elif Mx < TempMx and self.FPS > 15:``
 132. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.FPS -= 1``
 133. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.FPS < 15:``
 134. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.FPS = 16``
@@ -3517,7 +3517,7 @@ Detailed Breakdown
 177. ``¬ ¬ ¬ ¬ ¬ ¬ else:``
 178. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), ((int(self.soundVOL*4.4)+50)*xScaleFact, 585+scroll), 9)``
 
-179. ``¬ ¬ ¬ ¬ ¬ ¬ if My > 680+scroll and My < 690+scroll and self.music == True: ``
+179. ``¬ ¬ ¬ ¬ ¬ ¬ if My > 680+scroll and My < 690+scroll and self.music == True:``
 180. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mouse.set_cursor(self.mod_Pygame__.SYSTEM_CURSOR_HAND)``
 181. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if Mx > TempMx and self.musicVOL < 100:``
 182. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.musicVOL += 1``
@@ -3533,20 +3533,20 @@ Detailed Breakdown
 
 192. ``¬ ¬ ¬ ¬ ¬ ¬ if My > 330+scroll and My < 340+scroll:``
 193. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.mouse.set_cursor(self.mod_Pygame__.SYSTEM_CURSOR_HAND)``
-194. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.aa == True: ``
-195. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.aa = False ``
+194. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.aa == True:``
+195. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.aa = False``
 196. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 197. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 198. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
-199. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ elif self.aa == False: ``
-200. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.aa = True ``
+199. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ elif self.aa == False:``
+200. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.aa = True``
 201. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:``
 202. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)``
 203. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ mousebuttondown = False``
-204. ``¬ ¬ ¬ ¬ ¬ ¬ if self.aa == True: ``
+204. ``¬ ¬ ¬ ¬ ¬ ¬ if self.aa == True:``
 205. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), (90, 335+scroll), 9)``
 206. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, self.ShapeCol, (90, 335+scroll), 6)``
-207. ``¬ ¬ ¬ ¬ ¬ ¬ elif self.aa == False: ``
+207. ``¬ ¬ ¬ ¬ ¬ ¬ elif self.aa == False:``
 208. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), (60, 335+scroll), 9)``
 209. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, self.ShapeCol, (60, 335+scroll), 6)``
 
@@ -3653,10 +3653,10 @@ Detailed Breakdown
 306. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), ((int(self.FOV*5))*xScaleFact, 235+scroll), 9)``
 307. ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), ((int(self.musicVOL*4.4)+50)*xScaleFact, 685+scroll), 9)``
 
-308. ``¬ ¬ ¬ ¬ ¬ ¬ if self.aa == True: ``
+308. ``¬ ¬ ¬ ¬ ¬ ¬ if self.aa == True:``
 309. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), (90, 335+scroll), 9)``
 310. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, self.ShapeCol, (90, 335+scroll), 6)``
-311. ``¬ ¬ ¬ ¬ ¬ ¬ elif self.aa == False: ``
+311. ``¬ ¬ ¬ ¬ ¬ ¬ elif self.aa == False:``
 312. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, (255, 255, 255), (60, 335+scroll), 9)``
 313. ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.circle(self.Display, self.ShapeCol, (60, 335+scroll), 6)``
 
@@ -3979,7 +3979,7 @@ Detailed Breakdown
     4. ``¬ ¬ def __init__(self):``
     5. ``¬ ¬ ¬ pass``
 
-1. ``¬ ¬ def initialize(Data): ``
+1. ``¬ ¬ def initialize(Data):``
 2. ``¬ ¬ ¬ global Class_Startup_variables``
 3. ``¬ ¬ ¬ Class_Startup_variables = Data``
 
@@ -4458,8 +4458,8 @@ Detailed Breakdown
 9. ``¬ ¬ ¬ DataWindow.configure(width = 500, height = 300)``
 10. ``¬ ¬ ¬ DataWindow.configure(bg="lightblue")``
 11. ``¬ ¬ ¬ VersionData = f"Pycraft: v{self.version}"``
-12. ``¬ ¬ ¬ CoordinatesData = f"Coordinates: x: {self.X} y: {self.Y} z: {self.Z} Facing: 0.0, 0.0, 0.0" ``
-13. ``¬ ¬ ¬ FPSData = f"FPS: Actual: {self.eFPS} Max: {self.FPS}" ``
+12. ``¬ ¬ ¬ CoordinatesData = f"Coordinates: x: {self.X} y: {self.Y} z: {self.Z} Facing: 0.0, 0.0, 0.0"``
+13. ``¬ ¬ ¬ FPSData = f"FPS: Actual: {self.eFPS} Max: {self.FPS}"``
 14. ``¬ ¬ ¬ VersionData = self.mod_Tkinter__tk.Label(DataWindow, text=VersionData)``
 15. ``¬ ¬ ¬ CoordinatesData = self.mod_Tkinter__tk.Label(DataWindow, text=CoordinatesData)``
 16. ``¬ ¬ ¬ FPSData = self.mod_Tkinter__tk.Label(DataWindow, text=FPSData)``
