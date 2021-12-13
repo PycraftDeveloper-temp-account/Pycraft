@@ -128,11 +128,11 @@ Detailed Breakdown
 
 .. note::
     For information on this consult the above guide
-   1. ``if not __name__ == "__main__":``
-   2. ``¬ print("Started <Pycraft_Achievements>")``
-   3. ``¬ class GenerateAchievements:``
-   4. ``¬ ¬ def __init__(self):``
-   5. ``¬ ¬ ¬ pass``
+        1. ``if not __name__ == "__main__":``
+        2. ``¬ print("Started <Pycraft_Achievements>")``
+        3. ``¬ class GenerateAchievements:``
+        4. ``¬ ¬ def __init__(self):``
+        5. ``¬ ¬ ¬ pass``
 
 6. ``¬ ¬ def Achievements(self):``
 7. ``¬ ¬ ¬ try:``
@@ -197,15 +197,14 @@ Detailed Breakdown
 
 .. note::
     For information on this consult the above guide
-   56. ``else:``
-   57. ``¬ print("You need to run this as part of Pycraft")``
-   58. ``¬ import tkinter as tk``
-   59. ``¬ from tkinter import messagebox``
-   60. ``¬ root = tk.Tk()``
-   61. ``¬ root.withdraw()``
-   62. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
-   63. ``¬ quit()``
-
+        56. ``else:``
+        57. ``¬ print("You need to run this as part of Pycraft")``
+        58. ``¬ import tkinter as tk``
+        59. ``¬ from tkinter import messagebox``
+        60. ``¬ root = tk.Tk()``
+        61. ``¬ root.withdraw()``
+        62. ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+        63. ``¬ quit()``
 
 Base
 ====================
