@@ -34,7 +34,7 @@ Modules
             def __init__(self):
                 pass
              
-* All modules should also be proceeded by the following code, the ‘else’ here is important, this connects to the 'if' statement we created above:
+* All modules should also be proceeded by the following code, the 'else' here is important, this connects to the 'if' statement we created above:
 
 .. code-block:: python
 
@@ -58,7 +58,7 @@ Error Handling
 
 * No error should pass silently; errors should be grouped into two categories; 'fatal' and 'recoverable', errors that are deemed to be 'fatal' must immediately lead to the termination of the currently running program, and a message displayed through the crash GUI if possible. Non-'fatal' errors should be appropriately handled in the relevant module, and if expected to pass silently until a fix is available, then must be logged or printed out to the terminal, so other programmers can fix the error later on to stop it potentially causing problems.
 
-* All errors should be -where possible- stored in the variable``message``.
+* All errors should be -where possible- stored in the variable ``message``.
 
 Notices
 ====================
@@ -119,9 +119,9 @@ Overview
 ++++++++++++++++++++
 This module controls the displaying and processing of in-game achievements: This feature will be expanded upon when achievements are added and you can earn them in game.
 
-The``GenerateAchievements`` class controls the rendering of the achievements GUI this can be accessed from the 'home screen' of Pycraft, currently this class only renders a blank window, which is coloured and has a title [Pycraft] and header [Achievements], but expect an update here when its possible to earn achievements in game!
+The ``GenerateAchievements`` class controls the rendering of the achievements GUI this can be accessed from the 'home screen' of Pycraft, currently this class only renders a blank window, which is coloured and has a title [Pycraft] and header [Achievements], but expect an update here when its possible to earn achievements in game!
 
-The``Achievements(self)`` function, like most subroutines in Pycraft, takes``self`` to be its only input. It will return only an error, should one arise, which will be stored in the``messages`` variable. This subroutine is where the bulk of the processing for this class is done, this subroutine is responsible for the Achievements GUI which you can access through Pycraft's home screen.
+The ``Achievements(self)`` function, like most subroutines in Pycraft, takes ``self`` to be its only input. It will return only an error, should one arise, which will be stored in the ``messages`` variable. This subroutine is where the bulk of the processing for this class is done, this subroutine is responsible for the Achievements GUI which you can access through Pycraft's home screen.
 
 Detailed Breakdown
 ++++++++++++++++++++
