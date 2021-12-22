@@ -30,6 +30,15 @@ For those not familiar they can be found here: (pypi.org) and you can use the fo
 ``pip install <module>``
 ``pip uninstall <module>``
 
+You can alternatively run these commands in the directory containing a file called `Pipfile`:
+
+    pip install pipenv
+    pipenv install
+
+And to start the game:
+
+    pipenv run python ./Pycraft/main.py
+
 Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video: (youtu.be/DG5YbE-umw0)
 
 ### Installing the project from GitHub (Method 2)

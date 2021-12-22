@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pygame = "*"
+numpy = "*"
+psutil = "*"
+py-cpuinfo = "*"
+tabulate = "*"
+moderngl = "*"
+moderngl-window = "*"
+Pillow = "*"
+PyOpenGL = "*"
+PyAutoGUI = "*"
+PyWavefront = "*"
+GPUtil = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3"
