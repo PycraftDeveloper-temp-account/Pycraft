@@ -30,16 +30,7 @@ For those not familiar they can be found here: (pypi.org) and you can use the fo
 ``pip install <module>``
 ``pip uninstall <module>``
 
-You can alternatively run these commands in the directory containing a file called `Pipfile`:
-
-    pip install pipenv
-    pipenv install
-
-And to start the game:
-
-    pipenv run python ./Pycraft/main.py
-
-Here is a short video tutorial explain all this (It’s really not too bad), this is the link to the YouTube video: (youtu.be/DG5YbE-umw0)
+Here is a short video tutorial walk you through all this: (youtu.be/DG5YbE-umw0)
 
 ### Installing the project from GitHub (Method 2)
 
@@ -60,6 +51,17 @@ Please note that at present it can be a bit tricky to locate the files that have
 ``import Pycraft``
 But there is a better solution on its way!
 
+### Installing using Pipenv
+
+You can alternatively run these commands in the directory containing a file called `Pipfile`:
+
+    pip install pipenv
+    pipenv install
+
+And to start the game:
+
+    pipenv run python ./Pycraft/main.py
+
 ## Running The Program
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program. Pycraft has recently undergone some large structural redesigning, so to run the program the advice is now different:
 
@@ -72,6 +74,8 @@ I recommend creating a shortcut for the "main.py" file too so it’s easier to l
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF) ![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) 	![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 	![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
 - Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
 - Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
+- Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan <br />
+- Henri Post (HenryFBP) @ https://github.com/HenryFBP <br />
 - PyPi @ www.pypi.org <br />
 - PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
 - Pygame @ www.github.com/pygame/pygame <br />
