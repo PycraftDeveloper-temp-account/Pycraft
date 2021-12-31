@@ -1769,3 +1769,481 @@ Detailed Breakdown
 123: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.quit()`` Here we are forcing the currently open display to close, if none is open then this has no effect.
 
 124: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.init()`` Next we need to re-initiate Pygame as we have forced the display module to become 'uninitialised', this also refreshes any other Pygame modules that may have been 'uninitialised' during the running of the program.
+
+125: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display = self.mod_Pygame__.display.set_mode((self.SavedWidth, self.SavedHeight), self.mod_Pygame__.RESIZABLE)`` Now we are setting the variable 'self.Display', which is where we draw all of our Pygame surfaces and objects. This line sets the display to have the dimensions of 'self.SavedWidth' and 'self.SavedHeight', in pixels. We use those variables because they store the size of the window from when it was last in windowed mode, meaning the game remembers the size of the window. Finally we also give the display thee parameter 'self.mod_Pygame__.RESIZEABLE' which allows us to re-shape and  re-size the window.
+
+126: ``¬ ¬ ¬ ¬ ¬ elif self.Fullscreen == False:`` If the previous if-statement returned False, then we check to see if the variable 'self.Fullscreen' is equal to Boolean False, in which case the OpenGL display will be full-screen.
+
+127: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.quit()`` Here we are forcing the currently open display to close, if none is open then this has no effect.
+
+128: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.init()`` Next we need to re-initiate Pygame as we have forced the display module to become 'uninitialised', this also refreshes any other Pygame modules that may have been 'uninitialised' during the running of the program.
+
+129: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display = self.mod_Pygame__.display.set_mode((FullscreenX, FullscreenY), self.mod_Pygame__.FULLSCREEN|self.mod_Pygame__.HWSURFACE|self.mod_Pygame__.DOUBLEBUF)`` Now are creating a Pygame.surface object which will have the RESOLUTION of the current monitor, we also set some additional parameters; setting the display to fullscreen, be hardware accelerated and (this is a bug) have a double buffer (which is used in 3D applications) we store this object in the variable 'self.Display', which is what we draw all images, text, shapes and objects to when we are not in the 3D game-engine.
+
+130: ``¬ ¬ ¬ ¬ except Exception as error:`` Here we are handling any errors that may occur whilst toggling the display between windowed and full-screen (or visa-versa) we store any errors in the variable 'error' (note this will be changed to match the new error handling guidelines in Pycraft v0.9.4.
+
+131: ``¬ ¬ ¬ ¬ ¬ self.SavedWidth = 1280`` If an error does occur, then we want to reset any variables that could have been problematic, we start by resetting the value of the variable 'self.SavedWidth' to 1280, which used to be the fixed window size for Pycraft, and is still the width all objects are rendered too, before a scale factor moves then suitably based on how much larger the window is.
+
+132: ``¬ ¬ ¬ ¬ ¬ self.SavedHeight = 720`` We also reset the value of the variable 'self.SavedHeight' to 720 (both of these variables values are in pixels), this value is chosen for the same reasons as the previous.
+
+133: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.quit()`` Here we are forcing the currently open display to close, if none is open then this has no effect.
+
+134: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.init()`` Next we need to re-initiate Pygame as we have forced the display module to become 'uninitialised', this also refreshes any other Pygame modules that may have been 'uninitialised' during the running of the program.
+
+135: ``¬ ¬ ¬ ¬ ¬ self.Display = self.mod_Pygame__.display.set_mode((self.SavedWidth, self.SavedHeight))`` Here we are setting the Pygame.surface object stored in 'self.Display' to the size we just specified with the resetting of those variables. Note there is no special parameters for the display here, this is designed to be a fallback option and be as simple as it can to avoid causing the error or more errors. When the user re-starts the project they will be able to re-size the GUI like normal (unless the user toggles full-screen and it works successfully).
+
+136: ``¬ ¬ ¬ ¬ icon = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Icon.jpg"))).convert()`` Now we are loading the image file (in the .jpg file format) for the icon at the top corner of the display and in the taskbar (or dock on apple devices). We add the '.convert()' format at the end because it creates a copy of the surface that is more optimised for on screen drawing. We store this image in the variable 'icon'.
+
+137: ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_icon(icon)`` Next we are setting the display's icon (the image at the top, next to the caption on windows, and the image that is displayed in the taskbar for that display. On Apple devices it sets the time you will see in the dock). 
+
+138: ``¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+139: ``¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+140: ``¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+141: ``¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+
+
+142: ``¬ ¬ def GenerateMinDisplay(self, width, height):`` Here we are creating a subroutine called 'GenerateMinDisplay', which takes 3 parameters, 'self' which most subroutines call for is always asked first, then we ask for the variables 'width' and 'height', these parameters are used in this function which is called when one or more of the dimensions of the display is less than 1280 (for the width) and 720 (or the height) in pixels, the width and height parameters are asked so that we can reset one dimension without resetting the other axis, unless they are both too small. This subroutine will return an error should one occur.
+
+143: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+144: ``¬ ¬ ¬ ¬ self.Display = self.mod_Pygame__.display.set_mode((width, height), self.mod_Pygame__.RESIZABLE)`` Here we are resetting the size of the display to the dimensions (in pixels) of the last two parameters and because we know that the only way the display can be resized is if the display is not in fullscreen, so we can add the usual parameter of 'RESIZABLE'.
+
+145: ``¬ ¬ ¬ ¬ icon = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Icon.jpg"))).convert()`` Now we are loading the image file (in the .jpg file format) for the icon at the top corner of the display and in the taskbar (or dock on apple devices). We add the '.convert()' format at the end because it creates a copy of the surface that is more optimised for on screen drawing. We store this image in the variable 'icon'.
+
+146: ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_icon(icon)`` Next we are setting the display's icon (the image at the top, next to the caption on windows, and the image that is displayed in the taskbar for that display. On Apple devices it sets the time you will see in the dock). 
+
+147: ``¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+148: ``¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+149: ``¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+150: ``¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+
+
+151: ``¬ ¬ def GetDisplayLocation(self):`` Here we are creating a subroutine called 'GetDisplayLocation' which takes only the parameter of 'self', this subroutine will only return the position (in pixels) of the currently active PYGAME display. This subroutine will not return an error, should one occur.
+
+152: ``¬ ¬ ¬ hwnd = self.mod_Pygame__.display.get_wm_info()["window"]`` Here we are calling a Pygame function that will get the details of the currently active Pygame display, we only want the specifics on the 'window' parameter, so we add the '["window"]' key to filter out the unnecessary information, the resulting data is stored in the variable 'hwnd'.
+
+
+153: ``¬ ¬ ¬ prototype = self.mod_Ctypes__.WINFUNCTYPE(self.mod_Ctypes__.wintypes.BOOL, self.mod_Ctypes__.wintypes.HWND, self.mod_Ctypes__.POINTER(self.mod_Ctypes__.wintypes.RECT))`` Here we are calling a Ctypes function that allows us to interact directly with code written in C, in this case we are getting data from the SDL library, this, stored in the variable 'prototype' sets up this process, we interface with a C library later on, this simplifies the call.
+
+154: ``¬ ¬ ¬ paramflags = (1, "hwnd"), (2, "lprect")`` Now we are specifying the data we want to return back to the python program when we go through the C library, in this case we want to get the data at the keys 'hwnd' and 'lprect'.
+
+
+155: ``¬ ¬ ¬ GetWindowRect = prototype(("GetWindowRect", self.mod_Ctypes__.windll.user32), paramflags)`` Here we are using the Ctypes library, with the two variables we have just defined 'prototype' and 'paramflags' which shorten the length of the line. We want to access data in the 'user32' section of 'windll'.
+
+
+156: ``¬ ¬ ¬ rect = GetWindowRect(hwnd)`` Here we are going through the data we received from the call into the C programming language, here we are getting the position of the display (EXCLUDING THE CAPTION/BORDER OF THE WINDOW), the resultant dimensions are stored in the variable 'rect'.
+
+
+157: ``¬ ¬ ¬ return rect.left+8, rect.top+31`` Finally we go through the variable 'rect' and get the position from the top-left hand corner of the display. This data is returned to the caller of this subroutine.
+
+
+
+158: ``¬ ¬ def GetPlayStatus(self):`` Here we are creating a subroutine 'GetPlayStatus', this takes only the parameter of 'self', and does not return any errors that may occur, instead it returns an integer value that is used as the FPS (in Hz) for the display. This function changes the display's FPS based on if the display is minimised (to 15 FPS) or currently active (in which case we use the user's set FPS).
+
+159: ``¬ ¬ ¬ if self.mod_Pygame__.display.get_active() == True:`` Now we are using Pygame to detect if the display is active, this returns a boolean value and will return 'True' is the display is not minimised and 'False' when the display is minimised, so not active.
+
+160: ``¬ ¬ ¬ ¬ tempFPS = self.FPS`` This is used to temporarily store the game's target FPS, this is used later to slow the game down when minimised.
+
+161: ``¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.Channel(2).unpause()`` Here we are allowing Pygame's audio channel 2 to play, if anything is loaded, this will play the main soundtrack you hear at the start, if the user has allowed music playback in settings. This does not toggle the sound, (as in every time it's called it pauses or plays the sound, inverting the previous state) so can be called multiple times (although not in the most efficient situation) and will not keep changing toggling sound playback.
+
+162: ``¬ ¬ ¬ ¬ if self.mod_Pygame__.mixer.Channel(2).get_busy() == 0 and self.LoadMusic == True:`` Here we are checking to see if the Pygame audio channel we just unpaused is now playing sound, this will return a boolean value. In this if-statement we also check to see if the variable 'self.LoadMusic' is True, this variable controls if we should load and allow for sound to load, this controls the loading of the music in the 2D game-engine. Putting this all together, we need to check that there is NOT playing and we are allowed to load and play the audio files.
+
+163: ``¬ ¬ ¬ ¬ ¬ if self.music == True and self.CurrentlyPlaying == None:`` Now we are using another double-condition  if-statement to check to see if the variable 'self.music' is set to True. (This controls the playback of all sound files flagged as 'music'). We also check to see if there is sound currently playing, to do this we must specify in the 'self.CurrentlyPlaying' variable the sound file that's currently playing when we play a sound with the 'music' flag. BOTH these conditions need to be 'True' for this if-statement to return 'True'.
+
+164: ``¬ ¬ ¬ ¬ ¬ ¬ self.CurrentlyPlaying = "InvSound"`` Because we are now allowing the music sound we hear in the 2D game-engine to play, we must specify this in the variable 'self.CurrentlyPlaying' otherwise the 2D game engine may attempt to load the object multiple times causing unnecessary device strain.
+
+165: ``¬ ¬ ¬ ¬ ¬ ¬ self.LoadMusic = False`` We also set the variable 'self.LoadMusic' to False, which is also an attempt to prevent sound from loading multiple times.
+
+166: ``¬ ¬ ¬ ¬ ¬ ¬ MusicThread = self.mod_Threading__.Thread(target=self.mod_SoundUtils__.PlaySound.PlayInvSound, args=(self,))`` Now we are making a call to the 'SoundUtils.py' and the 'PlayInvSound' module, which takes the argument 'self'. We make this call in the Threading built-in Python module because otherwise the program will be laggy as the object is loaded, and as such we want to do this in a separate thread.
+
+167: ``¬ ¬ ¬ ¬ ¬ ¬ MusicThread.start()`` Now we are starting the thread which we stored in the variable 'MusicThread', which we talked about on a previous line. This thread will end automatically once the sound is loaded, and we can still access the function in Pygame to control the music through the global variable 'self'.
+
+168: ``¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+169: ``¬ ¬ ¬ ¬ self.LoadMusic = True`` If no music in the Pygame sound channel 2 is playing (Channel 2 is the location of the long, 2D game-engine music) then we allow the game to attempt to load and play the sound by setting the variable 'self.LoadMusic' to True, this doesn't allow the sound to play on its own, but will allow the music to play if the user has set the setting for allowing music to play (which is stored in the variable 'self.music'.
+
+170: ``¬ ¬ ¬ ¬ tempFPS = 15`` Here we are setting the variable 'tempFPS' to the value of 15, this controls the refresh rate of the game in Hz, and when the game is minimised (which is what this subroutine checks) we set the game's FPS to 15.
+
+171: ``¬ ¬ ¬ ¬ self.mod_Pygame__.mixer.Channel(2).pause()`` This line stops the sound in channel 2 from playing by pausing it, this sound is the background track that plays when not in game (This is controlled by the user's setting). If no sound is playing then this has no effect.
+
+172: ``¬ ¬ ¬ return tempFPS`` Finally we return the variable 'tempFPS' to the caller of this subroutine. This variable will either be 15 if the display is minimised or it will be the user's setting in 'Settings.py'.
+
+
+
+
+.. note::
+   For information on this consult the above guide
+
+        173: ``else:``
+
+        174: ``¬ print("You need to run this as part of Pycraft")``
+
+        175: ``¬ import tkinter as tk``
+
+        176: ``¬ from tkinter import messagebox``
+
+        177: ``¬ root = tk.Tk()``
+
+        178: ``¬ root.withdraw()``
+
+        179: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+
+        180: ``¬ quit()``
+
+
+
+.. note::
+   For information on this consult the above guide
+
+        1: ``if not __name__ == "__main__":``
+
+        2: ``print("Started <Pycraft_DrawingUtils>")``
+
+        3: ``¬ class DrawRose:``
+
+        4: ``¬ ¬ def __init__(self):``
+
+        5: ``¬ ¬ ¬ pass``
+
+
+6: ``¬ ¬ def CreateRose(self, xScaleFact, yScaleFact, coloursARRAY):`` Here we are creating the subroutine called 'CreateRose', this is called on the home screen and draws the graphic there. This subroutine takes 4 parameters, the first is 'self', which is used to access modules and global variables. 'xScaleFact', which stores how much larger on the 'x' axis the display is, this is needed for when the user resizes the display, or sets the display to fullscreen to control how things should be displaced on the 'x' axis. The 3rd parameter, 'yScaleFact' does a similar thing to the variable 'xScaleFact'. storing how much larger on the 'y' axis the display is. For these calculations we use the display's original size, (1280x720) which is the default location to draw data on all GUIs. Finally the subroutine takes the parameter of 'coloursARRAY', which stores an array of colours for each line, this is used to animate the graphic and will be tweaked in a future update.
+
+7: ``¬ ¬ ¬ if coloursARRAY == False:`` Here we are checking to see if the variable 'coloursARRAY is actually an array, this is used in-case the user has disabled this effect in settings (coming soon!) or if the home screen is loading or just getting set-up, in which case the animation hasn't started yet, if this is the case then the next few lines of code run.
+
+8: ``¬ ¬ ¬ ¬ coloursARRAY = []`` We now set 'coloursARRAY' to contain an array data structure instead of a boolean value. 
+
+9: ``¬ ¬ ¬ ¬ for i in range(32):`` Then we iterate over each of the lines in the graphic (there are 32).
+
+10: ``¬ ¬ ¬ ¬ ¬ coloursARRAY.append(self.ShapeCol)`` And for each of the lines in the graphic, we assign a colour value related to the user's selected theme, because the animation is not currently active, we set the colour value to the default value of the colour relating to shapes in the theme.
+
+
+11: ``¬ ¬ ¬ defLargeOctagon = [(205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact)]`` Here we are defining an array what stores the positions onscreen where we want to draw each of the points of our octagon, each position is stored as a tuple in the format: (x,y).
+
+12: ``¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2)`` Here we are using Pygame's built in draw function (which we use in settings and elsewhere to draw shapes), this function takes the display we want to draw to as our first parameter, the colour of the shape as the second parameter (which we take from the user's current theme), then it asks for the points of the shape, this function can take varying amounts of points to draw different shapes, for example 6 sets of coordinates would draw a hexagon, for this we give the function the variable where we stored our array of points. Finally we set the width of the line, this is in pixels.
+
+
+13: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[0], (205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+14: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[1], (205*xScaleFact, 142*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+15: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[2], (205*xScaleFact, 142*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+16: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[3], (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+17: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[4], (205*xScaleFact, 142*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+18: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[5], (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+19: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[6], (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+20: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[7], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+21: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[8], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+22: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[9], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+23: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[10], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+24: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[11], (51*xScaleFact, 512*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+25: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[12], (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+26: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[13], (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+27: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[14], (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+28: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[15], (51*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+29: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[16], (51*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+30: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[17], (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+31: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[18], (205*xScaleFact, 666*yScaleFact), (51*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+32: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[19], (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+33: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[20], (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+34: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[21], (205*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+35: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[22], (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+36: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[23], (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+37: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[24], (51*xScaleFact, 295*yScaleFact), (205*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+38: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[25], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 666*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+39: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[25], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 512*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+40: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[27], (51*xScaleFact, 295*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+41: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[28], (51*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+42: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[29], (422*xScaleFact, 666*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+43: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[30], (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 295*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+44: ``¬ ¬ ¬ self.mod_Pygame__.draw.line(self.Display, coloursARRAY[31], (575*xScaleFact, 512*yScaleFact), (422*xScaleFact, 142*yScaleFact), width=2)`` Here we go through and draw each of the lines between two points, this is done using Pygame's draw function, which takes the first parameter as the Pygame.surface to draw on, the second parameter is the colour of the shape (which is unique for each line for the animation), then we define the two points to draw the line between and finally set the width of the line to 2 pixels. This process is repeated for each of the lines, however points will be used multiple times in different lines due to the nature of the graphic, but no two lines should have the same TWO coordinates.
+
+
+45: ``¬ class GenerateGraph:`` Here we are creating a new class in 'DrawingUtils.py' which we call 'GenerateGraph', this class is responsible for the collection, gathering and displaying of system and program telemetry and drawing the line graph which we observe in 'Devmode'.
+
+46: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+47: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+48: ``¬ ¬ def CreateDevmodeGraph(self, DataFont):`` Here we are creating a subroutine called 'CreateDevmodeGraph', this takes 2 parameters, the global variable 'self', and the font to use to render the text above the line graph in 'Devmode'. This subroutine does not usually return anything, but will return an error should one occur. This function is responsible for handling, collecting and drawing telemetry data for the system and program in 'Devmode'.
+
+49: ``¬ ¬ ¬ if self.Devmode == 10:`` Here we are checking to see if the integer value in the variable 'Devmode' is equal to 10, this means that the user has enabled 'Devmode' and we should start collecting system and program telemetry and draw the line graph, unless the user enables this feature, or they use 'Benchmark', this is one of a few situations where the program will attempt to get system information (information about the program it's-self is required for the program to run safely).
+
+50: ``¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+51: ``¬ ¬ ¬ ¬ ¬ if ((self.realWidth/2)+100)+self.Timer >= self.realWidth:`` Here we are checking to see if the 'leading edge' of the line graph has now left the screen, this is done by comparing the size of the display to the result of a calculation that takes half the size of the screen, adds 100 to it and then how far across the 'leading-edge' is in the graph (regulated by the variable 'self.Time'). Should this if-statement return True, the line graph will return to the start and the previous line graph will be erased.
+
+52: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_aFPS = []`` Here we are creating an empty array, stored in the variable 'self.Data_aFPS'. This will store the program's average FPS, which will be used later on for drawing its respective 'Devmode' graph.
+
+53: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_CPUUsE = []`` Here we are creating an empty array, stored in the variable; 'self.Data_CPUUse'. This array will store the CPU's usage percentage    (which is seen in task manager). This will be used later on for the graphing of its respective graph in the for 'Devmode'.
+
+54: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_eFPS = []`` Here we are creating a blank array; which we will store in the variable 'self.Data_eFPS'. This array will store vales for the current in-game FPS, which will be used later on in 'Devmode', for drawing its respective line graph.
+
+55: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_MemUsE = []`` Here we are creating an array in the variable 'self.Data_MemUsE', which will store data about the amount of memory is currently being used by the system, which will be used later on in drawing the line graph in 'Devmode'.
+
+56: ``¬ ¬ ¬ ¬ ¬ ¬ self.Timer = 0`` Here we are setting the variable 'self.Timer' to 0, this will be used later on in 'Devmode' for controlling the data polling rate (how often the program will get the current metrics).
+
+57: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_aFPS_Min = 60`` On this line we are setting the variable 'self.Data_aFPS_Min' to 60, this integer is chosen because it should be easily overwritten by a smaller value as the program runs. This stores the minimum average FPS.
+
+58: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_aFPS_Max = 1`` This stores the maximum average FPS value that has been recorded, this variable 'self.Data_aFPS_Max' is set to 1 again because this should be easily overwritten by a higher average value.
+
+
+59: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_CPUUsE_Min = 60`` Here we are setting the variable 'self.Data_CPUUsE_Min' to 60, this stores the minimum CPU usage (as a percentage) so should be easily overwritten by a smaller number.
+
+60: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_CPUUsE_Max = 1`` Here we are setting the variable 'self.Data_CPUUsE_Max' to 1, because this should be easily overwritten by a larger number (as a percentage).
+
+
+61: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_eFPS_Min = 60`` Here we are setting this variable to have a value of 60. This should be easily overwritten as the program runs and stores the smallest recorded raw FPS value.
+
+62: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_eFPS_Max = 1`` Now we set the previous variable's counterpart, the maximum recorded value of the raw FPS to 0, this should be easily overwritten and is used in calculating how the line graph in 'Devmode' on the top-right should be drawn, each of the minimum and maximum values are used for this purpose.
+
+
+63: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_MemUsE_Min = 50`` Now we set the lowest value for memory usage (as a percentage) to 50, this number is chosen because it should be easily overwritten.
+
+64: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_MemUsE_Max = 50`` Now we set the highest value of memory usage (as a percentage) to 50, this should be easily overwritten, this is used as part of the calculation for the line graph in 'Devmode'. All of the above values are chosen because they should be easily overwritten with a more appropriate value, but we need to assign the variables a value then we create them. These values will be used in calculating the dimensions for the line graph we create in 'Devmode', if you are familiar with the documentation for the benchmark, we saw a similar method there.
+
+
+65: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_CPUUsE_Min = 50`` Here we are setting the variable 'self.Data_CPUUsE_Min' to 50, this stores the minimum CPU usage (as a percentage) so should be easily overwritten by a smaller number.
+
+66: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_CPUUsE_Max = 50`` Here we are setting the variable 'self.Data_CPUUsE_Max' to 50, because this should be easily overwritten by a larger number (as a percentage).
+
+
+67: ``¬ ¬ ¬ ¬ ¬ BackingRect = self.mod_Pygame__.Rect((self.realWidth/2)+100, 0, self.realWidth, 200)`` Here we are creating the background rectangle for the line graph, this is done with a similar process to the one used in the benchmark, here we are creating a set of points, which we store in the variable 'BackingRect', we store the points in the format 'x1, y1, x2 y2' where each two values are points like '(x,y)' in pixels. The first set of coordinates define the top-left corner. The 'x' axis for the first point takes the position half-way across the GUI (using 'self.realWidth/2'), then we add 100 pixels, we do this so that the rectangle doesn't overlap with the subtitle in MOST cases (there is a better solution coming soon!), then because we want the rectangle to start at the top of the GUI, we set the 'y' position to 0. For the second set of coordinates, we start with the 'x' axis, which we set the the variable 'self.realWidth' which stores the exact width of the display in pixels, this means the rectangle will stretch right to the right-hand-size of the GUI, then we set the rectangle to go down 200 pixels from the top, (this coordinate specifies the bottom right position).
+
+68: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, self.ShapeCol, BackingRect)`` Now we go through and draw the rectangle which we just created the points for. We draw the rectangle to the display using 'self.Display', then we specify the colour of the shape, which we set to an appropriate colour from the user's theme, then we add our points by calling the variable 'BackingRect' which stores the points we made earlier. NOT SPECIFYING A FOURTH PARAMETER (LINE WIDTH) HERE MEANS THE RECTANGLE IS FILLED.
+
+
+69: ``¬ ¬ ¬ ¬ ¬ if self.Timer >= 2:`` Now we need to check to see if a certain amount of time has passed, for this program, time is stored in the variable 'self.Timer', and this if-statement is used to prevent the lines for the line graph being drawn directly to the edge of the rectangle we just created. This is done for graphical reasons.
+
+70: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_aFPS.append([((self.realWidth/2)+100)+self.Timer, 200-(100/self.Data_aFPS_Max)*(self.aFPS/(self.Iteration))])`` Now, because we will be drawing 3 lines on the line graph, and we do this with Pygame's 'pygame.draw.lines', we need to store each of the points for the line in a way that Pygame's draw subroutine will understand, to do this we append the coordinates for each point on the line in a corresponding array. This this, the first line we are storing the coordinates for the line that represents the average FPS of the program. With each iteration of this program, we add a new point to the array until we reach a position where the current point is off the right hand side of the display, which is when we reset the graph and start again. Now this next bit of this documentation for this line of code will be about understanding the calculations of this line which we can observe, as well as how we are organising the data. To start with, we store the data in a 2D array, each of the groups of elements are coordinates; they are stored in the format [[x,y], [x,y], [x,y]]. To calculate the 'x' axis position, we perform an identical calculation to what we used earlier when calculating the points for the 'BackingRect' variable (The 'x' axis for the first point takes the position half-way across the GUI (using 'self.realWidth/2'), then we add 100 pixels). Then for the 'y' axis we start with how we would calculate a percentage, taking 100 and dividing it by the largest value (which we store in the variable 'self.Data_aFPS_Max', more on that later), then we multiply the small decimal result we would receive by the current average FPS of the program, which we do with the calculation, '(self.aFPS/(self.Iteration))', this calculation is also seen elsewhere in the program. Then this will give us a value that shows what the current average FPS is RELATIVE to the maximum recorded value, unfortunately we are not finished because although this would work if you plugged the result into a graphing program, (like Matplotlib), we need to flip the results by taking 200 away with that value we have just calculated, this is because for Pygame, coordinates start from the top-left, in your typical graphing program, the coordinates would start from the bottom left, and because the 'y' position is the only coordinate here that flips, we need to do the same for this graph, but only on the 'y' axis.
+
+71: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_eFPS.append([((self.realWidth/2)+100)+self.Timer, 200-(100/self.Data_eFPS_Max)*int(self.eFPS)])`` Now, because we will be drawing 3 lines on the line graph, and we do this with Pygame's 'pygame.draw.lines', we need to store each of the points for the line in a way that Pygame's draw subroutine will understand, to do this we append the coordinates for each point on the line in a corresponding array. This this, the second line we are storing the coordinates for the line that represents the current FPS of the program. With each iteration of this program, we add a new point to the array until we reach a position where the current point is off the right hand side of the display, which is when we reset the graph and start again. Now this next bit of this documentation for this line of code will be about understanding the calculations of this line which we can observe, as well as how we are organising the data. To start with, we store the data in a 2D array, each of the groups of elements are coordinates; they are stored in the format [[x,y], [x,y], [x,y]]. To calculate the 'x' axis position, we perform an identical calculation to what we used earlier when calculating the points for the 'BackingRect' variable (The 'x' axis for the first point takes the position half-way across the GUI (using 'self.realWidth/2'), then we add 100 pixels). Then for the 'y' axis we start with how we would calculate a percentage, taking 100 and dividing it by the largest value (which we store in the variable 'self.Data_eFPS_Max', more on that later), then we multiply the small decimal result we would receive by the current FPS of the program (as an integer, this value would otherwise have a very long decimal and its not necessary that we calculate the value to such a small decimal as the line will be to the nearest pixel either way). Then this will give us a value that shows what the current FPS is RELATIVE to the maximum recorded value, unfortunately we are not finished because although this would work if you plugged the result into a graphing program, (like Matplotlib), we need to flip the results by taking 200 away with that value we have just calculated, this is because for Pygame, coordinates start from the top-left, in your typical graphing program, the coordinates would start from the bottom left, and because the 'y' position is the only coordinate here that flips, we need to do the same for this graph, but only on the 'y' axis.
+
+72: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_MemUsE.append([((self.realWidth/2)+100)+self.Timer, 200-(100/self.Data_MemUsE_Max)*(100/self.mod_Psutil__.virtual_memory().total)*self.mod_Psutil__.virtual_memory().available])`` Now, because we will be drawing 3 lines on the line graph, and we do this with Pygame's 'pygame.draw.lines', we need to store each of the points for the line in a way that Pygame's draw subroutine will understand, to do this we append the coordinates for each point on the line in a corresponding array. This this, the third and final line for this section (the fourth line for the CPU is done elsewhere in a thread) we are storing the coordinates for the line that represents the current memory usage of the program. With each iteration of this program, we add a new point to the array until we reach a position where the current point is off the right hand side of the display, which is when we reset the graph and start again. Now this next bit of this documentation for this line of code will be about understanding the calculations of this line which we can observe, as well as how we are organising the data. To start with, we store the data in a 2D array, each of the groups of elements are coordinates; they are stored in the format [[x,y], [x,y], [x,y]]. To calculate the 'x' axis position, we perform an identical calculation to what we used earlier when calculating the points for the 'BackingRect' variable (The 'x' axis for the first point takes the position half-way across the GUI (using 'self.realWidth/2'), then we add 100 pixels). Then for the 'y' axis we start with how we would calculate a percentage, taking 100 and dividing it by the maximum recorded amount of memory the system has used during the running of this set of data collection (more on that later), then we multiply the small decimal result we would receive by the current percentage of RAM that is being ued by the system (as an percentage). Then this will give us a value that shows what the current RAM usage is RELATIVE to the maximum recorded value, unfortunately we are not finished because although this would work if you plugged the result into a graphing program, (like Matplotlib), we need to flip the results by taking 200 away with that value we have just calculated, this is because for Pygame, coordinates start from the top-left, in your typical graphing program, the coordinates would start from the bottom left, and because the 'y' position is the only coordinate here that flips, we need to do the same for this graph, but only on the 'y' axis.
+
+
+73: ``¬ ¬ ¬ ¬ ¬ if (self.aFPS/(self.Iteration)) > self.Data_aFPS_Max:`` Here we are checking to see if the current average FPS (remember this value changes only one per frame so we can run the equation multiple times and not need to worry about different values, although we do sacrifice a small amount of efficiency), is greater than the current maximum FPS, this is needed for the calculation earlier.
+
+74: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_aFPS_Max = (self.aFPS/(self.Iteration))`` If the current average FPS (abbreviated to 'aFPS') is in fact greater than the previously recorded maximum, then we replace the maximum with the current average FPS, which is larger.
+
+75: ``¬ ¬ ¬ ¬ ¬ elif (self.aFPS/(self.Iteration)) < self.Data_aFPS_Min:`` Here we are checking to see if the average FPS is lower than the minimum recorded average FPS, which we store in the variable 'self.Data_aFPS_Min'.
+
+76: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_aFPS_Min = (self.aFPS/(self.Iteration))`` Here we are setting the minimum recorded average FPS to the current average FPS, because its smaller and the variable 'self.Data.aFPS_Min' needs to store the smallest average FPS.
+
+
+77: ``¬ ¬ ¬ ¬ ¬ if self.eFPS > self.Data_eFPS_Max:`` Here we are doing a similar thing as before, except this time we are checking to see if the current FPS of the program is greater than the previously recorded max in 'self.Data_eFPS_Max'
+
+78: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_eFPS_Max = self.eFPS`` If the current FPS (stored in the variable 'eFPS') is bigger than the previously recorded max in 'self.Data_eFPS_Max', then we update the value stored in this variable to the current FPS.
+
+79: ``¬ ¬ ¬ ¬ ¬ elif self.eFPS < self.Data_eFPS_Min:`` Here we are checking to see if the current FPS of the running program is smaller than the previously recorded smallest value; stored in 'self.Data_eFPS_Min', as the value cannot be both the largest and smallest value we use an 'elif' here so that this is only checked if the previous if-statement is not met.
+
+80: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_eFPS_Min = self.eFPS`` Now we set the minimum FPS to the current FPS after we have checked to see if it is smaller, we only update the value in the variable 'self.Data_eFPS_Min' if the above if-statement is True.
+
+
+81: ``¬ ¬ ¬ ¬ ¬ if (100/self.mod_Psutil__.virtual_memory().total)*self.mod_Psutil__.virtual_memory().available > self.Data_MemUsE_Max:`` Here we are checking to see if the current percentage of memory free (and we mean current, if we call either 'psutil.virtual_memory().total' or 'psutil.virtual_memory().available' again it could give a different value, even in the same iteration of the program, this will be fixed during Pycraft v0.9.4-2 and later versions) is greater than the previously recorded maximum amount of memory the system had free; which we store in the variable 'self.Data_MemUsE_Max'. This is stored as a percentage, but it is very unlikely to be either 0 or 100 as that would mean either no or all the system memory is used respectively, although the first is possible in high memory machines. The program can handle these extreme values.
+
+82: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_MemUsE_Max = (100/self.mod_Psutil__.virtual_memory().total)*self.mod_Psutil__.virtual_memory().available`` Now we are updating the variable 'self.Data_MemUsE_Max' with the current percentage of free memory, however this will likely be a slightly different value to the one we received in the if-statement as we have since called that subroutine again, this is fixed in a later version (pycraft v0.9.4-2 onwards) but is unlikely to cause issues (although the memory and CPU line on the graph is currently broken. This has been fixed and will feature in versions of Pycraft greater than Pycraft v0.9.4-1).
+
+83: ``¬ ¬ ¬ ¬ ¬ elif (100/self.mod_Psutil__.virtual_memory().total)*self.mod_Psutil__.virtual_memory().available < self.Data_MemUsE_Max:`` Here we are checking to see if the current percentage of memory not being used by the system is smaller than the current smallest value stored in the variable; 'self.Data_MemUse_Min'. (evidently there is a bug here, this is why the line graph for this telemetry is broken, at time of writing however this is fixed in Pycraft v0.9.4-2).
+
+84: ``¬ ¬ ¬ ¬ ¬ ¬ self.Data_MemUsE_Max = (100/self.mod_Psutil__.virtual_memory().total)*self.mod_Psutil__.virtual_memory().available`` Now we are updating the variable 'self.Data_MemUsE_Max' with the current percentage of free memory, however this will likely be a slightly different value to the one we received in the if-statement as we have since called that subroutine again, this is fixed in a later version (pycraft v0.9.4-2 onwards) but is unlikely to cause issues (although the memory and CPU line on the graph is currently broken. This has been fixed and will feature in versions of Pycraft greater than Pycraft v0.9.4-1).
+
+
+85: ``¬ ¬ ¬ ¬ ¬ self.Timer += 0.2`` Now after each iteration of the game where 'Devmode' is equal to 10, so 'Devmode' is enabled, we increase the variable 'self.Timer', by 0.2, this controls how fast the graph moves across the screen and its spacing. This variable is used heavily both in and out of this program (also in 'ThreadingUtils' with the CPU line graph counterpart) and in most of the line graph calculations.
+
+86: ``¬ ¬ ¬ ¬ ¬ if self.Timer >= 5:`` Because Pygame's multi-point 'lines' subroutine requires there to be at least 2 points in order to draw the line, if we attempted to draw the line on the first run of the project with 'Devmode' enabled, it would have at most 1 point and cause the program to crash, as a result we delay the drawing of the lines until the variable 'self.Timer' is greater than or equal to 5, this does NOT correlate to 5 seconds or millisecond or any form of real-world time.
+
+87: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.lines(self.Display, (255, 0, 0), False, self.Data_aFPS)`` Now we draw 3 of the 4 line graphs we have data for, we draw the fourth later on in a different condition because we handle that slightly differently, but for this one, which relates to the average FPS (or 'aFPS') of the game. We first specify the Pygame.surface object to draw the line to (this will, in most circumstances be 'self.Display'), then for the second parameter we specify the colour of the line, this controls colour for the entire line, and in this case we set the value to red (or '255, 0, 0' which is the same), then we specify the Boolean value False here because we do not want the start and end points of the line to connect, and finally we specify the array of points we want to use as plots for the line, in this case we reference 'self.Data_aFPS'.
+
+88: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.lines(self.Display, (0, 255, 0), False, self.Data_eFPS)`` This relates to the current FPS (or 'eFPS') of the game. We first specify the Pygame.surface object to draw the line to (this will, in most circumstances be 'self.Display'), then for the second parameter we specify the colour of the line, this controls colour for the entire line, and in this case we set the value to green (or '0, 255, 0' which is the same), then we specify the Boolean value False here because we do not want the start and end points of the line to connect, and finally we specify the array of points we want to use as plots for the line, in this case we reference 'self.Data_eFPS'.
+
+89: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.lines(self.Display, (0, 0, 255), False, self.Data_MemUsE)`` This relates to the memory usage of your system. We first specify the Pygame.surface object to draw the line to (this will, in most circumstances be 'self.Display'), then for the second parameter we specify the colour of the line, this controls colour for the entire line, and in this case we set the value to blue (or '0, 0, 255' which is the same), then we specify the Boolean value False here because we do not want the start and end points of the line to connect, and finally we specify the array of points we want to use as plots for the line, in this case we reference 'self.Data_MemUsE'.
+
+90: ``¬ ¬ ¬ ¬ ¬ if len(self.Data_CPUUsE) >= 2:`` Now we handle the drawing of the fourth line, you will notice we have not done any processing for this line, thats because we do this one in a separate thread in 'ThreadingUtils', because of this, we cannot simply wait the usual amount of time as that many not be enough, instead we simply check when the array 'self.Data_CPUUsE', which is where we store the data for this line, is greater than or equal to a length of 2, meaning there are more than two points defined.
+
+91: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.lines(self.Display, (255, 0, 255), False, self.Data_CPUUsE)`` Now we draw the line for the CPU telemetry data, we draw this line to the display as we do with all the other line graphs (by referencing the variable 'self.Display', then we set the colour to purple (or '255, 0, 255'), then we specify that we do not want the start and end points to be connected with the third parameter of Boolean False. Then finally we reference the array which we store all the data for this line, which we stored in the variable 'self.Data_CPUUsE'.
+
+92: ``¬ ¬ ¬ ¬ ¬ runFont = DataFont.render(f"MemUsE: {self.mod_Psutil__.virtual_memory().percent}% | CPUUsE: {self.mod_Psutil__.cpu_percent()}% | FPS: {self.FPS} eFPS: {int(self.eFPS)} aFPS: {int(self.aFPS/self.Iteration)} Iteration: {self.Iteration}", self.aa, (255, 255, 255))`` Now we are rendering text to create a Pygame.surface object, this is stored in the variable 'runFont'. To do this we take the font we asked for as the second parameter of our subroutine and render the text in the brackets. This font is what you see above the graph in the top-right of the display when 'Devmode' is enabled. This displays some system metrics which can be also viewed in the caption, however in fullscreen mode the caption is no-longer visible so this displays some of the information you can see there. First we display the percentage of memory that is currently in use by the system, then we display the percentage usage of the CPU, followed by the maximum FPS the user has set in settings, then the current FPS the game is running at (remember the maximum value isn't a guarantee of getting that FPS) in addition to the average FPS and Iteration values. We also respect the user's setting on antialiasing and use the colour white, we don't respect the user's theme here because at present in either of the two available themes, the shape colour is the same, and if we changed the theme to white the contrast couldn't be great between black text and a grey background for the line graph.
+
+93: ``¬ ¬ ¬ ¬ ¬ self.Display.blit(runFont, ((self.realWidth/2)+105, 0))`` Then we render the Pygame.surface object we just created and stored in the variable 'runFont'. We render the font to the display, referencing the variable 'self.Display', we set the position (in the format 'x', 'y') to exactly half the width of the display and then we add 105 pixels on so it doesn't overlap with the title. We set the 'y' axis height to 0 so it renders at the top of the display (all values here are in pixels).
+
+94: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+95: ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Here we are printing out details of the error that just occurred and that we stored in the variable 'Message'. This is a handy debug feature that references the Traceback module.
+
+96: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+
+
+.. note::
+   For information on this consult the above guide
+
+        97: ``else:``
+
+        98: ``¬ print("You need to run this as part of Pycraft")``
+
+        99: ``¬ import tkinter as tk``
+
+        100: ``¬ from tkinter import messagebox``
+
+        101: ``¬ root = tk.Tk()``
+
+        102: ``¬ root.withdraw()``
+
+        103: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")``
+
+        104: ``¬ quit()``
+
+
+
+.. note::
+   For information on this consult the above guide
+
+        1: ``if not __name__ == "__main__":``
+
+        2: ``print("Started <Pycraft_ExBenchmark>")``
+
+        3: ``¬ class LoadBenchmark:``
+
+        4: ``¬ ¬ def __init__(self):``
+
+        5: ``¬ ¬ ¬ pass``
+
+
+6: ``¬ ¬ def run(self):`` Here we are creating a subroutine called 'run', this takes only the parameter of 'self'. This subroutine is used in the benchmark process and controls each of the GPU/FPS based tests. (first the blank screen test, then the drawing test and finally a simple OpenGL test).
+
+7: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+8: ``¬ ¬ ¬ ¬ FPSlistX = []`` Here we are creating a blank array and storing it in the variable 'FPSlistX', this variable will store each iteration of the blank window benchmark in a sequence of 'n', this is used for the 'x' axis when drawing the benchmark line graph on the results page of the benchmark in 'Benchmark.py'.
+
+9: ``¬ ¬ ¬ ¬ FPSlistY = []`` This line creates a blank array and stores it in the variable 'FPSlistY', this stores the achieved FPS for each frame of the blank screen benchmark and is used later on in 'Benchmark.py' for the results page.
+
+
+10: ``¬ ¬ ¬ ¬ FPSlistX2 = []`` Here we are creating a blank array and storing it in the variable 'FPSlistX2', this variable will store each iteration of the drawing benchmark in a sequence of 'n', this is used for the 'x' axis when drawing the benchmark line graph on the results page of the benchmark in 'Benchmark.py'.
+
+11: ``¬ ¬ ¬ ¬ FPSlistY2 = []`` This array, stored in the variable 'FPSlistY2' stores the FPS for each frame of the 2D drawing render test. This is the 'y' axis for the corresponding line graph on the results page. These arrays will receive processing later on in 'Benchmark.py' where the two arrays will be merged into points for the line graph on the results page, for more information see the benchmark section of the documentation.
+
+
+12: ``¬ ¬ ¬ ¬ FPSlistX3 = []`` Here we are creating a blank array and storing it in the variable 'FPSlistX3', this variable will store each iteration of the blank window benchmark in a sequence of 'n' (elaborating, this means the data in the array will look like this; [0, 1, 2, 3, 4, 5, ...], this is used for the 'x' axis when drawing the benchmark line graph on the results page of the benchmark in 'Benchmark.py'.
+
+13: ``¬ ¬ ¬ ¬ FPSlistY3 = []`` This array, stored in the variable 'FPSlistY3' stores the FPS for each frame of the 3D render test, the last of the three tests. This will be used later on in 'Benchmark.py' in the results page for the drawing the corresponding line graph.
+
+
+14: ``¬ ¬ ¬ ¬ SetFPS = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 200, 250, 300, 350, 500]`` Here we are storing an array of the different FPS targets, after the completion of each of the targets, the next target is selected and the time taken for each benchmark will theoretically decrease (although it's unlikely that some of the higher ones will be met). The first test is the blank window test, it will start at 15 FPS, then after a set number of display refreshes (500), the next frame rate is selected.
+
+
+15: ``¬ ¬ ¬ ¬ self.Display = self.mod_Pygame__.display.set_mode((1280, 720))`` Here we set the display to the original resolution and size of (1280x720), we do this so that if the display is set large or fullscreen, the benchmark will still be fair and comparable to other data, it also stops the display from potentially freezing in fullscreen which can cause a system lockup, this also stops the window from being resized during the test as the larger the display is the lower the FPS can be, especially at high a high FPS and size. We store the display we create in the same variable as always, 'self.Display'. 
+
+
+16: ``¬ ¬ ¬ ¬ iteration = 0`` We start each of the different tests (blank, drawing and OpenGL) by resetting some values, here we set the iteration counter to 0, this is used for getting the current frame for the 'FPSlist<num>' variables, this also controls when the program should move onto the next test/speed.
+
+17: ``¬ ¬ ¬ ¬ FPScounter = 0`` This will store the index for the array stored in the variable 'SetFPS', when the program reaches the end of one test at a set speed, this is incremented and the test runs again at the higher speed.
+
+18: ``¬ ¬ ¬ ¬ MaxIteration = 500`` This controls how many iterations of the 'iteration' variable we do (so how long the test is and how many samples to collect) before moving on to the next framerate or test. 
+
+
+19: ``¬ ¬ ¬ ¬ while iteration < 7500:`` Next we control how many iterations in total there are for each of the tests, after 7500 iterations (each set of 500 iterations is a different framerate) the program moves on to a different test or finishes, based on the progress through the subroutine the program is. Until the program is finished with a stage, and the variable 'iteration' is not equal to 7500, we run the contents of the while loop.
+
+20: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: Benchmark | Running Blank Window Benchmark @ {SetFPS[FPScounter]} FPS")`` We set the caption to update the user on which stage of the benchmark they are on and what framerate the game is currently testing, this is called ONCE per change in speed as not to disrupt the benchmark.
+
+21: ``¬ ¬ ¬ ¬ ¬ while not iteration == MaxIteration:`` Now we go through and run this while loop approximately 500 times for each frame time, this controls when the program should move on from that framerate and increase the FPS. What code runs inside this while-loop controls the contents of the benchmark, so for example for the first test there will only 1 reference to the 'self.Display' variable where the display is filled.
+
+22: ``¬ ¬ ¬ ¬ ¬ ¬ if not self.clock.get_fps() == 0:`` For the first few runs of the benchmark, there many not be a current FPS value, in which case we ignore these values where the FPS is 0, this is where we detect if the current FPS is NOT 0.
+
+23: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ FPSlistX.append(iteration)`` Here we start collecting data, first we update the array we stored at the variable 'FPSlistX' (which controls the 'x' position of the line in the line graph) with the current iteration of the est.
+
+24: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ FPSlistY.append(self.clock.get_fps())`` Then we append the current FPS (which we get through 'self.clock.get_fps()') to the variable 'FPSlistY'. This stores the current framerate of the display which we use for the 'y' axis of the line graph on the results page in 'Benchmark.py'.
+
+25: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+26: ``¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+27: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and (not event.key == self.mod_Pygame__.K_SPACE)):`` Here we are detecting is the user is attempting to exit the benchmark, we detect if the user has attempted to press the 'x' at the top of the display first, then we check to see if the user has pressed any key on the keyboard, which can also be used to close the benchmark (this is mentioned in the test at the start of the benchmark in 'Benchmark.py' however if the user has pressed the SPACE key then we ignore this. Pygame stores all events since the previous frame.
+
+28: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return False`` We return the Boolean value of False if the benchmark has been exited, this triggers an error in 'Benchmark.py' that cancels the benchmark safely, this is the intended effect.
+
+
+29: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+30: ``¬ ¬ ¬ ¬ ¬ ¬ iteration += 1`` Next we increase the variable 'iteration' by 1, this counts the number of frames and it is important this is called only once per frame.
+
+31: ``¬ ¬ ¬ ¬ ¬ ¬ self.clock.tick(SetFPS[FPScounter])`` Next we set the refresh-rate of the display to the integer value stored at the position stored in the variable 'FPScounter' which acts like an index for the array 'SetFPS'.
+
+32: ``¬ ¬ ¬ ¬ ¬ FPScounter += 1`` After every 500 iterations of the benchmark we increment the variable 'FPScounter' by 1, this is done so that the program knows to switch to a higher speed for the next set of 500 iterations. The next speed is chosen using the previous line of the documentation.
+
+33: ``¬ ¬ ¬ ¬ ¬ MaxIteration += 500`` Here we increase the variable 'MaxIteration' by 500, this tells the program to continue running for another 500 frames, this is because we can't reset the variable 'Iteration' that counts each frame due to its role as counting how many frames have passes in total so the program knows when to end the benchmark and so the line graph's 'x' axis on the results page is chronological.
+
+
+34: ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_caption(f"Pycraft: v{self.version}: Benchmark | Preparing Animated Benchmark")`` Now, after we have finished the blank screen benchmark we allow the benchmark to take a momentary 'break' so that system components can cool off if they get warm, this also allows us to clearly separate them in both code and when they are running, during this time we set the caption accordingly for the user to tell them that we are 'Preparing Animated Benchmark'.
+
+
+35: ``¬ ¬ ¬ ¬ iteration = 0`` We start each of the different tests (blank, drawing and OpenGL) by resetting some values, here we set the iteration counter to 0, this is used for getting the current frame for the 'FPSlist<num>' variables, this also controls when the program should move onto the next test/speed.
+
+36: ``¬ ¬ ¬ ¬ FPScounter = 0`` This will store the index for the array stored in the variable 'SetFPS', when the program reaches the end of one test at a set speed, this is incremented and the test runs again at the higher speed.
+
+37: ``¬ ¬ ¬ ¬ MaxIteration = 500`` This controls how many iterations of the 'iteration' variable we do (so how long the test is and how many samples to collect) before moving on to the next framerate or test. 
+
+38: ``¬ ¬ ¬ ¬ run = 0`` Here we are setting the variable 'run' to 0, this appears to have little purpose in the benchmark and will be removed in Pycraft v0.9.4-2 and later versions.
+
+39: ``¬ ¬ ¬ ¬ y = 10`` Here we are setting the variable 'y' to 10, this variable's purpose is unclear and will likely be removed with the previous variable in Pycraft v0.9.4-2.
+
+
+40: ``¬ ¬ ¬ ¬ while not iteration == 60:`` Now we are letting this while loop iterate over the following code 60 times, at the start of each iteration we heck to see if the variable 'iteration' is not equal to 60, the variable 'iteration' will increase by 1 with each run.
+
+41: ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+42: ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+43: ``¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and (not event.key == self.mod_Pygame__.K_SPACE)):`` Here we are detecting is the user is attempting to exit the benchmark, we detect if the user has attempted to press the 'x' at the top of the display first, then we check to see if the user has pressed any key on the keyboard, which can also be used to close the benchmark (this is mentioned in the test at the start of the benchmark in 'Benchmark.py' however if the user has pressed the SPACE key then we ignore this. Pygame stores all events since the previous frame.
+
+44: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return False`` We return the Boolean value of False if the benchmark has been exited, this triggers an error in 'Benchmark.py' that cancels the benchmark safely, this is the intended effect.
+
+
+45: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+46: ``¬ ¬ ¬ ¬ ¬ iteration += 1`` Next we increase the variable 'iteration' by 1, this counts the number of frames and it is important this is called only once per frame.
+
+47: ``¬ ¬ ¬ ¬ ¬ self.clock.tick(60)`` Here we are settingg the frame-rate in the break to 60 FPS as this shouldn't be too straining on the system and allow it to cool slightly before the next test, this section also helps with the data analytics as somtimes the first few values of the next test will be the same frame-rate of the end of the last which can skew the results. Bceuase this program will iterate 60 times at 60 FPS that means this while loop should run for thoertically exactly 1 second.
+
+48: ``¬ ¬ ¬ ¬ iteration = 0`` We start each of the different tests (blank, drawing and OpenGL) by resetting some values, here we set the iteration counter to 0, this is used for getting the current frame for the 'FPSlist<num>' variables, this also controls when the program should move onto the next test/speed.
+
+49: ``¬ ¬ ¬ ¬ FPScounter = 0`` This will store the index for the array stored in the variable 'SetFPS', when the program reaches the end of one test at a set speed, this is incremented and the test runs again at the higher speed.
+
+50: ``¬ ¬ ¬ ¬ MaxIteration = 500`` This controls how many iterations of the 'iteration' variable we do (so how long the test is and how many samples to collect) before moving on to the next framerate or test. 
