@@ -32,7 +32,7 @@ For those not familiar they can be found here: (pypi.org) and you can use the fo
 ``pip install <module>``
 ``pip uninstall <module>``
 
-Here is a short video tutorial walk you through all this: (youtu.be/DG5YbE-umw0)
+Here is a short video tutorial walk you through all this: (https://youtu.be/DG5YbE-umw0)
 
 ### Installing the project from GitHub (Method 2)
 
