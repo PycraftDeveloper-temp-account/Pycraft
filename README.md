@@ -82,12 +82,9 @@ But there is a better solution on its way!
 
 You can alternatively run these commands in the directory containing a file called `Pipfile`:
 
-    pip install pipenv
-    pipenv install
+``pip install pipenv`` then: ``pipenv install python-pycraft``
 
-And to start the game:
-
-    pipenv run python ./Pycraft/main.py
+And to start the game: ``pipenv run python <PATH to 'main.py'>``
 
 ## Running The Program
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program. Pycraft has recently undergone some large structural redesigning, so to run the program the advice is now different:
