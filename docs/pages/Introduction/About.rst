@@ -58,26 +58,26 @@ Credits
 ====================
 With thanks to
 ++++++++++++++++++++
-- Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
-- Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
-- Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan <br />
-- Henri Post (HenryFBP) @ https://github.com/HenryFBP <br />
-- PyPi @ www.pypi.org <br />
-- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-- Pygame @ www.github.com/pygame/pygame <br />
-- Numpy @ www.github.com/numpy/numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
-- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-- Psutil @ www.github.com/giampaolo/psutil <br />
-- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-- Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-- GPUtil @ www.github.com/anderskm/gputil <br />
-- Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ https://github.com/moderngl/moderngl <br />
-- Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
-- Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
-- Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
-- Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
+- Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper
+- Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn
+- Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan
+- Henri Post (HenryFBP) @ https://github.com/HenryFBP
+- PyPi @ www.pypi.org
+- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow
+- Pygame @ www.github.com/pygame/pygame
+- Numpy @ www.github.com/numpy/numpy
+- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl
+- PyAutoGUI @ www.github.com/asweigart/pyautogui
+- Psutil @ www.github.com/giampaolo/psutil
+- PyWaveFront @ www.github.com/pywavefront/PyWavefront
+- Py-CPUinfo @ www.github.com/pytorch/cpuinfo
+- GPUtil @ www.github.com/anderskm/gputil
+- Tabulate @ www.github.com/p-ranav/tabulate
+- Moderngl @ https://github.com/moderngl/moderngl
+- Moderngl_window @ https://github.com/moderngl/moderngl-window
+- Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545
+- Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368
+- Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799
 
 Uncompiled Pycraft Dependencies
 ====================
@@ -86,31 +86,31 @@ When you’re installing the uncompiled Pycraft variant from here you need to in
 ``pip install <module>`` / ``pip uninstall <module>``
 pip is usually installed by default when installing Python with most versions.
 
-- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-- Pygame @ www.github.com/pygame/pygame <br />
-- Numpy @ www.github.com/numpy/numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
-- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-- Psutil @ www.github.com/giampaolo/psutil <br />
-- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-- Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-- GPUtil @ www.github.com/anderskm/gputil <br />
-- Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ https://github.com/moderngl/moderngl <br />
-- Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
+- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow
+- Pygame @ www.github.com/pygame/pygame
+- Numpy @ www.github.com/numpy/numpy
+- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl
+- PyAutoGUI @ www.github.com/asweigart/pyautogui
+- Psutil @ www.github.com/giampaolo/psutil
+- PyWaveFront @ www.github.com/pywavefront/PyWavefront
+- Py-CPUinfo @ www.github.com/pytorch/cpuinfo
+- GPUtil @ www.github.com/anderskm/gputil
+- Tabulate @ www.github.com/p-ranav/tabulate
+- Moderngl @ https://github.com/moderngl/moderngl
+- Moderngl_window @ https://github.com/moderngl/moderngl-window
 
-_Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
+*Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately.*
 
 Changes
 ====================
-Pycraft v0.9.3 is now live! Here is a list of all the added features to this major update: <br />
+Pycraft v0.9.3 is now live! Here is a list of all the added features to this major update:
 
 * Feature: The entire game engine has been reprogrammed, removing redundant functions, improving the visual experience and making future updates much easier.
 * Feature: The project has moved over from using (.ogg) audio files to (.wav) files, this means a much larger file size, but in the current implementation Pygame does not appear to like (.ogg) files!
 * Feature: We have added a messages screen to the home screen, this will display information like events, updates, important milestones in game and more! Expect this feature to be worked on significantly!
 * Bug Fix: There have been lots of bug fixes in the course of programming this new update, however not many bugs were raised in Pycraft v0.9.2.5 so there haven't been many bug fixes that link the two updates (there have been bug fixes however to the game engine in the course of its programming and re-design). If you discover a bug, then feel free to share details with me on either Twitter or by email.
 
-_Please note there have been features REMOVED from this update at this point in time, for example the new load-screen, this will be re-added hopefully, but will take some time to work on. Also, there will likely be a small update to Pycraft over the course of December, however this will be likely bug fixes and the arrival/integration of the upcoming installer._
+*Please note there have been features REMOVED from this update at this point in time, for example the new load-screen, this will be re-added hopefully, but will take some time to work on. Also, there will likely be a small update to Pycraft over the course of December, however this will be likely bug fixes and the arrival/integration of the upcoming installer.*
 
 Again, feedback would be much appreciated this update was released on; 04/12/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
 
