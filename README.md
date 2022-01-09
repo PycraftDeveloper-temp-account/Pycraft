@@ -14,6 +14,34 @@ Progress towards Pycraft v0.9.4: ![Progress](https://progress-bar.dev/38) <br />
 Documentation Progress: ![Progress](https://progress-bar.dev/50) <br />
 Installer Progress: ![Progress](https://progress-bar.dev/25) <br />
 
+## Contents
+
+This is a guide of where some of the section of this README have gone, as well as useful links to other documents.
+
+> * [About](https://github.com/PycraftDeveloper/Pycraft#about)
+> * [Preview Video](https://youtu.be/shAprkrcaiI)
+> * [Setup](https://github.com/PycraftDeveloper/Pycraft#setup)
+> * * [Installing the project from GitHub (Method 1)](https://github.com/PycraftDeveloper/Pycraft#installing-the-project-from-github-method-1)
+> * * [Installing the project from GitHub (Method 2)](https://github.com/PycraftDeveloper/Pycraft#installing-the-project-from-github-method-2)
+> * * [Installing from PyPi (preferred)](https://github.com/PycraftDeveloper/Pycraft#installing-from-pypi-preferred)
+> * * [Installing using Pipenv](https://github.com/PycraftDeveloper/Pycraft#installing-using-pipenv)
+> * [Running The Program](https://github.com/PycraftDeveloper/Pycraft#running-the-program)
+> * [Credits](https://github.com/PycraftDeveloper/Pycraft#credits)
+> * [Uncompiled Pycraft Dependancies](https://github.com/PycraftDeveloper/Pycraft#uncompiled-pycraft-dependencies-)
+> * [Changes](https://github.com/PycraftDeveloper/Pycraft#changes)
+> * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft#our-update-policy)
+> * [Version Naming](https://github.com/PycraftDeveloper/Pycraft#version-naming)
+> * [Releases](https://github.com/PycraftDeveloper/Pycraft#releases)
+> * [Other Sources](https://github.com/PycraftDeveloper/Pycraft#other-sources)
+> * [Final Notices](https://github.com/PycraftDeveloper/Pycraft#final-notices)
+
+> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Update_Timeline.md#update-timeline)
+> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Planned_Storyline.md#the-planned-storyline)
+> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Sound_Preview.md#pycrafts-sound-files---preview-1)
+
+> * [The Documentation for Pycraft (Read The Docs)](https://python-pycraft.readthedocs.io/en/latest/)
+> * [The Documentation for Pycraft (GitHib Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
+
 ## About
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that gap in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
 
@@ -131,23 +159,6 @@ _Please note there have been features REMOVED from this update at this point in 
 
 Again, feedback would be much appreciated this update was released on; 04/12/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
 
-## Update Timeline
-Pycraft will be continually updated for a long time yet. The next few releases, Pycraft v0.9.x will not feature as a (.exe) release but only as a code release. Pycraft will now updated gradually, not all in one go, however (.exe) releases will likely only occur at major releases like the upcoming Pycraft v0.10! The following plan was taken from my Medium article: How We are Making a Video Game in Python #2 (here: https://medium.com/@PycraftDev/how-we-are-making-a-video-game-in-python-2-547b504bbd67) <br />
-
-At present this looks to be the schedule for Pycraft updates: <br />
-* Pycraft v0.9.4 - This update, which is being worked on now, will feature the start of a documentation worked on here: https://python-pycraft.readthedocs.io/en/pycraft-v0.9.3/ (be aware, this link will change), and here on GitHub (over at the official releases under the wiki tab). This update also features the integration of the new installer which shall guide you through the installation process.
-* Pycraft v0.9.5 — Will add better lighting, as well as a sun to the game! This update will also include the introduction of day and night cycles (20 minutes from sunset to sunrise), including clouds and dynamic skyboxes (featuring stars and night and day scenes). <br />
-* Pycraft v0.9.6 — This will add weather events to the sky box, as well as updated sounds, including libraries for night sounds, day sounds, rain sounds, snow sounds, ambient music, footstep sounds on wet ground, footstep sounds on snow, hurt sounds, civilisation sounds, ocean sounds, and environmental sounds (like trees and grass). <br />
-* Pycraft v0.9.7 — This will add an ocean to the OpenGL environment, as well as hopefully fixed collisions and much improved frame rates in game. <br />
-* Pycraft v0.9.8 — This update will add structures (like buildings, trees, grass, boats, people) to the game. <br />
-* Pycraft v0.9.9 — This update will feature interactions with the objects added in the previous update. <br />
-* Pycraft v0.9.10 — This update will feature the addition of a story line to the game. <br />
-* Pycraft v0.9.11 — This update will feature a start position in game, as well as saving your progress and loading them on a start screen, this update will also begin the process of playthrough! <br />
-* Pycraft v0.9.12 — This update will feature a GUI, as well as an in-game character! <br />
-* Pycraft v0.10 — This update is set to be released in Spring of 2022 at the earliest! This will showcase all the sub-updates to Pycraft v0.9, as well as featuring a compiled version. This update will also improve upon features added in sub-updates, as well as improving performance, and lots of bug fixes. <br />
-* Pycraft v0.10.1 — This update will feature the addition of inventory items. <br />
-* Pycraft v0.10.2 — This update will feature improvements to the inventory and map GUIs, this is as far as the plan reaches so far! <br />
-
 ## Our Update Policy
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
 
@@ -157,130 +168,6 @@ For example; Pycraft v0.9.2.1 The first number is relevant to if the project is 
 
 ## Releases
 All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but; just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
-
-## The Planned Storyline
-In Pycraft the plan is that you will start at sea on a boat, there you will learn that you have left your home on a separate island to find work and safety on this new one, when you arrive, you are shown to your room and the next day join a small groups of trainee knights, each training to be part of the Royal Guards system that protects the island from the dangers on the island, you quickly rise in rank as your skills shine until one day all your skills are put to the test. Will you follow through? Well, you don't know yet, I've got to make the game first!
-
-## Pycraft's Sound Files - Preview 1
-
-There is a lot of progress still to be made in creating all the sound files for Pycraft, but here are some early previews, as well as a description of where they will likely appear (likely subject to change).
-
-### Ancient Fountain Theme
-https://user-images.githubusercontent.com/81379254/148644536-aaf0e70f-c2ac-453c-8749-36b2fbce7032.mp4
-
-This sound will play at special fountains in the game, these fountains are where 8 individual spirits lie, they are very special/powerful places with good views of the surrounding land, this sound will play at these places of significance and others around the map.
-
-### Battle Theme
-https://user-images.githubusercontent.com/81379254/148644537-6da07dce-04ea-4fca-a777-4be91c3b74ae.mp4
-
-This sound will play when fighting enemies in game, this does not apply to 'boss' mobs which will have their own individual sound, some of which have been created below.
-
-### Boss/Dungeon Theme 1-3
-
-https://user-images.githubusercontent.com/81379254/148644538-2c05586b-d5de-4221-9b21-f15e196bee7c.mp4
-
-https://user-images.githubusercontent.com/81379254/148644540-bda008d9-b5f0-43d3-a3c4-3de0997243ba.mp4
-
-https://user-images.githubusercontent.com/81379254/148644548-605fe475-9d72-4f79-bbbc-c665bf017fd6.mp4
-
-These sounds will play when fighting a specific 'boss' enemy, each of the bosses will have their own respective dungeon and sounds, none of the 'bosses' have been created or planned yet so these sound files has not been assigned to a 'boss' or dungeon as yet.
-
-### Castle Theme
-
-https://user-images.githubusercontent.com/81379254/148644542-d3172a24-068a-49ff-bdd2-4318864864fe.mp4
-
-This sound will play when you are inside the castle, this sound does not play in the castle grounds, another sound will be created for that. This sound is also not specific to set areas of the castle.
-
-### Dark Forces Gain Power 1-2
-
-https://user-images.githubusercontent.com/81379254/148644543-d0e2337e-4e0e-4adf-a8da-d15521961422.mp4
-
-https://user-images.githubusercontent.com/81379254/148644544-924d5fc4-1c3a-4efe-b9e2-552edc5ce88b.mp4
-
-These sounds will play when the player has reached certain milestones in the 'main quest' section of the game where the dark forces (basic enemies as well as bigger bosses) awaken/grow in power.
-
-### Dark Forces Invade the Castle
-
-https://user-images.githubusercontent.com/81379254/148644546-7d560be5-efed-4390-a73d-ea6c3a137c26.mp4
-
-This sound plays at the biggest climax of the story, the enemies have invaded the village (a separate sound below for that) and the player has been trapped in a dungeon, they need to get out as a fight ensues in the castle between the 'good' and 'evil' forces. (In the end the user makes it out of the dungeon and is guided to the fight by the spirits (bodies of good in the game) and together they manage to destroy hordes of enemies and a final 'boss').
-
-### Finding Friends / Side-quest Completion
-
-https://user-images.githubusercontent.com/81379254/148644550-4d1e3bbc-f7d0-4fea-9897-128614f2fd1f.mp4
-
-This sound is more positive and is used to mark an end to a user's optional 'side-quest'.
-
-### Forest Theme
-
-https://user-images.githubusercontent.com/81379254/148644551-6f6cdce3-53f6-4b77-a91a-2df8fabec1c2.mp4
-
-This sound plays when the user is within the Forest of Secrets, this area is very foggy and the user needs to move quickly to get through the fog, if they stop for more than a few seconds the fog around them will thicken and they will be moved to a different nearby location to confuse them. Should they get to the centre there is an enemy base guarding one of the fountains, there is no fog in this clearing. There is an area of dense forest/jungle that surrounds this area, that acts as a barrier for the user, this area is filed with enemies and the NPCs in the village will show evident fear of that place. No large area of the game will be off-limits to the user, but there will be a progression in the difficulty of enemies in later game places.
-
-### In Contact with Spirits
-
-https://user-images.githubusercontent.com/81379254/148644552-6089d274-9449-4655-99c5-06463eb63091.mp4
-
-This sound will play when the user has entered one of 8 in-game fountains, they can do this by throwing in a symbolic item (for example, the 'air' spirit will accept a 'rare bird feather' to activate the fountain) these items will be clearly marked at the top of the fountain, but not 'filled-in' until the user throws in a symbolic item, when they do this they are transported to a dungeon, there are 8 in total and the user can leave and re-enter at any time, but the dungeon will re-set it's self unless the user reaches special 'check-points', once the dungeon is complete a final room will open and the player will hear this music, in that room there will be one of the 8 spirits which will award you for your toil and then disappear, this is one of the only times you see the spirit in a physical form, but they exist above the fountain casting a beam of light into the sky.
-
-### Loss Theme
-
-https://user-images.githubusercontent.com/81379254/148644553-2b557d5b-5b30-4c10-baf8-7251aab375de.mp4
-
-This sound will play at the loss of any NPC in the game, there are only a few times this happens. This also plays at sad points in the game.
-
-### Milestone Reached
-
-https://user-images.githubusercontent.com/81379254/148644559-42398c1a-21f2-42a5-92db-c2d820fff9c7.mp4
-
-This is one of the most positive sounds in the game, and also one of the least occurring and hardest to get access to. This sound plays after the completion of any dungeon, the defeat of any boss mob, the completion of all side-quests as well as a few more undecided moments.
-
-### Realisation
-
-https://user-images.githubusercontent.com/81379254/148644562-bcd0b1d1-e41d-4ce1-bedc-801ca9e3c1c1.mp4
-
-The use of this sound is not as defined as others in this list, but this will likely play at the completion of achievements, side quests or at other points in-game.
-
-### Smuggler’s theme
-
-https://user-images.githubusercontent.com/81379254/148644563-c646898f-6a82-462b-8f77-5bc2977cc7fd.mp4
-
-This plays when you are on the boat going towards Pycraft, this is where you learn some of the basic game mechanics and the plot begins. This also plays at a place called 'Smuggler's Cave' which is located below the jungle in a cliff, this is a large enemy hideout and this is where the enemies collect their food from (other than stealing and hunting), you are asked for one of the side-quests to check out the place and discover this, then you will go back to the castle and report the crime for a reward. This sound plays when there are any smuggler's boats around or when you are in the cave or have line of sight and are nearby.
-
-### Laboratory theme
-
-https://user-images.githubusercontent.com/81379254/148646360-1e424f5f-78db-48b4-bd16-e7578d256b91.mp4
-
-This only plays in a few locations throughout the game, this plays at the castle's laboratory as well as at some of the shops in the game.
-
-
-### Success Theme
-
-https://user-images.githubusercontent.com/81379254/148644564-37d51dcb-8679-4917-a69c-309cb9ded8c4.mp4
-
-This sound will play at special moments in the game, when 'bosses' are defeated and this is one of the last sounds you hear at the end of the game. This is also a sound that occurs in 'recounts' of the last victory against 'evil' which you learn about as the plot progresses. This sound will likely get more use as the game is developed.
-
-### Cave Theme / Dungeon Theme / Tales of Sadness
-
-https://user-images.githubusercontent.com/81379254/148644565-77e3ba80-1a6e-4ba4-8671-c621e8d42785.mp4
-
-This sound will play when the user is in the smuggler's cave to contrast the use of 'smugglers theme', this sound will also likely feature in one of the dungeons as well as at sad moments in the game. This sound is more of a work-in-progress than others.
-
-### The Castle is in Danger
-
-https://user-images.githubusercontent.com/81379254/148644567-79ffedc7-a56e-4705-9be0-885a067da8b8.mp4
-
-This sound plays when the king (or queen, this option may be left up to the player in 'character-designer’) and his officials and army realise that there is a battle approaching, this sound plays as the castle is readied for the battle  and there is widespread panic in the villages. This does not play during the battle.
-
-### Village Theme 1-3
-
-https://user-images.githubusercontent.com/81379254/148644568-d331e323-2436-48af-ad62-38d1a5f7f24d.mp4
-
-https://user-images.githubusercontent.com/81379254/148644570-e7394823-336f-4e36-bb55-ce80bd0e95a7.mp4
-
-https://user-images.githubusercontent.com/81379254/148644571-e0bf583e-fb06-4c91-bbb2-1b1c1209c2ea.mp4
-
-These three sounds have been created for each of the 4 villages that are in the game (with one sound not finished). The first sound is for the main village, this is where the main plot begins, but the other three are discovered later, contact blocked by the 'evil' forces at play. The player will receive rewards for creating contact with these villages and this is part of the main quest, these villages will contain related side-quests.
 
 ## Other Sources
 I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link: (https://medium.com/@PycraftDev), these articles are also uploaded to my other account on Dev here: (https://dev.to/pycraftdev). Any recommendations and feedback are, as always, greatly appreciated, a lot of time and work goes into making this happen!
