@@ -44,7 +44,7 @@ You can alternatively run these commands in the directory containing a file call
 
 ``pip install pipenv`` then: ``pipenv install python-pycraft``
 
-And to start the game: ``pipenv run python ./Pycraft/main.py``
+And to start the game: ``pipenv run python <PATH to 'main.py'>``
 
 Running The Program
 ====================
