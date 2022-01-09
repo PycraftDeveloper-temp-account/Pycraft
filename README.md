@@ -16,7 +16,7 @@ Installer Progress: ![Progress](https://progress-bar.dev/25) <br />
 
 ## Contents
 
-This is a guide of where some of the section of this README have gone, as well as useful links to other documents.
+This is a guide of where some of the sections of this README have gone, as well as useful links to other documents.
 
 > * [About](https://github.com/PycraftDeveloper/Pycraft#about)
 > * [Preview Video](https://youtu.be/shAprkrcaiI)
@@ -39,8 +39,8 @@ This is a guide of where some of the section of this README have gone, as well a
 > * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Planned_Storyline.md#the-planned-storyline)
 > * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Sound_Preview.md#pycrafts-sound-files---preview-1)
 
-> * [The Documentation for Pycraft (Read The Docs)](https://python-pycraft.readthedocs.io/en/latest/)
-> * [The Documentation for Pycraft (GitHib Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
+> * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
+> * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
 
 ## About
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that gap in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
