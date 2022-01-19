@@ -16,7 +16,7 @@ Installer Progress: ![Progress](https://progress-bar.dev/25) <br />
 
 ## Pycraft's Sound Files - Preview 1
 
-There is a lot of progress still to be made in creating all the sound files for Pycraft, but here are some early previews, as well as a description of where they will likely appear (likely subject to change). These are all open-source and free for anyone else to take and use in their projects too! Also there are a few issues with this page and it will be taken down between the 14/01/2022 and 17/01/2022 (DD/MM/YYYY) for small maintenance (some file renaming and restructuring and a few additional sounds)
+There is a lot of progress still to be made in creating all the sound files for Pycraft, but here are some early previews, as well as a description of where they will likely appear (likely subject to change). These are all open-source and free for anyone else to take and use in their projects too!
 
 ### Ancient Fountain Theme
 https://user-images.githubusercontent.com/81379254/148644536-aaf0e70f-c2ac-453c-8749-36b2fbce7032.mp4
