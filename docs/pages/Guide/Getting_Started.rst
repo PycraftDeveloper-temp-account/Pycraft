@@ -2358,3 +2358,1880 @@ Detailed Breakdown
 
 
 40: ``¬ ¬ ¬ ¬ ¬ self.size = self.wnd.buffer_size`` Now we are setting the variable 'size' to the size of the default OpenGL buffer for the window we created. (This serves little to no purpose and will be deprecated in versions of Pycraft v0.9.4-2 and greater.
+
+
+42: ``¬ ¬ ¬ ¬ ¬ WindowSize = SharedData.realWidth, SharedData.realHeight`` Here we are storing the last known dimensions of the window from the 2D game-engine as a tuple in the variable 'WindowSize', the values in this variable are in pixels, this will be used later to make switching between the different engines as seamless as possible as this keeps the size of the window constant when in windowed mode across the different GUIs.
+
+43: ``¬ ¬ ¬ ¬ ¬ CurrentWindowSize = WindowSize`` This variable will be where we store the size of the window for the game-engine, whenever the display is resized this function is called so that positions reliant on the size of the display can be updated accordingly. This variable stores the size (in pixels) as a tuple. This variable will likely be re-written several times.
+
+
+45: ``¬ ¬ ¬ ¬ ¬ self.wnd.size = WindowSize`` Here we are setting the size of the display we want to create, we set the size to the size of the last known display size in the 2D game engine so the switch is seamless (the variable takes the values in the tuple format (x, y)). This will likely change as the game-engine runs if the display is switched to and from full-screen. This is the ModernGL_window equivalent to 'pygame.display.set_mode(WindowSize)'.
+
+46: ``¬ ¬ ¬ ¬ ¬ self.wnd.mouse_exclusivity = False`` We also allow the mouse to be visible on-screen as well as to allow the mouse to leave the window, we do this because if the display becomes unresponsive whilst the engines switch we can still move the mouse around the desktop, also in testing there have been times in some OSs where closing the window where the mouse is hidden can cause visual issues, although this is rare. 
+
+
+48: ``¬ ¬ ¬ ¬ ¬ ¬ self.camera.projection.update(near=0.1, far=100.0)`` Here we are updating the 3D projection for the camera, this updates the values that are used as default when we created our display (the projection is created automatically), this can be called multiple times and changes the view of the game from the user's point of view (the parameters 'near' and 'far' specify a range of coordinates to process and render objects, anything outside of those ranges is not rendered. The variable 'far' is often called the 'render distance' in settings for other games.
+
+49: ``¬ ¬ ¬ ¬ ¬ self.camera.zoom = 2.5`` Next we continuing to setup the camera (or the user's view) and on this line we are zooming the camera in by 2.5x the default (which is 1), this acts like the zoom function of a camera.
+
+
+51: ``¬ ¬ ¬ ¬ ¬ ¬ self.obj = self.load_scene(SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\Map\\map.obj")))`` Next we are loading 3D objects in the wavefront format (.obj and .mtl files), we store the objects in the variable 'self.obj' in a VBO. We do this by calling the subroutine 'load_scene' which is a object in the variable 'self' which is different to the 'self' we use in the 2D game-engine, this 'self' variable stores parameters we can use in ModernGL. This 'load-scene' process will automatically load textures from the '.obj' corresponding '.mtl' file, this loads the objects in the same way they can be viewed in a 3D viewer software, like Blender or Paint 3D. (This subroutine takes one parameter here, but has lots we dont need to specify, this may be tweaked at a later date. This parameter is a path to the object relative to the 'Pycraft' folder.)
+
+
+53: ``¬ ¬ ¬ ¬ ¬ self.cube = SharedData.mod_ModernGL_window_.geometry.cube(size=(20, 20, 20))`` Next we are creating a cbe with the dimensions of 20m in both height, width and depth. This will be rendered with the camera at the centre as this is the cube we use for the sky-box so that at any time the nearest the sky box is will be 10m away. This acts as a clipping distance too as anything beyond the 10m sky-box will not be rendered, in later versions of Pycraft (from Pycraft v0.9.4-2 and onwards) the size of the sky-box will be the same size as the render-distance. We store this ModernGL object in the variable 'cube'.
+
+
+55: ``¬ ¬ ¬ ¬ ¬ self.prog = self.load_program(SharedData.mod_OS__.path.join(SharedData.base_folder, ("programs//cubemap.glsl")))`` Next we create the variable 'proj', this stores the projection matrix for the sky-box, to do this we will need to open the '.glsl' (short for OpenGL Shading Language) file 'cubemap', to do this we call the subroutine 'load_program' and give it the path to the relevant file (in the new folder 'programs' which stores all the needed '.glsl' scripts).
+
+
+57: ``¬ ¬ ¬ ¬ self.SkyBox_texture = self.load_texture_cube(`` Now we are creating a variable called 'Sky-Box_texture', this variable will store the textures for each of the sides of the sky-box, we do this by calling the subroutine 'load_texture_cube'. These textures will be 'glued' to the cube we created earlier. This subroutine takes the paths of the images to load for the sky-box as well as additional parameters as to how we will render the images (for example do we want to flip some over so they aren't backwards).
+
+58: ``¬ ¬ ¬ ¬ ¬ ¬ neg_x=SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\skybox\\back.jpg")),`` Now we load the image to go on the 'neg_x' side of the cube (this will be the back so we will use the shk-box image that represents the back). By default we load in facing positive 'x'.
+
+59: ``¬ ¬ ¬ ¬ ¬ ¬ neg_y=SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\skybox\\bottom.jpg")),`` Now we load the image to go on the 'neg_y' side of the cube (this will be the bottom so we will use the sky-box image that represents the bottom). By default we load in facing positive 'x'.
+
+60: ``¬ ¬ ¬ ¬ ¬ ¬ neg_z=SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\skybox\\left.jpg")),`` Now we load the image to go on the 'neg_z' side of the cube (this will be the on the left hand side so we will use the sky-box image that represents the left). By default we load in facing positive 'x'.
+
+61: ``¬ ¬ ¬ ¬ ¬ ¬ pos_x=SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\skybox\\front.jpg")),`` Now we load the image to go on the 'pos_x' side of the cube (this will be the on the front so we will use the sky-box image that represents the front). By default we load in facing positive 'x'.
+
+62: ``¬ ¬ ¬ ¬ ¬ ¬ pos_y=SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\skybox\\top.jpg")),`` Now we load the image to go on the 'pos_y' side of the cube (this will be the on the top so we will use the sky-box image that represents the top). By default we load in facing positive 'x'.
+
+63: ``¬ ¬ ¬ ¬ ¬ ¬ pos_z=SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\G3_Resources\\skybox\\right.jpg")),`` Now we load the image to go on the 'pos_z' side of the cube (this will be the on the right hand side so we will use the sky-box image that represents the right). By default we load in facing positive 'x'.
+
+64: ``¬ ¬ ¬ ¬ ¬ ¬ flip_x=True,`` Now we are adding the additional parameter 'flip_x' which we set to True, we need to do this because the sky-box will be rendered so when viewed from the outside every texture lines up, but when viewed from the inside we will see the cube's textures inverted (so if I had an arrow pointing left on the front of the cube, when seen from the outside it would face left, but on the inside, looking out, it would point right, flipping the 'x' axis inverts the direction of the arrow.)
+
+65: ``¬ ¬ ¬ ¬ ¬ )`` 
+
+
+67: ``¬ ¬ ¬ ¬ ¬ Prev_Mouse_Pos = (0,0)`` Next we are setting the variable 'Prev_Mouse_Pos' to the tuple (0, 0) in the format (x, y), this will be used in the calculation of how far, and in which direction the mouse has moved, this is used for making the illusion the camera is following the mouse.
+
+68: ``¬ ¬ ¬ ¬ ¬ Mouse_Pos = (0,0)`` Now we set the variable 'Mouse_Pos', which stores the mouses current position onscreen in the format (x, y) to (0, 0). (This is because both this and the last two variables need to be the same when first setting up, or the camera will move on the first run.
+
+69: ``¬ ¬ ¬ ¬ ¬ DeltaX, DeltaY = 0, 0`` Now we specify the 'Delta' variables, these store the individual direction of mouse movement on that axis, this is calculated by comparing the distance between the two previous variables 'Prev_Mouse_Pos' and 'Mouse_Pos'. (DeltaY > 0 then we move the camera up. DeltaY < 0 then we move the camera down | DeltaX > 0 then we move the camera right. DeltaX < 0 then we move the camera left).
+
+
+71: ``¬ ¬ ¬ ¬ ¬ self.wnd.exit_key = None`` Next we remove the default exit key for the window (which is 'ESCAPE'), we do this because we want events to happen before the window closes, and we can only do this if we handle the event ourselves. During development if you are modifying the 'ESCAPE' key's function then enable this so that you can leave the 3D game-engine (ESPECIALLY in fullscreen, if you dont you may have to re-start you're PC).
+
+
+73: ``¬ ¬ ¬ ¬ ¬ MouseUnlock = True`` Next we are creating the variable 'MouseUnlock' and we are assigning it the Boolean value True. This variable is used in toggling the mouse's visibility and wether the camera should move with the mouse, this effect is toggled using 'L' for now (it will be 'ESCAPE' when the user saves and quits through the 'Inventory' but thats a feature coming in a later version of Pycraft).
+
+
+75: ``¬ ¬ ¬ ¬ ¬ Jump = False`` Now we set the variable 'Jump' to False, this variable controls when the player can Jump in game, this will be set to False by default otherwise they'd jump the moment the game loads. When the jump animation is playing out we set the value of 'Jump to True so the user cannot jump whilst jumping (essentially creating a double-jump effect, although this may feature an some form of 'effect' later on in game in some situations).
+
+76: ``¬ ¬ ¬ ¬ ¬ JumpID = 0`` This variable is part of the jump animation, counting how many places they move up and down, this is needed because otherwise we may never come down to earth after the jump (this will be changed when collisions and gravity are added), when the variable is set to 0 the animation it at position 0 (the start).
+
+
+78: ``¬ ¬ ¬ ¬ ¬ self.camera.position.y += 0.7`` When we first load the objects into the world as well as the camera, everything is loaded at position (0, 0, 0) in the format (x, y, z) so this means the camera is clipped into the ground. We can displace the camera at this point when we start (This will only run once and wont be an issue when saves are added). We displace the ground by moving the camera up by 70cm.
+
+
+80: ``¬ ¬ ¬ ¬ ¬ ¬ WkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+81: ``¬ ¬ ¬ ¬ ¬ AkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+82: ``¬ ¬ ¬ ¬ ¬ SkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+83: ``¬ ¬ ¬ ¬ ¬ DkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+
+85: ``¬ ¬ ¬ ¬ ¬ RunForwardTimer = 0`` This variable is specific to the 'W' key and is used to detect when to switch from walking to sprinting when walking forwards (This may be later removed if 'double-tap to sprint' is added for the 'W' key). Sprinting starts after the user has been walking forwards and the variable 'RunForwardTimer' (which is currently set to 0) is greater than 10.
+
+
+87: ``¬ ¬ ¬ ¬ ¬ FPS = 0`` Next we set the variable 'FPS' to 0, this variable will store the current FPS of the game after each iteration, in later versions of Pycraft (v0.9.4-2 and greater) this will be used in limiting the FPS and in 'Devmode' once vsync is disabled.
+
+
+89: ``¬ ¬ ¬ ¬ ¬ Iteration = 0`` We also set the variable 'Iteration' to 0, this variable is used to control some functions that only run on the first iteration of the while loop. This variable has little purpose and will likely be removed in later versions of Pycraft (from Pycraft v0.9.4-2 onwards) and where necessary be replaced with the global variable stored in 'SharedData' with the same name.
+
+
+91: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+92: ``¬ ¬ ¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+93: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.mod_Pygame__.mixer.get_busy() == False:`` Next we are checking to see if there is any sound currently playing (this includes any channel), if there is sound playing then this subroutine 'pygame.mixer.get_busy()' would return True, we use this here so that the ambient wildlife sound will play if there is silence, this will in later updates be the default sound and if there is no other sound playing.
+
+94: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayAmbientSound(SharedData)`` We call the subroutine 'PlayAmbientSound' which loads and plays the ambient wildlife sound you hear when playing, this sound's volume will respect the volume the user has specified in settings for sound (a music track will be added in later).
+
+95: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ except Exception as Error:`` If an error occurs when running the above code then this line accepts these errors and stores them in the variable 'Error' instead of causing the program to crash.
+
+96: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ print(Error)`` If an error has occurred when running this (for example it tries to load a file that doesn't exist) then it will print the error out here (for development purposes so we can fix the bug, should one occur).
+
+97: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+99: ``¬ ¬ ¬ ¬ ¬ ¬ if Iteration == 0:`` Next we check if the program is running for the first time (by checking to see if the variable we just defined above is equal to 0, which is what we first set the value to).
+
+100: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.Fullscreen == False:`` Next we check if when we left the 2D game-engine the display was fullscreen or not, if the display was fullscreen then the variable 'Fullscreen' will be False here.
+
+101: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.fullscreen = True`` If the display was fullscreen when we left the 2D game-engine then we set the display in the 3D game engine to also be fullscreen, this helps make the switch between engines more seamless.
+
+102: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+103: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.fixed_aspect_ratio = SharedData.realWidth / SharedData.realHeight`` Next we set the aspect ratio of the camera to be the aspect ratio of the display (removing the wite bars that can appear on the border if we don't do this).
+
+104: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.window_size = SharedData.realWidth, SharedData.realHeight`` We then resize the display to be the same size as the windowed display we had in the 2D game-engine, again this is to make the switch between the game engines as seamless as possible, and less annoying for the user if they had reset the size of the display (for example if they are using the display on a large screen).
+
+105: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ CurrentWindowSize = self.window_size`` Next we update the variable 'CurrentWindowSize' with the current size of the OpenGL enabled display, this is done so that the game knows the size of the display for any size dependant positions (although there are very few/none currently implemented to the game engine, but the HUD is likely to need this variable.)
+
+106: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.position = (int((SharedData.FullscreenX-CurrentWindowSize[0])/2), int((SharedData.FullscreenY-CurrentWindowSize[1])/2))`` Next we set the position of the 3D display to be centred onscreen (to avoid situations where the display is cut off by he border of a monitor), to do this we use a similar formula as we do when centering text on an axis in the 2D game engine, taking the size of the monitor and then taking away the size of the window and dividing by two, we then store the value as an integer as we need this to the nearest pixel. We calculate the different axis (x, y) separately and all values here are in pixels.
+
+
+108: ``¬ ¬ ¬ ¬ ¬ ¬ if Iteration >= 5000:`` Next we need to make sure the value we store in 'Iteration' doesn't get too large, to do this we are checking here to see if 'Iteration' is greater than or equal to 5000...
+
+109: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ Iteration = 0`` We also set the variable 'Iteration' to 0, this variable is used to control some functions that only run on the first iteration of the while loop. This variable has little purpose and will likely be removed in later versions of Pycraft (from Pycraft v0.9.4-2 onwards) and where necessary be replaced with the global variable stored in 'SharedData' with the same name.
+
+
+111: ``¬ ¬ ¬ ¬ ¬ ¬ start = SharedData.mod_Time__.perf_counter()`` Next we store the time the program has been currently running for in the variable 'start', we use this to calculate the frame-time of this engine, and then from there we can calculate the game engine's FPS. To get the amount of time the program has been running for we call 'time.perf_counter()'
+
+
+113: ``¬ ¬ ¬ ¬ ¬ ¬ self.ctx.clear(1.0, 1.0, 1.0)`` Next we are clearing all the graphics from before this call from the display by setting the display to have the colour white, this acts similarly to 'display.fill' for Pygame. (255, 255, 255) = (1, 1, 1) = white | (255, 0, 0) = (1, 0, 0) = red | (255, 0 255) = (1, 0, 1) = purple. 
+
+
+115: ``¬ ¬ ¬ ¬ ¬ ¬ CurrentWindowSize = self.window_size`` Next we update the variable 'CurrentWindowSize' with the current size of the OpenGL enabled display, this is done so that the game knows the size of the display for any size dependant positions (although there are very few/none currently implemented to the game engine, but the HUD is likely to need this variable.)
+
+
+117: ``¬ ¬ ¬ ¬ ¬ Prev_Mouse_Pos = Mouse_Pos`` Now we store the mouse position from the last frame in the variable 'Prev_Mouse_Pos', then we can overwrite the variable 'Mouse_Pos' with the current mouse position onscreen and calculate the two 'Delta' variables for the mouse.
+
+118: ``¬ ¬ ¬ ¬ ¬ ¬ Mouse_Pos = SharedData.mod_Pyautogui__.position()`` Next we get the current mouse position onscreen and store it in the variable 'Mouse_Pos', this data is stored in a tuple with the format (x, y). We get the mouse's position by using PyAutoGUI in relation to the current monitor, there is a ModernGL subroutine for this and as such this line may change, but the position of the mouse is not needed, all we need is to know what direction and by how much the mouse is moving (and we need the position for that).
+
+119: ``¬ ¬ ¬ ¬ ¬ ¬ DeltaX, DeltaY = Mouse_Pos[0]-Prev_Mouse_Pos[0], Mouse_Pos[1]-Prev_Mouse_Pos[1]`` Next we need to calculate the difference between the variable 'Prev_Mouse_Pos' which stores the mouse's position from the previous frame, and 'Mouse_Pos' which stores the current position of the mouse. To calculate the difference between the two we take the current position from the old position and we calculate each of the axis (x and y) separately and store the result of the calculations in separate variables 'DeltaX' and 'DeltaY'.
+
+
+121: ``¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.ESCAPE):`` Next we are checking to see if the ESCAPE key has been pressed, if that key has been pressed then this if-statement would be True and we run the code indented below.
+
+122: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ Cubemap.Exit(self, SharedData, "Undefined")`` Now we call the subroutine we created earlier 'Exit' that uninitialized the 3D game-engine safely and updates variables used in the 2D game-engine, we set the third parameter (which will be the command) to 'Undefined' which tells the 'main' module to load the 'home-screen' next.
+
+123: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+124: ``¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.W):`` Next we are doing a similar thing as before when we detected if the ESCAPE key had been pressed except this is to detect if the 'w' key has been pressed (this is not case sensitive, and multiple keys can be pressed simultaneously).
+
+125: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ RunForwardTimer += (1/FPS)`` The 'W' key is the 1st of 4 movement keys, allowing the camera to move forward (along the positive x axis). Here we are increasing the variable 'RunForwardTimer' by how long we are expecting this frame to last (this creates a rough indication of real world time). We can calculate how long we are expecting the frame to last by dividing 1 by the current FPS to get the rough frame-time. 'RunForwardTimer' controls how much time passes before the player starts sprinting.
+
+126: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if RunForwardTimer <= 10:`` Now we are checking to see if the variable 'RunForwardTimer' is less than or equal to 10, this means that if less than 10 seconds have passed since the 'w' key was pressed, we do not enable sprint.
+
+127: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:`` If the user has also allowed the sound to be played in settings...
+
+128: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ WkeydownTimer += (1/FPS)`` ...if sound has been enabled by the user in settings then we start increasing the variable 'WkeydownTimer' by the previous frame-time, this is used to control how regularly we hear the footstep sound.
+
+129: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if WkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):`` Here we are checking to see if the variable 'WkeydownTimer', which stores how long the user has pressed down the 'W' key, is greater than a random value between 0.5 and 1 (we do this by generating a random number between 50 and 100 and dividing by 100 because we can't generate decimal numbers through this method). We want to do this so that the footstep sound appears slightly randomly to give a less 'robotic' effect to the players walk.
+
+130: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)`` Now we can play the footstep sound if the user has enabled sound in settings, we call the subroutine 'PlayFootstepsSound' which randomises the footstep sound (out of 6 possible sounds) to further create a more natural effect. The footstep sound is set the the volume the user has set the sound slider to in settings.
+
+131: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ WkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+132: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.x += 1.42`` Next we need to move the camera forward as the final stage of the walking animation, because we aren't sprinting yet we set the movement speed to an average real-world walking speed (in m/s).
+
+133: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+134: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:`` If the user has also allowed the sound to be played in settings...
+
+135: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ WkeydownTimer += (1/FPS)`` ...if sound has been enabled by the user in settings then we start increasing the variable 'WkeydownTimer' by the previous frame-time, this is used to control how regularly we hear the footstep sound.
+
+136: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if WkeydownTimer >= (SharedData.mod_Random__.randint(25, 75)/100):`` Here we are checking to see if the variable 'WkeydownTimer', which stores how long the user has pressed down the 'W' key, is greater than a random value between 0.25 and 0.75 seconds, the range between this, when sprinting is enabled and when sprinting isn't enabled is the same, but the median value will be lower, although there can be an overlap in timings, we don't want the footstep sound to play too quickly, but to have a noticeable increase. Again the if-statement features an element of random-ness to reduce the chances of the sound appearing 'robotic'.
+
+137: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)`` Now we can play the footstep sound if the user has enabled sound in settings, we call the subroutine 'PlayFootstepsSound' which randomises the footstep sound (out of 6 possible sounds) to further create a more natural effect. The footstep sound is set the the volume the user has set the sound slider to in settings.
+
+138: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ WkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+139: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.x += 2.2352`` Because we are sprinting we need to increase the user's movement speed, to do this we use a typical running speed in m/s. We move by adding 2.2352 to the 'x' coordinate in-game, this acts like a translation.
+
+140: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+141: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ RunForwardTimer = 0`` This variable is specific to the 'W' key and is used to detect when to switch from walking to sprinting when walking forwards (This may be later removed if 'double-tap to sprint' is added for the 'W' key). Sprinting starts after the user has been walking forwards and the variable 'RunForwardTimer' (which is currently set to 0) is greater than 10.
+
+
+143: ``¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.A):`` Next we are detecting if the 'A' key is pressed in our OpenGL display. This is not case-sensitive, This is not case-sensitive and is used for controlling movement of the camera in our OpenGL world
+
+144: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:`` If the user has also allowed the sound to be played in settings...
+
+145: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ AkeydownTimer += (1/FPS)`` Here we are increasing the variable 'AkeydownTimer' by the time it took to render the previous frame (which we do by dividing 1 by the current FPS)
+
+146: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if AkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):`` Here we are checking to see if the variable 'AkeydownTimer', which stores the time that key has been pressed, is greater than or equal to a random number between 0.5 and 1, which we do by using python's built in 'random' module and using its corresponding 'randint' subroutine. Because this approach doesn't generate decimal values, we must divide by 100.
+
+147: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)`` Now we can play the footstep sound if the user has enabled sound in settings, we call the subroutine 'PlayFootstepsSound' which randomises the footstep sound (out of 6 possible sounds) to further create a more natural effect. The footstep sound is set the the volume the user has set the sound slider to in settings.
+
+148: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ AkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+149: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.z += 1.42`` Here we are translating the camera 1.42 meters in the positive 'z' direction, 1.42 m/s is the average human movement speed at a walk so we use this value for realism
+
+
+151: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.S):`` Next we are detecting if the 'S' key is pressed in our OpenGL display. This is not case-sensitive and is used for controlling movement of the camera in our OpenGL world
+
+152: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:`` If the user has also allowed the sound to be played in settings...
+
+153: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SkeydownTimer += (1/FPS)`` Here we are increasing the variable 'SkeydownTimer' by the time it took to render the previous frame (which we do by dividing 1 by the current FPS)
+
+154: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if SkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):`` Here we are checking to see if the variable 'SkeydownTimer', which stores the time that key has been pressed, is greater than or equal to a random number between 0.5 and 1, which we do by using python's built in 'random' module and using its corresponding 'randint' subroutine. Because this approach doesn't generate decimal values, we must divide by 100.
+
+155: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)`` Now we can play the footstep sound if the user has enabled sound in settings, we call the subroutine 'PlayFootstepsSound' which randomises the footstep sound (out of 6 possible sounds) to further create a more natural effect. The footstep sound is set the the volume the user has set the sound slider to in settings.
+
+156: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+157: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.x -= 1.42`` Here we are translating the camera 1.42 meters in the negative 'x' direction, 1.42 m/s is the average human movement speed at a walk so we use this value for realism
+
+
+159: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.D):`` Next we are detecting if the 'D' key is pressed in our OpenGL display. This is not case-sensitive, This is not case-sensitive and is used for controlling movement of the camera in our OpenGL world
+
+160: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:`` If the user has also allowed the sound to be played in settings...
+
+161: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ DkeydownTimer += (1/FPS)`` Here we are increasing the variable 'DkeydownTimer' by the time it took to render the previous frame (which we do by dividing 1 by the current FPS)
+
+162: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if DkeydownTimer >= (SharedData.mod_Random__.randint(50, 100)/100):`` Here we are checking to see if the variable 'DkeydownTimer', which stores the time that key has been pressed, is greater than or equal to a random number between 0.5 and 1, which we do by using python's built in 'random' module and using its corresponding 'randint' subroutine. Because this approach doesn't generate decimal values, we must divide by 100.
+
+163: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)`` Now we can play the footstep sound if the user has enabled sound in settings, we call the subroutine 'PlayFootstepsSound' which randomises the footstep sound (out of 6 possible sounds) to further create a more natural effect. The footstep sound is set the the volume the user has set the sound slider to in settings.
+
+164: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ DkeydownTimer = 0`` Now we are defining a timer variable for each of the 4 keys that control movement ('W', 'A', 'S', 'D'), these are all set to 0 and will increase as the user presses down on their respective key, once they let go the timer returns to 0. This set of variables regulates the footstep sound you hear which occurs after the variable exceeds a random number between 0.5 and 1.
+
+165: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.z -= 1.42`` Here we are translating the camera 1.42 meters in the negative 'z' direction, 1.42 m/s is the average human movement speed at a walk so we use this value for realism
+
+
+167: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.E):`` Next we are detecting if the 'E' key is pressed in our OpenGL display. This is not case-sensitive, this is used to trigger the opening of the inventory
+
+168: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.wnd._fullscreen == True:`` Here we are checking to see if the OpenGL display is fullscreen, this data is stored in the variable 'self.wnd._fullscreen', if the display is fullscreen then the Boolean value here will be True.
+
+169: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ myScreenshot = SharedData.mod_Pyautogui__.screenshot(region=((0, 0, SharedData.FullscreenX, SharedData.FullscreenY)))`` Here we are calling the external module PyAutoGUI and its screenshot subroutine, this is used in order to create a screenshot, we use this method to take a screenshot of the monitor when we are in fullscreen mode, we set the region to take as being from the top left most corner of the main display and we set the size to the maximum resolution of the window, so when we load this again in 'Inventory' we have the image fullscreen (the 'Inventory' GUI will match the state of the game engine in size). We store our screenshot in the 'myScreenshot' variable.
+
+170: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ myScreenshot.save(SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\General_Resources\\PauseIMG.png")))`` Then we save our screenshot which we store in the variable 'myScreenshot' to the same location we store the sound on the home screen under Pycraft > Resources > General_Resources. We save the image as (.png)
+
+171: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+172: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ PosX, PosY = self.wnd.position`` Next we get the position of the display onscreen from the top-left most corner, we store this in the variables 'PosX' and 'PosY'.
+
+173: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ myScreenshot = SharedData.mod_Pyautogui__.screenshot(region=((PosX, PosY, SharedData.realWidth, SharedData.realHeight)))`` Now, if the display is not fullscreen, we use the same method as earlier to take a screenshot, except this time we change the region to take, now we take the screenshot from the top-left hand side of the GUI to the current size of the GUI.
+
+174: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ myScreenshot.save(SharedData.mod_OS__.path.join(SharedData.base_folder, ("Resources\\General_Resources\\PauseIMG.png")))`` Then we save our screenshot which we store in the variable 'myScreenshot' to the same location we store the sound on the home screen under Pycraft > Resources > General_Resources. We save the image as (.png)
+
+
+176: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ Cubemap.Exit(self, SharedData, "Inventory")`` Now we call the function we created earlier to exit the game engine properly, we give the parameters of 'self' which is the current variables defined in THIS class, and 'SharedData' which are all the global variables we create in the 2D game engine. We also give the additional parameter of 'Inventory' which is used for setting the global variable 'SharedData.Command' so when we exit the game-engine we open the 'Inventory' GUI and dont just return to the same engine.
+
+177: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+
+179: ``¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.R):`` Next we are detecting to see if the 'R' key is pressed in the OpenGL display, this is not case sensitive.
+
+180: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ Cubemap.Exit(self, SharedData, "MapGUI")`` Now we call the same subroutine as before except this time when we close the GUI we open the 'MapGUI' module, which needs a big overhaul.
+
+181: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+182: ``¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.L):`` Now we are checking to see if the 'L' key has been pressed in our OpenGL display, this is not case sensitive and controls the toggling of the mouse.
+
+183: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if MouseUnlock == True:`` Next we toggle mouse unlock so we can move the mouse out of the OpenGL display (for example to re-position the window). Here we are checking to see if the variable 'MouseUnlock' is equal to the Boolean value of True.
+
+184: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ MouseUnlock = False`` If the variable 'MouseUnlock' is equal to True then we invert the value to False.
+
+185: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+186: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ MouseUnlock = True`` Next we are creating the variable 'MouseUnlock' and we are assigning it the Boolean value True. This variable is used in toggling the mouse's visibility and wether the camera should move with the mouse, this effect is toggled using 'L' for now (it will be 'ESCAPE' when the user saves and quits through the 'Inventory' but thats a feature coming in a later version of Pycraft).
+
+187: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.wnd.is_key_pressed(self.wnd.keys.SPACE):`` Next we check ton see if the SPACE key has been pressed in our OpenGL display
+
+188: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ Jump = True`` If the SPACE key has been pressed, we set the variable 'Jump' to True, this prevents us double-jumping.
+
+189: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ JumpUP = True`` We also set the variable 'JumpUp' to True, this controls if we are on the upwards section of the jump animation and toggles off when we reach the top of our jump.
+
+
+191: ``¬ ¬ ¬ ¬ ¬ ¬ if Jump == True:`` Next we are checking to see if the variable 'Jump' is set to True, this is set to True when the SPACE key is pressed. This initiates the jump animation.
+
+192: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if JumpID < 10 and JumpUP == True:`` Now we control which frame of the animation we are at (This changes in Pycraft v0.9.4). We want to go up 10 frames then go down for 10 frames so we land in the right place, here we are controlling if the variable 'JumpID' (which stores the frame of the animation we are at) and making sure to see if we are actually at the section of the jump animation where we go up (we re-use the frame controller variable 'JumpID'), which will be True when we want to go up. If this if-statement is True we go UP.
+
+193: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ JumpID += 1`` Next we increment the Jump animation frame counter, 'JumpID' by 1, this shows we have finished a frame of the animation and helps to decide what happens next.
+
+194: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.y += 0.1`` Next we move the camera UP by 0.1 meters because we are at the 'UP' section of the animation.
+
+195: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if JumpID == 10:`` Next we check to see if we are at the middle of the animation and need to start going back down again.
+
+196: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ JumpUP = False`` Next we set the variable 'JumpUP' to false, this means that we dont get suck in an infinite loop when we lower the frame counter variable.
+
+197: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if JumpID >= 0 and JumpUP == False:`` Next we check to see if we are on the DOWN part of the animation, at this point we lower the frame counter until it is less than or equal to zero and we are at the 'go down' section of the animation, signified by the change in the 'JumpUP' variable.
+
+198: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ JumpID -= 1`` Next we lower the frame counter by 1 as we move down the camera on the DOWN section of the animation.
+
+199: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.position.y -= 0.1`` We move the camera down by 0.1 meters, this should take us to exactly the same spot on the 'y' axis.
+
+200: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if JumpID == 0:`` Now we are checking to see if we are in the down section of the animation and at the last frame of this. This if-statement will trigger the end of the animation if this returns True.
+
+201: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if SharedData.sound == True:`` If the user has also allowed the sound to be played in settings...
+
+202: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ SharedData.mod_SoundUtils__.PlaySound.PlayFootstepsSound(SharedData)`` Now we can play the footstep sound if the user has enabled sound in settings, we call the subroutine 'PlayFootstepsSound' which randomises the footstep sound (out of 6 possible sounds) to further create a more natural effect. The footstep sound is set the the volume the user has set the sound slider to in settings.
+
+203: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ Jump = False`` Now we set the variable 'Jump' to False, this variable controls when the player can Jump in game, this will be set to False by default otherwise they'd jump the moment the game loads. When the jump animation is playing out we set the value of 'Jump to True so the user cannot jump whilst jumping (essentially creating a double-jump effect, although this may feature an some form of 'effect' later on in game in some situations).
+
+204: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ JumpID = 0`` This variable is part of the jump animation, counting how many places they move up and down, this is needed because otherwise we may never come down to earth after the jump (this will be changed when collisions and gravity are added), when the variable is set to 0 the animation it at position 0 (the start).
+
+
+206: ``¬ ¬ ¬ ¬ ¬ ¬ self.ctx.enable(SharedData.mod_ModernGL__.CULL_FACE | SharedData.mod_ModernGL__.DEPTH_TEST)`` Now we are enabling certain features of our OpenGL display; face culling (where faces that aren't in line-of-sight to the camera aren't rendered) and depth testing (which allows us to perform depth testing on positions in our scene relative to the camera), in raw OpenGL this would be similar to: glEnable(GL_DEPTH_TEST) and glEnable(GL_CULL_FACE).
+
+
+208: ``¬ ¬ ¬ ¬ ¬ cam = self.camera.matrix`` Next we get the matrix that is responsible for the position of the camera. Matrixes are a complex grid of values which we can manipulate and change to create basic effects in game.
+
+209: ``¬ ¬ ¬ ¬ ¬ ¬ cam[3][0] = 0`` Here we are after the positions on the 3 axis of our camera, this is asking for the first value of this position, which would be the X axis: in the form (X, y, z). We set this to zero.
+
+210: ``¬ ¬ ¬ ¬ ¬ ¬ cam[3][1] = 0`` Here we are after the positions on the 3 axis of our camera, this is asking for the second value of this position, which would be the Y axis: in the form (x, Y, z). We set this to zero.
+
+211: ``¬ ¬ ¬ ¬ ¬ ¬ cam[3][2] = 0`` Here we are after the positions on the 3 axis of our camera, this is asking for the third value of this position, which would be the Z axis: in the form (x, y, Z). We set this to zero.
+
+
+213: ``¬ ¬ ¬ ¬ ¬ self.SkyBox_texture.use(location=0)`` Now we set the texture we loaded earlier to be in position '0', which means that the next object we render (which is the cube for the skybox) will have that texture.
+
+214: ``¬ ¬ ¬ ¬ ¬ ¬ self.prog['m_proj'].write(self.camera.projection.matrix)`` Next we load the current camera matrix (which is projection) with: 'self.camera.projection.matrix', and then give that data to the GLSL shader we loaded up earlier for the skybox, this is used to make sure that the cube is rendered around the camera in a projection like manner (so with the characteristics of a projection based scene)
+
+215: ``¬ ¬ ¬ ¬ ¬ ¬ self.prog['m_camera'].write(cam)`` Next we give the current position of the camera, which we just set to (0, 0, 0) to the GLSL shader we loaded up and stored in the variable 'self.proj', this makes sure to render the skybox at the camera (which we give coordinates for).
+
+
+217: ``¬ ¬ ¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+218: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if MouseUnlock == True:`` Next we toggle mouse unlock so we can move the mouse out of the OpenGL display (for example to re-position the window). Here we are checking to see if the variable 'MouseUnlock' is equal to the Boolean value of True.
+
+219: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.camera.rot_state(-DeltaX, -DeltaY)`` Here we are increasing the amount of rotation we give to the camera, this isn't cleared with each refresh of the display so can be incremented by the movement of the mouse to give a fluid movement (we invert the direction here due to the way we calculate the mouse's delta earlier).
+
+220: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.mouse_exclusivity = True`` Next we set the variable 'self.wnd.mouse_exclusivity' to True, this is a function of ModernGL to stop the mouse leaving the window.
+
+221: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+222: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.mouse_exclusivity = False`` We also allow the mouse to be visible on-screen as well as to allow the mouse to leave the window, we do this because if the display becomes unresponsive whilst the engines switch we can still move the mouse around the desktop, also in testing there have been times in some OSs where closing the window where the mouse is hidden can cause visual issues, although this is rare. 
+
+223: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ except Exception as Error:`` If an error occurs when running the above code then this line accepts these errors and stores them in the variable 'Error' instead of causing the program to crash.
+
+224: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ print(Error)`` If an error has occurred when running this (for example it tries to load a file that doesn't exist) then it will print the error out here (for development purposes so we can fix the bug, should one occur).
+
+225: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+227: ``¬ ¬ ¬ ¬ ¬ ¬ self.ctx.front_face = 'cw'`` This variable 'self.ctx.front_face' to 'cw', this controls which faces to cull with the GL_CULL_FACE function, this gives us greater control of which faces we cull for individual objects. Here we are changing the criteria for the cull face function so it checks the criteria clockwise. By default it checks Counter-ClockWise
+
+228: ``¬ ¬ ¬ ¬ ¬ ¬ self.cube.render(self.prog)`` Next we render the cube we loaded earlier with the dimensions 20x20x20 meters, we load this to the PROJECTION matrix so it appears properly. We render this with the DOMINANT texture at location 0, this is the skybox textures we have loaded.
+
+
+230: ``¬ ¬ ¬ ¬ ¬ ¬ self.ctx.front_face = 'ccw'`` Next we change the face culling algorithm to Counter ClockWise, this is the default for this method. We store this value in 'self.ctx.front_face'
+
+231: ``¬ ¬ ¬ ¬ ¬ ¬ self.obj.draw(projection_matrix=self.camera.projection.matrix, camera_matrix=self.camera.matrix)`` Next we draw the 'ground' object to our scene, we render this using the PROJECTION matrix at the position of the camera, we do this also for the cube, but on different lines. The projection matrix is stored in 'self.camera.projection.matrix' and the camera is stored in 'self.camera.matrix'.
+
+
+233: ``¬ ¬ ¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+234: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.wnd.swap_buffers()`` Next we swap the display buffers (we render to a frame and then draw that to the display at the end), this also updates the display to show the graphics we just rendered to the 3D space, similar to 'pygame.display.update()' in Pygame.
+
+235: ``¬ ¬ ¬ ¬ ¬ ¬ except Exception as Error:`` If an error occurs when running the above code then this line accepts these errors and stores them in the variable 'Error' instead of causing the program to crash.
+
+236: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ print(Error)`` If an error has occurred when running this (for example it tries to load a file that doesn't exist) then it will print the error out here (for development purposes so we can fix the bug, should one occur).
+
+237: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+239: ``¬ ¬ ¬ ¬ ¬ ¬ FPS = 1/(SharedData.mod_Time__.perf_counter()-start)`` Next we need to calculate the frame time for each refresh, to do this we take the current end time and take away the start time for the frame, this gives us the frame time (how long it takes to process each frame), then we divide 1 by this to get us the current frame-rate, which we store in the variable 'FPS'.
+
+240: ``¬ ¬ ¬ ¬ ¬ ¬ Iteration += 1`` Next we also need to increment our frame counter variable for the whole program, which we do here by increasing the variable 'Iteration' by 1.
+
+241: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+242: ``¬ ¬ ¬ ¬ ¬ print(''.join(SharedData.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Next we print out any errors that may occur when running the program. This method gives us much more detail about precisely what caused the error, without the program actually crashing, this is purely a development feature.
+
+243: ``¬ ¬ ¬ ¬ ¬ Cubemap.Exit(self, SharedData, "Undefined")`` Now we call the subroutine we created earlier 'Exit' that uninitialized the 3D game-engine safely and updates variables used in the 2D game-engine, we set the third parameter (which will be the command) to 'Undefined' which tells the 'main' module to load the 'home-screen' next.
+
+244: ``¬ ¬ ¬ ¬ ¬ SharedData.GameError = str(Message)`` Next we store the error we just excepted and stored in the variable 'Message' in the variable 'GameError' which is returned back to the main program and then initiates a response to the error, often this will be loading up the error screen and displaying the error that occured.
+
+245: ``¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+
+
+
+249: ``¬ ¬ class CreateEngine:`` Now we are creating a new class in 'GameEngine.py', this variable is in charge of loading up any Pygame graphics, as well as manipulating them for the purpose of the game, often this will be done in a thread. This class also loads up the load screen for Pycraft v0.9.4.
+
+
+
+252: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+253: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+256: ``¬ ¬ def GenerateLoadDisplay(self, LoadingFont, text, MainTitleFont, SecondaryFont, LoadingTextFont):`` Now we are creating a new subroutine called 'GenerateLoadDisplay', this subroutine takes the parameters; 'self' (remember this is the same self that we use for the rest of Pycraft's 2D engine), 'LoadingFont' (Which stores a font file we load in Pygame for some of the fonts in the load-screen), 'text' (This variable stores a string that relates to what the program is loading at that moment), 'MainTitleFont' (This variable stores the font we loaded in Pygame to render the title for the load-screen), 'SecondaryFont' (This stores the font we use for other aspects of the load-screen, for instance displaying the message 'Loading' as the program loads) and 'LoadingTextFont' (which we use to render information we receive through the 'text' variable). This subroutine does not return anything.
+
+257: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+258: ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+
+260: ``¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+
+262: ``¬ ¬ ¬ ¬ PycraftTitle = MainTitleFont.render("Pycraft", self.aa, self.FontCol)`` Next we are rendering the title for the project, 'Pycraft', using the font 'Book Antiqua' which we loaded earlier and store in the variable 'MainTitleFont'. This text can be anti-aliased if the user has enabled that feature and uses the default primary font colour for the currently selected theme.
+
+263: ``¬ ¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()`` Now we get the width of the Pygame.surface object we have just created (from rendering the text 'Pycraft'), this is used in centering the text onscreen later on.
+
+264: ``¬ ¬ ¬ ¬ ¬ self.Display.blit(PycraftTitle, ((self.realWidth-TitleWidth)/2, 0))`` Now we take the main Pygame.surface object (which we call 'self.Display') and add the rendered text object to that, this makes our text show up on screen. For positioning we center it on the X axis making use of the displays current width and the fonts width, and at the very top of the display with a Y position of 0.
+
+
+266: ``¬ ¬ ¬ ¬ LoadingTitle = SecondaryFont.render("Loading", self.aa, self.SecondFontCol)`` Now we render the text 'Loading', we store this in the variable 'LoadingTitle', this is used for displaying the message 'Loading' as the game engine is initialising and loading its required resources. This respects the user's choice on anti-aliasing and uses the second colour from the user's selected theme for text, this is used to add greater detail to the game, in dark mode this is the same as the 'self.FontCol' variable, but in light mode this is the same as the shape colour we use in game, we dont do the same in dark mode because it is difficult to read. This provides more customisability and helps to reduce delays in programming.
+
+267: ``¬ ¬ ¬ ¬ ¬ self.Display.blit(LoadingTitle, (((self.realWidth-TitleWidth)/2)+55, 50))`` Next we blit the text we just rendered to the current Pygame display, we render this 55 pixels off centred on the X axis, and 50 pixels down on the Y axis. (Just under the text 'Pycraft').
+
+
+
+
+279: ``¬ ¬ ¬ ¬ except Exception as error:`` Here we are handling any errors that may occur whilst toggling the display between windowed and full-screen (or visa-versa) we store any errors in the variable 'error' (note this will be changed to match the new error handling guidelines in Pycraft v0.9.4.
+
+
+283: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+
+
+289: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.init()`` Next we need to re-initiate Pygame as we have forced the display module to become 'uninitialised', this also refreshes any other Pygame modules that may have been 'uninitialised' during the running of the program.
+
+291: ``¬ ¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+293: ``¬ ¬ ¬ ¬ ¬ except Exception as Error:`` If an error occurs when running the above code then this line accepts these errors and stores them in the variable 'Error' instead of causing the program to crash.
+
+294: ``¬ ¬ ¬ ¬ ¬ ¬ print(Error)`` If an error has occurred when running this (for example it tries to load a file that doesn't exist) then it will print the error out here (for development purposes so we can fix the bug, should one occur).
+
+295: ``¬ ¬ ¬ ¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+296: ``¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+297: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+298: ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Here we are printing out details of the error that just occurred and that we stored in the variable 'Message'. This is a handy debug feature that references the Traceback module.
+
+
+
+302: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+303: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+304: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+305: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+306: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+307: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+308: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+309: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+
+42: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+46: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+47: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+48: ``¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+49: ``¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+
+52: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+58: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+59: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+60: ``¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+61: ``¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+62: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+63: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+64: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+65: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+66: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+67: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+68: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+69: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+
+15: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+16: ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+17: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+
+29: ``¬ ¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)`` Loads the project's font, 'Book Antiqua' from the 'Fonts' folder in Pycraft, and sets the font size to 60.
+
+30: ``¬ ¬ ¬ ¬ ¬ PycraftTitle = MainTitleFont.render("Pycraft", self.aa, self.FontCol)`` Next we are rendering the title for the project, 'Pycraft', using the font 'Book Antiqua' which we loaded earlier and store in the variable 'MainTitleFont'. This text can be anti-aliased if the user has enabled that feature and uses the default primary font colour for the currently selected theme.
+
+31: ``¬ ¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()`` Now we get the width of the Pygame.surface object we have just created (from rendering the text 'Pycraft'), this is used in centering the text onscreen later on.
+
+32: ``¬ ¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+33: ``¬ ¬ ¬ ¬ ¬ self.Display.blit(PycraftTitle, ((self.realWidth-TitleWidth)/2, 0))`` Now we take the main Pygame.surface object (which we call 'self.Display') and add the rendered text object to that, this makes our text show up on screen. For positioning we center it on the X axis making use of the displays current width and the fonts width, and at the very top of the display with a Y position of 0.
+
+34: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+
+44: ``¬ ¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)`` Loads the project's font, 'Book Antiqua' from the 'Fonts' folder in Pycraft, and sets the font size to 15.
+
+
+48: ``¬ ¬ ¬ ¬ ¬ tempFPS = self.FPS`` This is used to temporarily store the game's target FPS, this is used later to slow the game down when minimised.
+
+49: ``¬ ¬ ¬ ¬ ¬ coloursARRAY = []`` We now set 'coloursARRAY' to contain an array data structure instead of a boolean value. 
+
+
+
+
+
+59: ``¬ ¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+60: ``¬ ¬ ¬ ¬ ¬ ¬ coloursARRAY = []`` We now set 'coloursARRAY' to contain an array data structure instead of a boolean value. 
+
+
+69: ``¬ ¬ ¬ ¬ ¬ ¬ for i in range(32):`` Then we iterate over each of the lines in the graphic (there are 32).
+
+73: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+74: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ coloursARRAY.append(self.ShapeCol)`` And for each of the lines in the graphic, we assign a colour value related to the user's selected theme, because the animation is not currently active, we set the colour value to the default value of the colour relating to shapes in the theme.
+
+
+79: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+85: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+100: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.Fullscreen == False:`` Next we are checking to see if the variable 'self.Fullscreen' is False. This variable controls the toggling of full-screen and windowed displays, and if this if-statement returns True; the display will be in windowed mode.
+
+101: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.SetDisplay(self)`` Here we are creating our Pygame display through the subroutine 'SetDisplay' in 'DisplayUtils.py'. All the parameters for this subroutine are sent through the variable 'self'.
+
+102: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ elif self.Fullscreen == True:`` Next we are checking to see if the variable 'self.Fullscreen' is equal to True. This is the other part of the toggle, if this if-statement returns True then the window will be set to be fullscreen.
+
+103: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.SetDisplay(self)`` Here we are creating our Pygame display through the subroutine 'SetDisplay' in 'DisplayUtils.py'. All the parameters for this subroutine are sent through the variable 'self'.
+
+
+105: ``¬ ¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+
+110: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.SavedWidth = 1280`` If an error does occur, then we want to reset any variables that could have been problematic, we start by resetting the value of the variable 'self.SavedWidth' to 1280, which used to be the fixed window size for Pycraft, and is still the width all objects are rendered too, before a scale factor moves then suitably based on how much larger the window is.
+
+112: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.SavedHeight = 720`` We also reset the value of the variable 'self.SavedHeight' to 720 (both of these variables values are in pixels), this value is chosen for the same reasons as the previous.
+
+
+115: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+117: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+
+
+127: ``¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)`` This line of code is used to control what happens when the display is minimised, for more information, see the documentation for this subroutine. This subroutine will return an integer, this is stored in the variable 'tempFPS', which is used to set the windows FPS (in Hz).
+
+
+129: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+130: ``¬ ¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()`` Gets the current window frame-rate (in Hz)
+
+131: ``¬ ¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS`` Adds the current framerate to a variable which is used to calculate the mean average FPS in game (in Hz)
+
+132: ``¬ ¬ ¬ ¬ ¬ ¬ self.Iteration += 1`` Used as frequency in calculating the mean average FPS (in Hz)
+
+134: ``¬ ¬ ¬ ¬ ¬ ¬ PycraftTitle = MainTitleFont.render("Pycraft", self.aa, self.FontCol)`` Next we are rendering the title for the project, 'Pycraft', using the font 'Book Antiqua' which we loaded earlier and store in the variable 'MainTitleFont'. This text can be anti-aliased if the user has enabled that feature and uses the default primary font colour for the currently selected theme.
+
+135: ``¬ ¬ ¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()`` Now we get the width of the Pygame.surface object we have just created (from rendering the text 'Pycraft'), this is used in centering the text onscreen later on.
+
+
+
+
+
+
+
+
+
+
+162: ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+163: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):`` This controls when the display should close (if on the 'ome-Screen') or returning back to the previous window (typically the 'ome-Screen'), to do this you can press the 'x' at the top of the display, or by pressing 'ESC or ESCAPE' which is handy when in full-screen modes.
+
+164: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+165: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+168: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:`` This line of code is used as part of the activation for 'Devmode' which you activate by pressing SPACE 10 times. Here we are detecting is the SPACE key has been pressed and 'Devmode' is not already active.
+
+169: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1`` This line increases the value of the variable 'Devmode' by 1. When the variable 'Devmode' is equal to 0, then 'Devmode' is activated.
+
+170: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:`` Detects if the key 'q' is pressed (not case sensitive).
+
+171: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)`` If the key 'q' is pressed, then we load up the secondary window in 'TkinterUtils.py', this, like 'Devmode' displays information about the running program. This feature may be deprecated at a later date, but this isn't clear yet. All the data the subroutine needs to access is sent through the parameter 'self' which is a global variable.
+
+172: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:`` This line detects if the function key 'F11' has been pressed.
+
+173: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)`` If the function key 'F11' has been pressed, then resize the display by toggling full-screen. (The 'F11' key is commonly assigned to this in other applications).
+
+174: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:`` Detects if the key 'x' is pressed (NOT case sensitive).
+
+175: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1`` This resets 'Devmode' to 1, turning the feature off. This can be used to cancel counting the number of spaces pressed too.
+
+
+
+
+193: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+194: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+196: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+202: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+203: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+204: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+205: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+207: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+213: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+214: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+215: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+216: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+218: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+224: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+225: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+226: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+227: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+229: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+235: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+236: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+237: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+238: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+240: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+246: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+247: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+248: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+249: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+251: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+254: ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+
+
+260: ``¬ ¬ ¬ ¬ ¬ self.Display.blit(PycraftTitle, ((self.realWidth-TitleWidth)/2, 0))`` Now we take the main Pygame.surface object (which we call 'self.Display') and add the rendered text object to that, this makes our text show up on screen. For positioning we center it on the X axis making use of the displays current width and the fonts width, and at the very top of the display with a Y position of 0.
+
+
+
+
+290: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+293: ``¬ ¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)`` This line calls the subroutine 'CreateDevmodeGraph', this subroutine is responsible for drawing the graph you see at the top-right of most Pycraft GUI's. It takes the variable 'self' as a parameter, this code will return any errors, which are stored in the variable 'Message'. If there are no errors then the subroutine will return 'None'. The second parameter 'DataFont' is the currently loaded font which is used for rendering the text at the top of the graph.
+
+294: ``¬ ¬ ¬ ¬ ¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+
+
+299: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+300: ``¬ ¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)`` This line of code controls how fast the GUI should refresh, defaulting to the user's preference unless the window is minimised, in which case its set to 15 FPS. All values for FPS are in (Hz) and this line of code specifies the maximum FPS of the window, but this does not guarantee that FPS.
+
+301: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+302: ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Here we are printing out details of the error that just occurred and that we stored in the variable 'Message'. This is a handy debug feature that references the Traceback module.
+
+304: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+305: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+306: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+307: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+308: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+309: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+310: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+311: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+9: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+10: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+11: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+12: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+13: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+14: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+15: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+16: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+8: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+10: ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+11: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()`` Here we are forcing the display to update, this refreshes the entire frame. This is where the objects we either 'blit' or 'draw' to the display are made visible. This should be called only once per frame to avoid confusion and 'Pygame.display.flip()' is usually preferred, because of the greater amount of options and better performance.
+
+
+15: ``¬ ¬ ¬ ¬ ¬ TitleWidth = PycraftTitle.get_width()`` Now we get the width of the Pygame.surface object we have just created (from rendering the text 'Pycraft'), this is used in centering the text onscreen later on.
+
+
+17: ``¬ ¬ ¬ ¬ icon = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Icon.jpg"))).convert()`` Now we are loading the image file (in the .jpg file format) for the icon at the top corner of the display and in the taskbar (or dock on apple devices). We add the '.convert()' format at the end because it creates a copy of the surface that is more optimised for on screen drawing. We store this image in the variable 'icon'.
+
+18: ``¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+20: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_icon(icon)`` Next we are setting the display's icon (the image at the top, next to the caption on windows, and the image that is displayed in the taskbar for that display. On Apple devices it sets the time you will see in the dock). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+79: ``¬ ¬ ¬ ¬ FullscreenX, FullscreenY = self.mod_Pyautogui__.size()`` Now we are getting the dimensions of the monitor the display is currently on, this is used later on to calculate the dimensions for a rectangle that prevents the animation from rendering text above the title. (This isn't going to be used in later versions, its being replaced with 'realWidth').
+
+
+81: ``¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+82: ``¬ ¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+
+84: ``¬ ¬ ¬ ¬ ¬ if realWidth < 1280:`` Detects if the window has been made smaller than the minimum width, 1280 pixels
+
+85: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+86: ``¬ ¬ ¬ ¬ ¬ ¬ if realHeight < 720:`` Detects if the window has been made smaller than the minimum height, 720 pixels
+
+87: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+
+93: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+
+97: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+
+
+108: ``¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+111: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+112: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+113: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+114: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.VIDEORESIZE:`` Now we are detecting if the display has resized, if the display has been resized (even if that's to full-screen) then it sets the value of the variable 'resize' to boolean 'True', this triggers the if-statement earlier on on the next iteration of the display if the user is on the last stage to refresh it with new values. 
+
+115: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+124: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:`` This line detects if the function key 'F11' has been pressed.
+
+125: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)`` If the function key 'F11' has been pressed, then resize the display by toggling full-screen. (The 'F11' key is commonly assigned to this in other applications).
+
+
+133: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+134: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+135: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+136: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+138: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+144: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+145: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+146: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+147: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+149: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+155: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+156: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+157: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+158: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+160: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+166: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+167: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+168: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+169: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+171: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+177: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+178: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+179: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+180: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+182: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+188: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+189: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+190: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+191: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+193: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+199: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+200: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+201: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+202: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+204: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+210: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+211: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+212: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+213: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+215: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+
+
+
+
+
+
+
+
+
+261: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()`` Here we are forcing the display to update, this refreshes the entire frame. This is where the objects we either 'blit' or 'draw' to the display are made visible. This should be called only once per frame to avoid confusion and 'Pygame.display.flip()' is usually preferred, because of the greater amount of options and better performance.
+
+262: ``¬ ¬ ¬ ¬ ¬ ¬ self.clock.tick(self.FPS)`` Here we are setting the refresh rate (in Hz) of the display, this is used for preventing the GUI from running really fast, causing unnecessary strain on the CPU and GPU, and also allowing us to detect the display's frame-rate (which may not be exactly the value of 'self.FPS').
+
+263: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+264: ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Here we are printing out details of the error that just occurred and that we stored in the variable 'Message'. This is a handy debug feature that references the Traceback module.
+
+265: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+266: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+267: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+268: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+269: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+270: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+271: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+272: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+273: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+4: ``¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+5: ``¬ ¬ ¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+9: ``¬ ¬ ¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+255: ``¬ ¬ except Exception as error:`` Here we are handling any errors that may occur whilst toggling the display between windowed and full-screen (or visa-versa) we store any errors in the variable 'error' (note this will be changed to match the new error handling guidelines in Pycraft v0.9.4.
+
+257: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+258: ``¬ ¬ ¬ ¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+259: ``¬ ¬ ¬ ¬ ¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+260: ``¬ ¬ ¬ ¬ ¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+262: ``¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+263: ``¬ ¬ ¬ ¬ except:`` (This needs updating to follow the guidelines of the documentation) This ignores any errors that may occur when running the main section of the benchmark, or in creating our Pygame window.
+
+264: ``¬ ¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+267: ``¬ ¬ ¬ ¬ ¬ except:`` (This needs updating to follow the guidelines of the documentation) This ignores any errors that may occur when running the main section of the benchmark, or in creating our Pygame window.
+
+268: ``¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+
+277: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+
+
+
+297: ``¬ ¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+
+
+
+
+314: ``¬ ¬ ¬ ¬ except Exception as error:`` Here we are handling any errors that may occur whilst toggling the display between windowed and full-screen (or visa-versa) we store any errors in the variable 'error' (note this will be changed to match the new error handling guidelines in Pycraft v0.9.4.
+
+316: ``¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+317: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+319: ``¬ ¬ ¬ ¬ except Exception as error:`` Here we are handling any errors that may occur whilst toggling the display between windowed and full-screen (or visa-versa) we store any errors in the variable 'error' (note this will be changed to match the new error handling guidelines in Pycraft v0.9.4.
+
+321: ``¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+322: ``¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+324: ``¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+
+327: ``try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+330: ``¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+336: ``¬ except Exception as Error:`` If an error occurs when running the above code then this line accepts these errors and stores them in the variable 'Error' instead of causing the program to crash.
+
+
+
+344: ``if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+
+350: ``¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+
+
+356: ``if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+
+361: ``if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+
+366: ``while True:`` Enters the project's game loop
+
+369: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+372: ``¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+383: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+389: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+395: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+401: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+407: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+415: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+421: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+426: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+432: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+436: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+438: ``¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+
+20: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+22: ``¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+23: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()`` Here we are forcing the display to update, this refreshes the entire frame. This is where the objects we either 'blit' or 'draw' to the display are made visible. This should be called only once per frame to avoid confusion and 'Pygame.display.flip()' is usually preferred, because of the greater amount of options and better performance.
+
+
+25: ``¬ ¬ ¬ ¬ icon = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Icon.jpg"))).convert()`` Now we are loading the image file (in the .jpg file format) for the icon at the top corner of the display and in the taskbar (or dock on apple devices). We add the '.convert()' format at the end because it creates a copy of the surface that is more optimised for on screen drawing. We store this image in the variable 'icon'.
+
+26: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_icon(icon)`` Next we are setting the display's icon (the image at the top, next to the caption on windows, and the image that is displayed in the taskbar for that display. On Apple devices it sets the time you will see in the dock). 
+
+32: ``¬ ¬ ¬ ¬ ¬ MouseUnlock = True`` Next we are creating the variable 'MouseUnlock' and we are assigning it the Boolean value True. This variable is used in toggling the mouse's visibility and wether the camera should move with the mouse, this effect is toggled using 'L' for now (it will be 'ESCAPE' when the user saves and quits through the 'Inventory' but thats a feature coming in a later version of Pycraft).
+
+35: ``¬ ¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+36: ``¬ ¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+
+38: ``¬ ¬ ¬ ¬ ¬ ¬ if realWidth < 1280:`` Detects if the window has been made smaller than the minimum width, 1280 pixels
+
+39: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+40: ``¬ ¬ ¬ ¬ ¬ ¬ if realHeight < 720:`` Detects if the window has been made smaller than the minimum height, 720 pixels
+
+41: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+43: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+44: ``¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+47: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+48: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+49: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+61: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:`` This line detects if the function key 'F11' has been pressed.
+
+68: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+128: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()`` Here we are forcing the display to update, this refreshes the entire frame. This is where the objects we either 'blit' or 'draw' to the display are made visible. This should be called only once per frame to avoid confusion and 'Pygame.display.flip()' is usually preferred, because of the greater amount of options and better performance.
+
+129: ``¬ ¬ ¬ ¬ ¬ ¬ self.clock.tick(self.FPS)`` Here we are setting the refresh rate (in Hz) of the display, this is used for preventing the GUI from running really fast, causing unnecessary strain on the CPU and GPU, and also allowing us to detect the display's frame-rate (which may not be exactly the value of 'self.FPS').
+
+130: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+131: ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Here we are printing out details of the error that just occurred and that we stored in the variable 'Message'. This is a handy debug feature that references the Traceback module.
+
+132: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+133: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+134: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+135: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+136: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+137: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+138: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+139: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+140: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+
+22: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+23: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+24: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+25: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+26: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+27: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+28: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+29: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+8: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+
+12: ``¬ ¬ ¬ ¬ icon = self.mod_Pygame__.image.load(self.mod_OS__.path.join(self.base_folder, ("Resources\\General_Resources\\Icon.jpg"))).convert()`` Now we are loading the image file (in the .jpg file format) for the icon at the top corner of the display and in the taskbar (or dock on apple devices). We add the '.convert()' format at the end because it creates a copy of the surface that is more optimised for on screen drawing. We store this image in the variable 'icon'.
+
+13: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.set_icon(icon)`` Next we are setting the display's icon (the image at the top, next to the caption on windows, and the image that is displayed in the taskbar for that display. On Apple devices it sets the time you will see in the dock). 
+
+
+
+21: ``¬ ¬ ¬ ¬ ¬ ¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+23: ``¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+26: ``¬ ¬ ¬ ¬ ¬ ¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+28: ``¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+31: ``¬ ¬ ¬ ¬ ¬ ¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+33: ``¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+36: ``¬ ¬ ¬ ¬ ¬ ¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+
+
+44: ``¬ ¬ ¬ ¬ self.mod_Pygame__.display.quit()`` Here we are forcing the currently open display to close, if none is open then this has no effect.
+
+
+47: ``¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.SetDisplay(self)`` Here we are creating our Pygame display through the subroutine 'SetDisplay' in 'DisplayUtils.py'. All the parameters for this subroutine are sent through the variable 'self'.
+
+
+52: ``¬ ¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+55: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+61: ``¬ ¬ ¬ ¬ ¬ ¬ defLargeOctagon = [(205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact)]`` Here we are defining an array what stores the positions onscreen where we want to draw each of the points of our octagon, each position is stored as a tuple in the format: (x,y).
+
+62: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2)`` Here we are using Pygame's built in draw function (which we use in settings and elsewhere to draw shapes), this function takes the display we want to draw to as our first parameter, the colour of the shape as the second parameter (which we take from the user's current theme), then it asks for the points of the shape, this function can take varying amounts of points to draw different shapes, for example 6 sets of coordinates would draw a hexagon, for this we give the function the variable where we stored our array of points. Finally we set the width of the line, this is in pixels.
+
+128: ``¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+129: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+133: ``¬ ¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+
+139: ``¬ ¬ ¬ ¬ ¬ ¬ defLargeOctagon = [(205*xScaleFact, 142*yScaleFact), (51*xScaleFact, 295*yScaleFact), (51*xScaleFact, 512*yScaleFact), (205*xScaleFact, 666*yScaleFact), (422*xScaleFact, 666*yScaleFact), (575*xScaleFact, 512*yScaleFact), (575*xScaleFact, 295*yScaleFact), (422*xScaleFact, 142*yScaleFact)]`` Here we are defining an array what stores the positions onscreen where we want to draw each of the points of our octagon, each position is stored as a tuple in the format: (x,y).
+
+140: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.polygon(self.Display, self.ShapeCol, defLargeOctagon, width=2)`` Here we are using Pygame's built in draw function (which we use in settings and elsewhere to draw shapes), this function takes the display we want to draw to as our first parameter, the colour of the shape as the second parameter (which we take from the user's current theme), then it asks for the points of the shape, this function can take varying amounts of points to draw different shapes, for example 6 sets of coordinates would draw a hexagon, for this we give the function the variable where we stored our array of points. Finally we set the width of the line, this is in pixels.
+
+173: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()`` Here we are forcing the display to update, this refreshes the entire frame. This is where the objects we either 'blit' or 'draw' to the display are made visible. This should be called only once per frame to avoid confusion and 'Pygame.display.flip()' is usually preferred, because of the greater amount of options and better performance.
+
+174: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+175: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+176: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+177: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+178: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+179: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+180: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+181: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+182: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+183: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+8: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+9: ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+10: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+12: ``¬ ¬ ¬ ¬ ¬ VersionFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)`` Here we are loading the font 'Book Antiqua' from the font's folder, we set the size of this font to 15 and store the loaded font into the variable 'VersionFont'. 'self.mod_OS__.path.join()' is a subroutine that is part of the 'OS' module built into Python, this allows us to concatenate string data types to give us a file location.
+
+13: ``¬ ¬ ¬ ¬ ¬ MainTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 60)`` Loads the project's font, 'Book Antiqua' from the 'Fonts' folder in Pycraft, and sets the font size to 60.
+
+14: ``¬ ¬ ¬ ¬ ¬ InfoTitleFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 35)`` Loads the project's font, 'Book Antiqua' from the 'Fonts' folder in Pycraft, and sets the font size to 35.
+
+21: ``¬ ¬ ¬ ¬ ¬ DataFont = self.mod_Pygame__.font.Font(self.mod_OS__.path.join(self.base_folder, ("Fonts\\Book Antiqua.ttf")), 15)`` Loads the project's font, 'Book Antiqua' from the 'Fonts' folder in Pycraft, and sets the font size to 15.
+
+
+
+
+
+31: ``¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+32: ``¬ ¬ ¬ ¬ ¬ ¬ realWidth, realHeight = self.mod_Pygame__.display.get_window_size()`` Gets the width and height of the current Pygame window (in pixels), this is used in working out where everything should be scaled in-game if the window is resized.
+
+
+34: ``¬ ¬ ¬ ¬ ¬ if realWidth < 1280:`` Detects if the window has been made smaller than the minimum width, 1280 pixels
+
+35: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+36: ``¬ ¬ ¬ ¬ ¬ ¬ if realHeight < 720:`` Detects if the window has been made smaller than the minimum height, 720 pixels
+
+37: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+
+42: ``¬ ¬ ¬ ¬ ¬ ¬ tempFPS = self.mod_DisplayUtils__.DisplayUtils.GetPlayStatus(self)`` This line of code is used to control what happens when the display is minimised, for more information, see the documentation for this subroutine. This subroutine will return an integer, this is stored in the variable 'tempFPS', which is used to set the windows FPS (in Hz).
+
+43: ``¬ ¬ ¬ ¬ ¬ ¬ self.Iteration += 1`` Used as frequency in calculating the mean average FPS (in Hz)
+
+45: ``¬ ¬ ¬ ¬ ¬ ¬ self.eFPS = self.clock.get_fps()`` Gets the current window frame-rate (in Hz)
+
+46: ``¬ ¬ ¬ ¬ ¬ ¬ self.aFPS += self.eFPS`` Adds the current framerate to a variable which is used to calculate the mean average FPS in game (in Hz)
+
+47: ``¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+48: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.type == self.mod_Pygame__.QUIT or (event.type == self.mod_Pygame__.KEYDOWN and event.key == self.mod_Pygame__.K_ESCAPE):`` This controls when the display should close (if on the 'ome-Screen') or returning back to the previous window (typically the 'ome-Screen'), to do this you can press the 'x' at the top of the display, or by pressing 'ESC or ESCAPE' which is handy when in full-screen modes.
+
+49: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+50: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+51: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+52: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ elif event.type == self.mod_Pygame__.KEYDOWN:`` This line detects if any key is pressed on a keyboard, used when detecting events like pressing keys to navigate the GUIs or moving in-game.
+
+53: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_SPACE and self.Devmode < 10:`` This line of code is used as part of the activation for 'Devmode' which you activate by pressing SPACE 10 times. Here we are detecting is the SPACE key has been pressed and 'Devmode' is not already active.
+
+54: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode += 1`` This line increases the value of the variable 'Devmode' by 1. When the variable 'Devmode' is equal to 0, then 'Devmode' is activated.
+
+55: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:`` Detects if the key 'x' is pressed (NOT case sensitive).
+
+56: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1`` This resets 'Devmode' to 1, turning the feature off. This can be used to cancel counting the number of spaces pressed too.
+
+57: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_q:`` Detects if the key 'q' is pressed (not case sensitive).
+
+58: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_TkinterUtils__.TkinterInfo.CreateTkinterWindow(self)`` If the key 'q' is pressed, then we load up the secondary window in 'TkinterUtils.py', this, like 'Devmode' displays information about the running program. This feature may be deprecated at a later date, but this isn't clear yet. All the data the subroutine needs to access is sent through the parameter 'self' which is a global variable.
+
+59: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_F11:`` This line detects if the function key 'F11' has been pressed.
+
+60: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.UpdateDisplay(self)`` If the function key 'F11' has been pressed, then resize the display by toggling full-screen. (The 'F11' key is commonly assigned to this in other applications).
+
+61: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if event.key == self.mod_Pygame__.K_x:`` Detects if the key 'x' is pressed (NOT case sensitive).
+
+62: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Devmode = 1`` This resets 'Devmode' to 1, turning the feature off. This can be used to cancel counting the number of spaces pressed too.
+
+71: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+73: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+
+
+
+97: ``¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+99: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+104: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+120: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+156: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+170: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+184: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+198: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+212: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+219: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+220: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+224: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+225: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+
+238: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+239: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+243: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+244: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+
+257: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+258: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+262: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+263: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+
+276: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+277: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+281: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+282: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+
+293: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+295: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+296: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+300: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+301: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+303: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+
+315: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+316: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+319: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.LoadMusic = True`` If no music in the Pygame sound channel 2 is playing (Channel 2 is the location of the long, 2D game-engine music) then we allow the game to attempt to load and play the sound by setting the variable 'self.LoadMusic' to True, this doesn't allow the sound to play on its own, but will allow the music to play if the user has set the setting for allowing music to play (which is stored in the variable 'self.music'.
+
+321: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+322: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+330: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+
+
+
+365: ``¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+
+
+
+
+
+
+422: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+
+
+
+450: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+452: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+453: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+454: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+456: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+467: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+469: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+470: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+471: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+473: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+
+
+
+
+
+513: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+514: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+515: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+530: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+531: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+533: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+548: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+549: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+551: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+582: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ if self.sound == True:`` This if-statement controls if sound should be played or not based on the user's preference in 'Settings.py', the user's preference is stored when the program closes.
+
+583: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_SoundUtils__.PlaySound.PlayClickSound(self)`` This line calls the subroutine; 'PlayClickSound' in 'SoundUtils.py', if the user has allowed sound to play in settings, then interacting with the display will cause the click sound to play; volume and other parameters for this subroutine are stored in the global variable 'self'.
+
+585: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+615: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.draw.rect(self.Display, (self.BackgroundCol), cover_Rect)`` This line draws a rectangle to the display with 'self.Display', the colour to fill the rectangle is the colour of the background to Pycraft (This is a setting the user can change in the GUI in 'Settings.py') with the dimensions of the previously created Pygame Rect object called; 'cover_Rect'.
+
+
+
+622: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+625: ``¬ ¬ ¬ ¬ ¬ Message = self.mod_DrawingUtils__.GenerateGraph.CreateDevmodeGraph(self, DataFont)`` This line calls the subroutine 'CreateDevmodeGraph', this subroutine is responsible for drawing the graph you see at the top-right of most Pycraft GUI's. It takes the variable 'self' as a parameter, this code will return any errors, which are stored in the variable 'Message'. If there are no errors then the subroutine will return 'None'. The second parameter 'DataFont' is the currently loaded font which is used for rendering the text at the top of the graph.
+
+626: ``¬ ¬ ¬ ¬ ¬ ¬ if not Message == None:`` This line detects if there are any errors stored in the variable 'Message'. All important errors are stored in this variable. This error detection may be moved to a thread at a later date.
+
+627: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+
+629: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+630: ``¬ ¬ ¬ ¬ ¬ ¬ self.clock.tick(tempFPS)`` This line of code controls how fast the GUI should refresh, defaulting to the user's preference unless the window is minimised, in which case its set to 15 FPS. All values for FPS are in (Hz) and this line of code specifies the maximum FPS of the window, but this does not guarantee that FPS.
+
+631: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+632: ``¬ ¬ ¬ ¬ ¬ print(''.join(self.mod_Traceback__.format_exception(None, Message, Message.__traceback__)))`` Here we are printing out details of the error that just occurred and that we stored in the variable 'Message'. This is a handy debug feature that references the Traceback module.
+
+633: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+634: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+635: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+636: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+637: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+638: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+639: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+640: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+641: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+
+
+
+7: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+8: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+
+
+
+
+
+33: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+34: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+35: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+36: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+37: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+38: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+39: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+40: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+8: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+9: ``¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+10: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+
+
+
+
+26: ``¬ ¬ ¬ ¬ iteration = 0`` We start each of the different tests (blank, drawing and OpenGL) by resetting some values, here we set the iteration counter to 0, this is used for getting the current frame for the 'FPSlist<num>' variables, this also controls when the program should move onto the next test/speed.
+
+30: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+31: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+33: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ iteration += 1`` Next we increase the variable 'iteration' by 1, this counts the number of frames and it is important this is called only once per frame.
+
+
+36: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+38: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+40: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+42: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+
+51: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+52: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ iteration = 0`` We start each of the different tests (blank, drawing and OpenGL) by resetting some values, here we set the iteration counter to 0, this is used for getting the current frame for the 'FPSlist<num>' variables, this also controls when the program should move onto the next test/speed.
+
+
+55: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+56: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+59: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ iteration += 1`` Next we increase the variable 'iteration' by 1, this counts the number of frames and it is important this is called only once per frame.
+
+
+62: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+64: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+66: ``¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+68: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+
+77: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+
+79: ``¬ ¬ ¬ ¬ ¬ iteration = 0`` We start each of the different tests (blank, drawing and OpenGL) by resetting some values, here we set the iteration counter to 0, this is used for getting the current frame for the 'FPSlist<num>' variables, this also controls when the program should move onto the next test/speed.
+
+
+82: ``¬ ¬ ¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+83: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+85: ``¬ ¬ ¬ ¬ ¬ ¬ iteration += 1`` Next we increase the variable 'iteration' by 1, this counts the number of frames and it is important this is called only once per frame.
+
+
+88: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+90: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+92: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+94: ``¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+
+
+104: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+
+107: ``¬ ¬ ¬ ¬ ¬ while True:`` Enters the project's game loop
+
+108: ``¬ ¬ ¬ ¬ ¬ ¬ self.realWidth, self.realHeight = self.mod_Pygame__.display.get_window_size()`` Here we are getting the size of the current Pygame window, this is very important and occurs in almost every GUI for Pycraft. This is used for correctly positioning object's on screen and also for scale factor calculations, this should data will be a positive integer representing each of the two axis; X and Y.
+
+109: ``¬ ¬ ¬ ¬ ¬ ¬ self.Display.fill(self.BackgroundCol)`` This line refreshes the display which is defined in the 'DisplayUtils.py' module with the background that is defined in the 'ThemeUtils.py', removing ALL previously drawn graphics, should be called at most once per frame to avoid confusion.
+
+
+114: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, 1280, self.SavedHeight)`` If the window is smaller than 1280 pixels, then reset the display's WIDTH to 1280. There is no limit to how large the display can be.
+
+116: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_DisplayUtils__.DisplayUtils.GenerateMinDisplay(self, self.SavedWidth, 720)`` If the window is smaller than 720 pixels, then reset the display's HEIGHT to 720. There is no limit to how large the display can be.
+
+
+118: ``¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.flip()`` Updates the display defined in 'DisplayUtils.py', we use flip over update as it has more functionality and is generally more optimised in testing.
+
+120: ``¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+
+
+130: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+133: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+134: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+136: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+137: ``¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+138: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+139: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+140: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+141: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+142: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+143: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+144: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+12: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+13: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+14: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+15: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+16: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+17: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+18: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+19: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+8: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+22: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+23: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+
+
+27: ``¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+38: ``¬ ¬ ¬ ¬ ¬ ¬ for event in self.mod_Pygame__.event.get():`` This is an event loop in Pygame, here we are getting a list of every event that occurs when interacting with the window, from key-presses to mouse-movements. This is a good section to look at when working on user interactions.
+
+
+
+
+
+
+
+
+80: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ self.mod_Pygame__.display.update()`` Here we are forcing the display to update, this refreshes the entire frame. This is where the objects we either 'blit' or 'draw' to the display are made visible. This should be called only once per frame to avoid confusion and 'Pygame.display.flip()' is usually preferred, because of the greater amount of options and better performance.
+
+82: ``¬ ¬ ¬ ¬ except Exception as Message:`` This line of code handles any errors that may occur when running that module, subroutine or class. All errors must be either printed out to the terminal or handled appropriately in the program based on the guidelines in this documentation. The variable 'Message' stores any errors that may occur as a string.
+
+84: ``¬ ¬ ¬ ¬ ¬ return Message`` This line of code stops the currently running GUI and returns the details of the error stored in the variable 'Message' to 'main.py', where they can be suitably handled.
+
+
+86: ``¬ ¬ ¬ return None`` If there is no errors when using this GUI, then we don't need to return anything to 'main.py', which will move us to a different GUI, this will likely be the 'ome-Screen', if this line returned a specific ID (for example 'Inventory') then the program will open that instead of the default 'ome-Screen'.
+
+87: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+88: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+89: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+90: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+91: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+92: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+93: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+94: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+8: ``¬ ¬ ¬ while True:`` Enters the project's game loop
+
+
+
+
+21: ``¬ ¬ ¬ while True:`` Enters the project's game loop
+
+22: ``¬ ¬ ¬ ¬ if self.Devmode == 10:`` Here we are checking to see if the integer value in the variable 'Devmode' is equal to 10, this means that the user has enabled 'Devmode' and we should start collecting system and program telemetry and draw the line graph, unless the user enables this feature, or they use 'Benchmark', this is one of a few situations where the program will attempt to get system information (information about the program it's-self is required for the program to run safely).
+
+23: ``¬ ¬ ¬ ¬ ¬ ¬ if self.Timer >= 2:`` Now we need to check to see if a certain amount of time has passed, for this program, time is stored in the variable 'self.Timer', and this if-statement is used to prevent the lines for the line graph being drawn directly to the edge of the rectangle we just created. This is done for graphical reasons.
+
+
+31: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+33: ``¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+40: ``¬ ¬ ¬ while True:`` Enters the project's game loop
+
+
+
+48: ``¬ ¬ ¬ ¬ ¬ try:`` Starts a section of error handling, any errors that do arise should be handled according to the guidelines in the documentation.
+
+
+
+
+
+60: ``¬ ¬ ¬ ¬ ¬ ¬ except:`` (This needs updating to follow the guidelines of the documentation) This ignores any errors that may occur when running the main section of the benchmark, or in creating our Pygame window.
+
+
+65: ``¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+68: ``¬ ¬ ¬ ¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+73: ``¬ ¬ ¬ ¬ ¬ else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+
+
+77: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+78: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+79: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+80: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+81: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+82: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+83: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+84: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
+
+1: ``if not __name__ == "__main__":`` This checks to see if the place its called from (stored in the variable ``__name__``) is not ``"__main__"``. The string ``"__main__"`` would be the data stored in the variable ``__name__`` if the project was run on its own, which in this case we don't want so we only allow the code inside the if-statement to run if the data in ``__name__`` is not "__main__".
+
+4: ``¬ ¬ def __init__(self):`` Here we make sure the module is initialized correctly we do this because if we tried to call this standalone, and without the code that would stop this, then all references to variables and subroutines outside of this project would be invalid and cause issues. This is also where the variable ‘self’ is defined for all references in this class. This subroutine is a procedure, so does not return a value.
+
+5: ``¬ ¬ ¬ pass`` Here we tell python to ignore the previous line of code that expects indented code, we use this if we don't need to put any code in this indent, this should be avoided in most situations. This is mainly used in the ``__init__`` functions for Pycraft where we may not need to run any code, but need to make sure the module is working correctly.
+
+
+23: ``else:`` If an if-statement is not met, or no errors occur in a section of error handling, then...
+
+24: ``¬ print("You need to run this as part of Pycraft")`` if the user is running the code from PyPi, or as a raw “.py” file then this will be outputted to the terminal, however uses of the compiled “.exe” editions will not see this. This code is also printed first in-case the code below fails.
+
+25: ``¬ import tkinter as tk`` Now we are importing the tkinter module into the project, all code here must be standalone and not rely on code in other modules in the project, this way the project can be taken apart and this should still work. We store he imported module, “Tkinter” with the name``tk``, this shortens length and all references to “Tkinter” from how on in this indented block will use this name.
+
+26: ``¬ from tkinter import messagebox`` Here we are importing specific sections of “Tkinter”, in this case; messagebox, this module allows us to make dialogue boxes that are commonplace in Windows and Apple based devices.
+
+27: ``¬ root = tk.Tk()`` This of code is required to make the dialogue box, which is what we want. This will create a window to the default size “Tkinter” has defined, and initialises the``messagebox`` module, which we want.
+
+28: ``¬ root.withdraw()`` We use this code to hide the window that appears by using the previous root is the internal name for the window, as that is what the window created in the previous was stored in (as a variable).
+
+29: ``¬ messagebox.showerror("Startup Fail", "You need to run this as part of Pycraft, please run the 'main.py' file")`` Here we make our all to the``messagebox`` module, which has several pre-made dialogue boxes, we are using the``showerror`` pre-made dialogue box procedure here. We give it the caption of "Startup Fail", and then elaborate on the issue in the main body of the window, by displaying the text "You need to run this as part of Pycraft, please run the 'main.py' file".
+
+30: ``¬ quit()`` This is Python’s way of closing the project, we normally use``sys.exit`` for this, which you will see later on, because its a bit cleaner on some IDLE’s and terminals. However to reduce the length of this project, we use the built in function here instead.
