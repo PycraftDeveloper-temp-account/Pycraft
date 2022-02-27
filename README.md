@@ -118,6 +118,7 @@ I recommend creating a shortcut for the "main.py" file too so it’s easier to l
 - Tabulate @ www.github.com/p-ranav/tabulate <br />
 - Moderngl @ https://github.com/moderngl/moderngl <br />
 - Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
+- PyJoystick @ https://github.com/justengel/pyjoystick <br />
 - Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
 - Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
 - Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
@@ -134,7 +135,6 @@ pip is usually installed by default when installing Python with most versions.
 - PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
 - Pygame @ www.github.com/pygame/pygame <br />
 - Numpy @ www.github.com/numpy/numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
 - PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
 - Psutil @ www.github.com/giampaolo/psutil <br />
 - PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
@@ -143,6 +143,7 @@ pip is usually installed by default when installing Python with most versions.
 - Tabulate @ www.github.com/p-ranav/tabulate <br />
 - Moderngl @ https://github.com/moderngl/moderngl <br />
 - Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
+- PyJoystick @ https://github.com/justengel/pyjoystick <br />
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
