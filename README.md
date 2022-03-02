@@ -2,8 +2,8 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://user-images.githubusercontent.com/81379254/154152710-694ce1f7-44e0-47fd-bbca-988093628e70.svg" alt="my banner"></a>
 </p>
 
-Pycraft is an OpenGL, OpenWorld, Video Game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message me if you have any feedback! <br />
-Made with Python 64-bit and Microsoft Visual Studio Code.
+Pycraft is an OpenGL, open world, video game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message us if you have any feedback! <br />
+Made with Python 3 64-bit and Microsoft Visual Studio Code.
 
 _Please note; all previous versions of Pycraft, with the exception of the most recent, have been moved to the releases section; Please consult the releases section of this README for more information_
 
@@ -96,7 +96,7 @@ When running the program, you will either have a (.exe) file, downloaded from th
 
 Now you have the program properly installed hopefully (you’ll find out if you haven’t promptly!) you need to locate the file "main.py" basically all this program does is run the right modules, initiates the main program, and catches any errors that might arise in the program in a nicely rendered error screen, if it crashes on your first run then chances are you haven’t installed the program correctly, if it still doesn’t work then you can drop me an email @ "ThomasJebbo@gmail.com" or comment here on the repository, I do hope however that it works alright for you and you have a pleasant experience. I might also add this program has been developed on a Windows 64-bit computer however should run fine on a 32-bit Windows machine (uncompiled) or through MacOS although they remain untested for now. 
 
-I recommend creating a shortcut for the "main.py" file too so it’s easier to locate.
+We recommend creating a shortcut for the "main.py" file too so it’s easier to locate.
 
 ## Credits
 ### With thanks to; <br />
