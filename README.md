@@ -2,6 +2,8 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://user-images.githubusercontent.com/81379254/154152710-694ce1f7-44e0-47fd-bbca-988093628e70.svg" alt="my banner"></a>
 </p>
 
+_Please note; all previous versions of Pycraft, with the exception of the most recent, have been moved to the releases section; Please consult the releases section of this README for more information_
+
 Pycraft is an OpenGL, open world, video game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message us if you have any feedback! <br />
 Made with Python 3 64-bit and Microsoft Visual Studio Code.
 
