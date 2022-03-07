@@ -13,12 +13,12 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ Pycraft-v0.9.3 ]
+    branches: [ master ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ Pycraft-v0.9.3 ]
+    branches: [ master ]
   schedule:
-    - cron: '38 14 * * 1'
+    - cron: "0 2 * * 1-5"
 
 jobs:
   analyze:
