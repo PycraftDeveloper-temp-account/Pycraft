@@ -2,7 +2,7 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://user-images.githubusercontent.com/81379254/154152710-694ce1f7-44e0-47fd-bbca-988093628e70.svg" alt="my banner"></a>
 </p>
 
-Pycraft is an OpenGL, open world, video game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message us if you have any feedback! <br />
+Pycraft is an OpenGL, open world, video game made entirely with Python. This project is a game to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message us if you have any feedback! <br />
 Made with Python 3 64-bit and Microsoft Visual Studio Code.
 
 _Please note; all previous versions of Pycraft, with the exception of the most recent, have been moved to the releases section; Please consult the releases section of this README for more information_
@@ -116,7 +116,7 @@ We recommend creating a shortcut for the "main.py" file too so it’s easier to 
 - Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
 
 ## Uncompiled Pycraft Dependencies
-When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press the windows key + r then type "cmd" then run the below syntax) or on Apple systems in Terminal.
+When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press <windows key + r> then type "cmd" then run the below syntax) or on Apple systems in Terminal.
 
 ```
 pip install <module>
@@ -142,13 +142,13 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 ## Changes
 Pycraft v0.9.4 is now live! Here is a list of all the added features to this major update: <br />
 
-* Feature: Full Linux compatablility has been added to Pycraft and will be supported in all future versions of Pycraft.
+* Feature: Full Linux compatibility has been added to Pycraft and will be supported in all future versions of Pycraft.
 * Feature: The update section of the installer has been added; this connects to both the installer and uninstaller for an optimised method of downloading the latest version of Pycraft.
 * Feature: Message functions have been improved with some errors and issues there getting ironed out.
-* Feature: The entire installer has been restructed and mostly reprogrammed from the preview releases, this improves readability and follows a similar structure to the rest of the project now.
-* Bug Fix: All known issues with the installer and project have been fixed that where known in the developer releases and older versions of Pycraft.
+* Feature: The entire installer has been restructured and mostly reprogrammed from the preview releases, this improves readability and follows a similar structure to the rest of the project now.
+* Bug Fix: All known issues with the installer and project have been fixed that were known in the developer releases and older versions of Pycraft.
 * Feature: The way music is loaded has changed to make the project friendlier on storage space and RAM.
-* Preformance Improvements: There have been numerous improvements to the installer and game to make it perform better with more optimnisations still to arrive.
+* Performance Improvements: There have been numerous improvements to the installer and game to make it perform better with more optimisations still to arrive.
 * Bug Fix: The benchmark section of the project has had some fundamental changes and now works fine with the changed game engine.
 
 * Feature - The program can now detect when you are connected to the internet, if permission is given, this is to detect updates.
@@ -199,7 +199,7 @@ Again, feedback would be much appreciated this update was released on; 03/04/202
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
 
 ## Version Naming
-Versions have changed pretty dramatically the past few days, don’t panic I'm here to help! In short the new version naming system more closely follows the Semantic Naming system:
+Versions have changed pretty dramatically the past few days, don’t panic I'm here to help! In short, the new version naming system more closely follows the Semantic Naming system:
 For example; Pycraft v0.9.2.1 The first number is relevant to if the project is in a finished state. The second number relates to the number of updates Pycraft has had. The third number relates to smaller sub-updates (that likely will not feature a (.exe) release). The last number there is rarely used, this is typically for PyPi releases only, as we can't edit uploaded version of the project, we use this number if there is an important change to the project description, those updates will not include any code changing!
 
 ## Releases
