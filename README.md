@@ -34,7 +34,7 @@ This is a guide of where some of the sections of this README have gone, as well 
 
 > * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Update_Timeline.md#update-timeline)
 > * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Planned_Storyline.md#the-planned-storyline)
-> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/pycrafts-sound-files---preview-1)
+> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Sound_Preview.md#pycrafts-sound-files---preview-1)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
