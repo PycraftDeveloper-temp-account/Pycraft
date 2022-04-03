@@ -433,6 +433,16 @@ class Initialize:
 
 if __name__ == "__main__":
     print("Started <Pycraft_main>")
+    try:
+        import psutil, sys, time
+        counter = 0
+        for proc in psutil.process_iter(['pid', 'name', 'username']):
+            if proc.info["name"] == "Pycraft.exe":
+                counter += 1
+        if counter >= 3:
+            sys.exit()
+    except:
+        pass
     Initialize.Start()
 
 def QueryVersion():
