@@ -2,8 +2,6 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://user-images.githubusercontent.com/81379254/154152710-694ce1f7-44e0-47fd-bbca-988093628e70.svg" alt="my banner"></a>
 </p>
 
-_Please note; all previous versions of Pycraft, with the exception of the most recent, have been moved to the releases section; Please consult the releases section of this README for more information_
-
 Pycraft is an OpenGL, open world, video game made entirely with Python. This project is a test to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message us if you have any feedback! <br />
 Made with Python 3 64-bit and Microsoft Visual Studio Code.
 
@@ -12,12 +10,9 @@ _Please note; all previous versions of Pycraft, with the exception of the most r
 [![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
 ![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/PycraftDeveloper/Pycraft) ![](https://img.shields.io/pypi/wheel/python-pycraft) ![GitHub repo size](https://img.shields.io/github/repo-size/PycraftDeveloper/Pycraft) ![Discord](https://img.shields.io/discord/929750166255321138)
 
-Progress towards Pycraft v0.9.4: ![Progress](https://progress-bar.dev/99) <br />
-Documentation Progress: ![Progress](https://progress-bar.dev/50) <br />
-Installer Progress: ![Progress](https://progress-bar.dev/100) <br />
+Progress towards Pycraft v0.9.5: ![Progress](https://progress-bar.dev/1) <br />
 
 ## Contents
-
 This is a guide of where some of the sections of this README have gone, as well as useful links to other documents.
 
 > * [About](https://github.com/PycraftDeveloper/Pycraft#about)
@@ -37,9 +32,9 @@ This is a guide of where some of the sections of this README have gone, as well 
 > * [Other Sources](https://github.com/PycraftDeveloper/Pycraft#other-sources)
 > * [Final Notices](https://github.com/PycraftDeveloper/Pycraft#final-notices)
 
-> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Update_Timeline.md#update-timeline)
-> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Planned_Storyline.md#the-planned-storyline)
-> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.3/Sound_Preview.md#pycrafts-sound-files---preview-1)
+> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Update_Timeline.md#update-timeline)
+> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Planned_Storyline.md#the-planned-storyline)
+> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Sound_Preview.md#pycrafts-sound-files---preview-1)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
@@ -54,7 +49,6 @@ Pycraft is a 3D open-source, open-world video game made in Python. For a long ti
 
 ## Setup
 ### Installing the project from GitHub (Method 1)
-
 The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files outside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form. A video guide to this will be uploaded here and in YouTube in the coming months.
 
 When running the program please make sure you have a minimum of 1GB of free space on the drive and also have Python 3 installed on your device. This can be found here: (www.python.org/downloads). The sub version of Python isn't too important in this circumstance however the project has been tested in Python 3.9.5 and is known to work. In addition to all this please make sure you have the following modules installed on your device:
@@ -67,15 +61,12 @@ For those not familiar they can be found here: (pypi.org) and you can use the fo
 Here is a short video tutorial walk you through all this: (https://youtu.be/DG5YbE-umw0)
 
 ### Installing the project from GitHub (Method 2)
-
 If you are installing the project from the GitHub releases page, then this will be relevant for you.
 After you have selected your preferred file type (it'll be either a compiled (.exe) file or a (.zip) file, those that download the (.zip) file will find the information above more relevant.
 
 If you, however, download the (.exe) type file, then this will be more relevant for you. If you locate the file in your file explorer and double click it, then this will run the project. You do not need Python, or any of the projects required modules, as they come built-in with this method. This method does also not install anything extra to your devise, to remove the project, simply delete the (.exe) file in your file explorer. Please note that it can take a few moments for everything in the (.exe) file to load and initialise, so nothing might not appear to happen at first. Also, you can only run one instance of Pycraft at any time (even if you are using another method).
 
 ### Installing from PyPi (preferred)
-
-
 If you are installing the project from PyPi, then you will need an up-to-date build of Python (3.7 or greater ideally) and also permission to install additional files to your device. Then you need to open a command-line interface (or CLI), or this we recommend Terminal on Apple based devises, and Command Prompt on Windows based machines. You install the latest version of Pycraft, and all its needed files though this command:
 ``pip install Python-Pycraft``
 and you can also uninstall the project using the command:
@@ -86,7 +77,6 @@ Please note that at present it can be a bit tricky to locate the files that have
 But there is a better solution on its way!
 
 ### Installing using Pipenv
-
 You can alternatively run these commands in the directory containing a file called `Pipfile`:
 
 ``pip install pipenv`` then: ``pipenv install python-pycraft``
@@ -150,26 +140,70 @@ pip is usually installed by default when installing Python with most versions.
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 ## Changes
-Pycraft v0.9.3 is now live! Here is a list of all the added features to this major update: <br />
+Pycraft v0.9.4 is now live! Here is a list of all the added features to this major update: <br />
 
-* Feature: The entire game engine has been reprogrammed, removing redundant functions, improving the visual experience and making future updates much easier.
-* Feature: The project has moved over from using (.ogg) audio files to (.wav) files, this means a much larger file size, but in the current implementation Pygame does not appear to like (.ogg) files!
-* Feature: We have added a messages screen to the home screen, this will display information like events, updates, important milestones in game and more! Expect this feature to be worked on significantly!
-* Bug Fix: There have been lots of bug fixes in the course of programming this new update, however not many bugs were raised in Pycraft v0.9.2.5 so there haven't been many bug fixes that link the two updates (there have been bug fixes however to the game engine in the course of its programming and re-design). If you discover a bug, then feel free to share details with me on either Twitter or by email.
+* Feature: Full Linux compatablility has been added to Pycraft and will be supported in all future versions of Pycraft.
+* Feature: The update section of the installer has been added; this connects to both the installer and uninstaller for an optimised method of downloading the latest version of Pycraft.
+* Feature: Message functions have been improved with some errors and issues there getting ironed out.
+* Feature: The entire installer has been restructed and mostly reprogrammed from the preview releases, this improves readability and follows a similar structure to the rest of the project now.
+* Bug Fix: All known issues with the installer and project have been fixed that where known in the developer releases and older versions of Pycraft.
+* Feature: The way music is loaded has changed to make the project friendlier on storage space and RAM.
+* Preformance Improvements: There have been numerous improvements to the installer and game to make it perform better with more optimnisations still to arrive.
+* Bug Fix: The benchmark section of the project has had some fundamental changes and now works fine with the changed game engine.
 
-_Please note there have been features REMOVED from this update at this point in time, for example the new load-screen, this will be re-added hopefully, but will take some time to work on. Also, there will likely be a small update to Pycraft over the course of December, however this will be likely bug fixes and the arrival/integration of the upcoming installer._
+* Feature - The program can now detect when you are connected to the internet, if permission is given, this is to detect updates.
+* Feature - Pycraft now can detect updates to itself and its required modules, this is displayed on the home screen.
+* Feature - Pycraft's home screen has been updated to include access to the new installer.
+* Bug-fix - Issues with sound playback in game when navigating between GUI's quickly has been addressed.
 
-Again, feedback would be much appreciated this update was released on; 04/12/2021 (UK date) DD/MM/YYYY. As always, we hope you enjoy this new release and feel free to leave feedback.
+* Feature - The error screen has been re-designed, with more features coming in the next snapshot.
+* Feature - Most of the errors in Pycraft now have been given more information so that debugging is easier.
+* Feature - Devmode captions have been added into the 3D game-engine.
+* Feature - Work on the documentation.
+* Feature - The benchmark GUI has had some processing optimisations and the file for the read test has been tweaked from 'Mebibytes' to 'Megabytes'.
+* Bug-fix - The delays with transitioning between the 2D and 3D games engine have been fixed.
+
+* Feature: Section 1 of 3 on the installer has been added, you can now download and install Pycraft through this method, although currently I would not advise it, past versions of Pycraft available to the installer where not build for the Installer so an amount of messy file transfer has to go on to set everything up properly. Installing versions of Pycraft greater than v0.9.3 I’ll be a much smoother experience. The installer will receive a lot of work by the time of the release of this version of Pycraft and will also see a change to the README to accommodate this change.
+* Bug-fix: There have been numerous bug-fixes in this version of Pycraft, many of the changes also include shortening the length of existing code, however the installer is very long and will have a lot of work done on it to get it to the standard of the rest of the modules in Pycraft.
+* Documentation: There have been tweaks to the documentation for Pycraft v0.9.3 with a big change planned when it is finished (each file will have documentation separately) however the documentation for Pycraft v0.9.4 will not start until its release.
+
+* Feature: 2 of the 5 sections of the installer are now complete; the modify and install sections are now finished, with the uninstall, update and repair menus still to be completed (although the process will be accelerated). This update also saw tweaks to the install section, which won’t work fully until the release of Pycraft v0.9.4.
+* Feature: ``PyOpenGL (and PyOpenGL_accelerate)`` have been removed entirely from the project, due to a more Pythonic, easier to install and faster alternative called ``ModernGL`` and its separate window counterpart taking its place, this should help make the project much easier to install.
+* Feature: As a result of ``PyOpenGL`` being removed, the ``PycraftStartupTest`` module as well as the 3D test in ``ExBenchmark`` have been redesigned, both are now faster and better optimised.
+* Feature: The ``Credits`` menu has had some tweaks to the text engine making it easier to add accreditation to contributors and update in the future, with a new accelerated text wrapping engine for Pygame text rendering added, this supports wrapping large bodies of text a well as colouring individual words, which will be made use of in later versions. Currently it is used primarily in the ``Credits`` menu, but will also be used later in the ``Benchmark`` GUI and the ``GameEngine`` modules.
+* Feature: 3 axis movement in the ``GameEngine`` module has been tweaked, with movement speed no longer being frame rate dependant and more representative of real speed, and the jump animation also being tweaked for the same reasons (although still a linear movement, this will be tweaked in a later version).
+* Feature: Joystick/Controller support has been added to Pycraft, now you can choose between keyboard and mouse or controller (although keyboard and controller both work together, controller and mouse do not work in combo), this support is wide ranging and there are likely to be bugs, but the ones known to me have been removed.
+* Feature: The ``Inventory`` and ``MapGUI`` modules have been heavily optimised, now images aren’t loaded every frame and are only tweaked when the window resizes, which is detected now differently on those GUIs (with more support coming soon for other GUIs). The ``MapGUI`` module has also been brought into the same structure as the rest of the project and now works much better, although will still need to be updated graphically.
+* Feature: The ``Fancy Sky`` setting has been swapped for ``Fancy Graphics`` which now toggles some of the new on-screen elements of the display, improving performance, although it should be noted, toggling the ``anti-aliasing`` setting will likely make a bigger change. ``anti-aliasing`` has not yet been added into the ``GameEngine``, with support coming soon there.
+* Feature: The ``installer`` can now be reached directly through Pycraft.
+* Feature: The 'tool-tips' text that appears on the new load screen has been updated with key changes as well as to showcase some of the project’s new features.
+* Feature: The old load screen menu has been re-added and improved greatly.
+* Feature: Object caching has been added to Pycraft, so now the ``GameEngine`` module will load quicker (with more support coming at a later date).
+* Feature: Some files in the game are now loaded once centrally, notably the window icon and title font, which are used throughout Pycraft, so the total read/write count when running Pycraft has been significantly reduced (Especially in the ``Inventory`` and ``MapGUI`` modules).
+* Feature: The project's caption has now been changed to have rounded corners using alpha, this is in light of the design changes as a part of Windows 11, and as a general aesthetic feature.
+
+* Feature: 3 of the 5 sections of the installer utility is now complete, you can now - in addition to its previous functions - uninstall the project with 3 customisable options:
+* * Uninstall both Pycraft and all additional files
+* * Uninstall both Pycraft and all additional files but keep save data
+* * Uninstall only Pycraft and leave all additional files
+* Additionally, a large amount of the bugs and issues with the other aspects of the installer have also been corrected although any more bug reports will always help to make any aspect of the project better.
+* The theme section menu has been entirely re-designed to support screen resizing and greatly improved graphics.
+* The entire project has seen changes to the controller engine so now the performance there has been heavily improved.
+* The entire project has had performance improvements.
+* The first section of the benchmark GUI has seen changes to the text structure to make the menu easy to modify and now has updated instructions (with more improvements there coming soon!)
+* There have been changes made to the messaging system on the home screen to further improve performance and allow for multiple messages to be properly handled.
+
+Again, feedback would be much appreciated this update was released on; 03/04/2022 (UK date; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
 
 ## Our Update Policy
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
 
 ## Version Naming
-Versions have changed pretty dramatically the past few days, don’t panic I'm here to help! In sort the new version naming system more closely follows the Semantic Naming system:
+Versions have changed pretty dramatically the past few days, don’t panic I'm here to help! In short the new version naming system more closely follows the Semantic Naming system:
 For example; Pycraft v0.9.2.1 The first number is relevant to if the project is in a finished state. The second number relates to the number of updates Pycraft has had. The third number relates to smaller sub-updates (that likely will not feature a (.exe) release). The last number there is rarely used, this is typically for PyPi releases only, as we can't edit uploaded version of the project, we use this number if there is an important change to the project description, those updates will not include any code changing!
 
 ## Releases
-All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but; just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
+All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
 
 ## Other Sources
 I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link: (https://medium.com/@PycraftDev), these articles are also uploaded to my other account on Dev here: (https://dev.to/pycraftdev). Any recommendations and feedback are, as always, greatly appreciated, a lot of time and work goes into making this happen!
