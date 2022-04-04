@@ -106,8 +106,6 @@ if not __name__ == "__main__":
                                 
                 UpdateWholeDisplay = True
                 
-                self.Updated = True # cheese
-                
                 while True:
                     if self.GetOutdated == [True, False]:
                         self.GetOutdated = [True, True]
