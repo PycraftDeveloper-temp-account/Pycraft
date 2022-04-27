@@ -1,8 +1,12 @@
-## About
+About
+====================
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in python has been ignored, I believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for me hasn’t been an easy experience, far from it but I have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that gap in documentation. Pycraft then is a trial project, as I learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because I’m learning and testing what I've learned, so hopefully for people in the future it will be an easier experience. Also, don’t forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as I learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
 
-## Setup
-### Installing the project from GitHub (Method 1)
+Setup
+====================
+
+Installing the project from GitHub (Method 1)
+++++++++++++++++++++
 The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files outside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form. A video guide to this will be uploaded here and in YouTube in the coming months.
 
 When running the program please make sure you have a minimum of 1GB of free space on the drive and also have Python 3 installed on your device. This can be found here: (www.python.org/downloads). The sub version of Python isn't too important in this circumstance however the project has been tested in Python 3.9.5 and is known to work. In addition to all this please make sure you have the following modules installed on your device:
@@ -14,13 +18,15 @@ For those not familiar they can be found here: (pypi.org) and you can use the fo
 
 Here is a short video tutorial walk you through all this: (https://youtu.be/DG5YbE-umw0)
 
-### Installing the project from GitHub (Method 2)
+Installing the project from GitHub (Method 2)
+++++++++++++++++++++
 If you are installing the project from the GitHub releases page, then this will be relevant for you.
 After you have selected your preferred file type (it'll be either a compiled (.exe) file or a (.zip) file, those that download the (.zip) file will find the information above more relevant.
 
 If you, however, download the (.exe) type file, then this will be more relevant for you. If you locate the file in your file explorer and double click it, then this will run the project. You do not need Python, or any of the projects required modules, as they come built-in with this method. This method does also not install anything extra to your devise, to remove the project, simply delete the (.exe) file in your file explorer. Please note that it can take a few moments for everything in the (.exe) file to load and initialise, so nothing might not appear to happen at first. Also, you can only run one instance of Pycraft at any time (even if you are using another method).
 
-### Installing from PyPi (preferred)
+Installing from PyPi (preferred)
+++++++++++++++++++++
 If you are installing the project from PyPi, then you will need an up-to-date build of Python (3.7 or greater ideally) and also permission to install additional files to your device. Then you need to open a command-line interface (or CLI), or this we recommend Terminal on Apple based devises, and Command Prompt on Windows based machines. You install the latest version of Pycraft, and all its needed files though this command:
 ``pip install Python-Pycraft``
 and you can also uninstall the project using the command:
@@ -30,22 +36,27 @@ Please note that at present it can be a bit tricky to locate the files that have
 ``import Pycraft``
 But there is a better solution on its way!
 
-### Installing using Pipenv
+Installing using Pipenv
+++++++++++++++++++++
 You can alternatively run these commands in the directory containing a file called `Pipfile`:
 
 ``pip install pipenv`` then: ``pipenv install python-pycraft``
 
 And to start the game: ``pipenv run python <PATH to 'main.py'>``
 
-## Running The Program
+Running The Program
+====================
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program. Pycraft has recently undergone some large structural redesigning, so to run the program the advice is now different:
 
 Now you have the program properly installed hopefully (you’ll find out if you haven’t promptly!) you need to locate the file "main.py" basically all this program does is run the right modules, initiates the main program, and catches any errors that might arise in the program in a nicely rendered error screen, if it crashes on your first run then chances are you haven’t installed the program correctly, if it still doesn’t work then you can drop me an email @ "ThomasJebbo@gmail.com" or comment here on the repository, I do hope however that it works alright for you and you have a pleasant experience. I might also add this program has been developed on a Windows 64-bit computer however should run fine on a 32-bit Windows machine (uncompiled) or through MacOS although they remain untested for now. 
 
 We recommend creating a shortcut for the "main.py" file too so it’s easier to locate.
 
-## Credits
-### With thanks to; <br />
+Credits
+====================
+
+With thanks to; <br />
+++++++++++++++++++++
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF) ![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) 	![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 	![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
 - Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
 - Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
@@ -69,7 +80,8 @@ We recommend creating a shortcut for the "main.py" file too so it’s easier to 
 - Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
 - Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
 
-## Uncompiled Pycraft Dependencies
+Uncompiled Pycraft Dependencies
+====================
 When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press <windows key + r> then type "cmd" then run the below syntax) or on Apple systems in Terminal.
 
 ```
@@ -93,7 +105,8 @@ pip is usually installed by default when installing Python with most versions.
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
-## Changes
+Changes
+====================
 Pycraft v0.9.4 is now live! Here is a list of all the added features to this major update: <br />
 
 * Feature: Full Linux compatibility has been added to Pycraft and will be supported in all future versions of Pycraft.
@@ -149,13 +162,16 @@ Pycraft v0.9.4 is now live! Here is a list of all the added features to this maj
 
 Again, feedback would be much appreciated this update was released on; 03/04/2022 (UK date; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
 
-## Understanding the release notes
+Understanding the release notes
+====================
 This section will hopefully provide additional information on helping to read the release notes. Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update. Points detailed after the "Bug-Fix" tag are likely to be the most frequent, they outline the most major bugs that have been fixed in this update, although they are not the only bugs that have been fixed. Points detailed after the "Performance" tag are used where there have been significant performance improvements to the project. Points detailed after the "Identified-Bugs" tag are bugs that have been identified in the project and that haven't been fixed as of writing the release notes, these are significant issues and will be fixed as soon as possible. Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation.
 
-## Input mapping
+Input mapping
+====================
 This section will be replaced with a dedicated file for keymapping as well as an in-game guide. The controller keys are labelled differently between controllers but have the same mapping in game.
-### Keyboard
 
+Keyboard
+++++++++++++++++++++
 * Use W, A, S, D in game to move around, and use these keys in the map GUI to move that around.
 * Use SPACE to jump in game, reset your zoom in the map GUI, start the benchmark section, or press 10 times to enter Devmode.
 * Use E in game to access your inventory
@@ -165,13 +181,13 @@ This section will be replaced with a dedicated file for keymapping as well as an
 * Use L in game to toggle locking your mouse (forcing it to stay in the window or not)
 * Use X to exit Devmode
 
-### Mouse
-
+Mouse
+++++++++++++++++++++
 * SCROLL in the map to zoom in/out, or to scroll the settings menu
 * LEFT CLICK to select
 
-### Controller
-
+Controller
+++++++++++++++++++++
 * Use the HAT keys (or the 4 buttons typically on the left of the controller in a '+' shape) to navigate between menu options
 * Use the JOYSTICKs for camera panning and in game movement
 * Use the 'Options' button to enter your inventory
@@ -181,18 +197,23 @@ This section will be replaced with a dedicated file for keymapping as well as an
 * Use the X or SQUARE button to zoom in on the map GUI
 * Use the O or B button to zoom out on the map
 
-## Our Update Policy
+Our Update Policy
+====================
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
 
-## Version Naming
-Versions have changed pretty dramatically the past few days, don’t panic I'm here to help! In short, the new version naming system more closely follows the Semantic Naming system:
+Version Naming
+====================
+Versions have changed pretty dramatically the past few days, don't panic I'm here to help! In short, the new version naming system more closely follows the Semantic Naming system:
 For example; Pycraft v0.9.2.1 The first number is relevant to if the project is in a finished state. The second number relates to the number of updates Pycraft has had. The third number relates to smaller sub-updates (that likely will not feature a (.exe) release). The last number there is rarely used, this is typically for PyPi releases only, as we can't edit uploaded version of the project, we use this number if there is an important change to the project description, those updates will not include any code changing!
 
-## Releases
+Releases
+====================
 All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
 
-## Other Sources
+Other Sources
+====================
 I have started writing an article on medium which is released at the start of every month, this compliments the weekly updates that are posted on my twitter profile, it would be greatly appreciated if you wanted to check it out here at this link: (https://medium.com/@PycraftDev), these articles are also uploaded to my other account on Dev here: (https://dev.to/pycraftdev). Any recommendations and feedback are, as always, greatly appreciated, a lot of time and work goes into making this happen!
 
-## Final Notices
+Final Notices
+====================
 Thank you greatly for supporting this project simply by running it, I am sorry in advance for any spelling mistakes. The programs will be updated frequently and I shall do my best to keep this up to date too. I also want to add that you are welcome to view and change the program and share it with your friends however please may I have some credit, just a name would do and if you find any bugs or errors, please feel free to comment in the comments section any feedback so I can improve my program, it will all be much appreciated and give as much detail as you wish to give out.
