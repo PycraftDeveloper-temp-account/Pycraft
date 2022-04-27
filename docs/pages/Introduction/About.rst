@@ -57,27 +57,27 @@ Credits
 
 With thanks to
 ++++++++++++++++++++
-* Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
-* Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
-* Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan <br />
-* Henri Post (HenryFBP) @ https://github.com/HenryFBP <br />
-* PyPi @ www.pypi.org <br />
-* PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-* Pygame @ www.github.com/pygame/pygame <br />
-* Numpy @ www.github.com/numpy/numpy <br />
-* PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
-* PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-* Psutil @ www.github.com/giampaolo/psutil <br />
-* PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-* Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-* GPUtil @ www.github.com/anderskm/gputil <br />
-* Tabulate @ www.github.com/p-ranav/tabulate <br />
-* Moderngl @ https://github.com/moderngl/moderngl <br />
-* Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
-* PyJoystick @ https://github.com/justengel/pyjoystick <br />
-* Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
-* Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
-* Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
+* Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper
+* Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn
+* Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan
+* Henri Post (HenryFBP) @ https://github.com/HenryFBP
+* PyPi @ www.pypi.org
+* PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow
+* Pygame @ www.github.com/pygame/pygame
+* Numpy @ www.github.com/numpy/numpy
+* PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl
+* PyAutoGUI @ www.github.com/asweigart/pyautogui
+* Psutil @ www.github.com/giampaolo/psutil
+* PyWaveFront @ www.github.com/pywavefront/PyWavefront
+* Py-CPUinfo @ www.github.com/pytorch/cpuinfo
+* GPUtil @ www.github.com/anderskm/gputil
+* Tabulate @ www.github.com/p-ranav/tabulate
+* Moderngl @ https://github.com/moderngl/moderngl
+* Moderngl_window @ https://github.com/moderngl/moderngl-window
+* PyJoystick @ https://github.com/justengel/pyjoystick
+* Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545
+* Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368
+* Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799
 
 Uncompiled Pycraft Dependencies
 ====================
@@ -89,24 +89,24 @@ pip uninstall <module>
 ```
 pip is usually installed by default when installing Python with most versions.
 
-- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-- Pygame @ www.github.com/pygame/pygame <br />
-- Numpy @ www.github.com/numpy/numpy <br />
-- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-- Psutil @ www.github.com/giampaolo/psutil <br />
-- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-- Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-- GPUtil @ www.github.com/anderskm/gputil <br />
-- Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ https://github.com/moderngl/moderngl <br />
-- Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
-- PyJoystick @ https://github.com/justengel/pyjoystick <br />
+- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow
+- Pygame @ www.github.com/pygame/pygame
+- Numpy @ www.github.com/numpy/numpy
+- PyAutoGUI @ www.github.com/asweigart/pyautogui
+- Psutil @ www.github.com/giampaolo/psutil
+- PyWaveFront @ www.github.com/pywavefront/PyWavefront
+- Py-CPUinfo @ www.github.com/pytorch/cpuinfo
+- GPUtil @ www.github.com/anderskm/gputil
+- Tabulate @ www.github.com/p-ranav/tabulate
+- Moderngl @ https://github.com/moderngl/moderngl
+- Moderngl_window @ https://github.com/moderngl/moderngl-window
+- PyJoystick @ https://github.com/justengel/pyjoystick
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 Changes
 ====================
-Pycraft v0.9.4 is now live! Here is a list of all the added features to this major update: <br />
+Pycraft v0.9.4 is now live! Here is a list of all the added features to this major update:
 
 * Feature: Full Linux compatibility has been added to Pycraft and will be supported in all future versions of Pycraft.
 * Feature: The update section of the installer has been added; this connects to both the installer and uninstaller for an optimised method of downloading the latest version of Pycraft.
