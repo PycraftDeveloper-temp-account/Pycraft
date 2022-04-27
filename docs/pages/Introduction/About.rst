@@ -55,30 +55,29 @@ We recommend creating a shortcut for the "main.py" file too so it’s easier to 
 Credits
 ====================
 
-With thanks to; <br />
+With thanks to
 ++++++++++++++++++++
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF) ![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) 	![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 	![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
-- Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
-- Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
-- Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan <br />
-- Henri Post (HenryFBP) @ https://github.com/HenryFBP <br />
-- PyPi @ www.pypi.org <br />
-- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-- Pygame @ www.github.com/pygame/pygame <br />
-- Numpy @ www.github.com/numpy/numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
-- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-- Psutil @ www.github.com/giampaolo/psutil <br />
-- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-- Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-- GPUtil @ www.github.com/anderskm/gputil <br />
-- Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ https://github.com/moderngl/moderngl <br />
-- Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
-- PyJoystick @ https://github.com/justengel/pyjoystick <br />
-- Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
-- Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
-- Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
+* Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
+* Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
+* Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan <br />
+* Henri Post (HenryFBP) @ https://github.com/HenryFBP <br />
+* PyPi @ www.pypi.org <br />
+* PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
+* Pygame @ www.github.com/pygame/pygame <br />
+* Numpy @ www.github.com/numpy/numpy <br />
+* PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
+* PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
+* Psutil @ www.github.com/giampaolo/psutil <br />
+* PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
+* Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
+* GPUtil @ www.github.com/anderskm/gputil <br />
+* Tabulate @ www.github.com/p-ranav/tabulate <br />
+* Moderngl @ https://github.com/moderngl/moderngl <br />
+* Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
+* PyJoystick @ https://github.com/justengel/pyjoystick <br />
+* Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
+* Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
+* Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
 
 Uncompiled Pycraft Dependencies
 ====================
