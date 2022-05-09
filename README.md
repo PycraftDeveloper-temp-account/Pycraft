@@ -109,9 +109,9 @@ We recommend creating a shortcut for the "main.py" file too so it’s easier to 
 - Moderngl @ https://github.com/moderngl/moderngl <br />
 - Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
 - PyJoystick @ https://github.com/justengel/pyjoystick <br />
-- Freedsound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
-- Freedsound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
-- Freedsound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
+- FreeSound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
+- FreeSound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
+- FreeSound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
 
 ## Uncompiled Pycraft Dependencies
 When you’re installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press <windows key + r> then type "cmd" then run the below syntax) or on Apple systems in Terminal.
