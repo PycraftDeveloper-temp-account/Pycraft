@@ -196,7 +196,6 @@ This sound plays when the king (or queen, this option may be left up to the play
 ### Village Theme 1-3
 
 
-
 https://user-images.githubusercontent.com/81379254/150421924-25df8aff-f640-4cf5-99f8-bce9ed52eaf4.mp4
 
 
