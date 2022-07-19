@@ -177,7 +177,7 @@ if __name__ != "__main__":
                                 self.base_folder,
                                 ("programs//benchmark.glsl")))
 
-                        self.load_program(
+                        self.mod_ModernGL_window_.WindowConfig.load_program(
                             self.SharedData.mod_OS__.path.join(
                                 self.SharedData.base_folder,
                                 ("programs//particles_screen.glsl")))
@@ -286,7 +286,7 @@ if __name__ != "__main__":
                                 self.base_folder,
                                 ("programs\\benchmark.glsl")))
 
-                        self.load_program(
+                        self.mod_ModernGL_window_.WindowConfig.load_program(
                             self.SharedData.mod_OS__.path.join(
                                 self.SharedData.base_folder,
                                 ("programs\\particles_screen.glsl")))
