@@ -11,7 +11,7 @@ Made with Python 64-bit and Microsoft Visual Studio Code.
 ## Update Timeline
 Pycraft will be continually updated for a long time yet. The next few releases, Pycraft v0.9.x will not feature as a (.exe) release but only as a code release. Pycraft will now updated gradually, not all in one go, however (.exe) releases will likely only occur at major releases like the upcoming Pycraft v0.10! The following plan was taken from my Medium article: How We are Making a Video Game in Python #2 (here: https://medium.com/@PycraftDev/how-we-are-making-a-video-game-in-python-2-547b504bbd67) <br />
 
-At present this looks to be the schedule for Pycraft updates: <br />
+At present this is the schedule for Pycraft updates: <br />
 
 *Current*
 
