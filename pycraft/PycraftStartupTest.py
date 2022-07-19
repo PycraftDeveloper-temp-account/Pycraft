@@ -178,8 +178,8 @@ if __name__ != "__main__":
                                 ("programs//benchmark.glsl")))
 
                         self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.SharedData.mod_OS__.path.join(
-                                self.SharedData.base_folder,
+                            self.mod_OS__.path.join(
+                                self.base_folder,
                                 ("programs//particles_screen.glsl")))
 
                     else:
@@ -287,8 +287,8 @@ if __name__ != "__main__":
                                 ("programs\\benchmark.glsl")))
 
                         self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.SharedData.mod_OS__.path.join(
-                                self.SharedData.base_folder,
+                            self.mod_OS__.path.join(
+                                self.base_folder,
                                 ("programs\\particles_screen.glsl")))
 
                     self.AnimateLogo = True
