@@ -28,9 +28,9 @@ This is a guide of where some of the sections of this README have gone, as well 
 > * [Other Sources](https://github.com/PycraftDeveloper/Pycraft#other-sources)
 > * [Final Notices](https://github.com/PycraftDeveloper/Pycraft#final-notices)
 
-> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Update_Timeline.md#update-timeline)
-> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Planned_Storyline.md#the-planned-storyline)
-> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.4/Sound_Preview.md#pycrafts-sound-files---preview-1)
+> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.5/Update_Timeline.md#update-timeline)
+> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.5/Planned_Storyline.md#the-planned-storyline)
+> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.5/Sound_Preview.md#pycrafts-sound-files---preview-1)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
@@ -98,26 +98,39 @@ We recommend creating a shortcut for the "main.py" file too so it's easier to lo
 
 ## Credits
 ### With thanks to; <br />
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF) ![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)     ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)    ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl)
+![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
+![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
+![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF)
+![Inkscape](https://img.shields.io/badge/Inkscape-e0e0e0?style=for-the-badge&logo=inkscape&logoColor=080A13)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
 
 - Thomas Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
-- Count of Freshness Traversal @ https://twitter.com/DmitryChunikhinn <br />
-- Dogukan Demir (demirdogukan) @ https://github.com/demirdogukan <br />
-- Henri Post (HenryFBP) @ https://github.com/HenryFBP <br />
+- Count of Freshness Traversal @ www.twitter.com/DmitryChunikhin <br />
+- Dogukan Demir (demirdogukan) @ www.github.com/demirdogukan <br />
+- Henri Post (HenryFBP) @ www.github.com/HenryFBP <br />
 - PyPi @ www.pypi.org <br />
 - PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
 - Pygame @ www.github.com/pygame/pygame <br />
 - Numpy @ www.github.com/numpy/numpy <br />
-- PyOpenGL (and its counterpart PyOpenGL-accelerate) @ www.github.com/mcfletch/pyopengl <br />
 - PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
 - Psutil @ www.github.com/giampaolo/psutil <br />
 - PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
 - Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
 - GPUtil @ www.github.com/anderskm/gputil <br />
 - Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ https://github.com/moderngl/moderngl <br />
-- Moderngl_window @ https://github.com/moderngl/moderngl-window <br />
-- PyJoystick @ https://github.com/justengel/pyjoystick <br />
+- Moderngl @ www.github.com/moderngl/moderngl <br />
+- Moderngl_window @ www.github.com/moderngl/moderngl-window <br />
+- PyJoystick @ www.github.com/justengel/pyjoystick <br />
+- Noise @ www.github.com/caseman/noise <br />
+- Matplotlib @ www.github.com/matplotlib/matplotlib <br />
 - FreeSound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
 - FreeSound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
 - FreeSound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
@@ -160,9 +173,9 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 ## Changes
 Pycraft v0.9.5 is now live! Here is a list of all the added features to this major update: <br />
 
-* Feature - This update features the new start-up animation by Dogukan Demir.
-* Feature - This update also includes transitional effects between the different GUIs, which can be seen when navigating through different GUIs
-* Feature - Basic collisions have been added to Pycraft, with better implementations coming after Pycraft v0.9.4
+* Feature: This update features the new start-up animation by Dogukan Demir.
+* Feature: This update also includes transitional effects between the different GUIs, which can be seen when navigating through different GUIs
+* Feature: Basic collisions have been added to Pycraft, with better implementations coming after Pycraft v0.9.4
 
 * Feature: Screen animation/transitions have been added throughout the project. This was showcased in Pycraft v0.9.5-0 but now works with the Pycraft v0.9.4 update.
 * Feature: Wide range support for controllers has been added, you can now use a controller seamlessly throughout the game (currently only PS4 controllers have been tested but that's only due to hardware limitations).
@@ -266,8 +279,7 @@ For example; Pycraft v0.9.2.1 The first number is relevant to if the project is 
 All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
 
 ## Other Sources
-
-We now post a roughly monthly article on Pycraft, showing behind the scenes, tips and tricks and additional information, this is shared to both Medium (medium.com/@PycraftDev) and Dev (dev.to/PycraftDev) and builds on the regular posts we share on Twitter (twitter.com/PycraftDev) and Dev (dev.to/PycraftDev).
+We now post a roughly monthly article about Pycraft, showing behind the scenes, tips and tricks and additional information, this is shared to both Medium (medium.com/@PycraftDev) and Dev (dev.to/PycraftDev) and builds on the regular posts we share to Twitter (twitter.com/PycraftDev) and Dev (dev.to/PycraftDev).
 
 ## Final Notices
 Thank you greatly for supporting this project simply by running it, we are sorry in advance for any spelling mistakes. The program will be updated frequently and we shall do my best to keep this up to date too. we also want to add that you are welcome to view and change the program and share it with your friends however please may we have some credit, just a name would do and if you find any bugs or errors, please feel free to comment in the comments section any feedback so we can improve my program, it will all be much appreciated and give as much detail as you wish to give out.
