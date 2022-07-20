@@ -140,48 +140,6 @@ if __name__ != "__main__":
                                 self.base_folder,
                                 ("Resources//Benchmark_Resources//Crate.obj")),
                             cache=True)
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//raw_depth.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//shadowmap.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//cube_simple.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//cube_simple.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//cubemap.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//benchmark.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs//particles_screen.glsl")))
-
                     else:
                         for trackID in range(6):
                             self.mod_Pygame__.mixer.Sound(
@@ -249,47 +207,6 @@ if __name__ != "__main__":
                                 self.base_folder,
                                 ("Resources\\Benchmark_Resources\\Crate.obj")),
                             cache=True)
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\raw_depth.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\shadowmap.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\cube_simple.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\cube_simple.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\cubemap.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_ModernGL_window_.WindowConfig,
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\benchmark.glsl")))
-
-                        self.mod_ModernGL_window_.WindowConfig.load_program(
-                            self.mod_OS__.path.join(
-                                self.base_folder,
-                                ("programs\\particles_screen.glsl")))
 
                     self.AnimateLogo = True
                     self.CurrentResourceCheckTime = self.mod_Time__.perf_counter()-StartTime
