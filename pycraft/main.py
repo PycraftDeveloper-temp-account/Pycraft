@@ -352,7 +352,7 @@ class Startup:
             Class_Startup_variables.UseMouseInput = True
             Class_Startup_variables.wnd = None
             Class_Startup_variables.Updated = False
-            Class_Startup_variables.version = "0.9.5-6"
+            Class_Startup_variables.version = "0.9.5"
             Class_Startup_variables.X = 0
             Class_Startup_variables.Y = 0
             Class_Startup_variables.Z = 0
@@ -654,7 +654,7 @@ if __name__ == "__main__":
             sys.exit()
 
 def QueryVersion():
-    return "pycraft v0.9.5-6"
+    return "pycraft v0.9.5"
 
 def start():
     print("Started <Pycraft_main>")
