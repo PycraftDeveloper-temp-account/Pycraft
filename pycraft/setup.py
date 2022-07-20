@@ -8,7 +8,7 @@ with open(r"requirements.txt", "r") as fh:
     requirements = [line.strip() for line in fh]
 
 setuptools.setup(name="python-pycraft",
-                 version="0.9.5-1",
+                 version="0.9.5",
                  author="PycraftDev",
                  author_email="thomasjebbo@gmail.com",
                  description="The open-world, OpenGL video game made in Python",
