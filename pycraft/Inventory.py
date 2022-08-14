@@ -292,6 +292,11 @@ if __name__ != "__main__":
                             self.mod_pygame__.display.quit()
                             return
 
+                        if event.type == self.mod_pygame__.WINDOWFOCUSLOST:
+                            self.window_in_focus = False
+                        elif event.type == self.mod_pygame__.WINDOWFOCUSGAINED:
+                            self.window_in_focus = True
+
                         if event.type == self.mod_pygame__.WINDOWSIZECHANGED:
                             self.real_window_width = self.mod_pygame__.display.get_window_size()[0]
                             self.real_window_height = self.mod_pygame__.display.get_window_size()[1]
