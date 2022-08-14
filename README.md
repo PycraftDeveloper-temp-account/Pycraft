@@ -171,18 +171,23 @@ pip is usually installed by default when installing Python with most versions.
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 ## Changes
-Pycraft v0.9.6-0 is now live! Here is a list of all the added features to this minor update: <br />
+Pycraft v0.9.6-1 is now live! Here is a list of all the added features to this minor update: <br />
 
-* Feature: There have been some major changes and improvements to how Pycraft checks to make sure all the resources it needs are present and in the correct location, the process is now faster and it’s easier to add more files later on and has been improved to include all the required files in Pycraft (some were not checked before).
-* Feature & Performance: The 'noise' module for generating Perlin noise in Pycraft has now been removed, opting for a solution that is faster, more efficient and also supported on newer hardware and more operating systems.
-* Bug-Fix: Numerous improvements and other small bug-fixes that were quickly patched in Pycraft v0.9.5 have been properly patched now.
-* Feature: Some of the folders used by Pycraft have been renamed to make them more user friendly.
-* Feature: Some of the core variables for Pycraft have been renamed to bring them in-line with the PEP8 specification, this is a small part of the gradual transition to supporting most of the PEP8 standards in Pycraft.
+* PEP8: We have tweaked more function, procedure, class and variable names to bring them in line with the PEP8 standard, this is in line with a current project to introduce the PEP8 standards in Pycraft.
+* Feature: We have deprecated numerous variables and keys in save data that were no longer needed.
+* Feature: We have added "Registry.py" to Pycraft that takes charge of initialising a lot of the key variables used throughout Pycraft, shortening the "main.py" module considerably.
+* Feature: We have tweaked and improved file loading in Pycraft so that if your saved data has readable keys, we can recover those without resetting everything in the save.
+* Feature: We have tweaked the sequence of GUIs that appear on start-up to make them make more sense, putting the start-up animation before the theme selector menu.
+* Feature: We have added the theme selection menu and start-up animation into the core 2D display functionality module with means that we can more easily tweak them later on if we need to.
+* Feature: We have improved in-game events, especially focused on movement to make them shorter and more user friendly.
+* Feature: We have altered the jump animation for Pycraft to make it more realistic. We have also re-added the ability to hold the space bar to continuously jump.
+* Feature: We have made several improvements to the joystick control in game, fixing bugs and allowing for better menu navigation and mouse control. We have also made freeing the mouse from Pycraft easier.
+* Feature: We have consolidated some of the threads in Pycraft to make it less complex and easier to use.
 
-Again, feedback would be much appreciated this update was released on; 10/08/2022 (UK date; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
+Again, feedback would be much appreciated this update was released on; 14/08/2022 (UK date; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
 
 ## Understanding the release notes
-This section will hopefully provide additional information on helping to read the release notes. Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update. Points detailed after the "Bug-Fix" tag are likely to be the most frequent, they outline the most major bugs that have been fixed in this update, although they are not the only bugs that have been fixed. Points detailed after the "Performance" tag are used where there have been significant performance improvements to the project. Points detailed after the "Identified-Bugs" tag are bugs that have been identified in the project and that haven't been fixed as of writing the release notes, these are significant issues and will be fixed as soon as possible. Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation.
+This section will hopefully provide additional information on helping to read the release notes. Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update. Points detailed after the "Bug-Fix" tag are likely to be the most frequent, they outline the most major bugs that have been fixed in this update, although they are not the only bugs that have been fixed. Points detailed after the "Performance" tag are used where there have been significant performance improvements to the project. Points detailed after the "Identified-Bugs" tag are bugs that have been identified in the project and that haven't been fixed as of writing the release notes, these are significant issues and will be fixed as soon as possible. Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation. The "PEP8" tag is used to signify that significant changes have been made to Pycraft to bring it in line with the PEP8 standards.
 
 ## Input mapping
 This section will be replaced with a dedicated file for keymapping as well as an in-game guide. The controller keys are labelled differently between controllers but have the same mapping in game.
