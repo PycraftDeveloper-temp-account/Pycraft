@@ -48,6 +48,7 @@ if __name__ != "__main__":
             self.fancy_graphics = True
             self.fancy_particles = True
             self.font_color = (255, 255, 255)
+            self.from_game_GUI = False
             self.from_play = False
             self.fullscreen = False
             self.fullscreen_x = self.mod_pyautogui__.size()[0]
