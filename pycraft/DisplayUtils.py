@@ -87,60 +87,61 @@ if __name__ != "__main__":
                 self.mouse_button_down = True
                 self.joystick_confirm = False
 
-            displayEvents = self.mod_pygame__.event.get()
-            for event in displayEvents:
-                if (event.type == self.mod_pygame__.QUIT
-                        or (event.type == self.mod_pygame__.KEYDOWN
-                            and event.key == self.mod_pygame__.K_ESCAPE)):
+            if checkEvents:
+                displayEvents = self.mod_pygame__.event.get()
+                for event in displayEvents:
+                    if (event.type == self.mod_pygame__.QUIT
+                            or (event.type == self.mod_pygame__.KEYDOWN
+                                and event.key == self.mod_pygame__.K_ESCAPE)):
 
-                    self.joystick_exit = False
+                        self.joystick_exit = False
 
-                    if self.sound:
-                        self.mod_sound_utils__.play_sound.play_click_sound(self)
+                        if self.sound:
+                            self.mod_sound_utils__.play_sound.play_click_sound(self)
 
-                    if location == "exit":
-                        self.mod_pygame__.quit()
-                        self.mod_sys__.exit()
-                        
-                    else:
-                        self.startup_animation = True
-                        self.run_timer = 0
-                        self.go_to = location
-
-                if event.type == self.mod_pygame__.WINDOWFOCUSLOST:
-                    self.window_in_focus = False
-                elif event.type == self.mod_pygame__.WINDOWFOCUSGAINED:
-                    self.window_in_focus = True
-
-                if checkEvents and self.use_mouse_input:
-                    if event.type == self.mod_pygame__.KEYDOWN:
-                        if event.key == self.mod_pygame__.K_SPACE and self.devmode < 10:
-                            self.devmode += 1
-
-                        if event.key == self.mod_pygame__.K_q:
-                            self.mod_tkinter_utils__.TkinterInfo.CreateTkinterWindow(
-                                self)
+                        if location == "exit":
+                            self.mod_pygame__.quit()
+                            self.mod_sys__.exit()
                             
-                        if (event.key == self.mod_pygame__.K_F11 and
-                                resize):
-                            
-                            self.mod_display_utils__.display_utils.update_display(self)
+                        else:
+                            self.startup_animation = True
+                            self.run_timer = 0
+                            self.go_to = location
 
-                        if event.key == self.mod_pygame__.K_x:
-                            self.devmode = 1
+                    if event.type == self.mod_pygame__.WINDOWFOCUSLOST:
+                        self.window_in_focus = False
+                    elif event.type == self.mod_pygame__.WINDOWFOCUSGAINED:
+                        self.window_in_focus = True
 
-                        if event.key == self.mod_pygame__.K_RETURN:
+                    if self.use_mouse_input:
+                        if event.type == self.mod_pygame__.KEYDOWN:
+                            if event.key == self.mod_pygame__.K_SPACE and self.devmode < 10:
+                                self.devmode += 1
+
+                            if event.key == self.mod_pygame__.K_q:
+                                self.mod_tkinter_utils__.TkinterInfo.CreateTkinterWindow(
+                                    self)
+                                
+                            if (event.key == self.mod_pygame__.K_F11 and
+                                    resize):
+                                
+                                self.mod_display_utils__.display_utils.update_display(self)
+
+                            if event.key == self.mod_pygame__.K_x:
+                                self.devmode = 1
+
+                            if event.key == self.mod_pygame__.K_RETURN:
+                                self.mouse_button_down = True
+
+                        elif (event.type == self.mod_pygame__.MOUSEBUTTONDOWN or
+                                self.mod_pygame__.mouse.get_pressed()[0]):
+
                             self.mouse_button_down = True
 
-                    elif (event.type == self.mod_pygame__.MOUSEBUTTONDOWN or
-                            self.mod_pygame__.mouse.get_pressed()[0]):
+                        else:
+                            self.mouse_button_down = False
 
-                        self.mouse_button_down = True
-
-                    else:
-                        self.mouse_button_down = False
-
-            return displayEvents
+                return displayEvents
 
 
     class display_utils:
