@@ -1,0 +1,154 @@
+{
+    "General": [
+        [
+            "Theme",
+            "Gives you control over which theme you can use",
+            {"button": [
+                "light",
+                "dark"]
+            },
+            "theme"
+        ],
+        [
+            "Mode",
+            "Gives you 4 separate pre-sets for settings Adaptive mode will automatically adjust your settings",
+            {"button": [
+                "low",
+                "medium",
+                "high",
+                "adaptive"]
+            },
+            "settings_preset"
+        ]
+    ],
+
+    "Video": [
+        [
+            "FPS limit: {}. Current: {}. Average: {}.",
+            "Controls the maximum frame rate the game will limit to, does not guarantee that FPS unfortunately",
+            {"slider": [
+                15,
+                500]
+            },
+            "FPS",
+            "eFPS",
+            "aFPS"
+        ],
+        [
+            "FOV: {}.",
+            "Controls the FOV of the camera in-game",
+            {"slider": [
+                30,
+                120]
+            },
+            "FOV"
+        ],
+        [
+            "Camera angle speed: {}.",
+            "Controls the rotation speed of the camera in-game (1 is low, 5 is high)",
+            {"slider": [
+                1,
+                6]
+            },
+            "camera_angle_speed"
+        ],
+        [
+            "Anti-aliasing: {}.",
+            "Enables/Disables anti-aliasing in game and in the GUI, will give you a minor performance improvement, mainly for low powered devices",
+            {"toggle": [
+                true,
+                false]
+            },
+            "aa"
+        ],
+        [
+            "Render fog: {}.",
+            "Enables/Disables fog effects in game, for a small performance benefit",
+            {"toggle": [
+                    true,
+                    false]
+            },
+            "render_fog"
+        ],
+        [
+            "Fancy graphics: {}.",
+            "Enables/Disables some graphical features, this can result in better performance when turned off",
+            {
+                "toggle": [
+                    true,
+                    false
+                ]
+            },
+            "fancy_graphics"
+        ],
+        [
+            "Fancy particles: {}.",
+            "Enables/Disables particles in game as particles can have a significant performance decrease",
+            {
+                "toggle": [
+                    true,
+                    false
+                ]
+            },
+            "fancy_particles"
+        ]
+    ],
+
+    "Music and sound": [
+        [
+            "Sound: {}.",
+            "Enables/Disables sound effects in game, like for example the click sound and footsteps in game",
+            {"toggle": [
+                    true,
+                    false
+                ]
+            },
+            "sound"
+        ],
+        [
+            "Sound volume: {}%.",
+            "Controls the volume of the sound effects, where 100% is maximum and 0% is minimum volume",
+            {"slider": [
+                    0,
+                    100
+                ]
+            },
+            "sound_volume"
+        ],
+        [
+            "Music: {}.",
+            "Enables/Disables music in game, like for example the GUI music",
+            {"toggle": [
+                    true,
+                    false
+                ]
+            },
+            "music"
+        ],
+        [
+            "Music volume: {}%.",
+            "Controls the volume of the music, some effects may not apply until the game reloads",
+            {"slider": [
+                    0,
+                    100
+                ]
+            },
+            "music_volume"
+        ]
+    ],
+
+    "Storage and permissions": [null],
+    "Input control": [
+        [
+            "Controller support: {}.",
+            "Toggles the use of either keyboard and mouse or a controller to control the mouse and interact with the GUI",
+            {"toggle": [
+                    true,
+                    false
+                ]
+            },
+            "use_mouse_input"
+        ]
+    ],
+    "Developer options": [null]
+}
