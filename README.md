@@ -21,7 +21,7 @@ This is a guide of where some of the sections of this README have gone, as well 
 > * [Running The Program](https://github.com/PycraftDeveloper/Pycraft#running-the-program)
 > * [Credits](https://github.com/PycraftDeveloper/Pycraft#credits)
 > * [Uncompiled Pycraft Dependancies](https://github.com/PycraftDeveloper/Pycraft#uncompiled-pycraft-dependencies-)
-> * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.6-0#changes)
+> * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.6-5#changes)
 > * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.5#understanding-the-release-notes)
 > * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.5#input-mapping)
 > * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft#our-update-policy)
