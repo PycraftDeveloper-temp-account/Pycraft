@@ -466,7 +466,7 @@ if __name__ == "__main__":
             sys.exit()
 
 def QueryVersion():
-    return "pycraft v0.9.6-2.5"
+    return "pycraft v9.5.4"
 
 
 def start():
