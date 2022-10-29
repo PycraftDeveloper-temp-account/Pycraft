@@ -217,24 +217,12 @@ _A detailed map of inputs for keyboard and mouse or controller combinations is c
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
 
 ## Version Naming
-Pycraft's naming system consists of at least 3 numbers. The first number signifies if the project is in a finished state. The second number relates to the number of significant updates Pycraft has had. The third number relates to smaller sub-updates, these updates are usually used to show progress towards larger releases.
+Pycraft's versions will always now follow the structure; "vA.B.C"
+* Where "A" is the major revision number.
+* Where "B" is the minor revsision number.
+* Where "C" is the patch and developer preview numbers (combined).
 
-Each time an update is released that changes any of the first 3 numbers, a release is added here on GitHub, on PyPi and on SourceForge, and will be able to be downloaded in either raw (.py) python files, or compiled into a (.exe) format for better ease of use.
-
-In addition to the first 3 numbers, there may also be two additional numbers. The first is separated by another point at the end of the version and is used to signify very minor adjustments to a release. These are very rarely used. More commonly however is the final number separated by a hyphen ("-"), this is used to indicate progress towards a sub-update, otherwise known as developer releases these indicate progress towards a release and are used to break up bigger updates. These are often buggy and showcase experimental features.
-
-### Examples
-These are not real-world examples and have been made up for the purpose of demonstration
-- Pycraft v0.9.6: This is not Pycraft in its finished state, however it is the 9th big update to Pycraft, and is the 6th update towards Pycraft v0.10.0
-- Pycraft v0.9.6.1: This is also not Pycraft in its finished state, however it is the 9th big update to Pycraft, and is the 6th update towards Pycraft v0.10.0. It is also the second minor release of Pycraft v0.9.6 and likely fixes game breaking bugs.
-- Pycraft v0.9.6-3: This is not Pycraft in its finished state, however it is the 9th big update to Pycraft, and is the 6th update towards Pycraft v0.10.0. It is also the 3rd developer update towards Pycraft v0.9.7.
-
-A better system will be added soon; we will use 3 digits to represent the version of Pycraft.
-- The first digit will be used to represent the current build update to Pycraft
-- The second digit will be used to represent a smaller improvement
-- The third digit will be used for either developer updates or for patches
-
-This means that Pycraft v0.9.6.0-3 will become Pycraft v9.5.4! These changes take effect from the 24/10/2022 (DD/MM/YYYY)
+Every version of Pycraft as of the 27/10/2022 (DD/MM/YYYY) must feature all 3 values. Updates also now go sequentially, so Pycraft v9.6.4 is newer than Pycraft v9.5.7. If either of the "A" or "B" version numbers is incremented in a release, documentation MUST be suitably updated, in addition Pycraft MUST be released on PyPi, SourceForge and as a release on GitHub.
 
 ## Releases
 All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
