@@ -9,30 +9,29 @@ Made with Python 3 64-bit and Microsoft Visual Studio Code.
 ![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/forks/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/issues/PycraftDeveloper/Pycraft) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/PycraftDeveloper/Pycraft) ![](https://img.shields.io/pypi/wheel/python-pycraft) ![GitHub repo size](https://img.shields.io/github/repo-size/PycraftDeveloper/Pycraft) ![Discord](https://img.shields.io/discord/929750166255321138)
 
 ## Contents
-This is a guide of where some of the sections of this README have gone, as well as useful links to other documents.
 
-> * [About](https://github.com/PycraftDeveloper/Pycraft#about)
+> * [About](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#about)
 > * [Preview Video](https://youtu.be/shAprkrcaiI)
-> * [Setup](https://github.com/PycraftDeveloper/Pycraft#setup)
-> * * [Installing the project from GitHub (Method 1)](https://github.com/PycraftDeveloper/Pycraft#installing-the-project-from-github-method-1)
-> * * [Installing the project from GitHub (Method 2)](https://github.com/PycraftDeveloper/Pycraft#installing-the-project-from-github-method-2)
-> * * [Installing from PyPi (preferred)](https://github.com/PycraftDeveloper/Pycraft#installing-from-pypi-preferred)
-> * * [Installing using Pipenv](https://github.com/PycraftDeveloper/Pycraft#installing-using-pipenv)
-> * [Running The Program](https://github.com/PycraftDeveloper/Pycraft#running-the-program)
-> * [Credits](https://github.com/PycraftDeveloper/Pycraft#credits)
-> * [Uncompiled Pycraft Dependancies](https://github.com/PycraftDeveloper/Pycraft#uncompiled-pycraft-dependencies-)
-> * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.6-5#changes)
-> * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.5#understanding-the-release-notes)
-> * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v0.9.5#input-mapping)
-> * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft#our-update-policy)
-> * [Version Naming](https://github.com/PycraftDeveloper/Pycraft#version-naming)
-> * [Releases](https://github.com/PycraftDeveloper/Pycraft#releases)
-> * [Other Sources](https://github.com/PycraftDeveloper/Pycraft#other-sources)
-> * [Final Notices](https://github.com/PycraftDeveloper/Pycraft#final-notices)
+> * [Setup](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#setup)
+> * * [Installing the project from GitHub (Method 1)](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#installing-the-project-from-github-method-1)
+> * * [Installing the project from GitHub (Method 2)](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#installing-the-project-from-github-method-2)
+> * * [Installing from PyPi (preferred)](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#installing-from-pypi-preferred)
+> * * [Installing using Pipenv](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#installing-using-pipenv)
+> * [Running The Program](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#running-the-program)
+> * [Credits](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#credits)
+> * [Uncompiled Pycraft Dependancies](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#uncompiled-pycraft-dependencies-)
+> * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#changes)
+> * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#understanding-the-release-notes)
+> * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#input-mapping)
+> * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#our-update-policy)
+> * [Version Naming](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#version-naming)
+> * [Releases](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#releases)
+> * [Other Sources](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#other-sources)
+> * [Final Notices](https://github.com/PycraftDeveloper/Pycraft/tree/Pycraft-v9.5.4#final-notices)
 
-> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.5/Update_Timeline.md#update-timeline)
-> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.5/Planned_Storyline.md#the-planned-storyline)
-> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v0.9.5/Sound_Preview.md#pycrafts-sound-files---preview-1)
+> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v9.5.4/Update_Timeline.md#update-timeline)
+> * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v9.5.4/Planned_Storyline.md#the-planned-storyline)
+> * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v9.5.4/Sound_Preview.md#pycrafts-sound-files---preview-1)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
@@ -171,7 +170,7 @@ pip is usually installed by default when installing Python with most versions.
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 ## Changes
-Pycraft v0.9.6-2.5 is now live! Here is a list of all the added features to this minor update: <br />
+Pycraft v9.5.4 is now live! Here is a list of all the added features to this minor update: <br />
 
 * Feature: This update marks the completion of the majority of the settings menu, including the expansion of the core concept first looked at in Pycraft v0.9.6-2.0 with a new area to specify keyboard inputs, as well as the filling out of other categories. There is now an expanded developer menu and a new place under "storage and permissions" where you can view how much storage Pycraft is using and a breakdown of what makes up that percentage.
 
@@ -235,7 +234,7 @@ A better system will be added soon; we will use 3 digits to represent the versio
 - The second digit will be used to represent a smaller improvement
 - The third digit will be used for either developer updates or for patches
 
-This means that Pycraft v0.9.6.0-3 will become Pycraft v9.6.3! These changes take effect from the 24/10/2022 (DD/MM/YYYY)
+This means that Pycraft v0.9.6.0-3 will become Pycraft v9.5.4! These changes take effect from the 24/10/2022 (DD/MM/YYYY)
 
 ## Releases
 All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
