@@ -170,25 +170,11 @@ pip is usually installed by default when installing Python with most versions.
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 ## Changes
-Pycraft v9.5.4 is now live! Here is a list of all the added features to this minor update: <br />
+Pycraft v9.5.5 is now live! Here is a list of all the added features to this minor update: <br />
 
-* Feature: This update marks the completion of the majority of the settings menu, including the expansion of the core concept first looked at in Pycraft v0.9.6-2.0 with a new area to specify keyboard inputs, as well as the filling out of other categories. There is now an expanded developer menu and a new place under "storage and permissions" where you can view how much storage Pycraft is using and a breakdown of what makes up that percentage.
+* Not yet written up (but there have been a LOT of changes!)
 
-* Feature: This update marks the start of a big transition away from using the default ModernGL-Window module for our windowing needs, and switching back to Pygame, huge sections of the game engine are - or are in the process of being rewritten to continue this transition.
-
-* Bug-Fix: A huge number of bugs have been fixed, with both the settings menu and with the game engine its self, and more bugs will continue to be fixed as we continue to work on the new game engine and tweaking Pycraft's structure.
-
-Again, feedback would be much appreciated this update was released on; 16/09/2022 (UK date; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
-
-_Notice: This update includes many huge changes and additions to Pycraft, but is also not in its most stable condition, this is meant more as a proof of concept rather than a better laid out developer update, you are welcome to use the latest code, but all of the developer update related warnings definitely apply here as we continue to fine tune some features_
-
-_Notice: Unfortunately, due to the nature of some of these changes, some areas are not yet accessible, and this version of Pycraft is already around 4 days old so doesn’t include some of the more recent changes to Pycraft as heard in our progress updates on Twitter. A List of all the features not making it into Pycraft v0.9.6-2.5's update include:_
-* _The new controller events system redesign - for both 2D and 3D GUIs_
-* _The Inventory GUI_
-* _The Map GUI_
-* _Translations throughout Pycraft with customisation from the settings menu_
-* _The ability to adjust Pycraft's rendering resolution, FOV adjustments in game and the ability to compile maths related functions_
-* _The new load screen_
+Again, feedback would be much appreciated this update was released on; 23/12/2022 (date format; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
 
 ## Understanding the release notes
 This section will hopefully provide additional information on helping to read the release notes. Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update. Points detailed after the "Bug-Fix" tag are likely to be the most frequent, they outline the most major bugs that have been fixed in this update, although they are not the only bugs that have been fixed. Points detailed after the "Performance" tag are used where there have been significant performance improvements to the project. Points detailed after the "Identified-Bugs" tag are bugs that have been identified in the project and that haven't been fixed as of writing the release notes, these are significant issues and will be fixed as soon as possible. Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation. The "PEP8" tag is used to signify that significant changes have been made to Pycraft to bring it in line with the PEP8 standards.
