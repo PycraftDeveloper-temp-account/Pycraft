@@ -257,7 +257,18 @@ if __name__ != "__main__":
                         else:
                             text = "Making final touches"
 
-                        modifier = current_load_time/average_load_time
+                        try:
+                            modifier = current_load_time/average_load_time
+                        except Exception as message:
+                            warning_message = str(message)
+                            logging_utils.create_log_message.update_log_warning(
+                                self.logging_dictionary,
+                                warning_message,
+                                self.output_log,
+                                self.platform,
+                                self.base_folder)
+                            
+                            modifier = 1
 
                         percent_complete = modifier*100
                         if percent_complete > 100:
