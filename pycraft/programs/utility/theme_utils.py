@@ -177,7 +177,8 @@ if __name__ != "__main__":
                         self.joystick_zoom,
                         self.clock,
                         self.joystick_hat_pressed,
-                        self.fullscreen) = display_utils.display_functionality.core_display_functions(
+                        self.fullscreen,
+                        self.joystick_connected) = display_utils.display_functionality.core_display_functions(
                             self.platform,
                             self.base_folder,
                             self.display,
