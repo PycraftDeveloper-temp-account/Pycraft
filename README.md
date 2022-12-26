@@ -172,7 +172,16 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 ## Changes
 Pycraft v9.5.5 is now live! Here is a list of all the added features to this minor update: <br />
 
-* 
+* Feature: We have extensively reworked the directory structure of Pycraft to make it more user friendly and easier to find and access necessary files.
+* Feature: Pycraft has been entirely restructured to reduce the reliance on the 'self' parameter to make Pycraft's source code easier to work with.
+* Feature: We have simplified events in Pycraft now so that they all use the same method of detecting them regardless of if you’re using Pycraft's 2D or 3D engine.
+* Feature: We have changed the 3D windowing engine to match the 2D windowing engine to bring feature parity and to make the transition between windowing engines easier. By doing this we managed to improve in game performance, significantly simplify the method of sharing data between windowing engines, allow changes to the new settings menu to control more of the 3D engine, and to allow changes to the settings in the settings menu to be applied to the 3D engine without necessitating a restart.
+* Feature: We have added back in the Loading, Inventory and Map UIs, and all of them have been extensively reworked and changed to be more featureful and behave better with the new 3D engine.
+* Feature: A new dropdown element in the settings menu has been added.
+* Feature: We have used the new dropdown element for the settings menu to add in translations and adjustments to the rendering resolution of Pycraft.
+* Bug-Fix: we have finished one of the most extensive pre-release testing processes yet - due to the large number of changes we have made - and fixed a variety of known bugs, with a particular focus on the 3D engine, controller compatibility and the installer.
+* Documentation: We have started the process of adding in docstrings to the start of every class, function and procedure in Pycraft, and later this will extend to also include at the start of each module.
+* Documentation: We have completely restarted the documentation for Pycraft and will be using a new automated method to make the process of compiling the new docstrings together and formatting them properly, in addition to formatting this ReadMe automated for future ease of use. This has yet to be publicly released though.
 
 Again, feedback would be much appreciated this update was released on; 23/12/2022 (date format; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
 
@@ -210,7 +219,7 @@ New releases will be introduced regularly, it is likely that there will be some 
 ## Version Naming
 Pycraft's versions will always now follow the structure; "vA.B.C"
 * Where "A" is the major revision number.
-* Where "B" is the minor revsision number.
+* Where "B" is the minor revision number.
 * Where "C" is the patch and developer preview numbers (combined).
 
 Every version of Pycraft as of the 27/10/2022 (DD/MM/YYYY) must feature all 3 values. Updates also now go sequentially, so Pycraft v9.6.4 is newer than Pycraft v9.5.7. If either of the "A" or "B" version numbers is incremented in a release, documentation MUST be suitably updated, in addition Pycraft MUST be released on PyPi, SourceForge and as a release on GitHub.
