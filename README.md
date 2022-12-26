@@ -172,12 +172,17 @@ _Disclaimer; unfortunately, lots of these python modules (first and third party)
 ## Changes
 Pycraft v9.5.5 is now live! Here is a list of all the added features to this minor update: <br />
 
-* Not yet written up (but there have been a LOT of changes!)
+* 
 
 Again, feedback would be much appreciated this update was released on; 23/12/2022 (date format; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
 
 ## Understanding the release notes
-This section will hopefully provide additional information on helping to read the release notes. Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update. Points detailed after the "Bug-Fix" tag are likely to be the most frequent, they outline the most major bugs that have been fixed in this update, although they are not the only bugs that have been fixed. Points detailed after the "Performance" tag are used where there have been significant performance improvements to the project. Points detailed after the "Identified-Bugs" tag are bugs that have been identified in the project and that haven't been fixed as of writing the release notes, these are significant issues and will be fixed as soon as possible. Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation. The "PEP8" tag is used to signify that significant changes have been made to Pycraft to bring it in line with the PEP8 standards.
+This section will hopefully provide additional information on helping to read the release notes.
+* Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update.
+* Points detailed after the "Bug-Fix" tag are likely to be the most frequent, they outline the most major bugs that have been fixed in this update, although they are not the only bugs that have been fixed.
+* Points detailed after the "Performance" tag are used where there have been significant performance improvements to the project.
+* Points detailed after the "Identified-Bugs" tag are bugs that have been identified in the project and that haven't been fixed as of writing the release notes, these are significant issues and will be fixed as soon as possible.
+* Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation. The "PEP8" tag is used to signify that significant changes have been made to Pycraft to bring it in line with the PEP8 standards.
 
 ## Input mapping
 This section will be replaced with a dedicated file for keymapping as well as an in-game guide when this area of Pycraft is completed.
