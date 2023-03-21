@@ -519,7 +519,7 @@ def QueryVersion():
         - version (str): Pycraft's current version.
     """
     
-    return "pycraft v9.5.7"
+    return "pycraft v9.5.0dev8"
 
 
 def start():
