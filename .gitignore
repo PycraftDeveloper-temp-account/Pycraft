@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+pycraft/data files/pycraft_config.json
+pycraft/resources/game engine resources/clouds/Rnd_noise.png
