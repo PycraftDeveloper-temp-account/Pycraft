@@ -35,6 +35,7 @@ This will be Pycraft v9.5.0dev8!
 > * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v9.5.5/Planned_Storyline.md#the-planned-storyline)
 > * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v9.5.5/Sound_Preview.md#pycrafts-sound-files---preview-1)
 > * [Difficulty Comparison](https://github.com/PycraftDeveloper/Pycraft/blob/Pycraft-v9.5.5/Difficulty_Comparison.md)
+> * [Repository Structure](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Repository%20Structure.md)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
