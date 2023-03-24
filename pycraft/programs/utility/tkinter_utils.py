@@ -45,11 +45,13 @@ if __name__ != "__main__":
             
             root.title("Loading Pycraft")
             
+            root.geometry("485x193")
+            
             root.resizable(
                 False,
                 False)
             
-            banner_path = base_folder / "resources" / "general resources" / "pycraft_logo.png"
+            banner_path = base_folder / "resources" / "general resources" / "pycraft_logo_smaller.png"
 
             _, _ = image_utils.tkinter_installer.open_img(
                 root, 

@@ -6,10 +6,10 @@ try:
     from tkinter import messagebox
     import tkinter as tk
     
-    #import tkinter_utils
+    import tkinter_utils
     
-    #threading.Thread(
-        # target=tkinter_utils.splash_screen.create_splash).start()
+    threading.Thread(
+        target=tkinter_utils.splash_screen.create_splash).start()
     
     import moderngl
     import pygame
@@ -38,7 +38,7 @@ try:
     import theme_utils
     import translation_utils
     import pycraft_startup_utils
-    import tkinter_utils
+    #import tkinter_utils
 except Exception as Message:
     try:
         import sys
