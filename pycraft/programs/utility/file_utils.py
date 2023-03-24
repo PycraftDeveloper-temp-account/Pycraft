@@ -298,6 +298,8 @@ if __name__ != "__main__":
                     "language": Registry.language,
                     "use_transparency_effects": Registry.use_transparency_effects,
                     "auto_save_frequency": Registry.auto_save_frequency,
+                    "mono_audio": Registry.mono_audio,
+                    "audio_quality": Registry.audio_quality,
                     # temp
                     "position": [0, 0, 0],
                     "rotation": [0, 0],

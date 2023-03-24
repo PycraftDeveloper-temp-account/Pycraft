@@ -185,6 +185,26 @@
 
     "Music and sound": [
         [
+            "Audio Quality: {} Hz.",
+            "Allows greater control over the quality of all audio being played. Increasing this can have a negative effect on performance but might improve audio quality. Decreasing this will likely improve performance on some systems at the expense of audio quality. You cannot increase the maximum audio quality beyond the maximum audio quality of Pycraft's audio files.",
+            {"slider": [
+                    16000,
+                    48000
+                ]
+            },
+            "audio_quality"
+        ],
+        [
+            "Use Mono-Audio: {}.",
+            "This setting allows you to switch between mono and stereo audio, meaning that you combine the left and right channels together to form a single uniform channel. This disables all panning effects applied in the game engine.",
+            {"toggle": [
+                true,
+                false
+                ]
+            },
+            "mono_audio"
+        ],
+        [
             "Sound: {}.",
             "Enables/Disables sound effects in game, like for example the click sound and footsteps in game",
             {"toggle": [

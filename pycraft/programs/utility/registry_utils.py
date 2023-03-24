@@ -60,6 +60,7 @@ if __name__ != "__main__":
         aa = True
         aa_quality = "2x"
         accent_color = (237, 125, 49)
+        audio_quality = 48000
         auto_save_frequency = 30#2*60
         average_fps = 0
         background_color = [30, 30, 30]
@@ -244,7 +245,7 @@ if __name__ != "__main__":
             "information": False,
             "warnings": False,
             "errors": False}
-        
+        mono_audio = False
         mouse_x = 0
         mouse_y = 0
         movement_args = (STILL, POSITIVE, NEGATIVE)
@@ -367,6 +368,8 @@ if __name__ != "__main__":
             "language": "en",
             "use_transparency_effects": True,
             "auto_save_frequency": 2*60,
+            "mono_audio": False,
+            "audio_quality": 48000,
             # temp
             "position": [0, 0, 0],
             "rotation": [0, 0],

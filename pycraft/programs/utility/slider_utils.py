@@ -102,11 +102,7 @@ if __name__ != "__main__":
                     pygame.event.set_blocked(
                         pygame.MOUSEMOTION)
                     
-                    Registry.__dict__[argument_variable] = (
-                        (slider_range / length) * Registry.mouse_x) + minimum
-                    
                     new_value = ((slider_range/length) * Registry.mouse_x) + minimum
-                    
                     setattr(Registry, argument_variable, new_value)
 
                     pygame.draw.rect(
