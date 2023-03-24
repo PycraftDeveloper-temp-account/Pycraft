@@ -2,6 +2,7 @@ if __name__ != "__main__":
     try:
         import os
         import random
+        import errno
         
         from PIL import Image
         from matplotlib import cm
@@ -90,6 +91,11 @@ if __name__ != "__main__":
 
                 noise_image_path = Registry.base_folder / "resources" / "game engine resources" / "clouds" / "Rnd_noise.png"
 
+                try:
+                    os.makedirs(noise_image_path)
+                except FileExistsError: # Python >2.5
+                    pass
+        
                 try:
                     send2trash.send2trash(noise_image_path)
                     
