@@ -78,7 +78,10 @@ class Startup(Registry):
                     Message,
                     Message.__traceback__))
             
-            user_error_message = "We were unable to read your main save file, we are going to recover what we can, but some settings may be reset.\nMore Details:\n\n"
+            user_error_message = "".join((" We were unable to read your main ",
+                                            "save file, we are going to recover ",
+                                            "what we can, but some settings may ",
+                                            "be reset.\nMore Details:\n\n"))
 
             if Registry.detailed_error_messages:
                 user_error_message += str(error_message_detailed)

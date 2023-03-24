@@ -129,7 +129,7 @@ if __name__ != "__main__":
                         
     class fix_installer(Registry):
         def set_install_location():
-            repair = {"PATH": Registry.base_folder}
+            repair = {"PATH": str(Registry.base_folder)}
 
             installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
 
@@ -177,7 +177,7 @@ if __name__ != "__main__":
                 try:
                     setattr(Registry, key, save[key])
                     
-                except Exception as message_for_array:
+                except KeyError as message_for_array:
                     setattr(Registry, key, Registry.save_keys[key])
                     error_array.append(str(message_for_array))
                     
