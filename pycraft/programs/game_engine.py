@@ -663,10 +663,11 @@ if __name__ != "__main__":
                                     formatted_resolution = Registry.resolution.split(",")
                                     fullscreen_x = int(formatted_resolution[0][1:])
                                     fullscreen_y = int(formatted_resolution[1][1:-1])
-                                
+                                    
+                                fullscreen_size = (fullscreen_x,
+                                                        fullscreen_y)
                                 display_utils.display_utils.update_display(
-                                        fullscreen_x,
-                                        fullscreen_y,
+                                        fullscreen_size=fullscreen_size,
                                         opengl=True)
 
                                 ctx.viewport = (0, 0, *pygame.display.get_window_size())
