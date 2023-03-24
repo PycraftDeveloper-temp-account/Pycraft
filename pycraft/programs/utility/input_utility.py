@@ -1,22 +1,4 @@
 if __name__ != "__main__":
-    try:
-        from registry_utils import Registry
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "startup Fail",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
-            
     class identify_patterns:
         def __init__(self):
             pass

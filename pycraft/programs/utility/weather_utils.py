@@ -2,7 +2,6 @@ if __name__ != "__main__":
     try:
         import os
         import random
-        import errno
         
         from PIL import Image
         from matplotlib import cm

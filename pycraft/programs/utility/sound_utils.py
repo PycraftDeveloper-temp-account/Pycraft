@@ -1,6 +1,5 @@
 if __name__ != "__main__":
     try:
-        import os
         import random
             
         import pygame

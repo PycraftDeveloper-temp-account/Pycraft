@@ -1,6 +1,5 @@
 if __name__ != "__main__":
     try:
-        import time
         import datetime
     except Exception as Message:
         try:

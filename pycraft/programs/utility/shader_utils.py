@@ -1,7 +1,5 @@
 if __name__ != "__main__":
     try:
-        import os
-
         import moderngl_window
         
         from registry_utils import Registry

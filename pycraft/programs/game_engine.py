@@ -15,7 +15,6 @@ if __name__ != "__main__":
         import numpy
         import pyrr
         import pyautogui
-        import dill
 
         import inventory as inventoryGUI
         import map_gui

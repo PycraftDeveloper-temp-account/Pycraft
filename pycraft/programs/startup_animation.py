@@ -1,7 +1,6 @@
 if __name__ != "_main_":
     try:
         import traceback
-        import os
         import threading
         import time
         

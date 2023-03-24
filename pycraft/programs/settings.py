@@ -2,7 +2,6 @@ if __name__ != "__main__":
     try:
         import subprocess
         import sys
-        import os
         import time
         import threading
         import json

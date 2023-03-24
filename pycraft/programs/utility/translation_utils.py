@@ -1,6 +1,5 @@
 if __name__ != "__main__":
     try:
-        import os
         import json
 
         import googletrans

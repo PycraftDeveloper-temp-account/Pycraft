@@ -1,12 +1,10 @@
 try:
     import os
-    import platform
     import traceback
     import threading
     import sys
     from tkinter import messagebox
     import tkinter as tk
-    import pathlib
     
     #import tkinter_utils
     
@@ -16,7 +14,6 @@ try:
     import moderngl
     import pygame
     import psutil
-    import pyautogui
     
     import credits
     import achievements

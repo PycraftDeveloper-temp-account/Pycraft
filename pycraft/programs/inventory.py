@@ -1,12 +1,9 @@
 if __name__ != "__main__":
     try:
         import sys
-        import os
         import traceback
-        import pathlib
         
         import pygame
-        import pyautogui
         from PIL import Image
 
         from registry_utils import Registry
@@ -19,7 +16,6 @@ if __name__ != "__main__":
         import file_utils
         import tkinter_utils
         import text_utils
-        import button_utils
     except Exception as Message:
         try:
             import sys

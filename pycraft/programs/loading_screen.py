@@ -1,20 +1,16 @@
 if __name__ != "__main__":
     try:
         import sys
-        import os
         import traceback
         import time
         
         import pygame
-        import pyautogui
-        import dill
 
         from registry_utils import Registry
         
         import display_utils
         import caption_utils
         import error_utils
-        import file_utils
         import text_utils
         import drawing_utils
         import logging_utils

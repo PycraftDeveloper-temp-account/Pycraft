@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./pycraft/programs/utility",
+        "./pycraft/programs/installer"
+    ]
+}

@@ -4,7 +4,6 @@ if __name__ != "__main__":
         import json
         import traceback
         from tkinter import messagebox
-        import datetime
         
         import send2trash
 

@@ -1,12 +1,10 @@
 if __name__ != "__main__":
     try:
         import sys
-        import os
         import traceback
         
         import pygame
         from PIL import Image
-        import pyautogui
 
         from registry_utils import Registry
         

@@ -1,9 +1,7 @@
 if __name__ != "__main__":
     try:
         import traceback
-        import json
         import time
-        import datetime
 
         import pygame
         from PIL import ImageGrab
