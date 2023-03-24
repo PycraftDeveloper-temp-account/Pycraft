@@ -5,6 +5,7 @@ if __name__ != "__main__":
         from tkinter import messagebox
         import pathlib
         import threading
+        import time
 
         from registry_utils import Registry
         
@@ -29,38 +30,71 @@ if __name__ != "__main__":
         def __init__(self):
             pass
         
-        def create_splash():
-            directory = os.path.dirname(__file__)
-            pycraft_directory = str(directory).split("\\")
-            directory = ""
+        def center(win):
+            """
+            centers a tkinter window
+            """
+            win.update_idletasks()
+            width = win.winfo_width()
+            frm_width = win.winfo_rootx() - win.winfo_x()
+            win_width = width + 2 * frm_width
+            height = win.winfo_height()
+            titlebar_height = win.winfo_rooty() - win.winfo_y()
+            win_height = height + titlebar_height + frm_width
+            x = win.winfo_screenwidth() // 2 - win_width // 2
+            y = win.winfo_screenheight() // 2 - win_height // 2
+            win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+            win.deiconify()
+            
+        def check_if_necessary(root, stop_splash_screen):
+            if not stop_splash_screen.is_set():
+                #root.withdraw()
+                quit()
+                #root.quit()
+                #root.destroy()
+            else:
+                root.after(int((1/15)*1000), lambda: splash_screen.check_if_necessary(root, stop_splash_screen))
+        
+        def create_splash(stop_splash_screen):
+            time.sleep(2)
+            if stop_splash_screen.is_set():
+                directory = os.path.dirname(__file__)
+                pycraft_directory = str(directory).split("\\")
+                directory = ""
 
-            for folder in range(len(pycraft_directory)-1):
-                directory += f"{pycraft_directory[folder]}\\"
+                for folder in range(len(pycraft_directory)-1):
+                    directory += f"{pycraft_directory[folder]}\\"
 
-            base_folder = pathlib.Path(directory).parent
-            
-            root = tkinter.Tk()
-            
-            root.eval('tk::PlaceWindow . center')
-            
-            root.title("Loading Pycraft")
-            
-            root.geometry("485x193")
-            
-            root.resizable(
-                False,
-                False)
-            
-            banner_path = base_folder / "resources" / "general resources" / "pycraft_logo_smaller.png"
+                base_folder = pathlib.Path(directory).parent
+                
+                root = tkinter.Tk()
+                
+                root.withdraw()
+                
+                root.title("Loading Pycraft")
+                
+                root.geometry("485x193")
+                            
+                root.resizable(
+                    False,
+                    False)
+                
+                banner_path = base_folder / "resources" / "general resources" / "pycraft_logo_smaller.png"
 
-            _, _ = image_utils.tkinter_installer.open_img(
-                root, 
-                banner_path)
+                image_utils.tkinter_installer.open_img(
+                    root, 
+                    banner_path,
+                    offset_x=-2,
+                    offset_y=-2)
 
-            #Make the window borderless
-            root.overrideredirect(True)
+                #Make the window borderless
+                root.overrideredirect(True)
+                
+                splash_screen.center(root)
+                
+                root.after(int((1/15)*1000), lambda: splash_screen.check_if_necessary(root, stop_splash_screen))
 
-            root.mainloop()
+                root.mainloop()
     
     class tkinter_info(Registry):
         def __init__(self):

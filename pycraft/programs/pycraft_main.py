@@ -5,12 +5,20 @@ try:
     import sys
     from tkinter import messagebox
     import tkinter as tk
+    import time
+    import multiprocessing
     
     import tkinter_utils
     
-    threading.Thread(
-        target=tkinter_utils.splash_screen.create_splash).start()
-    
+    stop_splash_screen = multiprocessing.Event()
+    splash_screen = multiprocessing.Process(
+        target=tkinter_utils.splash_screen.create_splash,
+        args=(stop_splash_screen,))
+    splash_screen.daemon = True
+    splash_screen.name = "splash_screen"
+    stop_splash_screen.set()
+    splash_screen.start()
+        
     import moderngl
     import pygame
     import psutil
@@ -38,7 +46,6 @@ try:
     import theme_utils
     import translation_utils
     import pycraft_startup_utils
-    #import tkinter_utils
 except Exception as Message:
     try:
         import sys
@@ -425,9 +432,23 @@ class Initialize:
             Registry.data_CPU_usage_Max = 1
             Registry.data_current_fps_Max = 1
             Registry.data_memory_usage_Max = 1
-
+            
+            Registry.show_splash_screen = False
+            stop_splash_screen.clear()
+            
+            while True:
+                found_process = False
+                for process in multiprocessing.active_children():
+                    if process.name == "splash_screen":
+                        found_process = True
+                        time.sleep(1/15)
+                        break
+                    
+                if found_process is False:
+                    break
+                
             display_utils.display_utils.set_display()
-
+            
             if Registry.platform == "Windows":
                 import win32api
 
