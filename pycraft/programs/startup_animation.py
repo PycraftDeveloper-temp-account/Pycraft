@@ -38,7 +38,7 @@ if __name__ != "_main_":
                 else:
                     update_theme_later = False
 
-                theme_utils.determine_theme_colours.get_colors()
+                theme_utils.determine_theme_colors.get_colors()
 
                 if update_theme_later:
                     Registry.theme = False

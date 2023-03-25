@@ -72,7 +72,7 @@ if __name__ != "__main__":
         clear_cache = False
         clear_languages_cache = False
         clock = pygame.time.Clock()
-        colour_presets = {
+        color_presets = {
             "red": (255, 0, 0),
             "dark red": (128, 0, 0),
             "green": (0, 255, 0),

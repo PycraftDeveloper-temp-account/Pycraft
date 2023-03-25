@@ -19,7 +19,7 @@ if __name__ != "__main__":
             print(Message)
             sys.exit()
             
-    class determine_theme_colours(Registry):
+    class determine_theme_colors(Registry):
         def __init__(self):
             pass
 
@@ -45,7 +45,7 @@ if __name__ != "__main__":
                     if input_result is False:
                         input_result = input_utility.identify_patterns.identify_hex(argument[1:-1])
                         if input_result is False:
-                            input_result = input_utility.identify_patterns.identify_text(argument, Registry.colour_presets)
+                            input_result = input_utility.identify_patterns.identify_text(argument, Registry.color_presets)
                             if not input_result is False:
                                 setattr(Registry, list(Registry.custom_theme)[i], input_result)
                         else:

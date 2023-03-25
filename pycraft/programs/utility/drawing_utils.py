@@ -25,7 +25,7 @@ if __name__ != "__main__":
             pass
 
         def create_rose(
-                coloursARRAY,
+                colorsARRAY,
                 x_pos,
                 y_pos,
                 width,
@@ -37,10 +37,10 @@ if __name__ != "__main__":
             x_pos = x_pos-(51*x_scale_factor)
             y_pos = y_pos-(142*y_scale_factor)
             
-            if coloursARRAY is False:
-                coloursARRAY = []
+            if colorsARRAY is False:
+                colorsARRAY = []
                 for _ in range(32):
-                    coloursARRAY.append(Registry.shape_color)
+                    colorsARRAY.append(Registry.shape_color)
 
             octagon = [((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                                 ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
@@ -60,417 +60,417 @@ if __name__ != "__main__":
             if Registry.aa:
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[0],
+                    colorsARRAY[0],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[1],
+                    colorsARRAY[1],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[2],
+                    colorsARRAY[2],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[3],
+                    colorsARRAY[3],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[4],
+                    colorsARRAY[4],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
                 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[5],
+                    colorsARRAY[5],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[6],
+                    colorsARRAY[6],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[7],
+                    colorsARRAY[7],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[8],
+                    colorsARRAY[8],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[9],
+                    colorsARRAY[9],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[10],
+                    colorsARRAY[10],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[11],
+                    colorsARRAY[11],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[12],
+                    colorsARRAY[12],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[13],
+                    colorsARRAY[13],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[14],
+                    colorsARRAY[14],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[15],
+                    colorsARRAY[15],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[16],
+                    colorsARRAY[16],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[17],
+                    colorsARRAY[17],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[18],
+                    colorsARRAY[18],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[19],
+                    colorsARRAY[19],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[20],
+                    colorsARRAY[20],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[21],
+                    colorsARRAY[21],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[22],
+                    colorsARRAY[22],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[23],
+                    colorsARRAY[23],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[24],
+                    colorsARRAY[24],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[25],
+                    colorsARRAY[25],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[25],
+                    colorsARRAY[25],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[27],
+                    colorsARRAY[27],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[28],
+                    colorsARRAY[28],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[29],
+                    colorsARRAY[29],
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[30],
+                    colorsARRAY[30],
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos))
 
                 pygame.draw.aaline(
                     Registry.display,
-                    coloursARRAY[31],
+                    colorsARRAY[31],
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos))
                 
             else:
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[0],
+                    colorsARRAY[0],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[1],
+                    colorsARRAY[1],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[2],
+                    colorsARRAY[2],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[3],
+                    colorsARRAY[3],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[4],
+                    colorsARRAY[4],
                     ((205*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
                 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[5],
+                    colorsARRAY[5],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[6],
+                    colorsARRAY[6],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[7],
+                    colorsARRAY[7],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[8],
+                    colorsARRAY[8],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[9],
+                    colorsARRAY[9],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[10],
+                    colorsARRAY[10],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[11],
+                    colorsARRAY[11],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[12],
+                    colorsARRAY[12],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[13],
+                    colorsARRAY[13],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[14],
+                    colorsARRAY[14],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[15],
+                    colorsARRAY[15],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[16],
+                    colorsARRAY[16],
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[17],
+                    colorsARRAY[17],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[18],
+                    colorsARRAY[18],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[19],
+                    colorsARRAY[19],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[20],
+                    colorsARRAY[20],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[21],
+                    colorsARRAY[21],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[22],
+                    colorsARRAY[22],
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[23],
+                    colorsARRAY[23],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((51*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[24],
+                    colorsARRAY[24],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((205*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[25],
+                    colorsARRAY[25],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[25],
+                    colorsARRAY[25],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[27],
+                    colorsARRAY[27],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[28],
+                    colorsARRAY[28],
                     ((51*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[29],
+                    colorsARRAY[29],
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[30],
+                    colorsARRAY[30],
                     ((422*x_scale_factor)+x_pos, (666*y_scale_factor)+y_pos),
                     ((575*x_scale_factor)+x_pos, (295*y_scale_factor)+y_pos),
                     width=2)
 
                 pygame.draw.line(
                     Registry.display,
-                    coloursARRAY[31],
+                    colorsARRAY[31],
                     ((575*x_scale_factor)+x_pos, (512*y_scale_factor)+y_pos),
                     ((422*x_scale_factor)+x_pos, (142*y_scale_factor)+y_pos),
                     width=2)

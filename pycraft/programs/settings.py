@@ -551,7 +551,7 @@ if __name__ != "__main__":
 
                                     if Registry.theme == "custom" and sub_menu[item][3] == "theme":
                                         if Registry.custom_theme is None:
-                                            theme_utils.determine_theme_colours.get_colors()
+                                            theme_utils.determine_theme_colors.get_colors()
 
                                             Registry.custom_theme = {
                                                 "font_color": Registry.font_color,
@@ -581,7 +581,7 @@ if __name__ != "__main__":
                                             if input_result is False:
                                                 input_result = input_utility.identify_patterns.identify_hex(argument[1:-1])
                                                 if input_result is False:
-                                                    input_result = input_utility.identify_patterns.identify_text(argument, Registry.colour_presets)
+                                                    input_result = input_utility.identify_patterns.identify_text(argument, Registry.color_presets)
                                                     if not input_result is False:
                                                         setattr(Registry, list(Registry.custom_theme)[i], input_result)
                                                 else:

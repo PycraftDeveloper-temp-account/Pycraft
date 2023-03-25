@@ -145,7 +145,7 @@ if __name__ != "__main__":
                 pygame.display.flip()
 
                 oldTHEME = Registry.theme
-                coloursARRAY = []
+                colorsARRAY = []
 
                 anim = False
 
@@ -200,7 +200,7 @@ if __name__ != "__main__":
                         outdated = Registry.outdated
 
                     if Registry.fancy_graphics:
-                        coloursARRAY = []
+                        colorsARRAY = []
                         if anim:
                             anim = False
                             TargetARRAY = []
@@ -213,10 +213,10 @@ if __name__ != "__main__":
                         for i in range(32):
                             for j in range(len(TargetARRAY)):
                                 if i == TargetARRAY[j]:
-                                    coloursARRAY.append(special)
+                                    colorsARRAY.append(special)
 
                                 else:
-                                    coloursARRAY.append(Registry.shape_color)
+                                    colorsARRAY.append(Registry.shape_color)
 
                         if increment is False:
                             RandomInt = random.randint(0, 10)
@@ -255,7 +255,7 @@ if __name__ != "__main__":
                             special[1] = 80
                             special[2] = 80
                     else:
-                        coloursARRAY = Registry.fancy_graphics
+                        colorsARRAY = Registry.fancy_graphics
 
                     if str(Registry.display) == "<Surface(Dead display)>":
                         Registry.data_average_fps = []
@@ -610,7 +610,7 @@ if __name__ != "__main__":
                     drawing_utils.generate_graph.create_devmode_graph()
 
                     drawing_utils.draw_rose.create_rose(
-                        coloursARRAY,
+                        colorsARRAY,
                         51,
                         142,
                         524*Registry.x_scale_factor,

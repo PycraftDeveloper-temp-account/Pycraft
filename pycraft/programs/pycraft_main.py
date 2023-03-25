@@ -310,20 +310,21 @@ class Initialize:
                 error_message,
                 error_message_detailed,)
 
-    def start():
-        """This subroutine is used as the default start-up option for Pycraft. This will initialize
-        a display, create all the variables (by using an earlier subroutine in this module) and get
-        Pycraft ready for handing over to the main menu (home). Calling this subroutine starts Pycraft.
+    def destroy_splash_screen(stop_splash_screen):
+        stop_splash_screen.clear()
+        while True:
+            found_process = False
+            for process in multiprocessing.active_children():
+                if process.name == "splash_screen":
+                    found_process = True
+                    break
             
-        - Args:
-            - None
-                
-        - Keyword Args:
-            - None
-
-        - Output:
-            - None
-        """
+            if found_process is False:
+                break
+            else:
+                time.sleep(1/15)
+                    
+    def start():
         try:
             Startup()
 
@@ -370,11 +371,15 @@ class Initialize:
             Registry.thread_adaptive_mode.name = "thread_adaptive_mode"
 
             if Registry.connection_permission is None:
+                Initialize.destroy_splash_screen(stop_splash_screen)
+                
                 permission_message = "Can we have your permission to check the internet for updates to Pycraft?"
                 Registry.connection_permission = tkinter_utils.tkinter_info.get_permissions(
                     permission_message)
 
             if Registry.remove_file_permission is None:
+                Initialize.destroy_splash_screen(stop_splash_screen)
+                
                 permission_message = "Can we have your permission to send files from the Pycraft directory to the recycle bin?"
 
                 Registry.remove_file_permission = tkinter_utils.tkinter_info.get_permissions(
@@ -433,19 +438,7 @@ class Initialize:
             Registry.data_current_fps_Max = 1
             Registry.data_memory_usage_Max = 1
             
-            Registry.show_splash_screen = False
-            stop_splash_screen.clear()
-            
-            while True:
-                found_process = False
-                for process in multiprocessing.active_children():
-                    if process.name == "splash_screen":
-                        found_process = True
-                        time.sleep(1/15)
-                        break
-                    
-                if found_process is False:
-                    break
+            Initialize.destroy_splash_screen(stop_splash_screen)
                 
             display_utils.display_utils.set_display()
             
@@ -474,7 +467,7 @@ class Initialize:
             if Registry.theme is False:
                 theme_gui.create_theme_selection_menu.get_theme_gui()
 
-            theme_utils.determine_theme_colours.get_colors()
+            theme_utils.determine_theme_colors.get_colors()
 
             Initialize.menu_selector()
             
@@ -515,46 +508,8 @@ if __name__ == "__main__":
         sys.exit()
 
 def QueryVersion():
-    """This subroutine can be used to return the current version of Pycraft.
-    
-    Version Naming
-    Pycraft's versions will always now follow the structure; "vA.B.C"
-    * Where "A" is the major revision number.
-    * Where "B" is the minor revision number.
-    * Where "C" is the patch and developer preview numbers (combined).
-
-    Every version of Pycraft as of the 27/10/2022 (DD/MM/YYYY) must feature
-    all 3 values. Updates also now go sequentially, so Pycraft v9.6.4 is
-    newer than Pycraft v9.5.7. If either of the "A" or "B" version numbers
-    is incremented in a release, documentation MUST be suitably updated,
-    in addition Pycraft MUST be released on PyPi, SourceForge and as a
-    release on GitHub.
-        
-    - Args:
-        - None
-            
-    - Keyword Args:
-        - None
-
-    - Output:
-        - version (str): Pycraft's current version.
-    """
-    
     return "pycraft v9.5.0dev8"
 
 
 def start():
-    """This subroutine is responsible for starting Pycraft, this can be used to call Pycraft
-    externally, potentially as part of another program.
-
-    - Args:
-        - None
-            
-    - Keyword Args:
-        - None
-
-    - Output:
-        - None
-    """
-
     Initialize.start()

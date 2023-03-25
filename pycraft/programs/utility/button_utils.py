@@ -110,7 +110,7 @@ if __name__ != "__main__":
                         updated_argument[button_text_array[i]] = not updated_argument[button_text_array[i]]
                         setattr(Registry, argument_variable, updated_argument)
 
-                        theme_utils.determine_theme_colours.get_colors()
+                        theme_utils.determine_theme_colors.get_colors()
 
                         setting_preset_utils.presets.update_profile()
 
@@ -260,7 +260,7 @@ if __name__ != "__main__":
                         
                         setattr(Registry, argument_variable, button_text_array[i])
 
-                        theme_utils.determine_theme_colours.get_colors()
+                        theme_utils.determine_theme_colors.get_colors()
 
                         setting_preset_utils.presets.update_profile()
 

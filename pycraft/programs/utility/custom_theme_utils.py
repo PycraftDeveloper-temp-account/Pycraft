@@ -89,7 +89,7 @@ if __name__ != "__main__":
                         if event.type == pygame.KEYDOWN:
                             if event.key == pygame.K_BACKSPACE:
                                 if len(string) == 0:
-                                    theme_utils.determine_theme_colours.get_colors(
+                                    theme_utils.determine_theme_colors.get_colors(
                                         "custom")
 
                                     default_custom_theme = {

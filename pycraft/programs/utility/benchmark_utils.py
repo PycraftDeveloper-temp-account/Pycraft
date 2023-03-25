@@ -253,7 +253,7 @@ if __name__ != "__main__":
                 - display (Pygame Surface): The display object is used throughout Pycraft. This is the identifier
                     we use when we want to interact with/draw to/update Pycraft's gui. Pygame is the main windowing
                     engine used in Pycraft.
-                - background_color (array): An array containing the RGB colour values used to represent the colour of
+                - background_color (array): An array containing the RGB color values used to represent the color of
                     the background to the window at this time.
                 - clock (Clock): The clock object is used by Pygame as a way of controlling the frame-rate and other
                     frame-rate specific functions. We use this to limit the FPS throughout Pycraft.

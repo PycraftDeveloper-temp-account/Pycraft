@@ -5,7 +5,6 @@ if __name__ != "__main__":
         from tkinter import messagebox
         import pathlib
         import threading
-        import time
 
         from registry_utils import Registry
         
@@ -48,15 +47,11 @@ if __name__ != "__main__":
             
         def check_if_necessary(root, stop_splash_screen):
             if not stop_splash_screen.is_set():
-                #root.withdraw()
                 quit()
-                #root.quit()
-                #root.destroy()
             else:
                 root.after(int((1/15)*1000), lambda: splash_screen.check_if_necessary(root, stop_splash_screen))
         
         def create_splash(stop_splash_screen):
-            time.sleep(2)
             if stop_splash_screen.is_set():
                 directory = os.path.dirname(__file__)
                 pycraft_directory = str(directory).split("\\")

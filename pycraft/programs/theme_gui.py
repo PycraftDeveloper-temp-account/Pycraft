@@ -68,7 +68,7 @@ if __name__ != "__main__":
 
                     Registry.theme = "light"
                     
-                    theme_utils.determine_theme_colours.get_colors()
+                    theme_utils.determine_theme_colors.get_colors()
 
                     pygame.draw.rect(
                         Registry.display,
@@ -97,7 +97,7 @@ if __name__ != "__main__":
 
                     Registry.theme = "dark"
                     
-                    theme_utils.determine_theme_colours.get_colors()
+                    theme_utils.determine_theme_colors.get_colors()
 
                     pygame.draw.rect(
                         Registry.display,
@@ -154,7 +154,7 @@ if __name__ != "__main__":
  
                                 break
 
-                        theme_utils.determine_theme_colours.get_colors()
+                        theme_utils.determine_theme_colors.get_colors()
 
                     Choice = text_utils.text_formatter.format_text(
                         f"You have selected the {Registry.theme} theme, you can change this later in settings",
