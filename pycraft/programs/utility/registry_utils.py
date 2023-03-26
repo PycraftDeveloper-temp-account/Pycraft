@@ -225,7 +225,6 @@ if __name__ != "__main__":
                                     [False, False],
                                     [False, False]]
         
-        get_outdated = [False, False]
         go_to = None
         icon_path = base_folder / "resources" / "general resources" / "Icon.png"
         increased_speed = False
@@ -251,7 +250,6 @@ if __name__ != "__main__":
         movement_args = (STILL, POSITIVE, NEGATIVE)
         music = True
         music_volume = 5
-        outdated = False
         output_log = False
         play_time = 0
         primary_mouse_button_down = False
@@ -370,6 +368,9 @@ if __name__ != "__main__":
             "auto_save_frequency": 2*60,
             "mono_audio": False,
             "audio_quality": 48000,
+            "installer_path": None,
+            "installer_new_update": True,
+            "installer_updatable": False,
             # temp
             "position": [0, 0, 0],
             "rotation": [0, 0],

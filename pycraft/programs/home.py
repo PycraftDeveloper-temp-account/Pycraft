@@ -140,7 +140,6 @@ if __name__ != "__main__":
                 hover4 = False
                 hover5 = False
                 hover6 = False
-                hover7 = False
 
                 pygame.display.flip()
 
@@ -161,8 +160,6 @@ if __name__ != "__main__":
 
                 Registry.currently_displaying_message = False
 
-                outdated = Registry.outdated
-
                 Registry.mouse_x = Registry.real_window_width/2
                 Registry.mouse_y = Registry.real_window_height/2
 
@@ -172,7 +169,6 @@ if __name__ != "__main__":
                 credits_width = 0
                 achievements_width = 0
                 benchmark_width = 0
-                installer_width = 0
 
                 prev_joystick_connected = False
 
@@ -191,13 +187,6 @@ if __name__ != "__main__":
                         0,
                         Registry.real_window_width,
                         Registry.real_window_height-40)
-
-                    if Registry.get_outdated == [True, False]:
-                        Registry.get_outdated = [
-                            True,
-                            True]
-
-                        outdated = Registry.outdated
 
                     if Registry.fancy_graphics:
                         colorsARRAY = []
@@ -414,36 +403,14 @@ if __name__ != "__main__":
                         else:
                             hover6 = False
 
-                        if (Registry.mouse_y >= 502*Registry.y_scale_factor and
-                                Registry.mouse_y <= 547*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(installer_width+selector_width)-2)):
-
-                            hover7 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                Registry.go_to = "Installer"
-                                Registry.startup_animation = True
-                                Registry.run_timer = 0
-
-                        else:
-                            hover7 = False
-
                     if show_message is None:
-                        if Registry.updated:
-                            Registry.updated = False
+                        if Registry.installer_new_update:
+                            Registry.installer_new_update = False
                             show_message = f"Successfully updated Pycraft to v{Registry.version}"
                             MessageColor = (0, 255, 0)
 
-                        elif outdated and Registry.total_number_of_updates == 1:
-                            outdated = False
-                            show_message = f"There are {Registry.total_number_of_updates} updates available!"
-                            MessageColor = (0, 255, 0)
-
-                        elif outdated and Registry.total_number_of_updates == 1:
-                            outdated = False
+                        elif Registry.installer_updatable:
+                            Registry.installer_updatable = False
                             show_message = "There is an update available!"
                             MessageColor = (0, 255, 0)
 
@@ -530,15 +497,6 @@ if __name__ != "__main__":
 
                     benchmark_width = returned_text.get_width()
 
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Installer",
-                        ("right", 500*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover7)
-
-                    installer_width = returned_text.get_width()
-
                     if hover1:
                         Registry.display.blit(
                             selector,
@@ -592,16 +550,7 @@ if __name__ != "__main__":
 
                         if Registry.use_mouse_input:
                             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-                    elif hover7:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(installer_width+selector_width)-2,
-                                500*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
+                    
                     else:
                         if Registry.use_mouse_input:
                             pygame.mouse.set_cursor(

@@ -12,11 +12,9 @@ sys.pycache_prefix = base_folder / "temporary"
 import ctypes
 
 programs_base_folder = base_folder / "programs"
-installer_base_folder = base_folder / "programs" / "installer"
 utility_base_folder = base_folder / "programs" / "utility"
 
 sys.path.append(str(programs_base_folder))
-sys.path.append(str(installer_base_folder))
 sys.path.append(str(utility_base_folder))
 
 from pycraft_main import QueryVersion
@@ -33,6 +31,5 @@ del pathlib
 del platform
 del ctypes
 del base_folder
-del installer_base_folder
 del utility_base_folder
 del programs_base_folder

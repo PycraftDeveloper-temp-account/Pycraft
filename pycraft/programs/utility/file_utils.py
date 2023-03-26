@@ -28,7 +28,6 @@ if __name__ != "__main__":
             
     class delete_files(Registry):
         def clear_temporary_files():
-            
             message = None
             for file in Registry.files_to_trash:
                 try:
@@ -125,30 +124,6 @@ if __name__ != "__main__":
 
                     Registry.file_structure["Misc"]["size"] += os.path.getsize(
                         files_array[i])
-                        
-    class fix_installer(Registry):
-        def set_install_location():
-            repair = {"PATH": str(Registry.base_folder)}
-
-            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
-
-            with open(
-                    installer_config_path,
-                    "w") as file:
-
-                json.dump(
-                    repair,
-                    file)
-
-        def get_install_location():
-            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
-            with open(
-                    installer_config_path,
-                    "r") as file:
-
-                data = json.load(file)
-
-            return data["PATH"]
 
     class pycraft_config_utils(Registry):
         def read_input_key():
@@ -300,6 +275,9 @@ if __name__ != "__main__":
                     "auto_save_frequency": Registry.auto_save_frequency,
                     "mono_audio": Registry.mono_audio,
                     "audio_quality": Registry.audio_quality,
+                    "installer_path": Registry.installer_path,
+                    "installer_new_update": False,
+                    "installer_updatable": Registry.installer_updatable,
                     # temp
                     "position": [0, 0, 0],
                     "rotation": [0, 0],

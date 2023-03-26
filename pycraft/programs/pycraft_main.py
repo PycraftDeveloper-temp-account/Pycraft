@@ -34,8 +34,6 @@ try:
     import theme_gui
     
     from registry_utils import Registry
-    
-    import installer_main as Installer
 
     import integrated_installer_utils
     import logging_utils
@@ -278,13 +276,7 @@ class Initialize:
                     Registry.command = "Undefined"
                     
                     display_utils.display_utils.set_display()
-
                     continue
-
-                elif Registry.command == "Installer":
-                    pygame.quit()
-                    Installer.run_installer.Initialize()
-                    sys.exit()
 
                 elif Registry.error_message is not None:
                     error_utils.generate_error_screen.error_screen(
@@ -337,32 +329,6 @@ class Initialize:
                 logging_utils.create_log_message.update_log_warning(
                     log_message)
 
-            try:
-                Registry.install_location = file_utils.fix_installer.get_install_location()
-                
-            except Exception as Message:
-                log_message = "file_utils > fix_installer > get_install_location: "+str(Message)
-
-                logging_utils.create_log_message.update_log_warning(
-                    log_message)
-
-                try:
-                    file_utils.fix_installer.set_install_location()
-                    
-                except Exception as Message:
-                    error_message = "".join(("file_utils > fix_installer ",
-                                                f"> set_install_location: {str(Message)}"))
-
-                    error_message_detailed = "".join(
-                        traceback.format_exception(
-                            None,
-                            Message,
-                            Message.__traceback__))
-
-                    error_utils.generate_error_screen.error_screen(
-                        error_message,
-                        error_message_detailed)
-
             AdaptiveTarget = threading_utils.pycraft_core_threads.adaptive_mode
             Registry.thread_adaptive_mode = threading.Thread(
                 target=AdaptiveTarget)
@@ -404,7 +370,6 @@ class Initialize:
 
             if (Registry.current_date != Registry.last_run or
                     Registry.crash):
-                Registry.get_outdated = [False, True]
                 
                 if Registry.connection_permission:
                     try:
