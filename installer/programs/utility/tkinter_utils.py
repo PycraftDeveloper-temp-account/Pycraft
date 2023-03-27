@@ -41,18 +41,31 @@ if __name__ != "__main__":
                 return False
                 
     class tkinter_installer(Registry):
+        def center(win):
+            win.update_idletasks()
+            width = win.winfo_width()
+            frm_width = win.winfo_rootx() - win.winfo_x()
+            win_width = width + 2 * frm_width
+            height = win.winfo_height()
+            titlebar_height = win.winfo_rooty() - win.winfo_y()
+            win_height = height + titlebar_height + frm_width
+            x = win.winfo_screenwidth() // 2 - win_width // 2
+            y = win.winfo_screenheight() // 2 - win_height // 2
+            win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+            win.deiconify()
+            
         def create_display():
             try:
                 geometry = Registry.root.winfo_geometry().split("+")
                 Xpos = geometry[1]
                 Ypos = geometry[2]
                 Registry.root.destroy()
-                
+                old_display = True
             except:
+                old_display = False
                 Xpos, Ypos = 0, 0
 
             Registry.root = tkinter.Tk()
-            #root = tkinter.Toplevel()
 
             Registry.root.title("Pycraft Setup Wizard")
 
@@ -61,9 +74,14 @@ if __name__ != "__main__":
                 False)
 
             Registry.root.configure(bg="white")
-            Registry.root.geometry(f"850x537+{int(Xpos)}+{int(Ypos)}")
-
-            #render, load = image_utils.tkinter_installer.open_img()
+            
+            if old_display:
+                Registry.root.geometry(f"850x537+{int(Xpos)}+{int(Ypos)}")
+            else:
+                Registry.root.geometry("850x537")
+                tkinter_installer.center(Registry.root)
+                
+            image_utils.tkinter_installer.open_img()
 
 else:
     print("You need to run this as part of Pycraft")

@@ -33,7 +33,7 @@ if __name__ != "__main__":
         del directory
         del pycraft_directory
         
-        banner_path = base_folder / "resources" / "installer resource" / "Banner.png"
+        banner_path = base_folder / "resources" / "installer resources" / "Banner.png"
         Choice = "Latest"
         install_custom_version = False
         installer_config_path = base_folder / "data files" / "installer_config.json"

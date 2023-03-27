@@ -59,12 +59,12 @@ if __name__ != "__main__":
             pass
 
 
-        def close(root):
+        def close():
             if messagebox.askokcancel(
                 "Pycraft Setup Wizard",
                 "Are you sure you want to quit?"):
 
-                root.destroy()
+                Registry.root.destroy()
                 sys.exit()
 
 

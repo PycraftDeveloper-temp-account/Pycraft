@@ -30,9 +30,6 @@ if __name__ != "__main__":
             pass
         
         def center(win):
-            """
-            centers a tkinter window
-            """
             win.update_idletasks()
             width = win.winfo_width()
             frm_width = win.winfo_rootx() - win.winfo_x()
@@ -74,7 +71,13 @@ if __name__ != "__main__":
                     False,
                     False)
                 
-                banner_path = base_folder / "resources" / "general resources" / "pycraft_logo_smaller.png"
+                colour_key = "#%02x%02x%02x" % (255,
+                                                0,
+                                                255)
+                
+                root.attributes("-transparentcolor", colour_key)
+                
+                banner_path = base_folder / "resources" / "general resources" / "pycraft_logo_smaller_colorkey.png"
 
                 image_utils.tkinter_installer.open_img(
                     root, 

@@ -27,22 +27,22 @@ if __name__ != "__main__":
         def __init__(self):
             pass
 
-        def open_img(root, file, offset_x=-3, offset_y=-5):
+        def open_img(offset_x=-3, offset_y=-5):
             try:
-                load = Image.open(file)
+                load = Image.open(Registry.banner_path)
 
-                render = ImageTk.PhotoImage(load, master=root)
+                render = ImageTk.PhotoImage(
+                    load,
+                    master=Registry.root)
 
                 img = tkinter.Label(
-                    root,
+                    Registry.root,
                     image=render)
 
                 img.image = render
                 img.place(
                     x=offset_x,
                     y=offset_y)
-
-                return render, load
 
             except Exception as Message:
                 messagebox.showerror(
