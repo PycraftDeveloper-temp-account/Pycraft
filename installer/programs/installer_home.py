@@ -2,6 +2,8 @@ if __name__ != "__main__":
     try:
         import tkinter
         import tkinter.ttk as tkinter_ttk
+        
+        from registry_utils import Registry
 
         import update
         import uninstall
@@ -17,7 +19,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -25,25 +27,22 @@ if __name__ != "__main__":
             print(Message)
             sys.exit()
 
-    class installer_home:
-        def start(self, root, PycPath, ChooseBETA, Choice):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+    class installer_home(Registry):
+        def start():
+            tkinter_utils.tkinter_installer.create_display()
             
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's installation Assistant",
                 background="white",
                 font=(None, 20)).place(x=200, y=0)
 
             if Registry.platform == "Windows":
-                if PycPath is not None:
+                if Registry.pycraft_install_path is not None:
                     ButtonPos = (760, 500)
 
                     tkinter.Label(
-                        root,
+                        Registry.root,
                         text="Modify Your install",
                         background="white",
                         font=(None, 20)).place(x=200, y=35)
@@ -54,33 +53,23 @@ if __name__ != "__main__":
                                          "available options.\n\nWould you like to update, ",
                                          "modify or uninstall your version of Pycraft?",
                                          "\n\nThis will modify the installation of ",
-                                         f"Pycraft at: {PycPath}"))
+                                         f"Pycraft at: {Registry.pycraft_install_path}"))
 
                     tkinter_ttk.Button(
-                        root,
+                        Registry.root,
                         text="Update",
-                        command=lambda: update.Beginupdate.updateScreen_0(
-                            self,
-                            root,
-                            PycPath,
-                            ChooseBETA,
-                            Choice)).place(x=680, y=500)
+                        command=update.Update.update_screen_one).place(x=680, y=500)
 
                     RepairButton = tkinter_ttk.Button(
-                        root,
+                        Registry.root,
                         text="Repair")
                     RepairButton["state"] = tkinter.DISABLED
                     RepairButton.place(x=600, y=500)
 
                     tkinter_ttk.Button(
-                        root,
+                        Registry.root,
                         text="Uninstall",
-                        command=lambda: uninstall.Beginuninstall.uninstallScreen_0(
-                            self,
-                            root,
-                            PycPath,
-                            ChooseBETA,
-                            Choice)).place(x=520, y=500)
+                        command=uninstall.Uninstall.uninstall_screen_one).place(x=520, y=500)
 
                     IfCompat = tkinter.NORMAL
                 else:
@@ -103,22 +92,18 @@ if __name__ != "__main__":
                         ButtonPos = (680, 500)
 
                         BETAchoice = tkinter.BooleanVar(
-                            value=ChooseBETA)
+                            value=Registry.install_custom_version)
 
                         versions = [
                             "Latest",
                             "Latest",
-                            "Pycraft-v0.9.1",
-                            "Pycraft-v0.9.2",
-                            "Pycraft-v0.9.3",
-                            "Pycraft-v0.9.4",
-                            "Pycraft-v0.9.5 (latest)"]
+                            "Pycraft v10.0.0 (latest)"]
 
                         VersionChoice = tkinter.StringVar()
                         VersionChoice.set(versions[0])
 
                         DropDown = tkinter_ttk.OptionMenu(
-                            root,
+                            Registry.root,
                             VersionChoice,
                             *versions)
 
@@ -134,7 +119,7 @@ if __name__ != "__main__":
                         get_version(BETAchoice)
 
                         tkinter_ttk.Checkbutton(
-                            root,
+                            Registry.root,
                             text="I want to install a BETA version of Pycraft",
                             variable=BETAchoice,
                             onvalue=True,
@@ -144,10 +129,7 @@ if __name__ != "__main__":
                         ContinueButton = tkinter_ttk.Button(
                             root,
                             text="Continue",
-                            command=lambda: install.Begininstall.installScreen_0(
-                                self,
-                                root,
-                                PycPath,
+                            command=install.Begininstall.installScreen_0(
                                 BETAchoice.get(),
                                 VersionChoice.get()))
 
@@ -199,7 +181,7 @@ if __name__ != "__main__":
                              "be supported in later editions")
 
             text = tkinter.Text(
-                root,
+                Registry.root,
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
@@ -212,9 +194,9 @@ if __name__ != "__main__":
             text.place(x=200, y=40)
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text="Quit",
-                command=lambda: installer_utils.core_installer_functionality.close(root)).place(
+                command=installer_utils.core_installer_functionality.close).place(
                         x=ButtonPos[0],
                         y=ButtonPos[1])
 
@@ -225,7 +207,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

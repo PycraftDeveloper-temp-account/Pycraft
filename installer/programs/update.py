@@ -5,6 +5,8 @@ if __name__ != "__main__":
         import tkinter.ttk as tkinter_ttk
         import threading
         import sys
+        
+        from registry_utils import Registry
 
         import uninstall
 
@@ -19,7 +21,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -27,20 +29,10 @@ if __name__ != "__main__":
             print(Message)
             sys.exit()
 
-    class begin_update:
-        def __init__(self):
-            pass
-
-        def update_screen_one(
-                self,
-                root,
-                PycPath,
-                ChooseBETA,
-                choice):
+    class Update:
+        def update_screen_one():
             
-            root = tkinter_utils.tkinter_installer.create_display(
-                self,
-                root)
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
                 root,
@@ -82,11 +74,11 @@ if __name__ != "__main__":
             tkinter_ttk.Button(
                 root,
                 text='Continue',
-                command=lambda: begin_update.update_screen_two(
+                command=lambda: Update.update_screen_two(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA,
+                    pycraft_install_path,
+                    install_custom_version,
                     choice)).place(x=760, y=500)
 
             tkinter_ttk.Button(
@@ -95,11 +87,11 @@ if __name__ != "__main__":
                 command=lambda: installer_utils.core_installer_functionality.home(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA,
+                    pycraft_install_path,
+                    install_custom_version,
                     choice)).place(x=680, y=500)
 
-        def update_screen_two(self, root, PycPath, ChooseBETA, choice):
+        def update_screen_two(self, root, pycraft_install_path, install_custom_version, choice):
             root = tkinter_utils.tkinter_installer.create_display(
                 self,
                 root)
@@ -130,8 +122,8 @@ if __name__ != "__main__":
                     command=lambda: uninstall.begin_uninstall.remove_but_keep_save(
                         self,
                         root,
-                        PycPath,
-                        ChooseBETA,
+                        pycraft_install_path,
+                        install_custom_version,
                         choice))
                 ContinueButton.place(x=760, y=500)
                 ContinueButton['state'] = ContinueButtonState
@@ -139,11 +131,11 @@ if __name__ != "__main__":
                 BackButton = tkinter_ttk.Button(
                     root,
                     text='Back',
-                    command=lambda: begin_update.update_screen_one(
+                    command=lambda: Update.update_screen_one(
                         self,
                         root,
-                        PycPath,
-                        ChooseBETA,
+                        pycraft_install_path,
+                        install_custom_version,
                         choice))
                 BackButton.place(x=680, y=500)
                 BackButton['state'] = BackButtonState
@@ -307,7 +299,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

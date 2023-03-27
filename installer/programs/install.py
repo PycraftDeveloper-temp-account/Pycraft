@@ -28,7 +28,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -40,7 +40,7 @@ if __name__ != "__main__":
         def __init__(self):
             pass
 
-        def install_screen_one(self, root, PycPath, ChooseBETA, choice):
+        def install_screen_one(self, root, pycraft_install_path, install_custom_version, choice):
             root = tkinter_utils.tkinter_installer.create_display(
                 root,
                 Registry.platform,
@@ -106,7 +106,7 @@ if __name__ != "__main__":
 
             var1 = tkinter.IntVar()
 
-            def button_check(self, root, PycPath, ChooseBETA, choice, var1):
+            def button_check(self, root, pycraft_install_path, install_custom_version, choice, var1):
                 data = var1.get()
                 if data is None or data == 0:
                     continueButton = tkinter_ttk.Button(
@@ -123,8 +123,8 @@ if __name__ != "__main__":
                         command=lambda: begin_install.install_screen_two(
                             self,
                             root,
-                            PycPath,
-                            ChooseBETA,
+                            pycraft_install_path,
+                            install_custom_version,
                             choice))
 
                     continueButton.place(x=760, y=500)
@@ -132,7 +132,7 @@ if __name__ != "__main__":
                     root.update_idletasks()
 
             button_check(self, root,
-                        PycPath, ChooseBETA, choice, var1)
+                        pycraft_install_path, install_custom_version, choice, var1)
 
             tkinter_ttk.Radiobutton(
                 root, text="I have not read the above text",
@@ -141,8 +141,8 @@ if __name__ != "__main__":
                 command=lambda: button_check(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA,
+                    pycraft_install_path,
+                    install_custom_version,
                     choice,
                     var1)).place(x=200, y=475)
 
@@ -154,8 +154,8 @@ if __name__ != "__main__":
                 command=lambda: button_check(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA,
+                    pycraft_install_path,
+                    install_custom_version,
                     choice,
                     var1)).place(x=200, y=500)
 
@@ -165,11 +165,11 @@ if __name__ != "__main__":
                 command=lambda: installer_utils.core_installer_functionality.home(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA,
+                    pycraft_install_path,
+                    install_custom_version,
                     choice)).place(x=680, y=500)
 
-        def install_screen_two(self, root, PycPath, ChooseBETA, choice):
+        def install_screen_two(self, root, pycraft_install_path, install_custom_version, choice):
             root = tkinter_utils.tkinter_installer.create_display(
                 root,
                 Registry.platform,
@@ -262,8 +262,8 @@ if __name__ != "__main__":
                 command=lambda: begin_install.install_screen_one(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA,
+                    pycraft_install_path,
+                    install_custom_version,
                     choice)).place(x=680, y=500)
 
             root.update_idletasks()
@@ -400,7 +400,7 @@ if __name__ != "__main__":
                                     Dir)).place(x=760, y=500)
 
                     except:
-                        update.begin_update.finished_update(
+                        update.Update.finished_update(
                             self,
                             root)
 
@@ -621,7 +621,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

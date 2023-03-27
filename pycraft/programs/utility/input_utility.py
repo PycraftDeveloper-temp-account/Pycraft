@@ -56,7 +56,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

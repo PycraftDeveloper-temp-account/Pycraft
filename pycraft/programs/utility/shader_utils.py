@@ -11,7 +11,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -152,7 +152,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

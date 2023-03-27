@@ -20,7 +20,7 @@ sys.path.append(str(utility_base_folder))
 from installer_main import run_installer, QueryVersion
 
 if platform.system() == "Windows":
-    myappid = f'PycraftDev.Pycraft._.{QueryVersion()}' # arbitrary string
+    myappid = f'PycraftDev.Pycraft_Installer._.{QueryVersion()}' # arbitrary string
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     del myappid
 

@@ -14,7 +14,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -41,38 +41,29 @@ if __name__ != "__main__":
                 return False
                 
     class tkinter_installer(Registry):
-        def __init__():
-            pass
-
-        def create_display(root, platform, base_folder):
+        def create_display():
             try:
-                geometry = root.winfo_geometry().split("+")
+                geometry = Registry.root.winfo_geometry().split("+")
                 Xpos = geometry[1]
                 Ypos = geometry[2]
-                root.destroy()
+                Registry.root.destroy()
                 
             except:
                 Xpos, Ypos = 0, 0
 
-            root = tkinter.Tk()
+            Registry.root = tkinter.Tk()
             #root = tkinter.Toplevel()
 
-            root.title("Pycraft Setup Wizard")
+            Registry.root.title("Pycraft Setup Wizard")
 
-            root.resizable(
+            Registry.root.resizable(
                 False,
                 False)
 
-            root.configure(bg="white")
-            root.geometry(f"850x537+{int(Xpos)}+{int(Ypos)}")
+            Registry.root.configure(bg="white")
+            Registry.root.geometry(f"850x537+{int(Xpos)}+{int(Ypos)}")
 
-            banner_path = base_folder / "resources" / "installer resource" / "Banner.png"
-
-            render, load = image_utils.tkinter_installer.open_img(
-                root, 
-                banner_path)
-            
-            return root
+            #render, load = image_utils.tkinter_installer.open_img()
 
 else:
     print("You need to run this as part of Pycraft")
@@ -81,7 +72,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

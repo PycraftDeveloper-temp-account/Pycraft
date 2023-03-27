@@ -19,7 +19,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -31,8 +31,8 @@ if __name__ != "__main__":
         def __init__(self):
             pass
 
-        def get_data(platform, base_folder):
-            installer_config_path = base_folder / "data files" / "installer_config.json"
+        def get_data():
+            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
             try:
                 with open(
                         installer_config_path,
@@ -41,7 +41,7 @@ if __name__ != "__main__":
                     SavedData = json.load(file)
 
             except:
-                PycPath = None
+                Registry.pycraft_install_path = None
                 Repair = {"PATH":None}
 
                 with open(
@@ -53,9 +53,7 @@ if __name__ != "__main__":
                         file)
 
             else:
-                PycPath = SavedData["PATH"]
-
-            return PycPath
+                Registry.pycraft_install_path = SavedData["PATH"]
 
     class core_installer_functionality(Registry):
         def __init__(self):
@@ -71,12 +69,12 @@ if __name__ != "__main__":
                 sys.exit()
 
 
-        def home(self, root, PycPath, ChooseBETA, Choice):
+        def home(self, root, pycraft_install_path, install_custom_version, Choice):
             installer_home.installer_home.start(
                 self,
                 root,
-                PycPath,
-                ChooseBETA,
+                pycraft_install_path,
+                install_custom_version,
                 Choice)
 
 
@@ -263,7 +261,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()

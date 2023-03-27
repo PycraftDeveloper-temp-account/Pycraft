@@ -1,8 +1,12 @@
 if __name__ != "__main__":
     try:
-        import os
-        import pathlib
-        import platform
+        import random
+        import tkinter
+        import re
+
+        import pygame
+
+        from registry_utils import Registry
     except Exception as Message:
         try:
             import sys
@@ -19,26 +23,25 @@ if __name__ != "__main__":
             print(Message)
             sys.exit()
             
-    class Registry:
-        directory = os.path.dirname(__file__)
-        pycraft_directory = str(directory).split("\\")
-        directory = ""
+    class installer_text(Registry):
+        def __init__(self):
+            pass
 
-        for folder in range(len(pycraft_directory)-1):
-            directory += f"{pycraft_directory[folder]}\\"
+        def create_text(root, OUTPUTtext):
+            text = tkinter.Text(
+                root,
+                wrap=tkinter.WORD,
+                relief=tkinter.FLAT,
+                font=(None, 10))
 
-        base_folder = pathlib.Path(__file__).parent.parent.parent
-        platform = platform.system()
-        
-        del directory
-        del pycraft_directory
-        
-        banner_path = base_folder / "resources" / "installer resource" / "Banner.png"
-        install_custom_version = False
-        Choice = "Latest"
-        pycraft_install_path = None
-        root = None
-        
+            text.insert(
+                tkinter.INSERT,
+                OUTPUTtext)
+
+            text["state"] = tkinter.DISABLED
+            text.place(x=200, y=80)
+            root.update_idletasks()
+            
 else:
     print("You need to run this as part of Pycraft")
     import tkinter as tk

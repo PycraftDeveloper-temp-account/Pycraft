@@ -52,7 +52,7 @@ except Exception as Message:
         root = tk.Tk()
         root.withdraw()
         messagebox.showerror(
-            "startup Fail",
+            "Startup Error",
             str(Message))
         sys.exit()
 
@@ -191,7 +191,7 @@ class Startup(Registry):
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
             
@@ -467,7 +467,7 @@ if __name__ == "__main__":
         root = tk.Tk()
         root.withdraw()
         messagebox.showerror(
-            "startup Fail",
+            "Startup Error",
             str(Message))
 
         sys.exit()

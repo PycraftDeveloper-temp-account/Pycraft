@@ -7,6 +7,8 @@ if __name__ != "__main__":
         import threading
         import json
         import sys
+        
+        from registry_utils import Registry
 
         import install
 
@@ -21,7 +23,7 @@ if __name__ != "__main__":
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(
-                "startup Fail",
+                "Startup Error",
                 str(Message))
             sys.exit()
 
@@ -29,15 +31,12 @@ if __name__ != "__main__":
             print(Message)
             sys.exit()
             
-    class begin_uninstall:
+    class Uninstall:
         def __init__(self):
             pass
 
-        def uninstall_screen_one(self, root, PycPath, ChooseBETA, Choice):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def uninstall_screen_one(self, root, pycraft_install_path, install_custom_version, Choice):
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
                 root,
@@ -105,24 +104,24 @@ if __name__ != "__main__":
                         begin_uninstall.remove_but_keep_save(
                             self,
                             root,
-                            PycPath,
-                            ChooseBETA,
+                            pycraft_install_path,
+                            install_custom_version,
                             Choice)
 
                     elif Uninstall_Option.get() == 2:
                         begin_uninstall.remove_but_leave(
                             self,
                             root,
-                            PycPath,
-                            ChooseBETA,
+                            pycraft_install_path,
+                            install_custom_version,
                             Choice)
 
                     else:
                         begin_uninstall.remove_all(
                             self,
                             root,
-                            PycPath,
-                            ChooseBETA,
+                            pycraft_install_path,
+                            install_custom_version,
                             Choice)
 
             tkinter_ttk.Button(
@@ -131,8 +130,8 @@ if __name__ != "__main__":
                 command=lambda: installer_utils.core_installer_functionality.home(
                     self,
                     root,
-                    PycPath,
-                    ChooseBETA, Choice)).place(x=680, y=500)
+                    pycraft_install_path,
+                    install_custom_version, Choice)).place(x=680, y=500)
 
             tkinter_ttk.Button(
                 root,
@@ -164,7 +163,7 @@ if __name__ != "__main__":
             root.mainloop()
 
 
-        def remove_all(self, root, PycPath, ChooseBETA, Choice):
+        def remove_all(self, root, pycraft_install_path, install_custom_version, Choice):
             root = tkinter_utils.tkinter_installer.create_display(root, Registry.platform, Registry.base_folder)
 
             tkinter.Label(
@@ -195,7 +194,7 @@ if __name__ != "__main__":
 
             FileArray = installer_utils.file_manipulation.search_files(
                 self,
-                PycPath)
+                pycraft_install_path)
 
             import site
             if Registry.platform == "Linux":
@@ -257,7 +256,7 @@ if __name__ != "__main__":
                 OUTPUTtext)
 
             try:
-                os.rmdir(PycPath)
+                os.rmdir(pycraft_install_path)
                 
             except:
                 pass
@@ -272,7 +271,7 @@ if __name__ != "__main__":
                 root)
 
 
-        def remove_but_keep_save(self, root, PycPath, ChooseBETA, Choice):
+        def remove_but_keep_save(self, root, pycraft_install_path, install_custom_version, Choice):
             root = tkinter_utils.tkinter_installer.create_display(
                 root,
                 Registry.platform,
@@ -305,7 +304,7 @@ if __name__ != "__main__":
 
             FileArray = installer_utils.file_manipulation.search_files(
                 self,
-                PycPath)
+                pycraft_install_path)
 
             import site
             if Registry.platform == "Linux":
@@ -405,7 +404,7 @@ if __name__ != "__main__":
                     Dir)
 
 
-        def remove_but_leave(self, root, PycPath, ChooseBETA, Choice):
+        def remove_but_leave(self, root, pycraft_install_path, install_custom_version, Choice):
             root = tkinter_utils.tkinter_installer.create_display(
                 root,
                 Registry.platform,
@@ -439,7 +438,7 @@ if __name__ != "__main__":
 
             FileArray = installer_utils.file_manipulation.search_files(
                 self,
-                PycPath)
+                pycraft_install_path)
 
             OUTPUTtext += f"\nIdentified {len(FileArray)} files to remove"
 
@@ -489,7 +488,7 @@ if __name__ != "__main__":
                 OUTPUTtext)
 
             try:
-                os.rmdir(PycPath)
+                os.rmdir(pycraft_install_path)
                 
             except:
                 pass
@@ -557,7 +556,7 @@ else:
     root = tk.Tk()
     root.withdraw()
     messagebox.showerror(
-        "startup Fail",
+        "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()
