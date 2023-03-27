@@ -34,8 +34,10 @@ if __name__ != "__main__":
         del pycraft_directory
         
         banner_path = base_folder / "resources" / "installer resource" / "Banner.png"
-        install_custom_version = False
         Choice = "Latest"
+        install_custom_version = False
+        installer_config_path = base_folder / "data files" / "installer_config.json"
+        installer_config_path.parent.mkdir(exist_ok=True, parents=True)
         pycraft_install_path = None
         root = None
         

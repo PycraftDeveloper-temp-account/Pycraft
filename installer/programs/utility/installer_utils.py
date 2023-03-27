@@ -32,20 +32,19 @@ if __name__ != "__main__":
             pass
 
         def get_data():
-            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
             try:
                 with open(
-                        installer_config_path,
+                        Registry.installer_config_path,
                         "r") as file:
 
                     SavedData = json.load(file)
 
             except:
                 Registry.pycraft_install_path = None
-                Repair = {"PATH":None}
+                Repair = {"PATH": None}
 
                 with open(
-                        installer_config_path,
+                        Registry.installer_config_path,
                         "w") as file:
 
                     json.dump(
