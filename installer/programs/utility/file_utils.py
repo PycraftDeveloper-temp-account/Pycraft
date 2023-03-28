@@ -23,6 +23,14 @@ if __name__ != "__main__":
             print(Message)
             sys.exit()
             
+    class InstallerText(Registry):
+        def get_installer_text():
+            with open(
+                    Registry.installer_text_path,
+                    "r") as file:
+                
+                Registry.installer_text = json.load(file)
+            
     class fix_installer(Registry):
         def set_install_location():
             repair = {"PATH": str(Registry.base_folder)}

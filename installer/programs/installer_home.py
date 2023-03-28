@@ -47,13 +47,7 @@ if __name__ != "__main__":
                         background="white",
                         font=(None, 20)).place(x=200, y=35)
 
-                    EnterText = "".join(("Welcome back to Pycraft's Setup Wizard, we ",
-                                         "have detected you already have an install of ",
-                                         "Pycraft on your system, this gives you 3 ",
-                                         "available options.\n\nWould you like to update, ",
-                                         "modify or uninstall your version of Pycraft?",
-                                         "\n\nThis will modify the installation of ",
-                                         f"Pycraft at: {Registry.pycraft_install_path}"))
+                    EnterText = Registry.installer_text["installer home"][0]
 
                     tkinter_ttk.Button(
                         Registry.root,
@@ -74,18 +68,7 @@ if __name__ != "__main__":
                     IfCompat = tkinter.NORMAL
                 else:
                     try:
-                        EnterText = "".join(("Welcome to Pycraft's Setup Wizard, ",
-                                             "here we will guide you through your install ",
-                                             "and setup of the latest stable version of ",
-                                             "Pycraft, if you wish to install the BETA ",
-                                             "versions of the game, please tick the box ",
-                                             "below and then once you are satisfied with ",
-                                             "your choice, please press the continue ",
-                                             "button, you can press the back button to ",
-                                             "navigate to the previous menu or choose ",
-                                             "to exit Pycraft's Setup Wizard by closing ",
-                                             "the GUI.\n\nThere are a few steps to this ",
-                                             "install but this shouldn't take long."))
+                        EnterText = Registry.installer_text["installer home"][2]
 
                         IfCompat = tkinter.NORMAL
 
@@ -101,11 +84,15 @@ if __name__ != "__main__":
 
                         VersionChoice = tkinter.StringVar()
                         VersionChoice.set(versions[0])
+                        
+                        tkinter_utils.tkinter_installer.style("TMenubutton")
 
                         DropDown = tkinter_ttk.OptionMenu(
                             Registry.root,
                             VersionChoice,
                             *versions)
+                        
+                        DropDown["menu"].config(bg="white")
 
                         def get_version(BETAchoice):
                             if BETAchoice.get():
@@ -114,71 +101,50 @@ if __name__ != "__main__":
                             else:
                                 DropDown["state"] = tkinter.DISABLED
 
-                            DropDown.place(x=450, y=500)
+                            DropDown.place(x=350, y=500)
 
                         get_version(BETAchoice)
+                        
+                        tkinter_utils.tkinter_installer.style("TCheckbutton")
 
-                        tkinter_ttk.Checkbutton(
+                        check_button = tkinter_ttk.Checkbutton(
                             Registry.root,
                             text="I want to install a BETA version of Pycraft",
                             variable=BETAchoice,
                             onvalue=True,
                             offvalue=False,
-                            command=lambda: get_version(BETAchoice)).place(x=200, y=500)
-
+                            command=lambda: get_version(BETAchoice))
+                        
+                        check_button.place(x=200, y=500)
+                        
+                        def continue_button_command(
+                                BETAchoice,
+                                VersionChoice):
+                            
+                            Registry.choice = BETAchoice.get()
+                            Registry.install_custom_version = VersionChoice.get()
+                            install.begin_install.install_screen_one()
+                            
                         ContinueButton = tkinter_ttk.Button(
-                            root,
+                            Registry.root,
                             text="Continue",
-                            command=install.Begininstall.installScreen_0(
-                                BETAchoice.get(),
-                                VersionChoice.get()))
-
+                            command=lambda: continue_button_command(
+                                BETAchoice,
+                                VersionChoice))
+                        
                         ContinueButton.place(x=760, y=500)
                         ContinueButton["state"] = IfCompat
-
                     except:
                         IfCompat = tkinter.DISABLED
 
-                        EnterText = "".join(("Welcome to Pycraft's Setup Wizard, ",
-                                             "here we will guide you through your ",
-                                             "install and setup of the latest stable ",
-                                             "version of Pycraft, if you wish to ",
-                                             "install the BETA versions of the game, ",
-                                             "please tick the box below and then once ",
-                                             "you are satisfied with your choice, ",
-                                             "please press the continue button, you ",
-                                             "can press the back button to navigate ",
-                                             "to the previous menu or choose to exit ",
-                                             "Pycraft's Setup Wizard by closing the GUI.",
-                                             "\n\nThere are a few steps to this install ",
-                                             "but this shouldn't take long.\n\nIn order ",
-                                             "to install Pycraft you will need to have a ",
-                                             "suitable version of Python installed on ",
-                                             "your system, ideally this needs to be 3.7 ",
-                                             "or greater -with version checking coming ",
-                                             "in a later version-. If you want to ",
-                                             "install Pycraft stand-alone then on the ",
-                                             "releases page of the project (here: ",
-                                             "https://github.com/PycraftDeveloper/Pycraft/releases) ",
-                                             "please download the (.exe) version."))
+                        EnterText = Registry.installer_text["installer home"][3]
 
             else:
                 IfCompat = tkinter.DISABLED
 
                 ButtonPos = (680, 500)
 
-                EnterText = ("Welcome to Pycraft's Setup Wizard, here we will ",
-                             "guide you through your install and setup of the ",
-                             "latest stable version of Pycraft, if you wish to ",
-                             "install the BETA versions of the game, please tick ",
-                             "the box below and then once you are satisfied with ",
-                             "your choice, please press the continue button, you ",
-                             "can press the back button to navigate to the previous ",
-                             "menu or choose to exit Pycraft's Setup Wizard by ",
-                             "closing the GUI.\n\nThere are a few steps to this ",
-                             "install but this shouldn't take long.\n\nCurrently ",
-                             "this installer is Windows only, but more OS's will ",
-                             "be supported in later editions")
+                EnterText = Registry.installer_text["installer home"][4]
 
             text = tkinter.Text(
                 Registry.root,

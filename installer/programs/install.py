@@ -14,6 +14,8 @@ if __name__ != "__main__":
         if platform.system() == "Windows":
             from win32com.shell import shell, shellcon
             import win32com.client
+            
+        from registry_utils import Registry
 
         import update
 
@@ -40,66 +42,30 @@ if __name__ != "__main__":
         def __init__(self):
             pass
 
-        def install_screen_one(self, root, pycraft_install_path, install_custom_version, choice):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def install_screen_one():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's Installation Assistant",
                 background="white",
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Important Information",
                 background="white",
                 font=(None, 20)).place(x=200, y=35)
 
             text = tkinter.Text(
-                root,
+                Registry.root,
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
 
             text.insert(
                 tkinter.INSERT,
-                "".join(("Please read the below information, once you have ",
-                         "familiarised yourself with the information, please ",
-                         "tick the box to say that you have and then press ",
-                         "continue to start the installation. Use the scroll ",
-                         "wheel to scroll the text.\n\nYou can find Pycraft's ",
-                         "GitHub repository here for more information: ",
-                         "https://github.com/PycraftDeveloper/Pycraft\n\n",
-                         "The program will be updated frequently and I shall ",
-                         "do my best to keep this up to date too. I also want ",
-                         "to add that you are welcome to view and change the ",
-                         "program and share it with your friends. If you find ",
-                         "any bugs or errors, please feel free to comment in ",
-                         "the comments section any feedback so we can improve ",
-                         "our program, it will all be much appreciated and give ",
-                         "as much detail as you wish to give out. \n\n\nLicence\nMIT ",
-                         "License\n\nCopyright (c) 2021 Thomas Jebbo\n\nPermission ",
-                         "is hereby granted, free of charge, to any person obtaining ",
-                         "a copy of this software and associated documentation files ",
-                         "(the \"Software\"), to deal in the Software without ",
-                         "restriction, including without limitation the rights to ",
-                         "use, copy, modify, merge, publish, distribute, sublicense, ",
-                         "and/or sell copies of the Software, and to permit persons to ",
-                         "whom the Software is furnished to do so, subject to the ",
-                         "following conditions:\n\nThe above copyright notice and ",
-                         "this permission notice shall be included in all copies or ",
-                         "substantial portions of the Software.\n\nTHE SOFTWARE IS ",
-                         "PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS ",
-                         "OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF ",
-                         "MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ",
-                         "NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR ",
-                         "COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR ",
-                         "OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR ",
-                         "OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE ",
-                         "SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")))
+                Registry.installer_text["install"][0])
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
@@ -187,9 +153,7 @@ if __name__ != "__main__":
                 background="white",
                 font=(None, 20)).place(x=200, y=40)
 
-            OUTPUTtext = "".join(("Now we need to ask one final thing before ",
-                                  "we start the install, where would you like ",
-                                  "to store Pycraft?"))
+            OUTPUTtext = Registry.installer_text["install"][1]
 
             text = tkinter.Text(
                 root,
@@ -288,8 +252,7 @@ if __name__ != "__main__":
 
             ans = messagebox.askquestion(
                 "Permissions manager",
-                "".join(("Can we have permission to download files from the internet ",
-                         "and also modify files on this PC at any time using this Installer?")))
+                Registry.installer_text["install"][2])
 
             retry = True
             i = 0
@@ -319,9 +282,7 @@ if __name__ != "__main__":
 
                         infoVers = choice
 
-                    OUTPUTtext += "".join((f"\nDownloading and installing {infoVers} ",
-                                           "and the latest versions of it's dependencies ",
-                                           "(This will take a moment)"))
+                    OUTPUTtext += Registry.installer_text["install"][3]
 
                     text_utils.installer_text.create_text(
                         root,
@@ -408,10 +369,7 @@ if __name__ != "__main__":
                 else:
                     ans2 = messagebox.askquestion(
                         "Caution",
-                        "".join(("We did not receive permission to download files from the ",
-                                 "internet and modify files on this PC, as a result we ",
-                                 "cannot install Pycraft, would you like to amend this ",
-                                 "decision (yes) or close the installer (no)?")))
+                        Registry.installer_text["install"][4])
 
                     if ans2 == "no":
                         quit()
@@ -420,9 +378,7 @@ if __name__ != "__main__":
                         retry = True
                         ans = messagebox.askquestion(
                             "Permissions manager",
-                            "".join(("Can we have permission to download files from ",
-                                     "the internet and also modify files on this PC ",
-                                     "at any time using this Installer?")))
+                            Registry.installer_text["install"][2])
 
         def install_screen_four(self, root, choice, Dir):
             root = tkinter_utils.tkinter_installer.create_display(
@@ -450,19 +406,7 @@ if __name__ != "__main__":
 
             text.insert(
                 tkinter.INSERT,
-                "".join((f"Successfully installed {choice} we hope that you enjoy using ",
-                         "this project. This installer can be opened from Pycraft by ",
-                         "clicking on the 'Installer' option on the main menu. The ",
-                         "installer will appear differently when you open it from ",
-                         "Pycraft, from there you will be able to change these settings ",
-                         "again under the 'Modify' section, but you also have the option ",
-                         "to 'Repair', 'Uninstall' and 'Update' Pycraft. For now though ",
-                         "we have finished the install but we have some final options ",
-                         "which will be applied when the GUI closes:\nDo you want to add ",
-                         "Pycraft to the desktop?\nAdditionally do you want to add Pycraft ",
-                         "to the start (recommended)?\nYou also have the option to view ",
-                         "the release notes for this install as well.\nThanks for ",
-                         "installing Pycraft!")))
+                Registry.installer_text["install"][5])
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
@@ -561,8 +505,7 @@ if __name__ != "__main__":
                             print(Message)
                             messagebox.showwarning(
                                 "Permission Denied",
-                                "".join(("You need to run this program as an administrator ",
-                                         "to be able to use this function")))
+                                Registry.installer_text["install"][6])
 
                     if ReleaseNotes:
                         import webbrowser
@@ -572,14 +515,7 @@ if __name__ != "__main__":
                 except Exception as Message:
                     messagebox.showerror(
                         "An error occurred",
-                        "".join(("Pycraft has successfully installed but some of your final ",
-                                 "configurations have not been made, this will change in later ",
-                                 "versions of Pycraft but a quick fix is trying to restart the ",
-                                 "installer, files downloaded already will be automatically ",
-                                 "skipped in the download and install. Also this is an early ",
-                                 "version of the installer, small issues like this will be ",
-                                 "fixed in later versions of Pycraft that are build around ",
-                                 f"the installer.\n\nFull error message: {Message}")))
+                        Registry.installer_text["install"][7])
 
                 quit()
 

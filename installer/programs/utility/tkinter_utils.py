@@ -2,6 +2,7 @@ if __name__ != "__main__":
     try:
         import tkinter
         from tkinter import messagebox
+        from tkinter import ttk
 
         from registry_utils import Registry
         
@@ -41,6 +42,23 @@ if __name__ != "__main__":
                 return False
                 
     class tkinter_installer(Registry):
+        def style(widget):
+            #https://www.pythontutorial.net/tkinter/ttk-style/
+            style = ttk.Style()
+            style.configure(
+                widget,
+                background="white",
+                foreground="black",
+                width=20,
+                borderwidth=1,
+                focusthickness=3,
+                focuscolor="none")
+            
+            style.map(
+                widget,
+                background=[
+                    ("active", "white")])
+                        
         def center(win):
             win.update_idletasks()
             width = win.winfo_width()

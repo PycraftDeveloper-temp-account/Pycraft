@@ -3,6 +3,7 @@ if __name__ != "__main__":
         import os
         import pathlib
         import platform
+        from tkinter import ttk
     except Exception as Message:
         try:
             import sys
@@ -34,10 +35,12 @@ if __name__ != "__main__":
         del pycraft_directory
         
         banner_path = base_folder / "resources" / "installer resources" / "Banner.png"
-        Choice = "Latest"
+        choice = "Latest"
         install_custom_version = False
         installer_config_path = base_folder / "data files" / "installer_config.json"
         installer_config_path.parent.mkdir(exist_ok=True, parents=True)
+        installer_text = None
+        installer_text_path = base_folder / "data files" / "installer text.json"
         pycraft_install_path = None
         root = None
         

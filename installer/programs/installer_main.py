@@ -4,6 +4,7 @@ try:
     import tkinter_utils
     import installer_utils
     import installer_home
+    import file_utils
 except Exception as Message:
     try:
         import sys
@@ -25,6 +26,8 @@ class run_installer(Registry):
         tkinter_utils.tkinter_installer.create_display()
 
         installer_utils.get_installer_data.get_data()
+        
+        file_utils.InstallerText.get_installer_text()
 
         installer_home.installer_home.start()
 
