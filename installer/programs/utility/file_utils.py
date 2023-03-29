@@ -227,7 +227,7 @@ if __name__ != "__main__":
                     error_message_detailed)
 
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()

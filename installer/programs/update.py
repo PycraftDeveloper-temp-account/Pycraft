@@ -46,17 +46,7 @@ if __name__ != "__main__":
                 background='white',
                 font=(None, 15)).place(x=200, y=35)
 
-            EnterText = "".join(("Welcome to Pycraft's update utility, here we will ",
-                                 "uninstall all of Pycraft's files as well as its ",
-                                 "additional data with the exception of your saved ",
-                                 "data, then reinstall the latest version.\nThe ",
-                                 "update utility will prompt for both accessing and ",
-                                 "downloading files from the internet and for the ",
-                                 "manipulation and removal of some of your files.",
-                                 "\n\nIf an update is available then you can ",
-                                 "continue through the update utility, if not ",
-                                 "then you can return back to the 'Modify Your ",
-                                 "Install' screen.\n\n"))
+            EnterText = Registry.installer_text["update"][0]
 
             text = tkinter.Text(
                 root,
@@ -146,9 +136,7 @@ if __name__ != "__main__":
 
             ans = messagebox.askquestion(
                 "Permissions manager",
-                "".join(("Can we have permission to download files from the ",
-                    "internet and also modify files on this PC during the ",
-                    "update process?")))
+                Registry.installer_text["update"][1])
 
             retry = True
 
@@ -160,11 +148,7 @@ if __name__ != "__main__":
                 else:
                     ans2 = messagebox.askquestion(
                         "Caution",
-                        "".join(("We did not receive permission to download files ",
-                                 "from the internet and modify files on this PC, as ",
-                                 "a result we cannot install Pycraft, would you ",
-                                 "like to amend this decision (yes) or quit the ",
-                                 "installer (no)?")))
+                        Registry.installer_text["update"][2])
 
                     if ans2 == "no":
                         sys.exit()
@@ -173,9 +157,7 @@ if __name__ != "__main__":
                         retry = True
                         ans = messagebox.askquestion(
                             "Permissions manager",
-                            "".join(("Can we have permission to download files from the ",
-                                "internet and also modify files on this PC at any time ",
-                                "using this Installer?")))
+                            Registry.installer_text["update"][3])
 
             OUTPUTtext = "Querying versions"
 
@@ -191,8 +173,7 @@ if __name__ != "__main__":
                 root,
                 OUTPUTtext)
 
-            OUTPUTtext += "".join(("\nChecking for updates online. ",
-                                   "(This might take a bit of time to complete)"))
+            OUTPUTtext += Registry.installer_text["update"][4]
 
             text_utils.installer_text.create_text(
                 root,
@@ -237,8 +218,7 @@ if __name__ != "__main__":
                     BackButtonState)
 
             else:
-                OUTPUTtext += "".join(("\nThere are updates available on this PC, ",
-                                       "press 'continue' to start the update"))
+                OUTPUTtext += Registry.installer_text["update"][5]
 
                 text_utils.installer_text.create_text(
                     root,
@@ -276,13 +256,7 @@ if __name__ != "__main__":
 
             text.insert(
                 tkinter.INSERT,
-                "".join(("Pycraft has successfully updated to the latest version. ",
-                         "Running Pycraft now will automatically run the latest ",
-                         "version.\n\nThis is a new feature so might cause some ",
-                         "saved data to be lost whilst the project features ",
-                         "changes to how it stores saved data.\nWe hope you ",
-                         "enjoy using the latest update, feel free to leave ",
-                         "feedback and view the changes on GitHub!")))
+                Registry.installer_text["update"][6])
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
@@ -293,7 +267,7 @@ if __name__ != "__main__":
                 command=sys.exit).place(x=760, y=500)
 
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()

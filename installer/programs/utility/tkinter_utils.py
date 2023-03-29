@@ -84,6 +84,8 @@ if __name__ != "__main__":
                 Xpos, Ypos = 0, 0
 
             Registry.root = tkinter.Tk()
+            
+            Registry.root.iconbitmap(default=Registry.icon_path)
 
             Registry.root.title("Pycraft Setup Wizard")
 
@@ -102,7 +104,7 @@ if __name__ != "__main__":
             image_utils.tkinter_installer.open_img()
 
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()

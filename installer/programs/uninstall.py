@@ -56,16 +56,7 @@ if __name__ != "__main__":
                 relief=tkinter.FLAT,
                 font=(None, 10))
 
-            UninstallerInstructions = "".join(("You have arrived at Pycraft's uninstall ",
-                                               "utility, here you can remove Pycraft from ",
-                                               "your system and/or remove the project's ",
-                                               "additional files, these will be sent to ",
-                                               "your recycle bin so you have the option to ",
-                                               "change your mind.\n\nIf you want to feel ",
-                                               "free to feedback any bugs, ideas or ",
-                                               "suggestions to the developers who's contact ",
-                                               "you can find here: ",
-                                               "https://github.com/PycraftDeveloper/Pycraft"))
+            UninstallerInstructions = Registry.installer_text["uninstall"][0]
 
             text.insert(tkinter.INSERT, UninstallerInstructions)
             text["state"] = tkinter.DISABLED
@@ -76,10 +67,7 @@ if __name__ != "__main__":
                 UpdateUtility = False
                 if messagebox.askokcancel(
                     "Are you sure with your decision",
-                    "".join(("Please now take the time to make sure you have ",
-                             "chosen correctly as some options will clear all ",
-                             "settings and progress made! \n\nPress OK to ",
-                             "continue the uninstall process"))):
+                    Registry.installer_text["uninstall"][1]):
 
                     ans = messagebox.askquestion(
                         "Permissions manager",
@@ -88,10 +76,7 @@ if __name__ != "__main__":
                     while ans == "no":
                         ans2 = messagebox.askquestion(
                             "Caution",
-                            "".join(("We did not receive permission to remove and modify ",
-                                     "files on this PC, as a result we cannot uninstall ",
-                                     "Pycraft, would you like to amend this decision (yes) ",
-                                     "or close the installer (no)?")))
+                            Registry.installer_text["uninstall"][2])
 
                         if ans2 == "no":
                             quit()
@@ -522,12 +507,7 @@ if __name__ != "__main__":
                 background='white',
                 font=(None, 15)).place(x=200, y=35)
 
-            EnterText = "".join(("Pycraft has been removed from your computer, ",
-                                 "you can re-install the project at any time ",
-                                 "from GitHub, SourceForge or PyPi. If you ",
-                                 "have experienced any bugs or have any ",
-                                 "suggestions then feel free to share them ",
-                                 "on the project page!"))
+            EnterText = Registry.installer_text["uninstall"][3]
 
             text = tkinter.Text(
                 root,
@@ -550,7 +530,7 @@ if __name__ != "__main__":
             root.mainloop()
 
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()

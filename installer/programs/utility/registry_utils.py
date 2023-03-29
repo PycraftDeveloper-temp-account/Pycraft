@@ -36,6 +36,7 @@ if __name__ != "__main__":
         
         banner_path = base_folder / "resources" / "installer resources" / "Banner.png"
         choice = "Latest"
+        icon_path = base_folder / "resources" / "general resources" / "Icon.ico"
         install_custom_version = False
         installer_config_path = base_folder / "data files" / "installer_config.json"
         installer_config_path.parent.mkdir(exist_ok=True, parents=True)
@@ -45,7 +46,7 @@ if __name__ != "__main__":
         root = None
         
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()

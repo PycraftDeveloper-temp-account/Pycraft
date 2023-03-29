@@ -282,7 +282,7 @@ if __name__ != "__main__":
 
                         infoVers = choice
 
-                    OUTPUTtext += Registry.installer_text["install"][3]
+                    OUTPUTtext += Registry.installer_text["install"][3].format(infoVers)
 
                     text_utils.installer_text.create_text(
                         root,
@@ -505,7 +505,7 @@ if __name__ != "__main__":
                             print(Message)
                             messagebox.showwarning(
                                 "Permission Denied",
-                                Registry.installer_text["install"][6])
+                                Registry.installer_text["install"][6].format(choice))
 
                     if ReleaseNotes:
                         import webbrowser
@@ -515,7 +515,7 @@ if __name__ != "__main__":
                 except Exception as Message:
                     messagebox.showerror(
                         "An error occurred",
-                        Registry.installer_text["install"][7])
+                        Registry.installer_text["install"][7].format(Message))
 
                 quit()
 
@@ -551,7 +551,7 @@ if __name__ != "__main__":
             root.update_idletasks()
 
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()
