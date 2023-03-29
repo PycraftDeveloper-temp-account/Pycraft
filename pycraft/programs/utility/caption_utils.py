@@ -6,21 +6,17 @@ if __name__ != "__main__":
         import psutil
         
         from registry_utils import Registry
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in caption_utils"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class generate_captions(Registry): 
         def get_loading_caption(

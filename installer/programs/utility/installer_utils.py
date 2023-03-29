@@ -11,21 +11,17 @@ if __name__ != "__main__":
         from registry_utils import Registry
 
         import installer_home
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in installer_utils"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class get_installer_data(Registry):
         def __init__(self):
@@ -68,13 +64,8 @@ if __name__ != "__main__":
                 sys.exit()
 
 
-        def home(self, root, pycraft_install_path, install_custom_version, Choice):
-            installer_home.installer_home.start(
-                self,
-                root,
-                pycraft_install_path,
-                install_custom_version,
-                Choice)
+        def home():
+            installer_home.installer_home.start()
 
 
         def outdated_detector(InstallerImportData):

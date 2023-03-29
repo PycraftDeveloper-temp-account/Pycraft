@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // This MUST be adjusted before using Pycaft/Installer in VScode
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/main.py",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

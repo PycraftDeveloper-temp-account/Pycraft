@@ -8,21 +8,17 @@ if __name__ != "__main__":
         import setting_preset_utils
         import theme_utils
         import text_utils
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in button_utils"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class draw_setting_elements(Registry):
         """

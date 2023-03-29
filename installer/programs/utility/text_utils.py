@@ -1,27 +1,19 @@
 if __name__ != "__main__":
     try:
-        import random
         import tkinter
-        import re
-
-        import pygame
 
         from registry_utils import Registry
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in text_utils"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class installer_text(Registry):
         def __init__(self):

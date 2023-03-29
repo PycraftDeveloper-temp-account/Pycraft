@@ -44,20 +44,16 @@ try:
     import theme_utils
     import translation_utils
     import pycraft_startup_utils
-except Exception as Message:
-    try:
+except ModuleNotFoundError as Message:
         import sys
         import tkinter as tk
         from tkinter import messagebox
         root = tk.Tk()
         root.withdraw()
+        error_message = f"{Message} in pycraft_main"
         messagebox.showerror(
             "Startup Error",
-            str(Message))
-        sys.exit()
-
-    except Exception as Message:
-        print(Message)
+            error_message)
         sys.exit()
 
 class Startup(Registry):
@@ -185,7 +181,7 @@ class Startup(Registry):
             target=general_thread)
         Registry.thread_pycraft_general.daemon = True
         Registry.thread_pycraft_general.start()
-        Registry.thread_pycraft_general.name = "thread_pycraft_general"
+        Registry.thread_pycraft_general.name = "[thread]: general_threading_utility"
     except Exception as Message:
         try:
             root = tk.Tk()
@@ -334,7 +330,7 @@ class Initialize:
                 target=AdaptiveTarget)
             Registry.thread_adaptive_mode.daemon = True
             Registry.thread_adaptive_mode.start()
-            Registry.thread_adaptive_mode.name = "thread_adaptive_mode"
+            Registry.thread_adaptive_mode.name = "[thread]: adaptive_mode"
 
             if Registry.connection_permission is None:
                 Initialize.destroy_splash_screen(stop_splash_screen)
@@ -389,7 +385,7 @@ class Initialize:
 
                         Registry.Thread_Get_outdated.daemon = True
                         Registry.Thread_Get_outdated.start()
-                        Registry.Thread_Get_outdated.name = "Thread_Get_outdated"
+                        Registry.Thread_Get_outdated.name = "[thread]: check_versions"
 
             Registry.data_average_fps = []
             Registry.data_CPU_usage = []

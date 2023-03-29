@@ -14,7 +14,7 @@ if __name__ != "__main__":
         if platform.system() == "Windows":
             from win32com.shell import shell, shellcon
             import win32com.client
-            
+
         from registry_utils import Registry
 
         import update
@@ -22,28 +22,26 @@ if __name__ != "__main__":
         import tkinter_utils
         import installer_utils
         import text_utils
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in installer_main"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
 
     class begin_install:
-        def __init__(self):
-            pass
-
+        var1 = None
+        Dir = Registry.base_folder
+        
         def install_screen_one():
             tkinter_utils.tkinter_installer.create_display()
+            
+            var1 = tkinter.IntVar()
 
             tkinter.Label(
                 Registry.root,
@@ -72,11 +70,11 @@ if __name__ != "__main__":
 
             var1 = tkinter.IntVar()
 
-            def button_check(self, root, pycraft_install_path, install_custom_version, choice, var1):
+            def button_check():
                 data = var1.get()
                 if data is None or data == 0:
                     continueButton = tkinter_ttk.Button(
-                        root,
+                        Registry.root,
                         text="Continue")
 
                     continueButton.place(x=760, y=500)
@@ -84,71 +82,48 @@ if __name__ != "__main__":
 
                 else:
                     continueButton = tkinter_ttk.Button(
-                        root,
+                        Registry.root,
                         text="Continue",
-                        command=lambda: begin_install.install_screen_two(
-                            self,
-                            root,
-                            pycraft_install_path,
-                            install_custom_version,
-                            choice))
+                        command=lambda: begin_install.install_screen_two())
 
                     continueButton.place(x=760, y=500)
                     continueButton["state"] = tkinter.NORMAL
-                    root.update_idletasks()
+                    Registry.root.update_idletasks()
 
-            button_check(self, root,
-                        pycraft_install_path, install_custom_version, choice, var1)
+            button_check()
 
+            tkinter_utils.tkinter_installer.style("TRadiobutton")
             tkinter_ttk.Radiobutton(
-                root, text="I have not read the above text",
+                Registry.root,
+                text="I have not read the above text",
                 variable=var1,
                 value=0,
-                command=lambda: button_check(
-                    self,
-                    root,
-                    pycraft_install_path,
-                    install_custom_version,
-                    choice,
-                    var1)).place(x=200, y=475)
-
+                command=lambda: button_check()).place(x=200, y=475)
+            
+            tkinter_utils.tkinter_installer.style("TRadiobutton")
             tkinter_ttk.Radiobutton(
-                root,
+                Registry.root,
                 text="I have read the above text",
                 variable=var1,
                 value=1,
-                command=lambda: button_check(
-                    self,
-                    root,
-                    pycraft_install_path,
-                    install_custom_version,
-                    choice,
-                    var1)).place(x=200, y=500)
+                command=lambda: button_check()).place(x=200, y=500)
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text="home",
-                command=lambda: installer_utils.core_installer_functionality.home(
-                    self,
-                    root,
-                    pycraft_install_path,
-                    install_custom_version,
-                    choice)).place(x=680, y=500)
+                command=lambda: installer_utils.core_installer_functionality.home()).place(x=680, y=500)
 
-        def install_screen_two(self, root, pycraft_install_path, install_custom_version, choice):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def install_screen_two():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's Installation Assistant",
                 background="white",
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Set Install Location",
                 background="white",
                 font=(None, 20)).place(x=200, y=40)
@@ -156,7 +131,7 @@ if __name__ != "__main__":
             OUTPUTtext = Registry.installer_text["install"][1]
 
             text = tkinter.Text(
-                root,
+                Registry.root,
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
@@ -168,11 +143,7 @@ if __name__ != "__main__":
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
 
-            global Dir
-            Dir = Registry.base_folder
-
             def get_dir():
-                global Dir
                 Dir = filedialog.askdirectory()
                 if len(Dir) >= 80:
                     Dir2 = Dir[:80]+"..."
@@ -183,28 +154,28 @@ if __name__ != "__main__":
 
                 CurrentLocat.destroy()
                 CurrentLocat = tkinter.Label(
-                    root,
+                    Registry.root,
                     text=("  "+Dir2+"  "),
                     background="white",
                     relief=tkinter.RIDGE)
 
                 CurrentLocat.place(x=313, y=152.5)
 
-                root.update_idletasks()
+                Registry.root.update_idletasks()
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text="Choose file location",
                 command=get_dir).place(x=200, y=150)
 
             global CurrentLocat, UpdateUtility
             UpdateUtility = True
 
-            ComputePath = Registry.base_folder[len(
-                Registry.base_folder)-90:]
+            ComputePath = str(Registry.base_folder)[len(
+                str(Registry.base_folder))-90:]
 
             CurrentLocat = tkinter.Label(
-                root,
+                Registry.root,
                 text=("  "+ComputePath+"  "),
                 background="white",
                 relief=tkinter.RIDGE)
@@ -212,40 +183,28 @@ if __name__ != "__main__":
             CurrentLocat.place(x=313, y=152.5)
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text="Continue",
-                command=lambda: begin_install.install_screen_three(
-                    self,
-                    root,
-                    choice,
-                    Dir)).place(x=760, y=500)
+                command=lambda: begin_install.install_screen_three()).place(x=760, y=500)
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text="Back",
-                command=lambda: begin_install.install_screen_one(
-                    self,
-                    root,
-                    pycraft_install_path,
-                    install_custom_version,
-                    choice)).place(x=680, y=500)
+                command=lambda: begin_install.install_screen_one()).place(x=680, y=500)
 
-            root.update_idletasks()
+            Registry.root.update_idletasks()
 
-        def install_screen_three(self, root, choice, Dir):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def install_screen_three():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's Installation Assistant",
                 background="white",
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Downloading and installing Pycraft",
                 background="white",
                 font=(None, 20)).place(x=200, y=40)
@@ -269,7 +228,6 @@ if __name__ != "__main__":
                         OUTPUTtext = "Found latest version as: Pycraft v0.9.5"
 
                         text_utils.installer_text.create_text(
-                            root,
                             OUTPUTtext)
 
                         infoVers = "Pycraft v0.9.5"
@@ -277,26 +235,24 @@ if __name__ != "__main__":
                         OUTPUTtext = f"Found requested version as: {choice}"
 
                         text_utils.installer_text.create_text(
-                            root,
                             OUTPUTtext)
 
                         infoVers = choice
 
-                    OUTPUTtext += Registry.installer_text["install"][3].format(infoVers)
+                    OUTPUTtext += Registry.installer_text["install"][3].format(
+                        infoVers)
 
                     text_utils.installer_text.create_text(
-                        root,
                         OUTPUTtext)
 
                     threading.Thread(
-                        target=installer_utils.file_manipulation.download_and_install,
-                        args=(self, choice,)).start()
+                        target=installer_utils.file_manipulation.download_and_install).start()
 
                     start = time.perf_counter()
 
                     def render_progress_bar(i):
                         CompletionProgressbar = tkinter_ttk.Progressbar(
-                            root,
+                            Registry.root,
                             orient=tkinter.HORIZONTAL,
                             length=100,
                             mode="indeterminate")
@@ -316,21 +272,18 @@ if __name__ != "__main__":
 
                     OUTPUTtext += f" - done in {round(installtime, 4)} seconds"
                     text_utils.installer_text.create_text(
-                        root,
                         OUTPUTtext)
 
                     OUTPUTtext += "\nSuccessfully installed Pycraft"
 
                     OUTPUTtext += "\nMoving Pycraft to selected install location"
                     text_utils.installer_text.create_text(
-                        root,
                         OUTPUTtext)
 
                     current_location = site.getusersitepackages()
 
                     threading.Thread(
-                        target=installer_utils.file_manipulation.move_files,
-                        args=(self, Dir,)).start()
+                        target=installer_utils.file_manipulation.move_files).start()
 
                     while threading.active_count() == 2:
                         i += 1
@@ -340,12 +293,10 @@ if __name__ != "__main__":
 
                     OUTPUTtext += " - done"
                     text_utils.installer_text.create_text(
-                        root,
                         OUTPUTtext)
 
                     OUTPUTtext += "\nSuccessfully Installed Pycraft"
                     text_utils.installer_text.create_text(
-                        root,
                         OUTPUTtext)
 
                     try:
@@ -354,11 +305,7 @@ if __name__ != "__main__":
                             tkinter_ttk.Button(
                                 root,
                                 text="Continue",
-                                command=lambda: begin_install.install_screen_four(
-                                    self,
-                                    root,
-                                    choice,
-                                    Dir)).place(x=760, y=500)
+                                command=lambda: begin_install.install_screen_four()).place(x=760, y=500)
 
                     except:
                         update.Update.finished_update(
@@ -380,11 +327,8 @@ if __name__ != "__main__":
                             "Permissions manager",
                             Registry.installer_text["install"][2])
 
-        def install_screen_four(self, root, choice, Dir):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def install_screen_four():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
                 root,

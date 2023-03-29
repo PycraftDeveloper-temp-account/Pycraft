@@ -12,21 +12,17 @@ if __name__ != "__main__":
         
         import benchmark_utils
         import error_utils
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in extended_benchmark"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class Loadbenchmark(Registry):
         def run(self):

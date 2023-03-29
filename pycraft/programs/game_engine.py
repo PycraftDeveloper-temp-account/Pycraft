@@ -35,21 +35,17 @@ if __name__ != "__main__":
         import menu_utils
         import camera_utils
         import shadow_mapping_utils
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in game_engine"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class create_game_engine(Registry):
         def start():

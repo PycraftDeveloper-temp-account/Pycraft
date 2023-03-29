@@ -1,37 +1,40 @@
 try:
     from registry_utils import Registry
-    
+
     import tkinter_utils
     import installer_utils
     import installer_home
     import file_utils
-except Exception as Message:
-    try:
-        import sys
-        import tkinter as tk
-        from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
-        messagebox.showerror(
-            "Startup Error",
-            str(Message))
-        sys.exit()
+except ModuleNotFoundError as Message:
+    import sys
+    import tkinter as tk
+    from tkinter import messagebox
+    root = tk.Tk()
+    root.withdraw()
+    error_message = f"{Message} in installer_main"
+    messagebox.showerror(
+        "Startup Error",
+        error_message)
+    sys.exit()
 
-    except Exception as Message:
-        print(Message)
-        sys.exit()
-        
-class run_installer(Registry):
-    def Initialize():
+class Run(Registry):
+    def init():
         tkinter_utils.tkinter_installer.create_display()
 
         installer_utils.get_installer_data.get_data()
-        
-        file_utils.InstallerText.get_installer_text()
 
+        file_utils.InstallerText.get_installer_text()
+        
+        Registry.initialized = True
+        
+    def start():
+        if not Registry.initialized:
+            Run.init()
+            
         installer_home.installer_home.start()
 
         Registry.root.mainloop()
-        
-def QueryVersion():
+
+
+def get_installer_version():
     return "3.2.0"

@@ -3,22 +3,17 @@ if __name__ != "__main__":
         import os
         import pathlib
         import platform
-        from tkinter import ttk
-    except Exception as Message:
-        try:
-            import sys
-            import tkinter as tk
-            from tkinter import messagebox
-            root = tk.Tk()
-            root.withdraw()
-            messagebox.showerror(
-                "Startup Error",
-                str(Message))
-            sys.exit()
-
-        except Exception as Message:
-            print(Message)
-            sys.exit()
+    except ModuleNotFoundError as Message:
+        import sys
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        error_message = f"{Message} in registry_utils"
+        messagebox.showerror(
+            "Startup Error",
+            error_message)
+        sys.exit()
             
     class Registry:
         directory = os.path.dirname(__file__)
@@ -37,6 +32,7 @@ if __name__ != "__main__":
         banner_path = base_folder / "resources" / "installer resources" / "Banner.png"
         choice = "Latest"
         icon_path = base_folder / "resources" / "general resources" / "Icon.ico"
+        initialized = False
         install_custom_version = False
         installer_config_path = base_folder / "data files" / "installer_config.json"
         installer_config_path.parent.mkdir(exist_ok=True, parents=True)
