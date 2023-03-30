@@ -24,7 +24,7 @@ if __name__ != "_main_":
             error_message)
         sys.exit()
             
-    class generate_startup_gui(Registry):
+    class generate_startup_gui(Registry, Exception):
         def startup_gui():
             try:
                 if Registry.theme is False:
@@ -152,19 +152,8 @@ if __name__ != "_main_":
 
                     runtimer += time.perf_counter()-RefreshTime
 
-            except Exception as Message:
-                error_message = "".join(("startupAnimation > generate_startup_gui ",
-                                             f"> start: {str(Message)}"))
-
-                error_message_detailed = "".join(
-                    traceback.format_exception(
-                        None,
-                        Message,
-                        Message.__traceback__))
-
-                error_utils.generate_error_screen.error_screen(
-                    error_message,
-                    error_message_detailed)
+            except Exception as message:
+                raise generate_startup_gui(message)
 
 else:
     print("You need to run this as part of Pycraft")

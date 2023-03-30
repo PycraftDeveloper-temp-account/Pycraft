@@ -7,8 +7,6 @@ if __name__ != "__main__":
         import sys
         import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in error_utils"
         messagebox.showerror(
             "Startup Error",

@@ -21,24 +21,11 @@ if __name__ != "__main__":
 
         def error_screen(
                 error_message,
-                error_message_detailed,
-                close_pygame_window=True):
+                error_message_detailed):
             
             import tkinter as TKINTER
             import sys
             from tkinter import messagebox as msgbox
-
-            if close_pygame_window:
-                try:
-                    import pygame
-                    pygame.init()
-                    pygame.display.quit()
-                    
-                except Exception as Message:
-                    log_message = "ErrorUtils > generate_error_screen > error_screen" + str(Message)
-
-                    logging_utils.create_log_message.update_log_warning(
-                        log_message)
 
             try:
                 BaseWindow = TKINTER.Tk()
@@ -68,28 +55,18 @@ if __name__ != "__main__":
                 sys.exit()
                 
             except Exception as Message:
-                try:
-                    log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(Message)
-                    
-                    logging_utils.create_log_message.update_log_warning(
-                        log_message)
-                    
-                except Exception as Message:
-                    print(Message)
+                log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(Message)
                 
-                try:
-                    BaseWindow = TKINTER.Tk()
-                    BaseWindow.withdraw()
-                    msgbox.showerror("Pycraft closed because an error occurred",
-                                     "".join(("Pycraft closed because an error occurred\n\n",
-                                              f"More Details:\n{error_message}")))
+                logging_utils.create_log_message.update_log_warning(
+                    log_message)
+                
+                BaseWindow = TKINTER.Tk()
+                BaseWindow.withdraw()
+                msgbox.showerror("Pycraft closed because an error occurred",
+                                    "".join(("Pycraft closed because an error occurred\n\n",
+                                            f"More Details:\n{error_message}")))
 
-                    sys.exit()
-                    
-                except Exception as Message:
-                    print(Message)
-
-                quit()
+                sys.exit()
 
 else:
     print("You need to run this as part of Pycraft")

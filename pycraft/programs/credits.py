@@ -1,7 +1,6 @@
 if __name__ != "__main__":
     try:
         import time
-        import traceback
         import json
 
         import pygame
@@ -25,7 +24,7 @@ if __name__ != "__main__":
             error_message)
         sys.exit()
             
-    class generate_credits(Registry):
+    class generate_credits(Registry, Exception):
         def credits_gui():
             try:
                 caption_utils.generate_captions.get_normal_caption(
@@ -244,18 +243,8 @@ if __name__ != "__main__":
 
                     Registry.run_timer += time.perf_counter()-start_time
                     
-            except Exception as Message:
-                error_message = "credits > generate_credits > credits: "+str(Message)
-                
-                error_message_detailed = "".join(
-                    traceback.format_exception(
-                    None,
-                    Message,
-                    Message.__traceback__))
-
-                error_utils.generate_error_screen.error_screen(
-                    error_message,
-                    error_message_detailed)
+            except Exception as message:
+                raise generate_credits(message)
 
 else:
     print("You need to run this as part of Pycraft")

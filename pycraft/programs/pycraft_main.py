@@ -48,8 +48,6 @@ except ModuleNotFoundError as Message:
         import sys
         import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in pycraft_main"
         messagebox.showerror(
             "Startup Error",
@@ -195,7 +193,7 @@ class Startup(Registry):
             print(Message)
             sys.exit()
 
-class Initialize:
+class Initialize(Exception):
     def menu_selector():
         try:
             while True:
@@ -432,19 +430,8 @@ class Initialize:
 
             Initialize.menu_selector()
             
-        except Exception as Message:
-            error_message = "".join(("main > Initialize ",
-                                            f"> start: {str(Message)}"))
-
-            error_message_detailed = "".join(
-                traceback.format_exception(
-                    None,
-                    Message,
-                    Message.__traceback__))
-
-            error_utils.generate_error_screen.error_screen(
-                error_message,
-                error_message_detailed)
+        except Exception as message:
+            raise Initialize(message)
 
 
 if __name__ == "__main__":
@@ -471,6 +458,25 @@ if __name__ == "__main__":
 def QueryVersion():
     return "pycraft v9.5.0dev8"
 
-
 def start():
-    Initialize.start()
+    try:
+        Initialize.start()
+    except Exception as message:
+        print(message)
+        import sys
+        from tkinter import messagebox
+        if Registry.error_message_detailed:
+            message = "".join((traceback.format_exception(
+                None,
+                message,
+                message.__traceback__)))
+            
+        logging_utils.create_log_message.update_log_error(
+            message)
+            
+        messagebox.showerror(
+            "Pycraft closed because an error occurred",
+            str(message))
+        
+        sys.exit()
+    
