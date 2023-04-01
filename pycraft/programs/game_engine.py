@@ -36,16 +36,12 @@ if __name__ != "__main__":
         import camera_utils
         import shadow_mapping_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in game_engine"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class create_game_engine(Registry):
         def start():
@@ -1172,10 +1168,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

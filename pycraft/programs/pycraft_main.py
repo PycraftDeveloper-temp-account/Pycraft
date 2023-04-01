@@ -4,7 +4,6 @@ try:
     import threading
     import sys
     from tkinter import messagebox
-    import tkinter as tk
     import time
     import multiprocessing
     
@@ -45,14 +44,12 @@ try:
     import translation_utils
     import pycraft_startup_utils
 except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
         error_message = f"{Message} in pycraft_main"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
 
 class Startup(Registry):
     try:
@@ -182,18 +179,16 @@ class Startup(Registry):
         Registry.thread_pycraft_general.name = "[thread]: general_threading_utility"
     except Exception as Message:
         try:
-            root = tk.Tk()
-            root.withdraw()
             messagebox.showerror(
                 "Startup Error",
                 str(Message))
-            sys.exit()
+            quit()
             
         except Exception as Message:
             print(Message)
-            sys.exit()
+            quit()
 
-class Initialize(Exception):
+class Initialize:
     def menu_selector():
         try:
             while True:
@@ -430,8 +425,19 @@ class Initialize(Exception):
 
             Initialize.menu_selector()
             
-        except Exception as message:
-            raise Initialize(message)
+        except Exception as Message:
+            error_message = "".join(("main > Initialize ",
+                                            f"> start: {str(Message)}"))
+
+            error_message_detailed = "".join(
+                traceback.format_exception(
+                    None,
+                    Message,
+                    Message.__traceback__))
+
+            error_utils.generate_error_screen.error_screen(
+                error_message,
+                error_message_detailed)
 
 
 if __name__ == "__main__":
@@ -447,8 +453,6 @@ if __name__ == "__main__":
         Initialize.start()
             
     except Exception as Message:
-        root = tk.Tk()
-        root.withdraw()
         messagebox.showerror(
             "Startup Error",
             str(Message))
@@ -462,8 +466,6 @@ def start():
     try:
         Initialize.start()
     except Exception as message:
-        print(message)
-        import sys
         from tkinter import messagebox
         if Registry.error_message_detailed:
             message = "".join((traceback.format_exception(
@@ -478,5 +480,5 @@ def start():
             "Pycraft closed because an error occurred",
             str(message))
         
-        sys.exit()
+        quit()
     

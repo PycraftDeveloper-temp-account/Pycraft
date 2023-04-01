@@ -13,18 +13,14 @@ if __name__ != "_main_":
         import error_utils
         import pycraft_startup_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in startup_animation"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
-    class generate_startup_gui(Registry, Exception):
+    class generate_startup_gui(Registry):
         def startup_gui():
             try:
                 if Registry.theme is False:
@@ -152,15 +148,23 @@ if __name__ != "_main_":
 
                     runtimer += time.perf_counter()-RefreshTime
 
-            except Exception as message:
-                raise generate_startup_gui(message)
+            except Exception as Message:
+                error_message = "".join(("startupAnimation > generate_startup_gui ",
+                                             f"> start: {str(Message)}"))
+
+                error_message_detailed = "".join(
+                    traceback.format_exception(
+                        None,
+                        Message,
+                        Message.__traceback__))
+
+                error_utils.generate_error_screen.error_screen(
+                    error_message,
+                    error_message_detailed)
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

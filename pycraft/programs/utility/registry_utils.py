@@ -133,7 +133,7 @@ if __name__ != "__main__":
         draw_devmode_graph = False
         current_fps = 60
         error_message = None
-        error_message_detailed = False
+        error_message_detailed = None
         event = configure_seasonal_event.is_seasonal_event()
 
         exit_mode = None

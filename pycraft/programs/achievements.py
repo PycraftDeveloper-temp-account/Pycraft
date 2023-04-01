@@ -1,6 +1,7 @@
 if __name__ != "__main__":
     try:
         import time
+        import traceback
 
         import pygame
         
@@ -12,16 +13,14 @@ if __name__ != "__main__":
         import error_utils
         import text_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
         error_message = f"{Message} in achievements"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
 
-    class generate_achievements(Registry, Exception):
+    class generate_achievements(Registry):
         def achievements_gui():
             try:
                 caption_utils.generate_captions.get_normal_caption(
@@ -90,15 +89,23 @@ if __name__ != "__main__":
 
                     Registry.run_timer += time.perf_counter()-start_time
                     
-            except Exception as message:
-                raise generate_achievements(message)
+            except Exception as Message:
+                error_message = (
+                    f"achievements > generate_achievements > achievements: {str(Message)}")
+
+                error_message_detailed = "".join(
+                    traceback.format_exception(
+                        None,
+                        Message,
+                        Message.__traceback__))
+
+                error_utils.generate_error_screen.error_screen(
+                    error_message,
+                    error_message_detailed)
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

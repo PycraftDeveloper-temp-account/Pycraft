@@ -12,68 +12,17 @@ if __name__ != "__main__":
         
         import benchmark_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in OpenGL_window_benchmark"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class run_opengl_window_benchmark(Registry):
-        """
-        This class is in charge of the OpenGL window benchmark seen in the benchmark
-        section of Pycraft.
-        
-        - Args:
-            - None
-                
-        - Keyword Args:
-            - None
-        """
-        
-        def __init__(self):
-            pass
 
         def setup(
-                self,
                 wnd):
-            """
-            This subroutine is in charge of loading the resources required by the OpenGL
-            benchmark, including:
-            1x Texture
-            1x 3D Scene
-            1x GLSL Shader
-            And also sets the window parameters so that the OpenGL benchmark sets up in the
-            same way on all devices for consistency.
-            
-            - Args:
-                - self (dict): This is used by Pycraft as a way of storing it's current
-                    configuration and behaviour and is required by most GUIs. Its use should be
-                    reduced where possible for readability reasons.
-                - wnd (BaseWindow): This is used by ModernGL_window as the display object to
-                    use for rendering and additional resource loading.
-                    
-            - Keyword Args:
-                - None
-
-            - Output:
-                - texture (ModernGL_window Texture): This texture is rendered to the scene to
-                    add additional complexity.
-                - mvp (ModernGL_window Shader Attribute): This matrix is used to render the
-                    position and rotation of the scene.
-                - light (ModernGL_window Shader Attribute): This attribute is used to shade
-                    the scene based on the position of the camera.
-                - vao (ModernGL VertexArray): This is the scene we render (a cube).
-                - timer (float): This is used to keep track of how long this section of the
-                    benchmark has been running for, and is used in calculating the rotation
-                    of our scene.
-                - aspect_ratio (float): This float represents the aspect ratio we want our display
-                    to be rendering at.
-            """
             wnd.vsync = False
             wnd.samples = 1
             wnd.size = 1280, 720
@@ -181,10 +130,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

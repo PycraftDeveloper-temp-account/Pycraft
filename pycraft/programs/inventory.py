@@ -17,16 +17,12 @@ if __name__ != "__main__":
         import tkinter_utils
         import text_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in inventory"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class generate_inventory(Registry): 
         def __init__(dictionary):
@@ -501,10 +497,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
