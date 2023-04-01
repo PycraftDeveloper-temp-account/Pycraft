@@ -1,8 +1,5 @@
 if __name__ != "__main__":
     class identify_patterns:
-        def __init__(self):
-            pass
-
         def identify_hex(string_pattern):
             formatted_string = string_pattern.lstrip('#')
             try:
@@ -51,10 +48,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

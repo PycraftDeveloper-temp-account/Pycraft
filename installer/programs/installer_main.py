@@ -6,16 +6,12 @@ try:
     import installer_home
     import file_utils
 except ModuleNotFoundError as Message:
-    import sys
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     error_message = f"{Message} in installer_main"
     messagebox.showerror(
         "Startup Error",
         error_message)
-    sys.exit()
+    quit()
 
 class Run(Registry):
     def init():

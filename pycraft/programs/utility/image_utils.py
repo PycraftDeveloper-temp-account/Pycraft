@@ -11,21 +11,14 @@ if __name__ != "__main__":
         
         from registry_utils import Registry
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in image_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
     
     class convert_image(Registry):
-        def __init__(self):
-            pass
-
         def pil_image_to_surface(pilImage):
             return pygame.image.fromstring(
                 pilImage.tobytes(),
@@ -40,9 +33,6 @@ if __name__ != "__main__":
                 "raw")
 
     class pygame_image_extensions(Registry):
-        def __init__(self):
-            pass
-
         def display_to_string(display):
             surface_image = pygame.image.tostring(
                     display,
@@ -51,9 +41,6 @@ if __name__ != "__main__":
             return surface_image
 
     class transparency_effects(Registry):
-        def __init__(self):
-            pass
-
         def create_background_image(image, darken=False):
             display_size = Registry.display.get_size()
 
@@ -73,11 +60,7 @@ if __name__ != "__main__":
             image = enhanced_image.resize(display_size)
             
             return image
-
     class tkinter_installer(Registry):
-        def __init__(self):
-            pass
-
         def open_img(root, file, offset_x=-3, offset_y=-5):
             try:
                 load = Image.open(file)
@@ -113,10 +96,9 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
-    messagebox.showerror("Startup Error",
-                         "You need to run this as part of Pycraft, please run the 'main.py' file")
+    messagebox.showerror(
+        "Startup Error",
+        "You need to run this as part of Pycraft, please run the 'main.py' file")
+    
     quit()

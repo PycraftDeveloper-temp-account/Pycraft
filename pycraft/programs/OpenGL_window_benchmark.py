@@ -20,7 +20,6 @@ if __name__ != "__main__":
         quit()
             
     class run_opengl_window_benchmark(Registry):
-
         def setup(
                 wnd):
             wnd.vsync = False

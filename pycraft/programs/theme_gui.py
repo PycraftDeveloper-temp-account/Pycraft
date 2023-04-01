@@ -21,9 +21,6 @@ if __name__ != "__main__":
         quit()
             
     class create_theme_selection_menu(Registry):
-        def __init__(self):
-            pass
-        
         def get_theme_gui():
             try:
                 Registry.primary_mouse_button_down = False

@@ -8,14 +8,12 @@ if __name__ == "__main__":
         
         import logging_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
         error_message = f"{Message} in main"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
         
     try:
         if DEVELOPER_BUILD:
@@ -23,8 +21,6 @@ if __name__ == "__main__":
         logging_utils.log_file.clear_log()
         __init__.installer_main.Run.start()
     except Exception as message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
         if DEVELOPER_BUILD:
             message = "".join((traceback.format_exception(
@@ -39,4 +35,4 @@ if __name__ == "__main__":
             "Pycraft closed because an error occurred",
             str(message))
         
-        sys.exit()
+        quit()

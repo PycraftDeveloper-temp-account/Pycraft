@@ -8,21 +8,14 @@ if __name__ != "__main__":
         
         from registry_utils import Registry
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in image_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
 
-    class tkinter_installer(Registry):
-        def __init__(self):
-            pass
-
+    class tkinter_installer(Registry)
         def open_img(offset_x=-3, offset_y=-5):
             try:
                 load = Image.open(Registry.banner_path)
@@ -58,10 +51,8 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
-    messagebox.showerror("Startup Error",
-                         "You need to run this as part of Pycraft, please run the 'main.py' file")
+    messagebox.showerror(
+        "Startup Error",
+        "You need to run this as part of Pycraft, please run the 'main.py' file")
     quit()

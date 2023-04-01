@@ -6,21 +6,14 @@ if __name__ != "__main__":
         
         import sound_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in toggle_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class draw_setting_elements(Registry):
-        def __init__(self):
-            pass
-
         def draw_toggle(
                 toggle_pos,
                 value_0,
@@ -165,10 +158,7 @@ if __name__ != "__main__":
         
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

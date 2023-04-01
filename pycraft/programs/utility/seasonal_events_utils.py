@@ -2,21 +2,14 @@ if __name__ != "__main__":
     try:
         import date_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in seasonal_events_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class configure_seasonal_event:
-        def __init__(self):
-            pass
-
         def is_seasonal_event():
             date = str(date_utils.Date().get_time())
             if "-10-30" in date or "-10-31" in date:
@@ -33,10 +26,7 @@ if __name__ != "__main__":
                 return None
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

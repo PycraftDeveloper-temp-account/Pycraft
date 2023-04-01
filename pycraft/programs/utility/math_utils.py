@@ -8,21 +8,14 @@ if __name__ != "__main__":
         
         from registry_utils import Registry
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in math_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class math_functions(Registry):
-        def __init__(self):
-            pass
-
         def gl_look_at(pos, target, up):
             x, y, z = math_functions.compute_position(
                 pos, target, up)
@@ -90,9 +83,6 @@ if __name__ != "__main__":
             return light_proj * sun_light_look_at
 
     class compiled_math_functions(Registry):
-        def __init__(self):
-            pass
-
         def gl_look_at(pos, target, up):
             x, y, z = compiled_math_functions.compute_position(
                 pos, target, up)
@@ -165,10 +155,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

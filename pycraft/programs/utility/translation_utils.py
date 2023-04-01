@@ -9,21 +9,14 @@ if __name__ != "__main__":
         import logging_utils
         import integrated_installer_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in translation_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
 
     class translation_caching(Registry):
-        def __init__(self):
-            pass
-
         def write_cache():
             translated_cache_path = Registry.base_folder / "data files" / "translated_data.json"
             
@@ -46,9 +39,6 @@ if __name__ != "__main__":
                 Registry.translated_text = json.load(file)
 
     class string_translator(Registry):
-        def __init__(self):
-            pass
-
         def change_language(string):
             if Registry.language != "en" and len(str(string).strip()) > 0:
                 found = False
@@ -100,10 +90,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

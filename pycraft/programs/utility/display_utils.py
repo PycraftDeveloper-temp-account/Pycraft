@@ -11,21 +11,14 @@ if __name__ != "__main__":
         import logging_utils
         import tkinter_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in display_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class display_functionality(Registry):
-        def __init__(self):
-            pass
-
         def core_display_functions(
                 location="home",
                 checkEvents=True,
@@ -242,9 +235,6 @@ if __name__ != "__main__":
                     return displayEvents
                     
     class display_utils(Registry):
-        def __init__(self):
-            pass
-
         def update_display(
                 opengl=False,
                 clear_additional_arguments=True,
@@ -449,7 +439,6 @@ if __name__ != "__main__":
 
 
         def get_play_status():
-            
             if pygame.display.get_active():
                 if Registry.platform == "Windows" and Registry.vsync:
                     tempfps = Registry.vsync_fps
@@ -476,10 +465,6 @@ if __name__ != "__main__":
             return tempfps
 
     class display_animations(Registry):
-        def __init__(self):
-            pass
-
-
         def fade_in(
                 size="full"):
             
@@ -530,10 +515,7 @@ if __name__ != "__main__":
                     
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

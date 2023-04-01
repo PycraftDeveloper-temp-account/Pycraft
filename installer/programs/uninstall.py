@@ -16,21 +16,14 @@ if __name__ != "__main__":
         import installer_utils
         import text_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in uninstall"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class Uninstall:
-        def __init__(self):
-            pass
-
         def uninstall_screen_one(self, root, pycraft_install_path, install_custom_version, Choice):
             tkinter_utils.tkinter_installer.create_display()
 
@@ -527,10 +520,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft's Installer")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

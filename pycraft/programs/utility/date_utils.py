@@ -2,16 +2,12 @@ if __name__ != "__main__":
     try:
         import datetime
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in date_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class Date:
         def __init__(self):
@@ -51,3 +47,12 @@ if __name__ != "__main__":
         
         def get_time_code(self):
             return self.time_code
+        
+else:
+    print("You need to run this as part of Pycraft")
+    from tkinter import messagebox
+    messagebox.showerror(
+        "Startup Error",
+        "You need to run this as part of Pycraft, please run the 'main.py' file")
+
+    quit()

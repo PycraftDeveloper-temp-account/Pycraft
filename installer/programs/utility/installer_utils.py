@@ -12,21 +12,14 @@ if __name__ != "__main__":
 
         import installer_home
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in installer_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class get_installer_data(Registry):
-        def __init__(self):
-            pass
-
         def get_data():
             try:
                 with open(
@@ -51,10 +44,6 @@ if __name__ != "__main__":
                 Registry.pycraft_install_path = SavedData["PATH"]
 
     class core_installer_functionality(Registry):
-        def __init__(self):
-            pass
-
-
         def close():
             if messagebox.askokcancel(
                 "Pycraft Setup Wizard",
@@ -96,9 +85,6 @@ if __name__ != "__main__":
                 sys.exit()
 
     class file_manipulation(Registry):
-        def __init__(self):
-            pass
-
         def move_files(self, Dir):
             global current_location
             try:
@@ -242,14 +228,11 @@ if __name__ != "__main__":
                     "".join(("We were unable to remove some files for ",
                              f"Pycraft from your PC.\n\nFull Error Message: {Message}")))
 
-                sys.exit()
+                quit()
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

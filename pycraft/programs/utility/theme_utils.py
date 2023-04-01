@@ -4,21 +4,14 @@ if __name__ != "__main__":
         
         import input_utility
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in theme_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class determine_theme_colors(Registry):
-        def __init__(self):
-            pass
-
         def get_colors():
             if Registry.theme == "dark":
                 Registry.font_color = Registry.themeArray[0][0]
@@ -58,10 +51,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

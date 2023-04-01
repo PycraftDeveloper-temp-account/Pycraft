@@ -12,21 +12,14 @@ if __name__ != "__main__":
         import display_utils
         import sound_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in menu_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class access_other_guis(Registry):
-        def __init__(self):
-            pass
-
         def access_gui(
                 load_inventory,
                 load_map,
@@ -133,12 +126,10 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
 
     quit()
+    

@@ -6,34 +6,14 @@ if __name__ != "__main__":
         
         import math_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in camera_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
 
     class compute_camera(Registry):
-        """
-            NYI
-            
-            - Args:
-                - None
-    
-            - Keyword Args:
-                - None
-
-            - Output:
-                - None
-            """
-            
-        def __init__(self):
-            pass
-
         def camera_move_state(
                 camera,
                 direction,
@@ -101,10 +81,7 @@ if __name__ != "__main__":
                 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

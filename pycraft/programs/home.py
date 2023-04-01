@@ -23,7 +23,7 @@ if __name__ != "__main__":
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class generate_home(Registry):
         def create_banner():

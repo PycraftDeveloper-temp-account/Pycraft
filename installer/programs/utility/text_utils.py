@@ -4,21 +4,14 @@ if __name__ != "__main__":
 
         from registry_utils import Registry
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in text_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class installer_text(Registry):
-        def __init__(self):
-            pass
-
         def create_text(root, OUTPUTtext):
             text = tkinter.Text(
                 root,
@@ -36,10 +29,7 @@ if __name__ != "__main__":
             
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

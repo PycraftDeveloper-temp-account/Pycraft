@@ -4,32 +4,21 @@ if __name__ != "__main__":
         
         import logging_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in installer_main"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class generate_error_screen(Registry):
-        def __init__(self):
-            pass
-
         def error_screen(
                 error_message,
                 error_message_detailed):
             
-            import tkinter as TKINTER
-            import sys
             from tkinter import messagebox as msgbox
 
             try:
-                BaseWindow = TKINTER.Tk()
-                BaseWindow.withdraw()
                 if Registry.detailed_error_messages:
                     message = "".join(("Pycraft closed because an error occurred\n\n",
                                             f"More Details:\n{error_message_detailed}"))
@@ -52,7 +41,7 @@ if __name__ != "__main__":
                         "Pycraft closed because an error occurred",
                         message)
 
-                sys.exit()
+                quit()
                 
             except Exception as Message:
                 log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(Message)
@@ -60,20 +49,15 @@ if __name__ != "__main__":
                 logging_utils.create_log_message.update_log_warning(
                     log_message)
                 
-                BaseWindow = TKINTER.Tk()
-                BaseWindow.withdraw()
                 msgbox.showerror("Pycraft closed because an error occurred",
                                     "".join(("Pycraft closed because an error occurred\n\n",
                                             f"More Details:\n{error_message}")))
 
-                sys.exit()
+                quit()
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")

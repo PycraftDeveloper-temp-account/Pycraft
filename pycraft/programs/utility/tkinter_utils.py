@@ -10,21 +10,14 @@ if __name__ != "__main__":
         
         import image_utils
     except ModuleNotFoundError as Message:
-        import sys
-        import tkinter as tk
         from tkinter import messagebox
-        root = tk.Tk()
-        root.withdraw()
         error_message = f"{Message} in tkinter_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class splash_screen(Registry):
-        def __init__(self):
-            pass
-        
         def center(win):
             win.update_idletasks()
             width = win.winfo_width()
@@ -91,9 +84,6 @@ if __name__ != "__main__":
                 root.mainloop()
     
     class tkinter_info(Registry):
-        def __init__(self):
-            pass
-
         def get_permissions(permission_message):
             root = tkinter.Tk()
             root.withdraw()
@@ -102,11 +92,7 @@ if __name__ != "__main__":
                 "Check Permission",
                 permission_message)
             
-            if answer == "yes":
-                return True
-
-            else:
-                return False
+            return answer == "yes"
             
         def update_content():
             VariableInformation = ""
@@ -202,10 +188,7 @@ if __name__ != "__main__":
 
 else:
     print("You need to run this as part of Pycraft")
-    import tkinter as tk
     from tkinter import messagebox
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showerror(
         "Startup Error",
         "You need to run this as part of Pycraft, please run the 'main.py' file")
