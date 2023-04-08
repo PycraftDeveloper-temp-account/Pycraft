@@ -163,6 +163,6 @@ else:
     from tkinter import messagebox
     messagebox.showerror(
         "Startup Error",
-        "You need to run this as part of Pycraft, please run the 'main.py' file")
+        "You need to run this as part of Pycraft's Installer, please run the 'main.py' file")
 
     quit()

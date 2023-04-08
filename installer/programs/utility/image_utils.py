@@ -15,7 +15,7 @@ if __name__ != "__main__":
             error_message)
         quit()
 
-    class tkinter_installer(Registry)
+    class tkinter_installer(Registry):
         def open_img(offset_x=-3, offset_y=-5):
             try:
                 load = Image.open(Registry.banner_path)
@@ -50,9 +50,9 @@ if __name__ != "__main__":
                 quit()
 
 else:
-    print("You need to run this as part of Pycraft")
+    print("You need to run this as part of Pycraft's Installer")
     from tkinter import messagebox
     messagebox.showerror(
         "Startup Error",
-        "You need to run this as part of Pycraft, please run the 'main.py' file")
+        "You need to run this as part of Pycraft's Installer, please run the 'main.py' file")
     quit()
