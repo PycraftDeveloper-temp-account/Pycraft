@@ -12,9 +12,9 @@ if __name__ != "__main__":
         quit()
             
     class installer_text(Registry):
-        def create_text(root, OUTPUTtext):
+        def create_text(OUTPUTtext):
             text = tkinter.Text(
-                root,
+                Registry.root,
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
@@ -25,7 +25,7 @@ if __name__ != "__main__":
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
-            root.update_idletasks()
+            Registry.root.update_idletasks()
             
 else:
     print("You need to run this as part of Pycraft's Installer")

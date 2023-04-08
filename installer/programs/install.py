@@ -10,10 +10,6 @@ if __name__ != "__main__":
         from tkinter import messagebox
         import platform
 
-        if platform.system() == "Windows":
-            from win32com.shell import shell, shellcon
-            import win32com.client
-
         from registry_utils import Registry
 
         import update
@@ -178,20 +174,20 @@ if __name__ != "__main__":
                     current_location = None
                     infoVers = None
 
-                    if choice == "Latest":
-                        OUTPUTtext = "Found latest version as: Pycraft v0.9.5"
+                    if Registry.choice is False:
+                        OUTPUTtext = "Found latest version as: Pycraft v9.5"
 
                         text_utils.installer_text.create_text(
                             OUTPUTtext)
 
-                        infoVers = "Pycraft v0.9.5"
+                        infoVers = "Pycraft v9.5"
                     else:
-                        OUTPUTtext = f"Found requested version as: {choice}"
+                        OUTPUTtext = f"Found requested version as: {Registry.install_custom_version}"
 
                         text_utils.installer_text.create_text(
                             OUTPUTtext)
 
-                        infoVers = choice
+                        infoVers = Registry.install_custom_version
 
                     OUTPUTtext += Registry.installer_text["install"][3].format(
                         infoVers)
@@ -200,27 +196,15 @@ if __name__ != "__main__":
                         OUTPUTtext)
 
                     threading.Thread(
-                        target=installer_utils.file_manipulation.download_and_install).start()
+                        target=installer_utils.file_manipulation.download_and_install)#.start()
 
                     start = time.perf_counter()
-
-                    def render_progress_bar(i):
-                        CompletionProgressbar = tkinter_ttk.Progressbar(
-                            Registry.root,
-                            orient=tkinter.HORIZONTAL,
-                            length=100,
-                            mode="indeterminate")
-
-                        CompletionProgressbar.place(x=200, y=500)
-
-                        CompletionProgressbar["value"] += i
-                        Registry.root.update()
 
                     while threading.active_count() == 2:
                         i += 1
                         Registry.root.after(
                             50,
-                            render_progress_bar(i))
+                            install_utils.install_screen_three.render_progress_bar(i))
 
                     installtime = time.perf_counter()-start
 
@@ -237,13 +221,13 @@ if __name__ != "__main__":
                     current_location = site.getusersitepackages()
 
                     threading.Thread(
-                        target=installer_utils.file_manipulation.move_files).start()
+                        target=installer_utils.file_manipulation.move_files)#.start()
 
                     while threading.active_count() == 2:
                         i += 1
                         Registry.root.after(
                             50,
-                            render_progress_bar(i))
+                            install_utils.install_screen_three.render_progress_bar(i))
 
                     OUTPUTtext += " - done"
                     text_utils.installer_text.create_text(
@@ -263,7 +247,6 @@ if __name__ != "__main__":
 
                     except:
                         update.Update.finished_update(
-                            self,
                             Registry.root)
 
                     Registry.root.update_idletasks()
@@ -345,77 +328,6 @@ if __name__ != "__main__":
                         (install_data.Dir+"\\data files\\installer_config.json"), 'w') as openFile:
 
                     json.dump(Config, openFile)
-
-            def desktop_is_checked():
-                global CreateDSKShortcut
-                CreateDSKShortcut = CS.get()
-
-            def start_is_checked():
-                global CreateSTRTShortcut
-                CreateSTRTShortcut = CSS.get()
-
-            def toggle_release_notes():
-                global ReleaseNotes
-                ReleaseNotes = RelNot.get()
-
-            def on_exit():
-                try:
-                    if CreateDSKShortcut:
-                        desktop = os.path.join(
-                            os.path.join(
-                                os.environ["USERPROFILE"]),
-                            "Desktop")
-
-                        shell = client.Dispatch(
-                            "WScript.Shell")
-
-                        shortcut = shell.CreateShortCut(
-                            os.path.join(
-                                desktop,
-                                'Pycraft.lnk'))
-
-                        FolderDirectory = "/pycraft/resources/folder resources/FolderIcon.ico"
-                        shortcut.Targetpath = install_data.Dir+"/Pycraft/main.py"
-                        shortcut.IconLocation = install_data.Dir+FolderDirectory
-                        shortcut.save()
-
-                    if CreateSTRTShortcut:
-                        try:
-                            start = shell.SHGetSpecialFolderPath(
-                                0,
-                                shellcon.CSIDL_COMMON_STARTMENU)
-
-                            shell = client.Dispatch(
-                                "WScript.Shell")
-
-                            shortcut = shell.CreateShortCut(
-                                os.path.join(
-                                    start,
-                                    "Programs\\Pycraft.lnk"))
-
-                            FolderDirectory = "/pycraft/resources/folder resources/FolderIcon.ico"
-
-                            shortcut.Targetpath = install_data.Dir+"/pycraft/main.py"
-                            shortcut.IconLocation = install_data.Dir+FolderDirectory
-                            shortcut.save()
-
-                        except Exception as Message:
-                            print(Message)
-                            messagebox.showwarning(
-                                "Permission Denied",
-                                Registry.installer_text["install"][6].format(choice))
-
-                    if ReleaseNotes:
-                        import webbrowser
-                        webbrowser.open(
-                            "https://github.com/PycraftDeveloper/Pycraft")
-
-                except Exception as Message:
-                    messagebox.showerror(
-                        "An error occurred",
-                        Registry.installer_text["install"][7].format(Message))
-
-                quit()
 
             tkinter_ttk.Checkbutton(
                 Registry.root,

@@ -39,7 +39,7 @@ if __name__ != "__main__":
                         background="white",
                         font=(None, 20)).place(x=200, y=35)
 
-                    EnterText = Registry.installer_text["installer home"][0]
+                    EnterText = Registry.installer_text["installer home"][0].format(Registry.pycraft_install_path)
 
                     tkinter_ttk.Button(
                         Registry.root,
