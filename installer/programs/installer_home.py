@@ -118,8 +118,8 @@ if __name__ != "__main__":
                                 BETAchoice,
                                 VersionChoice):
                             
-                            Registry.choice = BETAchoice.get()
-                            Registry.install_custom_version = VersionChoice.get()
+                            Registry.choice = VersionChoice.get()
+                            Registry.install_custom_version = BETAchoice.get()
                             install.begin_install.install_screen_one()
                             
                         ContinueButton = tkinter_ttk.Button(

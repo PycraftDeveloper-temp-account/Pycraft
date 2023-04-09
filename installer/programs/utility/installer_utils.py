@@ -111,27 +111,36 @@ if __name__ != "__main__":
             try:
                 if " (latest)" in choice or choice == "Latest":
                     version = list(Registry.pycraft_versions.keys())[0]
-                    url = f"https://github.com/PycraftDeveloper/Pycraft/releases/download/{version}/Pycraft.zip"
+                    url = f"https://github.com/PycraftDeveloper/Pycraft/archive/refs/tags/{version}.zip"
                 else:
-                    url = f"https://github.com/PycraftDeveloper/Pycraft/releases/download/{choice}/Pycraft.zip"
+                    url = f"https://github.com/PycraftDeveloper/Pycraft/archive/refs/tags/{choice.split(' ')[1]}.zip"
                 
                 path = install_path / "TEMP.zip"
                 online_download = requests.get(
                     url,
                     timeout=60)
                 
+                print(online_download.text)
+
+                if "Not Found" in online_download.text:
+                    raise FileNotFoundError(f"Unable to find the file located here: {url}")
+                
+                print("Writing to tempfile")
                 with open(path, "wb") as file:
                     file.write(online_download.content)
-
+                    
+                print("Download finished")
+                
                 try:
-                    with ZipFile(path, 'r') as zip:
-                        zip.extractall(path=path.parent)
-
-                    os.remove(path)
+                    with ZipFile(path, "r") as zip_file:
+                        zip_file.extractall(path=path.parent)
+                    
+                    os.remove(str(path))
                 except Exception as Message:
                     print(Message)
                         
             except Exception as Message:
+                print(Message)
                 messagebox.showerror(
                     "An error ocurred",
                     "".join(("We were unable to install the additional ",

@@ -8,7 +8,7 @@ if __name__ != "__main__":
         import tkinter
         import tkinter.ttk as tkinter_ttk
         from tkinter import messagebox
-        import platform
+        import pathlib
 
         from registry_utils import Registry
 
@@ -174,7 +174,7 @@ if __name__ != "__main__":
                     current_location = None
                     infoVers = None
 
-                    if Registry.choice is False:
+                    if Registry.install_custom_version is False:
                         OUTPUTtext = f"Found latest version as: Pycraft {list(Registry.pycraft_versions.keys())[0]}"
 
                         text_utils.installer_text.create_text(
@@ -182,12 +182,12 @@ if __name__ != "__main__":
 
                         infoVers = f"Pycraft {list(Registry.pycraft_versions.keys())[0]}"
                     else:
-                        OUTPUTtext = f"Found requested version as: {Registry.install_custom_version}"
+                        OUTPUTtext = f"Found requested version as: {Registry.choice}"
 
                         text_utils.installer_text.create_text(
                             OUTPUTtext)
 
-                        infoVers = Registry.install_custom_version
+                        infoVers = Registry.choice
 
                     OUTPUTtext += Registry.installer_text["install"][3].format(
                         infoVers)
@@ -198,7 +198,7 @@ if __name__ != "__main__":
                     threading.Thread(
                         target=installer_utils.file_manipulation.download_and_install,
                         args=(
-                            install_data.Dir,
+                            pathlib.Path(install_data.Dir),
                             Registry.choice)).start()
 
                     start = time.perf_counter()
