@@ -109,7 +109,7 @@ if __name__ != "__main__":
 
         def download_and_install(install_path, choice):
             try:
-                if choice == "Latest":
+                if " (latest)" in choice or choice == "Latest":
                     version = list(Registry.pycraft_versions.keys())[0]
                     url = f"https://github.com/PycraftDeveloper/Pycraft/releases/download/{version}/Pycraft.zip"
                 else:
