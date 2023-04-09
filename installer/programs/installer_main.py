@@ -21,6 +21,8 @@ class Run(Registry):
 
         file_utils.InstallerText.get_installer_text()
         
+        installer_utils.file_manipulation.get_versions()
+        
         Registry.initialized = True
         
     def start():

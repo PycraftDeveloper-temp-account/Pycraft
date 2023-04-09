@@ -33,13 +33,14 @@ if __name__ != "__main__":
         installer_config_path = base_folder / "data files" / "installer_config.json"
         installer_config_path.parent.mkdir(exist_ok=True, parents=True)
         installer_text = None
-        installer_text_path = base_folder / "data files" / "installer text.json"
+        installer_text_path = base_folder / "data files" / "installer_text.json"
         logging_dictionary = {
             "information": False,
             "warnings": True,
             "errors": True}
         output_log = False
         pycraft_install_path = None
+        pycraft_versions = None
         root = None
         
 else:

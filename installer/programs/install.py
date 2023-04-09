@@ -175,12 +175,12 @@ if __name__ != "__main__":
                     infoVers = None
 
                     if Registry.choice is False:
-                        OUTPUTtext = "Found latest version as: Pycraft v9.5"
+                        OUTPUTtext = f"Found latest version as: Pycraft {list(Registry.pycraft_versions.keys())[0]}"
 
                         text_utils.installer_text.create_text(
                             OUTPUTtext)
 
-                        infoVers = "Pycraft v9.5"
+                        infoVers = f"Pycraft {list(Registry.pycraft_versions.keys())[0]}"
                     else:
                         OUTPUTtext = f"Found requested version as: {Registry.install_custom_version}"
 
@@ -196,7 +196,10 @@ if __name__ != "__main__":
                         OUTPUTtext)
 
                     threading.Thread(
-                        target=installer_utils.file_manipulation.download_and_install)#.start()
+                        target=installer_utils.file_manipulation.download_and_install,
+                        args=(
+                            install_data.Dir,
+                            Registry.choice)).start()
 
                     start = time.perf_counter()
 
@@ -213,21 +216,6 @@ if __name__ != "__main__":
                         OUTPUTtext)
 
                     OUTPUTtext += "\nSuccessfully installed Pycraft"
-
-                    OUTPUTtext += "\nMoving Pycraft to selected install location"
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
-
-                    current_location = site.getusersitepackages()
-
-                    threading.Thread(
-                        target=installer_utils.file_manipulation.move_files)#.start()
-
-                    while threading.active_count() == 2:
-                        i += 1
-                        Registry.root.after(
-                            50,
-                            install_utils.install_screen_three.render_progress_bar(i))
 
                     OUTPUTtext += " - done"
                     text_utils.installer_text.create_text(
@@ -287,76 +275,56 @@ if __name__ != "__main__":
 
             text.insert(
                 tkinter.INSERT,
-                Registry.installer_text["install"][5])
+                Registry.installer_text["install"][6])
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
 
-            CS = tkinter.BooleanVar(value=True)
-            CSS = tkinter.BooleanVar(value=False)
-            RelNot = tkinter.BooleanVar(value=True)
+            choose_create_shortcut = tkinter.BooleanVar(value=True)
+            choose_create_desktop_shortcut = tkinter.BooleanVar(value=False)
+            choose_release_notes = tkinter.BooleanVar(value=True)
 
-            global CreateDSKShortcut, CreateSTRTShortcut, ReleaseNotes
+            Config = {"installer_install_path": str(Registry.base_folder)}
+            pycraft_installer_config_path = Registry.installer_config_path# LINK TO INSTALLED PYCRAFT
+            with open(pycraft_installer_config_path, "w") as file:
+                json.dump(Config, file)
 
-            CreateDSKShortcut = True
-            CreateSTRTShortcut = False
-            ReleaseNotes = True
+            Config = {"pycraft_install_path": str(install_data.Dir)}
+            with open(Registry.installer_config_path, "w") as file:
+                json.dump(Config, file)
 
-            Config = {"PATH": install_data.Dir}
-            if Registry.platform == "Linux":
-                with open(
-                    os.path.join(
-                        Registry.base_folder,
-                        ("data files//installer_config.json")), 'w') as openFile:
-
-                    json.dump(Config, openFile)
-
-                with open(
-                        (install_data.Dir+"//data files//installer_config.json"), 'w') as openFile:
-
-                    json.dump(Config, openFile)
-
-            else:
-                with open(
-                    os.path.join(
-                        Registry.base_folder,
-                        ("data files\\installer_config.json")), 'w') as openFile:
-
-                    json.dump(Config, openFile)
-
-                with open(
-                        (install_data.Dir+"\\data files\\installer_config.json"), 'w') as openFile:
-
-                    json.dump(Config, openFile)
-
+            tkinter_utils.tkinter_installer.style("TCheckbutton")
             tkinter_ttk.Checkbutton(
                 Registry.root,
                 text="Create desktop shortcut on exit",
-                variable=CS,
+                variable=choose_create_shortcut,
                 onvalue=True,
                 offvalue=False,
-                command=desktop_is_checked).place(x=200, y=250)
+                command= lambda:install_utils.install_screen_four.desktop_is_checked(
+                    choose_create_shortcut)).place(x=200, y=250)
 
             tkinter_ttk.Checkbutton(
                 Registry.root,
-                text="Create shortcut to start on exit",
-                variable=CSS,
+                text="Create start-menu shortcut on exit",
+                variable=choose_create_desktop_shortcut,
                 onvalue=True,
                 offvalue=False,
-                command=start_is_checked).place(x=200, y=275)
+                command= lambda:install_utils.install_screen_four.start_is_checked(
+                    choose_create_desktop_shortcut)).place(x=200, y=275)
 
             tkinter_ttk.Checkbutton(
                 Registry.root,
                 text="View more details about Pycraft online (on GitHub)",
-                variable=RelNot,
+                variable=choose_release_notes,
                 onvalue=True,
                 offvalue=False,
-                command=toggle_release_notes).place(x=200, y=300)
+                command= lambda:install_utils.install_screen_four.toggle_release_notes(
+                    choose_release_notes)).place(x=200, y=300)
 
             tkinter_ttk.Button(
                 Registry.root,
                 text="Finish",
-                command=on_exit).place(x=760, y=500)
+                command= install_utils.install_screen_four.on_exit).place(x=760, y=500)
 
             Registry.root.update_idletasks()
 

@@ -70,9 +70,14 @@ if __name__ != "__main__":
                             value=Registry.install_custom_version)
 
                         versions = [
-                            "Latest",
-                            "Latest",
-                            "Pycraft v10.0.0 (latest)"]
+                            "Latest"]
+                        
+                        for key in Registry.pycraft_versions:
+                            string = f"Pycraft {key}"
+                            if list(Registry.pycraft_versions.keys()).index(key) == 0:
+                                string += " (latest)"
+                                
+                            versions.append(string)
 
                         VersionChoice = tkinter.StringVar()
                         VersionChoice.set(versions[0])

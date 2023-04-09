@@ -3,9 +3,11 @@ if __name__ != "__main__":
         import os
         import json
         import sys
-        import site
-        import shutil
         import subprocess
+        from zipfile import ZipFile
+        import pathlib
+        import requests
+        import re
         from tkinter import messagebox
         
         from registry_utils import Registry
@@ -30,7 +32,7 @@ if __name__ != "__main__":
 
             except:
                 Registry.pycraft_install_path = None
-                Repair = {"PATH": None}
+                Repair = {"pycraft_install_path": None}
 
                 with open(
                         Registry.installer_config_path,
@@ -41,7 +43,7 @@ if __name__ != "__main__":
                         file)
 
             else:
-                Registry.pycraft_install_path = SavedData["PATH"]
+                Registry.pycraft_install_path = SavedData["pycraft_install_path"]
 
     class core_installer_functionality(Registry):
         def close():
@@ -55,7 +57,6 @@ if __name__ != "__main__":
 
         def home():
             installer_home.installer_home.start()
-
 
         def outdated_detector(InstallerImportData):
             try:
@@ -85,92 +86,50 @@ if __name__ != "__main__":
                 sys.exit()
 
     class file_manipulation(Registry):
-        def move_files(self, Dir):
-            global current_location
-            try:
-                temp = str(current_location.decode("UTF-8"))[:-1]
-                
-            except:
-                temp = site.getusersitepackages()
+        def get_versions():
+            version_IDs = {}
+            r = requests.get(
+                'https://api.github.com/repos/PycraftDeveloper/Pycraft/tags',
+                timeout=30)
+            raw = r.text
+            array = raw.split("},{")
+            for element in array:
+                name = re.sub('["\[\]{}]', "", element[1:-1]).split(",")
+                name = name[0].split(":")
+                version_code = ""
+                broken_down = re.split("[.dev]", name[1])
+                if broken_down[1] != "0":
+                    for element in broken_down:
+                        if len(element) > 0:
+                            version_code += ("0"*(3-len(element))+element)
 
-            try:
-                if Registry.platform == "Linux":
-                    shutil.copytree(
-                        f"{temp}//pycraft",
-                        f"{Dir}//pycraft")
-                    
-                else:
-                    shutil.copytree(
-                    f"{temp}\\pycraft",
-                    f"{Dir}\\pycraft")
+                    version_IDs[name[1]] = version_code
 
-            except Exception as Message:
-                messagebox.showerror(
-                    "An error has occurred",
-                    "".join(("We were unable to move Pycraft to the ",
-                                "requested install location.\n\nFull Error ",
-                                f"Message:\n{Message}")))
+            Registry.pycraft_versions = version_IDs
 
-                sys.exit()
-
-
-        def download_and_install(InstallerImportData, choice):
+        def download_and_install(install_path, choice):
             try:
                 if choice == "Latest":
-                    subprocess.check_call(
-                        [sys.executable,
-                            "-m",
-                            "pip",
-                            "install",
-                            "python-pycraft"],
-                        False)
-
+                    version = list(Registry.pycraft_versions.keys())[0]
+                    url = f"https://github.com/PycraftDeveloper/Pycraft/releases/download/{version}/Pycraft.zip"
                 else:
-                    #["none", "Pycraft-v0.9.1", "Pycraft-v0.9.2", "Pycraft-v0.9.3"]
-                    if choice == "Pycraft-v0.9.1":
-                        subprocess.check_call(
-                            [sys.executable,
-                                "-m",
-                                "pip",
-                                "install",
-                                "python-pycraft==0.9.1"],
-                            False)
+                    url = f"https://github.com/PycraftDeveloper/Pycraft/releases/download/{choice}/Pycraft.zip"
+                
+                path = install_path / "TEMP.zip"
+                online_download = requests.get(
+                    url,
+                    timeout=60)
+                
+                with open(path, "wb") as file:
+                    file.write(online_download.content)
 
-                    elif choice == "Pycraft-v0.9.2":
-                        subprocess.check_call(
-                            [sys.executable,
-                                "-m",
-                                "pip",
-                                "install",
-                                "python-pycraft==0.9.2"],
-                            False)
+                try:
+                    with ZipFile(path, 'r') as zip:
+                        zip.extractall(path=path.parent)
 
-                    elif choice == "Pycraft-v0.9.3":
-                        subprocess.check_call(
-                            [sys.executable,
-                                "-m",
-                                "pip",
-                                "install",
-                                "python-pycraft==0.9.3"],
-                            False)
-
-                    elif choice == "Pycraft-v0.9.4":
-                        subprocess.check_call(
-                            [sys.executable,
-                                "-m",
-                                "pip",
-                                "install",
-                                "python-pycraft==0.9.4"],
-                            False)
-
-                    else:
-                        subprocess.check_call(
-                            [sys.executable,
-                                "-m",
-                                "pip",
-                                "install",
-                                "python-pycraft"],
-                            False)
+                    os.remove(path)
+                except Exception as Message:
+                    print(Message)
                         
             except Exception as Message:
                 messagebox.showerror(
@@ -179,7 +138,7 @@ if __name__ != "__main__":
                              "files Pycraft needs in-order to install.\n\n",
                              f"Full Error Message: {Message}")))
 
-                sys.exit()
+                quit()
 
 
         def search_files(InstallerImportData, directory):

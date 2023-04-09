@@ -22,7 +22,7 @@ if __name__ != "__main__":
             
     class fix_installer(Registry):
         def set_install_location():
-            repair = {"PATH": str(Registry.base_folder)}
+            repair = {"pycraft_install_path": str(Registry.base_folder)}
 
             installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
 
@@ -42,7 +42,7 @@ if __name__ != "__main__":
 
                 data = json.load(file)
 
-            return data["PATH"]
+            return data["pycraft_install_path"]
 
 else:
     print("You need to run this as part of Pycraft's Installer")

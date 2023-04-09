@@ -4,11 +4,14 @@ if __name__ != "__main__":
         import platform
         import tkinter
         from tkinter import filedialog
+        from tkinter import messagebox
         import tkinter.ttk as tkinter_ttk
+        import webbrowser
+        import pathlib
         
         if platform.system() == "Windows":
             from win32com.shell import shell, shellcon
-            import win32com.client
+            import win32com.client as win32com_client
 
         from registry_utils import Registry
     except ModuleNotFoundError as Message:
@@ -23,28 +26,31 @@ if __name__ != "__main__":
         var1 = None
         Dir = Registry.base_folder
         CurrentLocat = None
+        create_desktop_shortcut = True
+        create_start_menu_shortcut = False
+        show_release_notes = True
         
     class install_screen_one(Registry):
         def button_check():
-                data = install_data.var1.get()
-                if data is None or data == 0:
-                    continueButton = tkinter_ttk.Button(
-                        Registry.root,
-                        text="Continue")
+            data = install_data.var1.get()
+            if data is None or data == 0:
+                continueButton = tkinter_ttk.Button(
+                    Registry.root,
+                    text="Continue")
 
-                    continueButton.place(x=760, y=500)
-                    continueButton["state"] = tkinter.DISABLED
+                continueButton.place(x=760, y=500)
+                continueButton["state"] = tkinter.DISABLED
 
-                else:
-                    from install import begin_install
-                    continueButton = tkinter_ttk.Button(
-                        Registry.root,
-                        text="Continue",
-                        command=lambda: begin_install.install_screen_two())
+            else:
+                from install import begin_install
+                continueButton = tkinter_ttk.Button(
+                    Registry.root,
+                    text="Continue",
+                    command=lambda: begin_install.install_screen_two())
 
-                    continueButton.place(x=760, y=500)
-                    continueButton["state"] = tkinter.NORMAL
-                    Registry.root.update_idletasks()
+                continueButton.place(x=760, y=500)
+                continueButton["state"] = tkinter.NORMAL
+                Registry.root.update_idletasks()
                     
     class install_screen_two(Registry):
         def get_dir():
@@ -79,76 +85,77 @@ if __name__ != "__main__":
             Registry.root.update()
             
     class install_screen_four(Registry):
-        def desktop_is_checked():
-            global CreateDSKShortcut
-            CreateDSKShortcut = CS.get()
+        def desktop_is_checked(choose_create_shortcut):
+            install_data.create_desktop_shortcut = choose_create_shortcut.get()
 
-        def start_is_checked():
-            global CreateSTRTShortcut
-            CreateSTRTShortcut = CSS.get()
+        def start_is_checked(choose_create_desktop_shortcut):
+            install_data.create_start_menu_shortcut = choose_create_desktop_shortcut.get()
 
-        def toggle_release_notes():
-            global ReleaseNotes
-            ReleaseNotes = RelNot.get()
+        def toggle_release_notes(choose_release_notes):
+            install_data.show_release_notes = choose_release_notes.get()
+            
+        def create_desktop_shortcut_windows():
+            desktop = os.path.join(
+                os.path.join(
+                    os.environ["USERPROFILE"]),
+                "Desktop")
 
+            shell_com = win32com_client.Dispatch(
+                "WScript.Shell")
+
+            shortcut = shell_com.CreateShortCut(
+                os.path.join(
+                    desktop,
+                    'Pycraft.lnk'))
+
+            shortcut.Targetpath = str(pathlib.Path(install_data.Dir) / "pycraft" / "main.py")
+            shortcut.IconLocation = str(Registry.icon_path)
+            shortcut.save()
+            
+        def create_start_menu_shortcut_windows():
+            start_menu = shell.SHGetSpecialFolderPath(
+                0,
+                shellcon.CSIDL_PROGRAMS)
+            
+            shell_com = win32com_client.Dispatch(
+                "WScript.Shell")
+            
+            start_menu_path = pathlib.Path(start_menu)
+            shortcut = shell_com.CreateShortCut(
+                str(start_menu_path / "Pycraft.lnk"))
+
+            shortcut.Targetpath = str(pathlib.Path(install_data.Dir) / "pycraft" / "main.py")
+            shortcut.IconLocation = str(Registry.icon_path)
+            shortcut.save()
+                
+        def show_release_notes():
+            webbrowser.open(
+                "https://github.com/PycraftDeveloper/Pycraft")
+                    
         def on_exit():
             try:
-                if CreateDSKShortcut:
+                if install_data.create_desktop_shortcut:
                     if Registry.platform == "Windows":
-                        desktop = os.path.join(
-                            os.path.join(
-                                os.environ["USERPROFILE"]),
-                            "Desktop")
+                        install_screen_four.create_desktop_shortcut_windows()
 
-                        shell = client.Dispatch(
-                            "WScript.Shell")
-
-                        shortcut = shell.CreateShortCut(
-                            os.path.join(
-                                desktop,
-                                'Pycraft.lnk'))
-
-                        FolderDirectory = "/pycraft/resources/folder resources/FolderIcon.ico"
-                        shortcut.Targetpath = install_data.Dir+"/Pycraft/main.py"
-                        shortcut.IconLocation = install_data.Dir+FolderDirectory
-                        shortcut.save()
-
-                if CreateSTRTShortcut:
+                if install_data.create_start_menu_shortcut:
                     if Registry.platform == "Windows":
-                        try:
-                            start = shell.SHGetSpecialFolderPath(
-                                0,
-                                shellcon.CSIDL_COMMON_STARTMENU)
+                        install_screen_four.create_start_menu_shortcut_windows()
 
-                            shell = client.Dispatch(
-                                "WScript.Shell")
+                if install_data.show_release_notes:
+                    install_screen_four.show_release_notes()
 
-                            shortcut = shell.CreateShortCut(
-                                os.path.join(
-                                    start,
-                                    "Programs\\Pycraft.lnk"))
-
-                            FolderDirectory = "/pycraft/resources/folder resources/FolderIcon.ico"
-
-                            shortcut.Targetpath = install_data.Dir+"/pycraft/main.py"
-                            shortcut.IconLocation = install_data.Dir+FolderDirectory
-                            shortcut.save()
-
-                        except Exception as Message:
-                            print(Message)
-                            messagebox.showwarning(
-                                "Permission Denied",
-                                Registry.installer_text["install"][6].format(Registry.choice))
-
-                if ReleaseNotes:
-                    import webbrowser
-                    webbrowser.open(
-                        "https://github.com/PycraftDeveloper/Pycraft")
-
-            except Exception as Message:
+            except PermissionError as message:
+                print(message)
+                messagebox.showwarning(
+                    "Permission Denied",
+                    Registry.installer_text["install"][7].format(Registry.choice))
+                
+            except Exception as message:
+                print(message)
                 messagebox.showerror(
                     "An error occurred",
-                    Registry.installer_text["install"][7].format(Message))
+                    Registry.installer_text["install"][8].format(message))
 
             quit()
         
