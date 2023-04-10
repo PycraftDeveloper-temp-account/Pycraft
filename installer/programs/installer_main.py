@@ -5,7 +5,6 @@ try:
     import installer_utils
     import installer_home
     import file_utils
-    import install_utils # temp
 except ModuleNotFoundError as Message:
     from tkinter import messagebox
     error_message = f"{Message} in installer_main"
