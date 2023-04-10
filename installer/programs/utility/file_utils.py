@@ -2,6 +2,7 @@ if __name__ != "__main__":
     try:
         import json
         from tkinter import messagebox
+        import pathlib
 
         from registry_utils import Registry
     except ModuleNotFoundError as Message:
@@ -21,29 +22,58 @@ if __name__ != "__main__":
                 Registry.installer_text = json.load(file)
             
     class fix_installer(Registry):
-        def set_install_location():
-            repair = {"pycraft_install_path": str(Registry.base_folder)}
+        def get_installer_config():
+            try:
+                with open(
+                        Registry.installer_config_path,
+                        "r") as file:
 
-            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
-
-            with open(
-                    installer_config_path,
-                    "w") as file:
-
-                json.dump(
-                    repair,
-                    file)
-
-        def get_install_location():
-            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
-            with open(
-                    installer_config_path,
-                    "r") as file:
-
+                    data = json.load(file)
+            except json.JSONDecodeError:
+                with open(
+                        Registry.installer_config_path,
+                        "w") as file:
+                    
+                    file.truncate()
+                    
+                for key in Registry.save_keys:
+                    setattr(Registry, key, Registry.save_keys[key])
+                    
+                fix_installer.set_installer_config()
+                        
+                data = Registry.save_keys
+                
+            for key in Registry.save_keys:
+                try:
+                    setattr(Registry, key, data[key])
+                except KeyError:
+                    setattr(Registry, key, Registry.save_keys[key])
+                    
+        def set_installer_config():
+            save_data = {}
+            
+            for key in Registry.save_keys:
+                save_data[key] = Registry.__dict__[key]
+                
+            with open(Registry.installer_config_path, "w") as file:
+                json.dump(save_data, file)
+        
+        def update_install_config(new_data):
+            with open(Registry.installer_config_path, "r") as file:
                 data = json.load(file)
-
-            return data["pycraft_install_path"]
-
+            
+            for key in new_data:
+                data[key] = new_data[key]
+                
+            with open(Registry.installer_config_path, "w") as file:
+                json.dump(data, file)
+        
+        def link_pycraft_to_installer():
+            link_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "data files" / "installer_config.json"
+            link_data = {"installer_path": str(Registry.base_folder)}
+            with open(link_path, "w") as file:
+                json.dump(link_data, file)
+                
 else:
     print("You need to run this as part of Pycraft's Installer")
     from tkinter import messagebox

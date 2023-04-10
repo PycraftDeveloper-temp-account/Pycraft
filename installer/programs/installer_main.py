@@ -17,7 +17,7 @@ class Run(Registry):
     def init():
         tkinter_utils.tkinter_installer.create_display()
 
-        installer_utils.get_installer_data.get_data()
+        file_utils.fix_installer.get_installer_config()
 
         file_utils.InstallerText.get_installer_text()
         
@@ -32,7 +32,6 @@ class Run(Registry):
         installer_home.installer_home.start()
 
         Registry.root.mainloop()
-
 
 def get_installer_version():
     return "3.2.0"

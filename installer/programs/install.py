@@ -18,6 +18,7 @@ if __name__ != "__main__":
         import installer_utils
         import text_utils
         import install_utils
+        import file_utils
         from install_utils import install_data
     except ModuleNotFoundError as Message:
         from tkinter import messagebox
@@ -196,10 +197,33 @@ if __name__ != "__main__":
                         OUTPUTtext)
 
                     threading.Thread(
-                        target=installer_utils.file_manipulation.download_and_install,
+                        target=installer_utils.file_manipulation.download,
                         args=(
+                            Registry.base_folder,
                             pathlib.Path(install_data.Dir),
                             Registry.choice)).start()
+
+                    start = time.perf_counter()
+
+                    while threading.active_count() == 2:
+                        i += 1
+                        Registry.root.after(
+                            50,
+                            install_utils.install_screen_three.render_progress_bar(i))
+
+                    installtime = time.perf_counter()-start
+                    
+                    file_utils.fix_installer.get_installer_config()
+                    
+                    OUTPUTtext += f"Installing {infoVers}'s required dependencies."
+
+                    text_utils.installer_text.create_text(
+                        OUTPUTtext)
+
+                    threading.Thread(
+                        target=installer_utils.file_manipulation.install_dependencies,
+                        args=(
+                            Registry.pycraft_install_path,)).start()
 
                     start = time.perf_counter()
 

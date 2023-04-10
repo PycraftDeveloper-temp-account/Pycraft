@@ -7,12 +7,15 @@ if __name__ != "__main__":
         from zipfile import ZipFile
         import pathlib
         import requests
+        from requests.adapters import TimeoutSauce
         import re
         from tkinter import messagebox
         
         from registry_utils import Registry
 
         import installer_home
+        
+        import file_utils
     except ModuleNotFoundError as Message:
         from tkinter import messagebox
         error_message = f"{Message} in installer_utils"
@@ -20,30 +23,16 @@ if __name__ != "__main__":
             "Startup Error",
             error_message)
         quit()
-            
-    class get_installer_data(Registry):
-        def get_data():
-            try:
-                with open(
-                        Registry.installer_config_path,
-                        "r") as file:
+    
+    class MyTimeout(TimeoutSauce):
+        def __init__(self, *args, **kwargs):
+            if kwargs['connect'] is None:
+                kwargs['connect'] = 5
+            if kwargs['read'] is None:
+                kwargs['read'] = 5
+            super(MyTimeout, self).__init__(*args, **kwargs)
 
-                    SavedData = json.load(file)
-
-            except:
-                Registry.pycraft_install_path = None
-                Repair = {"pycraft_install_path": None}
-
-                with open(
-                        Registry.installer_config_path,
-                        "w") as file:
-
-                    json.dump(
-                        Repair,
-                        file)
-
-            else:
-                Registry.pycraft_install_path = SavedData["pycraft_install_path"]
+    requests.adapters.TimeoutSauce = MyTimeout
 
     class core_installer_functionality(Registry):
         def close():
@@ -106,8 +95,14 @@ if __name__ != "__main__":
                     version_IDs[name[1]] = version_code
 
             Registry.pycraft_versions = version_IDs
+            
+        def install_dependencies(pycraft_install_path):
+            requirements_file_path = pathlib.Path(pycraft_install_path) / "requirements.txt"
+            quit() # Remove this
+            subprocess.check_output(
+                f"{sys.executable} -m pip install -r {str(requirements_file_path)}")
 
-        def download_and_install(install_path, choice):
+        def download(base_folder, install_path, choice):
             try:
                 if " (latest)" in choice or choice == "Latest":
                     version = list(Registry.pycraft_versions.keys())[0]
@@ -116,36 +111,36 @@ if __name__ != "__main__":
                     url = f"https://github.com/PycraftDeveloper/Pycraft/archive/refs/tags/{choice.split(' ')[1]}.zip"
                 
                 path = install_path / "TEMP.zip"
-                online_download = requests.get(
-                    url,
-                    timeout=60)
-                
-                print(online_download.text)
 
-                if "Not Found" in online_download.text:
-                    raise FileNotFoundError(f"Unable to find the file located here: {url}")
+                session = requests.Session()
+                online_download = session.get(url)
+
+                online_download.raise_for_status()
                 
-                print("Writing to tempfile")
                 with open(path, "wb") as file:
                     file.write(online_download.content)
-                    
-                print("Download finished")
                 
-                try:
-                    with ZipFile(path, "r") as zip_file:
-                        zip_file.extractall(path=path.parent)
+                with ZipFile(path, "r") as zip_file:
+                    file_names = zip_file.namelist()
+                    zip_file.extractall(path=path.parent)
                     
-                    os.remove(str(path))
-                except Exception as Message:
-                    print(Message)
-                        
-            except Exception as Message:
-                print(Message)
+                extracted_file_path = path.parent / file_names[0]
+                
+                new_data = {"pycraft_install_path": str(extracted_file_path)}
+                file_utils.fix_installer.update_install_config(new_data)
+                
+                Registry.pycraft_install_path = extracted_file_path
+                
+                file_utils.fix_installer.link_pycraft_to_installer()
+                
+                os.remove(str(path))
+            except Exception as message:
+                print(message)
                 messagebox.showerror(
                     "An error ocurred",
                     "".join(("We were unable to install the additional ",
                              "files Pycraft needs in-order to install.\n\n",
-                             f"Full Error Message: {Message}")))
+                             f"Full Error Message: {message}")))
 
                 quit()
 
