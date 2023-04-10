@@ -24,8 +24,6 @@ class Run(Registry):
         
         installer_utils.file_manipulation.get_versions()
         
-        install_utils.install_screen_four.create_desktop_shortcut_linux()
-        
         Registry.initialized = True
         
     def start():
