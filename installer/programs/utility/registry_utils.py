@@ -43,6 +43,7 @@ if __name__ != "__main__":
         pycraft_versions = None
         root = None
         save_keys = {"pycraft_install_path": None}
+        UpdateUtility = None
         
 else:
     print("You need to run this as part of Pycraft's Installer")

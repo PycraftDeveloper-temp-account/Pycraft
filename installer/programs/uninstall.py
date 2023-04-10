@@ -52,8 +52,7 @@ if __name__ != "__main__":
             text.place(x=200, y=80)
 
             def get_confirmation():
-                global UpdateUtility
-                UpdateUtility = False
+                Registry.UpdateUtility = False
                 if messagebox.askokcancel(
                     "Are you sure with your decision",
                     Registry.installer_text["uninstall"][1]):
@@ -346,8 +345,7 @@ if __name__ != "__main__":
                 OUTPUTtext)
 
             try:
-                global UpdateUtility
-                if not UpdateUtility:
+                if not Registry.UpdateUtility:
                     begin_uninstall.finish_uninstall(
                         self,
                         root)

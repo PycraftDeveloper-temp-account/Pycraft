@@ -94,8 +94,7 @@ if __name__ != "__main__":
 
             i = 0
             def update_options(ContinueButtonState, BackButtonState):
-                global UpdateUtility
-                UpdateUtility = True
+                Registry.UpdateUtility = True
 
                 ContinueButton = tkinter_ttk.Button(
                     root,

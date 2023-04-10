@@ -119,8 +119,7 @@ if __name__ != "__main__":
                 text="Choose file location",
                 command= install_utils.install_screen_two.get_dir).place(x=200, y=150)
 
-            global UpdateUtility
-            UpdateUtility = True
+            Registry.UpdateUtility = True
 
             ComputePath = str(Registry.base_folder)[len(
                 str(Registry.base_folder))-90:]
@@ -170,9 +169,6 @@ if __name__ != "__main__":
                 if ans == "yes":
                     retry = False
 
-                    global current_location
-
-                    current_location = None
                     infoVers = None
 
                     if Registry.install_custom_version is False:
@@ -196,12 +192,14 @@ if __name__ != "__main__":
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
 
-                    threading.Thread(
+                    download_thread = threading.Thread(
                         target=installer_utils.file_manipulation.download,
                         args=(
                             Registry.base_folder,
                             pathlib.Path(install_data.Dir),
-                            Registry.choice)).start()
+                            Registry.choice))
+                    download_thread.name = "[thread]: downloading Pycraft from GitHub"
+                    download_thread.start()
 
                     start = time.perf_counter()
 
@@ -220,10 +218,12 @@ if __name__ != "__main__":
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
 
-                    threading.Thread(
+                    install_thread = threading.Thread(
                         target=installer_utils.file_manipulation.install_dependencies,
                         args=(
-                            Registry.pycraft_install_path,)).start()
+                            Registry.pycraft_install_path,))
+                    install_thread.name = "[thread]: Installing Pycraft's dependencies"
+                    install_thread.start()
 
                     start = time.perf_counter()
 
@@ -250,8 +250,7 @@ if __name__ != "__main__":
                         OUTPUTtext)
 
                     try:
-                        global UpdateUtility
-                        if UpdateUtility:
+                        if Registry.UpdateUtility:
                             tkinter_ttk.Button(
                                 Registry.root,
                                 text="Continue",
