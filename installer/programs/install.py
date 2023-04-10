@@ -81,7 +81,7 @@ if __name__ != "__main__":
 
             tkinter_ttk.Button(
                 Registry.root,
-                text="home",
+                text="Home",
                 command=lambda: installer_utils.core_installer_functionality.home()).place(x=680, y=500)
 
         def install_screen_two():
@@ -135,7 +135,7 @@ if __name__ != "__main__":
 
             tkinter_ttk.Button(
                 Registry.root,
-                text="Continue",
+                text="Install",
                 command=lambda: begin_install.install_screen_three()).place(x=760, y=500)
 
             tkinter_ttk.Button(
