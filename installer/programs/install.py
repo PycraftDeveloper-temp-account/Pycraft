@@ -244,12 +244,6 @@ if __name__ != "__main__":
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
 
-                    OUTPUTtext += "\nSuccessfully installed Pycraft"
-
-                    OUTPUTtext += " - done"
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
-
                     OUTPUTtext += "\nSuccessfully Installed Pycraft"
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
@@ -300,10 +294,15 @@ if __name__ != "__main__":
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
+            
+            if Registry.install_custom_version is False:
+                version = f"Pycraft {list(Registry.pycraft_versions.keys())[0]}"
+            else:
+                version = Registry.choice
 
             text.insert(
                 tkinter.INSERT,
-                Registry.installer_text["install"][7])
+                Registry.installer_text["install"][7].format(version))
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
