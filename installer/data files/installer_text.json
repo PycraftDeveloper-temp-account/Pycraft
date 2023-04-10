@@ -12,6 +12,7 @@
         "Now we need to ask one final thing before we start the install, where would you like to store Pycraft?",
         "Can we have permission to download files from the internet and also modify files on this PC at any time using this Installer?",
         "\nDownloading {}. This may take a moment",
+        "\nInstalling {}'s required dependencies. This can take some time to complete.",
         "We did not receive permission to download files from the internet and modify files on this PC, as a result we cannot install Pycraft, would you like to amend this decision (yes) or close the installer (no)?",
         "Can we have permission to download files from the internet and also modify files on this PC at any time using this Installer?",
         "Successfully installed {} we hope that you enjoy using this project. This installer can be opened from Pycraft by clicking on the 'Installer' option on the main menu. The installer will appear differently when you open it from Pycraft, from there you will be able to change these settings again under the 'Modify' section, but you also have the option to 'Repair', 'Uninstall' and 'Update' Pycraft. For now though we have finished the install but we have some final options which will be applied when the GUI closes:\nDo you want to add Pycraft to the desktop?\nAdditionally do you want to add Pycraft to the start (recommended)?\nYou also have the option to view the release notes for this install as well.\nThanks for installing Pycraft!",

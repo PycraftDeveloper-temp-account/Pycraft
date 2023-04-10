@@ -217,7 +217,8 @@ if __name__ != "__main__":
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
                     
-                    OUTPUTtext += f"\nInstalling {infoVers}'s required dependencies."
+                    OUTPUTtext += Registry.installer_text["install"][4].format(
+                        infoVers)
 
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
@@ -268,7 +269,7 @@ if __name__ != "__main__":
                 else:
                     ans2 = messagebox.askquestion(
                         "Caution",
-                        Registry.installer_text["install"][4])
+                        Registry.installer_text["install"][5])
 
                     if ans2 == "no":
                         quit()
@@ -302,7 +303,7 @@ if __name__ != "__main__":
 
             text.insert(
                 tkinter.INSERT,
-                Registry.installer_text["install"][6])
+                Registry.installer_text["install"][7])
 
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
