@@ -213,7 +213,11 @@ if __name__ != "__main__":
                     
                     file_utils.fix_installer.get_installer_config()
                     
-                    OUTPUTtext += f"Installing {infoVers}'s required dependencies."
+                    OUTPUTtext += f" - done in {round(installtime, 4)} seconds"
+                    text_utils.installer_text.create_text(
+                        OUTPUTtext)
+                    
+                    OUTPUTtext += f"\nInstalling {infoVers}'s required dependencies."
 
                     text_utils.installer_text.create_text(
                         OUTPUTtext)

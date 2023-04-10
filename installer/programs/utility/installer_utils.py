@@ -99,7 +99,7 @@ if __name__ != "__main__":
         def install_dependencies(pycraft_install_path):
             requirements_file_path = pathlib.Path(pycraft_install_path) / "requirements.txt"
             subprocess.check_output(
-                f"{sys.executable} -m pip install -r {str(requirements_file_path)}")
+                f"{sys.executable} -m pip install -r \"{str(requirements_file_path)}\"")
 
         def download(base_folder, install_path, choice):
             try:
