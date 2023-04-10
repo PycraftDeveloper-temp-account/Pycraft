@@ -8,6 +8,7 @@ if __name__ != "__main__":
         import tkinter.ttk as tkinter_ttk
         import webbrowser
         import pathlib
+        import shutil
         
         if platform.system() == "Windows":
             from win32com.shell import shell, shellcon
@@ -85,11 +86,11 @@ if __name__ != "__main__":
             Registry.root.update()
             
     class install_screen_four(Registry):
-        def desktop_is_checked(choose_create_shortcut):
-            install_data.create_desktop_shortcut = choose_create_shortcut.get()
+        def desktop_is_checked(choose_create_desktop_shortcut):
+            install_data.create_desktop_shortcut = choose_create_desktop_shortcut.get()
 
-        def start_is_checked(choose_create_desktop_shortcut):
-            install_data.create_start_menu_shortcut = choose_create_desktop_shortcut.get()
+        def start_is_checked(choose_create_start_menu_shortcut):
+            install_data.create_start_menu_shortcut = choose_create_start_menu_shortcut.get()
 
         def toggle_release_notes(choose_release_notes):
             install_data.show_release_notes = choose_release_notes.get()
@@ -111,6 +112,32 @@ if __name__ != "__main__":
             shortcut.Targetpath = str(pathlib.Path(install_data.Dir) / "pycraft" / "main.py")
             shortcut.IconLocation = str(Registry.icon_path)
             shortcut.save()
+            
+        def create_desktop_shortcut_linux():
+            linux_desktop = pathlib.Path("/usr/share/applications")
+            desktop_file = Registry.base_folder / "resources" / "folder resources" / "pycraft.desktop"
+            temporary_desktop_file = Registry.base_folder / "resources" / "folder resources" / "tmp_pycraft.desktop"
+            with open(desktop_file, "r") as file:
+                file_data = file.readlines()
+            
+            string = ""
+            for line in file_data:
+                if "{install_path}" in line:
+                    line = line.replace("{install_path}", str(Registry.pycraft_install_path))
+                elif "{version}" in line:
+                    if " (latest)" in Registry.choice or Registry.choice == "Latest":
+                        version = list(Registry.pycraft_versions.keys())[0]
+                    else:
+                        version = Registry.choice
+                    
+                    line = line.replace("{version}", version[1:])
+                    
+                string += line
+                
+            with open(temporary_desktop_file, "w") as file:
+                file.write(string)
+            
+            shutil.move(temporary_desktop_file, linux_desktop)
             
         def create_start_menu_shortcut_windows():
             start_menu = shell.SHGetSpecialFolderPath(
@@ -137,10 +164,14 @@ if __name__ != "__main__":
                 if install_data.create_desktop_shortcut:
                     if Registry.platform == "Windows":
                         install_screen_four.create_desktop_shortcut_windows()
+                    elif Registry.platform == "Linux":
+                        install_screen_four.create_desktop_shortcut_linux()
 
                 if install_data.create_start_menu_shortcut:
                     if Registry.platform == "Windows":
                         install_screen_four.create_start_menu_shortcut_windows()
+                    elif Registry.platform == "Linux":
+                        install_screen_four.create_desktop_shortcut_linux()
 
                 if install_data.show_release_notes:
                     install_screen_four.show_release_notes()

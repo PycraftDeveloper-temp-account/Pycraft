@@ -5,6 +5,7 @@ try:
     import installer_utils
     import installer_home
     import file_utils
+    import install_utils # temp
 except ModuleNotFoundError as Message:
     from tkinter import messagebox
     error_message = f"{Message} in installer_main"
@@ -22,6 +23,8 @@ class Run(Registry):
         file_utils.InstallerText.get_installer_text()
         
         installer_utils.file_manipulation.get_versions()
+        
+        install_utils.install_screen_four.create_desktop_shortcut_linux()
         
         Registry.initialized = True
         

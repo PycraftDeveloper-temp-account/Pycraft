@@ -29,7 +29,7 @@ if __name__ != "__main__":
                 background="white",
                 font=(None, 20)).place(x=200, y=0)
 
-            if Registry.platform == "Windows":
+            if Registry.platform == "Windows" or Registry.platform == "Linux":
                 if Registry.pycraft_install_path is not None:
                     ButtonPos = (760, 500)
 

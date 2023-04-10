@@ -98,7 +98,6 @@ if __name__ != "__main__":
             
         def install_dependencies(pycraft_install_path):
             requirements_file_path = pathlib.Path(pycraft_install_path) / "requirements.txt"
-            quit() # Remove this
             subprocess.check_output(
                 f"{sys.executable} -m pip install -r {str(requirements_file_path)}")
 

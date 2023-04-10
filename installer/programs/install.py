@@ -304,37 +304,35 @@ if __name__ != "__main__":
             text["state"] = tkinter.DISABLED
             text.place(x=200, y=80)
 
-            choose_create_shortcut = tkinter.BooleanVar(value=True)
-            choose_create_desktop_shortcut = tkinter.BooleanVar(value=False)
+            choose_create_desktop_shortcut = tkinter.BooleanVar(value=True)
+            choose_create_start_menu_shortcut = tkinter.BooleanVar(value=False)
             choose_release_notes = tkinter.BooleanVar(value=True)
-
-            Config = {"installer_install_path": str(Registry.base_folder)}
-            pycraft_installer_config_path = Registry.installer_config_path# LINK TO INSTALLED PYCRAFT
-            with open(pycraft_installer_config_path, "w") as file:
-                json.dump(Config, file)
-
-            Config = {"pycraft_install_path": str(install_data.Dir)}
-            with open(Registry.installer_config_path, "w") as file:
-                json.dump(Config, file)
+            
+            if Registry.platform == "Windows" or Registry.platform == "Linux":
+                shortcuts_available = tkinter.NORMAL
+            else:
+                shortcuts_available = tkinter.DISABLED
 
             tkinter_utils.tkinter_installer.style("TCheckbutton")
             tkinter_ttk.Checkbutton(
                 Registry.root,
                 text="Create desktop shortcut on exit",
-                variable=choose_create_shortcut,
+                state=shortcuts_available,
+                variable=choose_create_desktop_shortcut,
                 onvalue=True,
                 offvalue=False,
                 command= lambda:install_utils.install_screen_four.desktop_is_checked(
-                    choose_create_shortcut)).place(x=200, y=250)
+                    choose_create_desktop_shortcut)).place(x=200, y=250)
 
             tkinter_ttk.Checkbutton(
                 Registry.root,
                 text="Create start-menu shortcut on exit",
-                variable=choose_create_desktop_shortcut,
+                state=shortcuts_available,
+                variable=choose_create_start_menu_shortcut,
                 onvalue=True,
                 offvalue=False,
                 command= lambda:install_utils.install_screen_four.start_is_checked(
-                    choose_create_desktop_shortcut)).place(x=200, y=275)
+                    choose_create_start_menu_shortcut)).place(x=200, y=275)
 
             tkinter_ttk.Checkbutton(
                 Registry.root,
