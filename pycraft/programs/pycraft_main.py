@@ -6,17 +6,6 @@ try:
     from tkinter import messagebox
     import time
     import multiprocessing
-    
-    import tkinter_utils
-    
-    stop_splash_screen = multiprocessing.Event()
-    splash_screen = multiprocessing.Process(
-        target=tkinter_utils.splash_screen.create_splash,
-        args=(stop_splash_screen,))
-    splash_screen.daemon = True
-    splash_screen.name = "splash_screen"
-    stop_splash_screen.set()
-    splash_screen.start()
         
     import moderngl
     import pygame
@@ -43,6 +32,7 @@ try:
     import theme_utils
     import translation_utils
     import pycraft_startup_utils
+    import tkinter_utils
 except ModuleNotFoundError as Message:
         from tkinter import messagebox
         error_message = f"{Message} in pycraft_main"
@@ -53,6 +43,15 @@ except ModuleNotFoundError as Message:
 
 class Startup(Registry):
     try:
+        Registry.stop_splash_screen = multiprocessing.Event()
+        splash_screen = multiprocessing.Process(
+            target=tkinter_utils.splash_screen.create_splash,
+            args=(Registry.stop_splash_screen,))
+        splash_screen.daemon = True
+        splash_screen.name = "splash_screen"
+        Registry.stop_splash_screen.set()
+        splash_screen.start()
+    
         pygame.init()
 
         Registry.input_key = file_utils.pycraft_config_utils.read_input_key()
@@ -291,8 +290,8 @@ class Initialize:
                 error_message,
                 error_message_detailed,)
 
-    def destroy_splash_screen(stop_splash_screen):
-        stop_splash_screen.clear()
+    def destroy_splash_screen():
+        Registry.stop_splash_screen.clear()
         while True:
             found_process = False
             for process in multiprocessing.active_children():
@@ -326,14 +325,14 @@ class Initialize:
             Registry.thread_adaptive_mode.name = "[thread]: adaptive_mode"
 
             if Registry.connection_permission is None:
-                Initialize.destroy_splash_screen(stop_splash_screen)
+                Initialize.destroy_splash_screen()
                 
                 permission_message = "Can we have your permission to check the internet for updates to Pycraft?"
                 Registry.connection_permission = tkinter_utils.tkinter_info.get_permissions(
                     permission_message)
 
             if Registry.remove_file_permission is None:
-                Initialize.destroy_splash_screen(stop_splash_screen)
+                Initialize.destroy_splash_screen()
                 
                 permission_message = "Can we have your permission to send files from the Pycraft directory to the recycle bin?"
 
@@ -392,7 +391,7 @@ class Initialize:
             Registry.data_current_fps_Max = 1
             Registry.data_memory_usage_Max = 1
             
-            Initialize.destroy_splash_screen(stop_splash_screen)
+            Initialize.destroy_splash_screen()
                 
             display_utils.display_utils.set_display()
             
@@ -439,46 +438,4 @@ class Initialize:
                 error_message,
                 error_message_detailed)
 
-
-if __name__ == "__main__":
-    try:
-        counter = 0
-        for proc in psutil.process_iter(["pid", "name", "username"]):
-            if "pycraft.exe" in str(proc.info["name"]).lower():
-                counter += 1
-
-        if counter >= 2:
-            sys.exit()
-
-        Initialize.start()
-            
-    except Exception as Message:
-        messagebox.showerror(
-            "Startup Error",
-            str(Message))
-
-        sys.exit()
-
-def QueryVersion():
-    return "pycraft v9.5.0dev8"
-
-def start():
-    try:
-        Initialize.start()
-    except Exception as message:
-        from tkinter import messagebox
-        if Registry.error_message_detailed:
-            message = "".join((traceback.format_exception(
-                None,
-                message,
-                message.__traceback__)))
-            
-        logging_utils.create_log_message.update_log_error(
-            message)
-            
-        messagebox.showerror(
-            "Pycraft closed because an error occurred",
-            str(message))
-        
-        quit()
     

@@ -27,8 +27,8 @@ sys.path.append(str(programs_base_folder))
 sys.path.append(str(utility_base_folder))
 
 try:
-    from pycraft_main import QueryVersion
-    from pycraft_main import start
+    import main
+    import pycraft_main
 except ModuleNotFoundError as Message:
     import sys
     import tkinter as tk
@@ -42,7 +42,7 @@ except ModuleNotFoundError as Message:
     sys.exit()
 
 if platform.system() == "Windows":
-    myappid = f'PycraftDev.Pycraft._.{QueryVersion()}' # arbitrary string
+    myappid = f'PycraftDev.Pycraft._.{main.QueryVersion()}' # arbitrary string
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     del myappid
 

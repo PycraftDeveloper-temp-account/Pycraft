@@ -23,6 +23,8 @@ class Run(Registry):
         
         installer_utils.file_manipulation.get_versions()
         
+        installer_utils.core_installer_functionality.outdated_detector()
+        
         Registry.initialized = True
         
     def start():

@@ -10,6 +10,7 @@ if __name__ != "__main__":
         from requests.adapters import TimeoutSauce
         import re
         from tkinter import messagebox
+        import importlib.util as importlib_util
         
         from registry_utils import Registry
 
@@ -47,18 +48,16 @@ if __name__ != "__main__":
         def home():
             installer_home.installer_home.start()
 
-        def outdated_detector(InstallerImportData):
+        def outdated_detector():
             try:
-                import urllib.request as urlOpener
-
-                urlOpener.urlopen(
-                    "https://www.google.com",
-                    timeout=1)
-
-                List = subprocess.check_output(
-                        [sys.executable, "-m", "pip", "list", "--outdated"],
-                        False)
-
+                pycraft_main_install_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "main.py"
+                pycraft_main_spec = importlib_util.spec_from_file_location(
+                    "main", 
+                    pycraft_main_install_path)
+                pycraft_main = importlib_util.module_from_spec(pycraft_main_spec)
+                pycraft_main_spec.loader.exec_module(pycraft_main)
+                print(pycraft_main.QueryVersion())
+                quit()
                 global outdated
 
                 if b"Python-Pycraft" in List:

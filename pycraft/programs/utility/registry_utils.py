@@ -387,6 +387,7 @@ if __name__ != "__main__":
         sound = True
         sound_volume = 75
         startup_animation = True
+        stop_splash_screen = None
         theme = False
         themeArray = [
             [(255, 255, 255),
