@@ -6,7 +6,6 @@ if __name__ != "__main__":
         import tkinter.ttk as tkinter_ttk
         import threading
         import json
-        import sys
         
         from registry_utils import Registry
 
@@ -23,24 +22,24 @@ if __name__ != "__main__":
             error_message)
         quit()
             
-    class Uninstall:
-        def uninstall_screen_one(self, root, pycraft_install_path, install_custom_version, Choice):
+    class Uninstall(Registry):
+        def uninstall_screen_one():
             tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's installation Assistant",
                 background='white',
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Modify Your install - Uninstall",
                 background='white',
                 font=(None, 20)).place(x=200, y=35)
 
             text = tkinter.Text(
-                root,
+                Registry.root,
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
@@ -74,79 +73,60 @@ if __name__ != "__main__":
                                 "Can we have permission to remove and change files on your PC?")
 
                     if Uninstall_Option.get() == 1:
-                        begin_uninstall.remove_but_keep_save(
-                            self,
-                            root,
-                            pycraft_install_path,
-                            install_custom_version,
-                            Choice)
+                        Uninstall.remove_but_keep_save()
 
                     elif Uninstall_Option.get() == 2:
-                        begin_uninstall.remove_but_leave(
-                            self,
-                            root,
-                            pycraft_install_path,
-                            install_custom_version,
-                            Choice)
+                        Uninstall.remove_but_leave()
 
                     else:
-                        begin_uninstall.remove_all(
-                            self,
-                            root,
-                            pycraft_install_path,
-                            install_custom_version,
-                            Choice)
+                        Uninstall.remove_all()
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text='home',
-                command=lambda: installer_utils.core_installer_functionality.home(
-                    self,
-                    root,
-                    pycraft_install_path,
-                    install_custom_version, Choice)).place(x=680, y=500)
+                command=lambda: installer_utils.core_installer_functionality.home()).place(x=680, y=500)
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text='Continue',
                 command=get_confirmation).place(x=760, y=500)
 
             Uninstall_Option = tkinter.IntVar()
 
             tkinter_ttk.Radiobutton(
-                root,
+                Registry.root,
                 text="Remove Pycraft and additional files but keep save data",
                 variable=Uninstall_Option,
                 value=1).place(x=200, y=200)
 
             tkinter_ttk.Radiobutton(
-                root,
+                Registry.root,
                 text="Remove Pycraft but leave additional files",
                 variable=Uninstall_Option,
                 value=2).place(x=200, y=225)
 
             tkinter_ttk.Radiobutton(
-                root,
+                Registry.root,
                 text="Remove everything",
                 variable=Uninstall_Option,
                 value=3).place(x=200, y=250)
 
             Uninstall_Option.set(1)
 
-            root.mainloop()
+            Registry.root.mainloop()
 
 
-        def remove_all(self, root, pycraft_install_path, install_custom_version, Choice):
-            root = tkinter_utils.tkinter_installer.create_display(root, Registry.platform, Registry.base_folder)
+        def remove_all():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's installation Assistant",
                 background='white',
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Uninstalling Pycraft and all additional files",
                 background='white',
                 font=(None, 15)).place(x=200, y=35)
@@ -154,7 +134,6 @@ if __name__ != "__main__":
             OUTPUTtext = "Querying versions"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             import pycraft_main
@@ -162,109 +141,91 @@ if __name__ != "__main__":
             OUTPUTtext += f"\nPreparing to remove {version} and additional files"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            FileArray = installer_utils.file_manipulation.search_files(
-                self,
-                pycraft_install_path)
+            FileArray = installer_utils.file_manipulation.search_files()
 
             import site
             if Registry.platform == "Linux":
                 AdditionalFileArray = installer_utils.file_manipulation.search_files(
-                    self,
                     (site.getuserbase()+"//Python310//site-packages"))
 
             else:
                 AdditionalFileArray = installer_utils.file_manipulation.search_files(
-                    self,
                     (site.getuserbase()+"\\Python310\\site-packages"))
 
             FileArray = FileArray+AdditionalFileArray
             OUTPUTtext += f"\nIdentified {len(FileArray)} files to remove"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             threading.Thread(
                 target=installer_utils.file_manipulation.remove_files,
-                args=(self,
-                        FileArray,)).start()
+                args=(FileArray,))#.start()
 
             OUTPUTtext += f"\nRemoving {version}"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             i = 0
             def render_progress_bar(i):
                 CompletionProgressbar = tkinter_ttk.Progressbar(
-                    root,
                     orient=tkinter.HORIZONTAL,
                     length=100,
                     mode='indeterminate')
 
                 CompletionProgressbar.place(x=200, y=500)
                 CompletionProgressbar['value'] += i
-                root.update()
+                Registry.root.update()
 
             while "remove_files" in threading.enumerate():
                 i += 1
-                root.after(
+                Registry.root.after(
                     50,
                     render_progress_bar(i))
 
             OUTPUTtext += f"\nSuccessfully removed {version} and additional files"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             OUTPUTtext += "\nCleaning Up"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            try:
-                os.rmdir(pycraft_install_path)
+            '''try:
+                os.rmdir(Registry.pycraft_install_path)
                 
             except:
-                pass
+                pass'''
 
             OUTPUTtext += "\nDone"
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            begin_uninstall.finish_uninstall(
-                self,
-                root)
+            Uninstall.finish_uninstall()
 
 
-        def remove_but_keep_save(self, root, pycraft_install_path, install_custom_version, Choice):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def remove_but_keep_save():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's installation Assistant",
                 background='white',
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Uninstalling Pycraft and all additional files but keeping save data",
                 background='white',
                 font=(None, 15)).place(x=200, y=35)
 
             OUTPUTtext = "Querying versions"
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             import pycraft_main
@@ -272,83 +233,70 @@ if __name__ != "__main__":
             OUTPUTtext += f"\nPreparing to remove {version} and additional files"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            FileArray = installer_utils.file_manipulation.search_files(
-                self,
-                pycraft_install_path)
+            FileArray = installer_utils.file_manipulation.search_files()
 
             import site
             if Registry.platform == "Linux":
                 AdditionalFileArray = installer_utils.file_manipulation.search_files(
-                    self,
                     (site.getuserbase()+"//Python310//site-packages"))
             
             else:
                 AdditionalFileArray = installer_utils.file_manipulation.search_files(
-                    self,
                     (site.getuserbase()+"\\Python310\\site-packages"))
 
             FileArray = FileArray+AdditionalFileArray
             OUTPUTtext += f"\nIdentified {len(FileArray)} files to remove"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             threading.Thread(
                 target=installer_utils.file_manipulation.remove_files,
-                args=(self,
-                        FileArray,)).start()
+                args=(FileArray,))#.start()
 
             OUTPUTtext += f"\nRemoving {version}"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             i = 0
             def render_progress_bar(i):
                 CompletionProgressbar = tkinter_ttk.Progressbar(
-                    root,
+                    Registry.root,
                     orient=tkinter.HORIZONTAL,
                     length=100,
                     mode='indeterminate')
 
                 CompletionProgressbar.place(x=200, y=500)
                 CompletionProgressbar['value'] += i
-                root.update()
+                Registry.root.update()
 
             while "remove_files" in threading.enumerate():
                 i += 1
-                root.after(
+                Registry.root.after(
                     50,
                     render_progress_bar(i))
 
             OUTPUTtext += f"\nSuccessfully removed {version} and additional files"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             OUTPUTtext += "\nCleaning Up"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             OUTPUTtext += "\nDone"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             try:
                 if not Registry.UpdateUtility:
-                    begin_uninstall.finish_uninstall(
-                        self,
-                        root)
+                    Uninstall.finish_uninstall()
 
             except:
                 if Registry.platform == "Linux":
@@ -369,27 +317,20 @@ if __name__ != "__main__":
                     
                 Dir = SavedData["PATH"]
 
-                install.Begininstall.installScreen_2(
-                    self,
-                    root,
-                    Choice,
-                    Dir)
+                install.Begininstall.installScreen_2()
 
 
-        def remove_but_leave(self, root, pycraft_install_path, install_custom_version, Choice):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def remove_but_leave():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's installation Assistant",
                 background='white',
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Uninstalling Pycraft but keeping additional files",
                 background='white',
                 font=(None, 15)).place(x=200, y=35)
@@ -397,7 +338,6 @@ if __name__ != "__main__":
             OUTPUTtext = "Querying versions"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             import pycraft_main
@@ -405,91 +345,77 @@ if __name__ != "__main__":
             OUTPUTtext += f"\nPreparing to remove {version}"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            FileArray = installer_utils.file_manipulation.search_files(
-                self,
-                pycraft_install_path)
+            FileArray = installer_utils.file_manipulation.search_files()
 
             OUTPUTtext += f"\nIdentified {len(FileArray)} files to remove"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             threading.Thread(
                 target=installer_utils.file_manipulation.remove_files,
-                args=(self,
-                        FileArray,)).start()
+                args=(FileArray,))#.start()
 
             OUTPUTtext += f"\nRemoving {version}"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             i = 0
             def render_progress_bar(i):
                 CompletionProgressbar = tkinter_ttk.Progressbar(
-                    root,
+                    Registry.root,
                     orient=tkinter.HORIZONTAL,
                     length=100,
                     mode='indeterminate')
 
                 CompletionProgressbar.place(x=200, y=500)
                 CompletionProgressbar['value'] += i
-                root.update()
+                Registry.root.update()
 
             while "remove_files" in threading.enumerate():
                 i += 1
-                root.after(
+                Registry.root.after(
                     50,
                     render_progress_bar(i))
 
             OUTPUTtext += f"\nSuccessfully removed {version}"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
             OUTPUTtext += "\nCleaning Up"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            try:
+            '''try:
                 os.rmdir(pycraft_install_path)
                 
             except:
-                pass
+                pass'''
 
             OUTPUTtext += "\nDone"
 
             text_utils.installerText.create_text(
-                root,
                 OUTPUTtext)
 
-            begin_uninstall.finish_uninstall(
-                self,
-                root)
+            Uninstall.finish_uninstall()
 
 
-        def finish_uninstall(self, root):
-            root = tkinter_utils.tkinter_installer.create_display(
-                root,
-                Registry.platform,
-                Registry.base_folder)
+        def finish_uninstall():
+            tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Pycraft's installation Assistant",
                 background='white',
                 font=(None, 20)).place(x=200, y=0)
 
             tkinter.Label(
-                root,
+                Registry.root,
                 text="Successfully uninstalled Pycraft",
                 background='white',
                 font=(None, 15)).place(x=200, y=35)
@@ -497,7 +423,7 @@ if __name__ != "__main__":
             EnterText = Registry.installer_text["uninstall"][3]
 
             text = tkinter.Text(
-                root,
+                Registry.root,
                 wrap=tkinter.WORD,
                 relief=tkinter.FLAT,
                 font=(None, 10))
@@ -510,11 +436,11 @@ if __name__ != "__main__":
             text.place(x=200, y=40)
 
             tkinter_ttk.Button(
-                root,
+                Registry.root,
                 text='Quit',
-                command=sys.exit).place(x=760, y=500)
+                command=quit).place(x=760, y=500)
 
-            root.mainloop()
+            Registry.root.mainloop()
 
 else:
     print("You need to run this as part of Pycraft's Installer")
