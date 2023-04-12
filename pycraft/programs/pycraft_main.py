@@ -6,6 +6,9 @@ try:
     from tkinter import messagebox
     import time
     import multiprocessing
+    import requests
+    import subprocess
+    import pathlib
         
     import moderngl
     import pygame
@@ -33,9 +36,9 @@ try:
     import translation_utils
     import pycraft_startup_utils
     import tkinter_utils
-except ModuleNotFoundError as Message:
+except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in pycraft_main"
+        error_message = f"{message} in pycraft_main"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -60,15 +63,15 @@ class Startup(Registry):
         try:
             file_utils.pycraft_config_utils.read_main_save()
             
-        except Exception as Message:
+        except Exception as message:
             error_message = "".join(("file_utils > pycraft_config_utils ",
-                                            f"> read_main_save: {str(Message)}"))
+                                            f"> read_main_save: {str(message)}"))
 
             error_message_detailed = "".join(
                 traceback.format_exception(
                     None,
-                    Message,
-                    Message.__traceback__))
+                    message,
+                    message.__traceback__))
             
             user_error_message = "".join((" We were unable to read your main ",
                                             "save file, we are going to recover ",
@@ -85,15 +88,15 @@ class Startup(Registry):
             try:
                 file_utils.pycraft_config_utils.repair_lost_save()
 
-            except Exception as Message:
+            except Exception as message:
                 second_error_message = "".join(("file_utils > pycraft_config_utils ",
-                                            f"> repair_lost_save: {str(Message)}"))
+                                            f"> repair_lost_save: {str(message)}"))
 
                 second_error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 second_user_error_message = "We were unable to repair your main save file, this leaves Pycraft in an unrecoverable state.\nMore Details:\n\n"
 
@@ -115,6 +118,8 @@ class Startup(Registry):
         
         logging_utils.create_log_message.update_log_information(
             "started <Pycraft_main>")
+        
+        file_utils.installer_link.check_installer_link_status()
 
         moderngl.create_standalone_context()
 
@@ -176,15 +181,15 @@ class Startup(Registry):
         Registry.thread_pycraft_general.daemon = True
         Registry.thread_pycraft_general.start()
         Registry.thread_pycraft_general.name = "[thread]: general_threading_utility"
-    except Exception as Message:
+    except Exception as message:
         try:
             messagebox.showerror(
                 "Startup Error",
-                str(Message))
+                str(message))
             quit()
             
-        except Exception as Message:
-            print(Message)
+        except Exception as message:
+            print(message)
             quit()
 
 class Initialize:
@@ -270,21 +275,39 @@ class Initialize:
                     error_utils.generate_error_screen.error_screen(
                         Registry.error_message,
                         Registry.error_message_detailed)
+                    
+                elif Registry.command == "Installer" and Registry.linked_to_installer:
+                    pygame.quit()
+                    
+                    translation_utils.translation_caching.write_cache()
+                
+                    file_utils.pycraft_config_utils.save_pycraft_config()
+                    
+                    if Registry.error_message is not None:
+                        error_utils.generate_error_screen.error_screen(
+                            Registry.error_message,
+                            Registry.error_message_detailed)
+
+                    installer_main_install_path = Registry.installer_install_path / "main.py"
+                    program = [sys.executable, str(installer_main_install_path)]
+                    installer_process = subprocess.Popen(program)
+                    installer_process.wait()
+                    quit()
 
                 else:
                     Registry.command = "Undefined"
                     Registry.command = home.generate_home.home_gui()
                     continue
                 
-        except Exception as Message:
+        except Exception as message:
             error_message = "".join(("main > Initialize > ",
-                                        f"menu_selector: {str(Message)}"))
+                                        f"menu_selector: {str(message)}"))
 
             error_message_detailed = "".join(
                 traceback.format_exception(
                     None,
-                    Message,
-                    Message.__traceback__))
+                    message,
+                    message.__traceback__))
 
             error_utils.generate_error_screen.error_screen(
                 error_message,
@@ -311,8 +334,8 @@ class Initialize:
             try:
                 Registry.translated_text = translation_utils.translation_caching.read_cache()
 
-            except Exception as Message:
-                log_message = "translation_utils > translation_caching > read_cache: "+str(Message)
+            except Exception as message:
+                log_message = "translation_utils > translation_caching > read_cache: "+str(message)
 
                 logging_utils.create_log_message.update_log_warning(
                     log_message)
@@ -361,23 +384,30 @@ class Initialize:
                 
                 if Registry.connection_permission:
                     try:
-                        Registry.connection_status = integrated_installer_utils.check_connection.test()
-                        
-                    except Exception as Message:
-                        log_message = "integrated_installer_utils > check_connection > test: "+str(Message)
-                        
+                        integrated_installer_utils.integrated_installer.get_versions()
+                        integrated_installer_utils.integrated_installer.check_versions()
+                    except requests.ConnectionError:
+                        log_message = "".join(("integrated_installer_utils ",
+                                               "> integrated_installer > ...: ",
+                                               "Unable to establish a connection, ",
+                                               "this likely means your not connected ",
+                                               "to the internet."))
+
                         logging_utils.create_log_message.update_log_warning(
                             log_message)
-                        
-                        Registry.connection_status = False
+                    except Exception as message:
+                        error_message = "".join(("main > Initialize ",
+                                            f"> start: {str(message)}"))
 
-                    if Registry.connection_status:
-                        Registry.Thread_Get_outdated = threading.Thread(
-                            target=integrated_installer_utils.integrated_installer.check_versions)
+                        error_message_detailed = "".join(
+                            traceback.format_exception(
+                                None,
+                                message,
+                                message.__traceback__))
 
-                        Registry.Thread_Get_outdated.daemon = True
-                        Registry.Thread_Get_outdated.start()
-                        Registry.Thread_Get_outdated.name = "[thread]: check_versions"
+                        error_utils.generate_error_screen.error_screen(
+                            error_message,
+                            error_message_detailed)
 
             Registry.data_average_fps = []
             Registry.data_CPU_usage = []
@@ -424,15 +454,15 @@ class Initialize:
 
             Initialize.menu_selector()
             
-        except Exception as Message:
+        except Exception as message:
             error_message = "".join(("main > Initialize ",
-                                            f"> start: {str(Message)}"))
+                                            f"> start: {str(message)}"))
 
             error_message_detailed = "".join(
                 traceback.format_exception(
                     None,
-                    Message,
-                    Message.__traceback__))
+                    message,
+                    message.__traceback__))
 
             error_utils.generate_error_screen.error_screen(
                 error_message,

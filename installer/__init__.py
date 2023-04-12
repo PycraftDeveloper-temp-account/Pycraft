@@ -4,13 +4,13 @@ try:
     import platform
     import os
     import ctypes
-except ModuleNotFoundError as Message:
+except ModuleNotFoundError as message:
     import sys
     import tkinter as tk
     from tkinter import messagebox
     root = tk.Tk()
     root.withdraw()
-    error_message = f"{Message} in __init__"
+    error_message = f"{message} in __init__"
     messagebox.showerror(
         "Startup Error",
         error_message)

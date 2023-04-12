@@ -20,9 +20,9 @@ if __name__ != "__main__":
         import install_utils
         import file_utils
         from install_utils import install_data
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in installer_main"
+        error_message = f"{message} in installer_main"
         messagebox.showerror(
             "Startup Error",
             error_message)

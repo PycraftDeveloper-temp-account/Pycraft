@@ -15,9 +15,9 @@ if __name__ != "__main__":
         import tkinter_utils
         import installer_utils
         import text_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in uninstall"
+        error_message = f"{message} in uninstall"
         messagebox.showerror(
             "Startup Error",
             error_message)

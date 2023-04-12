@@ -1,13 +1,15 @@
 try:
+    from tkinter import messagebox
+
     from registry_utils import Registry
 
     import tkinter_utils
     import installer_utils
     import installer_home
     import file_utils
-except ModuleNotFoundError as Message:
+except ModuleNotFoundError as message:
     from tkinter import messagebox
-    error_message = f"{Message} in installer_main"
+    error_message = f"{message} in installer_main"
     messagebox.showerror(
         "Startup Error",
         error_message)
@@ -23,11 +25,20 @@ class Run(Registry):
         
         installer_utils.file_manipulation.get_versions()
         
-        installer_utils.core_installer_functionality.outdated_detector()
+        if (len(Registry.pycraft_versions) == 0 and
+                Registry.pycraft_install_path is None and
+                Registry.developer_version is False):
+            
+            messagebox.showinfo(
+                "Incompatibility Error",
+                "We where unable to find any versions of Pycraft supported by this installer."
+            )
+            quit()
         
         Registry.initialized = True
         
-    def start():
+    def start(developer_version=False):
+        Registry.developer_version = developer_version
         if not Registry.initialized:
             Run.init()
             

@@ -8,9 +8,9 @@ if __name__ != "__main__":
         
         import logging_utils
         import integrated_installer_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in translation_utils"
+        error_message = f"{message} in translation_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -47,8 +47,8 @@ if __name__ != "__main__":
                         if key == string:
                             found = True
                             translate = Registry.translated_text[key]
-                except Exception as Message:
-                    log_message = f"Dictionary of translated phrases is empty. More details: {Message}"
+                except Exception as message:
+                    log_message = f"Dictionary of translated phrases is empty. More details: {message}"
                     logging_utils.create_log_message.update_log_warning(
                         log_message)
 

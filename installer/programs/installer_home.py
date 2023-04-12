@@ -11,9 +11,9 @@ if __name__ != "__main__":
         
         import tkinter_utils
         import installer_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in installer_home"
+        error_message = f"{message} in installer_home"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -40,11 +40,20 @@ if __name__ != "__main__":
                         font=(None, 20)).place(x=200, y=35)
 
                     EnterText = Registry.installer_text["installer home"][0].format(Registry.pycraft_install_path)
+                    
+                    installer_utils.core_installer_functionality.outdated_detector()
+                    
+                    if Registry.outdated:
+                        update_button_state = tkinter.NORMAL
+                    else:
+                        update_button_state = tkinter.DISABLED
 
-                    tkinter_ttk.Button(
+                    update_button = tkinter_ttk.Button(
                         Registry.root,
                         text="Update",
-                        command=update.Update.update_screen_one).place(x=680, y=500)
+                        command=update.Update.update_screen_one)
+                    update_button["state"] = update_button_state
+                    update_button.place(x=680, y=500)
 
                     RepairButton = tkinter_ttk.Button(
                         Registry.root,

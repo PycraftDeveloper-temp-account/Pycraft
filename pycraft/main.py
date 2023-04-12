@@ -69,6 +69,7 @@ if __name__ == "__main__":
             start()
             
     except Exception as message:
+        from tkinter import messagebox
         messagebox.showerror(
             "Startup Error",
             str(message))

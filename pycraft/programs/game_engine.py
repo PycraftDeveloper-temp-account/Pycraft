@@ -35,9 +35,9 @@ if __name__ != "__main__":
         import menu_utils
         import camera_utils
         import shadow_mapping_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in game_engine"
+        error_message = f"{message} in game_engine"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -262,9 +262,9 @@ if __name__ != "__main__":
                     vbo2 = ctx.buffer(
                         reserve=N * stride)
 
-                except Exception as Message:
+                except Exception as message:
                     log_message = "GameEngine > GameEngine > __init__: " + \
-                        str(Message)
+                        str(message)
 
                     logging_utils.create_log_message.update_log_warning(
                         log_message)
@@ -858,15 +858,15 @@ if __name__ != "__main__":
 
                             sound_utils.play_sound.play_ambient_sound()
 
-                    except Exception as Message:
+                    except Exception as message:
                         error_message = "".join(("GameEngine > GameEngine ",
-                                                      f"> __init__: {str(Message)}"))
+                                                      f"> __init__: {str(message)}"))
 
                         error_message_detailed = "".join(
                             traceback.format_exception(
                                 None,
-                                Message,
-                                Message.__traceback__))
+                                message,
+                                message.__traceback__))
 
                         error_utils.generate_error_screen.error_screen(
                             error_message,
@@ -880,15 +880,15 @@ if __name__ != "__main__":
 
                             sound_utils.play_sound.play_rain_sound()
 
-                    except Exception as Message:
+                    except Exception as message:
                         error_message = "".join(("GameEngine > GameEngine ",
-                                                      f"> __init__: {str(Message)}"))
+                                                      f"> __init__: {str(message)}"))
 
                         error_message_detailed = "".join(
                             traceback.format_exception(
                                 None,
-                                Message,
-                                Message.__traceback__))
+                                message,
+                                message.__traceback__))
 
                         error_utils.generate_error_screen.error_screen(
                             error_message,
@@ -1152,15 +1152,15 @@ if __name__ != "__main__":
 
                     play_time = timer
 
-            except Exception as Message:
+            except Exception as message:
                 error_message = (
-                    f"pygame_game > create_game_engine > game_engine: {str(Message)}")
+                    f"pygame_game > create_game_engine > game_engine: {str(message)}")
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

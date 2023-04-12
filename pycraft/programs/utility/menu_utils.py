@@ -11,9 +11,9 @@ if __name__ != "__main__":
         import error_utils
         import display_utils
         import sound_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in menu_utils"
+        error_message = f"{message} in menu_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -110,15 +110,15 @@ if __name__ != "__main__":
 
                 return load_inventory, load_map
                 
-            except Exception as Message:
+            except Exception as message:
                 error_message = "".join(("GameEngineUtils > access_other_guis ",
-                                                        f"> access_gui: {str(Message)}"))
+                                                        f"> access_gui: {str(message)}"))
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

@@ -12,9 +12,9 @@ if __name__ != "__main__":
         import sound_utils
         import theme_utils
         import text_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in theme_gui"
+        error_message = f"{message} in theme_gui"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -162,15 +162,15 @@ if __name__ != "__main__":
                     pygame.display.update()
                     Registry.clock.tick(Registry.fps)
                     
-            except Exception as Message:
+            except Exception as message:
                 error_message = "".join(("theme_gui > create_theme_selection_menu ",
-                                             f"> get_theme_gui: {str(Message)}"))
+                                             f"> get_theme_gui: {str(message)}"))
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

@@ -12,9 +12,9 @@ if __name__ != "_main_":
         import display_utils
         import error_utils
         import pycraft_startup_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in startup_animation"
+        error_message = f"{message} in startup_animation"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -148,15 +148,15 @@ if __name__ != "_main_":
 
                     runtimer += time.perf_counter()-RefreshTime
 
-            except Exception as Message:
+            except Exception as message:
                 error_message = "".join(("startupAnimation > generate_startup_gui ",
-                                             f"> start: {str(Message)}"))
+                                             f"> start: {str(message)}"))
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

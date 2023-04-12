@@ -3,9 +3,9 @@ if __name__ != "__main__":
         import tkinter
 
         from registry_utils import Registry
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in text_utils"
+        error_message = f"{message} in text_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)

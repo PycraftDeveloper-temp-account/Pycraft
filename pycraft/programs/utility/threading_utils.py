@@ -8,9 +8,9 @@ if __name__ != "__main__":
 
         from registry_utils import Registry
         import logging_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in threading_utils"
+        error_message = f"{message} in threading_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -64,15 +64,15 @@ if __name__ != "__main__":
                             Registry.average_fps = 1
                             Registry.iteration = 1
                             
-            except Exception as Message:
+            except Exception as message:
                 Registry.error_message = "".join(("ThreadingUtils > ThreadingUtils ",
-                                             f"> general_threading_utility: {str(Message)}"))
+                                             f"> general_threading_utility: {str(message)}"))
 
                 Registry.error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
                 
             logging_utils.create_log_message.update_log_information(
                 "'thread_pycraft_general' has stopped")
@@ -96,8 +96,8 @@ if __name__ != "__main__":
 
                             GPUPercent = GPUPercent/NumOfGPUs
 
-                        except Exception as Message:
-                            log_message = "ThreadingUtils > ThreadingUtils > adaptive_mode: "+str(Message)
+                        except Exception as message:
+                            log_message = "ThreadingUtils > ThreadingUtils > adaptive_mode: "+str(message)
 
                             logging_utils.create_log_message.update_log_information(
                                 log_message)
@@ -126,14 +126,14 @@ if __name__ != "__main__":
                     else:
                         time.sleep(1)
                         
-            except Exception as Message:
-                Registry.error_message = "ThreadingUtils > ThreadingUtils > adaptive_mode: "+str(Message)
+            except Exception as message:
+                Registry.error_message = "ThreadingUtils > ThreadingUtils > adaptive_mode: "+str(message)
 
                 Registry.error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
             logging_utils.create_log_message.update_log_information(
                 "'thread_adaptive_mode' has stopped")

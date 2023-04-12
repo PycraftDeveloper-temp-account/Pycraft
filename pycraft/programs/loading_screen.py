@@ -14,9 +14,9 @@ if __name__ != "__main__":
         import text_utils
         import drawing_utils
         import logging_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in loading_screen"
+        error_message = f"{message} in loading_screen"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -249,14 +249,14 @@ if __name__ != "__main__":
                         Registry.clock.tick(tempfps)
 
                     pygame.display.quit()
-            except Exception as Message:
-                error_message = "loading_screen > generate_load_screen > load: "+str(Message)
+            except Exception as message:
+                error_message = "loading_screen > generate_load_screen > load: "+str(message)
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
                 
                 print(error_message_detailed)
 

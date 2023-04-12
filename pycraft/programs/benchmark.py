@@ -17,9 +17,9 @@ if __name__ != "__main__":
         import error_utils
         import text_utils
         import logging_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in benchmark"
+        error_message = f"{message} in benchmark"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -251,8 +251,8 @@ if __name__ != "__main__":
                             fpslistX3 = fps_Results[4]
                             fpslistY3 = fps_Results[5]
                             
-                        except Exception as Message:
-                            log_message = "benchmark > generate_benchmark > benchmark: "+str(Message)
+                        except Exception as message:
+                            log_message = "benchmark > generate_benchmark > benchmark: "+str(message)
                             
                             logging_utils.create_log_message.update_log_information(
                                 log_message)
@@ -324,10 +324,10 @@ if __name__ != "__main__":
 
                             Max3 = max(fpslistY3)
                             Min3 = min(fpslistY3)
-                        except Exception as Message:
+                        except Exception as message:
                             log_message = "".join(("(User cancelled) benchmark ",
                                                        "> generate_benchmark > benchmark:",
-                                                       f"{str(Message)}"))
+                                                       f"{str(message)}"))
 
                             logging_utils.create_log_message.update_log_information(
                                 log_message)
@@ -593,14 +593,14 @@ if __name__ != "__main__":
 
                     Registry.run_timer += time.perf_counter()-start_time
                     
-            except Exception as Message:
-                error_message = "benchmark > generate_benchmark > benchmark: "+str(Message)
+            except Exception as message:
+                error_message = "benchmark > generate_benchmark > benchmark: "+str(message)
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

@@ -3,9 +3,9 @@ if __name__ != "__main__":
         import moderngl_window
         
         from registry_utils import Registry
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in shader_utils"
+        error_message = f"{message} in shader_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)

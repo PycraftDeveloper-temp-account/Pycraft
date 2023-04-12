@@ -11,9 +11,9 @@ if __name__ != "__main__":
         import moderngl_window
         
         from registry_utils import Registry
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in pycraft_startup_utils"
+        error_message = f"{message} in pycraft_startup_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -454,15 +454,15 @@ if __name__ != "__main__":
                             (Registry.error_message_detailed is None)):
 
                         Registry.error_message_detailed = temporary_error_message_detailed
-            except Exception as Message:
+            except Exception as message:
                 Registry.error_message = "".join(("Pycraftstartup_test > startup_test > ",
-                                             f"pycraft_resource_test: {str(Message)}"))
+                                             f"pycraft_resource_test: {str(message)}"))
 
                 Registry.error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
 else:
     print("You need to run this as part of Pycraft")

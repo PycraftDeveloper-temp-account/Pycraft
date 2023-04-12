@@ -11,9 +11,9 @@ if __name__ != "__main__":
         from registry_utils import Registry
 
         import logging_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in weather_utils"
+        error_message = f"{message} in weather_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -88,10 +88,10 @@ if __name__ != "__main__":
                 try:
                     send2trash.send2trash(noise_image_path)
                     
-                except Exception as Message:
+                except Exception as message:
                     log_message = "".join(("Unable to clear the previous Perlin-noise image, ",
                                         "attempting to overwrite instead. More Details:",
-                                        str(Message)))
+                                        str(message)))
 
                     logging_utils.create_log_message.update_log_warning(
                         log_message)

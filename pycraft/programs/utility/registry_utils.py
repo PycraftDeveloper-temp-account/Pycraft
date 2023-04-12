@@ -11,9 +11,9 @@ if __name__ != "__main__":
 
         from seasonal_events_utils import configure_seasonal_event
         from date_utils import Date
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in registry_utils"
+        error_message = f"{message} in registry_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -222,6 +222,7 @@ if __name__ != "__main__":
         increased_speed = False
         input_configuration = None
         install_location = None
+        installer_install_path = ""
         iteration = 1
         joystick_connected = False
         joystick_exit = False
@@ -229,6 +230,7 @@ if __name__ != "__main__":
         joystick_zoom = None
         language_list = googletrans.LANGUAGES
         last_run = "29/09/2021"
+        linked_to_installer = False
         load_3D = True
         load_music = True
         load_time = [0, 1]
@@ -242,6 +244,7 @@ if __name__ != "__main__":
         movement_args = (STILL, POSITIVE, NEGATIVE)
         music = True
         music_volume = 5
+        outdated = False
         output_log = False
         play_time = 0
         primary_mouse_button_down = False
@@ -250,6 +253,7 @@ if __name__ != "__main__":
         project_sleeping = False
         pygame_device_added_update = False
         pygame_device_removed_update = False
+        pycraft_versions = []
         real_window_height = 720
         real_window_width = 1280
         adaptive_fps = 60

@@ -1,9 +1,9 @@
 if __name__ != "__main__":
     try:
         pass # add updates here
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in installer_main"
+        error_message = f"{message} in installer_main"
         messagebox.showerror(
             "Startup Error",
             error_message)

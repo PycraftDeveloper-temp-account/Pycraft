@@ -3,9 +3,9 @@ if __name__ != "__main__":
         from registry_utils import Registry
         
         import logging_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in error_utils"
+        error_message = f"{message} in error_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -25,8 +25,8 @@ if __name__ != "__main__":
                     pygame.init()
                     pygame.display.quit()
                     
-                except Exception as Message:
-                    log_message = "ErrorUtils > generate_error_screen > error_screen" + str(Message)
+                except Exception as message:
+                    log_message = "ErrorUtils > generate_error_screen > error_screen" + str(message)
 
                     logging_utils.create_log_message.update_log_warning(
                         log_message)
@@ -56,15 +56,15 @@ if __name__ != "__main__":
 
                 quit()
                 
-            except Exception as Message:
+            except Exception as message:
                 try:
-                    log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(Message)
+                    log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(message)
                     
                     logging_utils.create_log_message.update_log_warning(
                         log_message)
                     
-                except Exception as Message:
-                    print(Message)
+                except Exception as message:
+                    print(message)
                 
                 try:
                     messagebox.showerror("Pycraft closed because an error occurred",
@@ -73,8 +73,8 @@ if __name__ != "__main__":
 
                     quit()
                     
-                except Exception as Message:
-                    print(Message)
+                except Exception as message:
+                    print(message)
 
                 quit()
 

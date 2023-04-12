@@ -10,9 +10,9 @@ if __name__ != "__main__":
         import sound_utils
         import logging_utils
         import tkinter_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in display_utils"
+        error_message = f"{message} in display_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -152,13 +152,13 @@ if __name__ != "__main__":
                 try:
                     displayEvents = pygame.event.get()
                     
-                except Exception as Message:
+                except Exception as message:
                     joystick_fix = "<built-in function get> returned a result with an exception set"
-                    if str(Message) == joystick_fix:
+                    if str(message) == joystick_fix:
                         displayEvents = []
                     else:
                         logging_utils.create_log_message.update_log_warning(
-                            Message)
+                            message)
                         
                 for event in displayEvents:
                     if (((event.type == pygame.QUIT
@@ -300,8 +300,8 @@ if __name__ != "__main__":
                             fullscreen_size,
                             pygame.FULLSCREEN)
 
-            except Exception as Message:
-                log_message = "display_utils > display_utils > update_display: "+ str(Message)
+            except Exception as message:
+                log_message = "display_utils > display_utils > update_display: "+ str(message)
                 
                 logging_utils.create_log_message.update_log_warning(
                     log_message)
@@ -384,8 +384,8 @@ if __name__ != "__main__":
                                 fullscreen_size,
                                 pygame.FULLSCREEN)
                             
-            except Exception as Message:
-                log_message = "display_utils > display_utils > set_display:", Message
+            except Exception as message:
+                log_message = "display_utils > display_utils > set_display:", message
                 
                 logging_utils.create_log_message.update_log_warning(
                     log_message)

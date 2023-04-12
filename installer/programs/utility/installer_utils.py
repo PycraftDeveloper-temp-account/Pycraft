@@ -17,9 +17,9 @@ if __name__ != "__main__":
         import installer_home
         
         import file_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in installer_utils"
+        error_message = f"{message} in installer_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -47,7 +47,20 @@ if __name__ != "__main__":
 
         def home():
             installer_home.installer_home.start()
-
+            
+        def text_version_to_int(name):
+            version_code = ""
+            broken_down = re.split("[.dev]", name[1])
+            if broken_down[1] != "0":
+                for element in broken_down:
+                    if len(element) > 0:
+                        version_code += ("0"*(3-len(element))+element)
+            
+            try:
+                return int(version_code)
+            except:
+                return 0
+        
         def outdated_detector():
             try:
                 pycraft_main_install_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "main.py"
@@ -56,22 +69,30 @@ if __name__ != "__main__":
                     pycraft_main_install_path)
                 pycraft_main = importlib_util.module_from_spec(pycraft_main_spec)
                 pycraft_main_spec.loader.exec_module(pycraft_main)
-                print(pycraft_main.QueryVersion())
-                quit()
-                global outdated
+                version_name = pycraft_main.QueryVersion()
 
-                if b"Python-Pycraft" in List:
-                    outdated =  True
+                version_code = core_installer_functionality.text_version_to_int(version_name.split(" "))
+                for key in Registry.pycraft_versions:
+                    if version_code < Registry.pycraft_versions[key]:
+                        Registry.outdated = True
+                        break
                     
-            except Exception as Message:
+            except Exception as message:
+                import traceback
+                error_message_detailed = "".join(
+                    traceback.format_exception(
+                        None,
+                        message,
+                        message.__traceback__))
+                print(error_message_detailed)
                 messagebox.showerror(
                     "An error has occurred",
                     "".join(("We were unable to check for updates to Pycraft, ",
                              "the most likely reason for this is a faulty ",
                              "internet connection.\n\nFull Error ",
-                             f"Message:\n{Message}")))
+                             f"message:\n{message}")))
 
-                sys.exit()
+                quit()
 
     class file_manipulation(Registry):
         def get_versions():
@@ -84,13 +105,12 @@ if __name__ != "__main__":
             for element in array:
                 name = re.sub('["\[\]{}]', "", element[1:-1]).split(",")
                 name = name[0].split(":")
-                version_code = ""
-                broken_down = re.split("[.dev]", name[1])
-                if broken_down[1] != "0":
-                    for element in broken_down:
-                        if len(element) > 0:
-                            version_code += ("0"*(3-len(element))+element)
-
+                if "dev" in name[1]:
+                    if not Registry.developer_version:
+                        continue
+                
+                version_code = core_installer_functionality.text_version_to_int(name)
+                if version_code > 9005000007:
                     version_IDs[name[1]] = version_code
 
             Registry.pycraft_versions = version_IDs
@@ -133,12 +153,11 @@ if __name__ != "__main__":
                 
                 os.remove(str(path))
             except Exception as message:
-                print(message)
                 messagebox.showerror(
                     "An error ocurred",
                     "".join(("We were unable to install the additional ",
                              "files Pycraft needs in-order to install.\n\n",
-                             f"Full Error Message: {message}")))
+                             f"Full Error message: {message}")))
 
                 quit()
 
@@ -180,14 +199,14 @@ if __name__ != "__main__":
 
                                 os.remove(FileArray[i])
 
-                    except Exception as Message:
-                        print(Message)
+                    except Exception as message:
+                        print(message)
                         
-            except Exception as Message:
+            except Exception as message:
                 messagebox.showerror(
                     "An error ocurred",
                     "".join(("We were unable to remove some files for ",
-                             f"Pycraft from your PC.\n\nFull Error Message: {Message}")))
+                             f"Pycraft from your PC.\n\nFull Error message: {message}")))
 
                 quit()
 

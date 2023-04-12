@@ -3,9 +3,9 @@ if __name__ != "__main__":
         from registry_utils import Registry
         
         import logging_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in installer_main"
+        error_message = f"{message} in installer_main"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -43,8 +43,8 @@ if __name__ != "__main__":
 
                 quit()
                 
-            except Exception as Message:
-                log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(Message)
+            except Exception as message:
+                log_message = "ErrorUtils > generate_error_screen > error_screen: " + str(message)
                 
                 logging_utils.create_log_message.update_log_warning(
                     log_message)

@@ -5,9 +5,9 @@ if __name__ != "__main__":
         from registry_utils import Registry
         
         import benchmark_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in blank_window_benchmark"
+        error_message = f"{message} in blank_window_benchmark"
         messagebox.showerror(
             "Startup Error",
             error_message)

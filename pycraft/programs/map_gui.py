@@ -14,9 +14,9 @@ if __name__ != "__main__":
         import error_utils
         import file_utils
         import tkinter_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in map_gui"
+        error_message = f"{message} in map_gui"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -371,14 +371,14 @@ if __name__ != "__main__":
                         Registry.clock.tick(tempfps)
 
                     pygame.display.quit()
-            except Exception as Message:
-                error_message = "map_gui > generate_map_gui > map_gui: "+str(Message)
+            except Exception as message:
+                error_message = "map_gui > generate_map_gui > map_gui: "+str(message)
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

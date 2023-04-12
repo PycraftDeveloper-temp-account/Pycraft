@@ -32,9 +32,9 @@ if __name__ != "__main__":
         import button_utils
         import directory_utils
         import dropdown_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in settings"
+        error_message = f"{message} in settings"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -743,15 +743,15 @@ if __name__ != "__main__":
 
                     Registry.run_timer += time.perf_counter()-start_time
                     
-            except Exception as Message:
+            except Exception as message:
                 error_message = (
-                    f"settings > generate_settings > settings: {str(Message)}")
+                    f"settings > generate_settings > settings: {str(message)}")
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

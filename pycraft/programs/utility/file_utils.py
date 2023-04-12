@@ -4,20 +4,41 @@ if __name__ != "__main__":
         import json
         import traceback
         from tkinter import messagebox
+        import pathlib
         
         import send2trash
 
         from registry_utils import Registry
         import logging_utils
         import error_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in file_utils"
+        error_message = f"{message} in file_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
         quit()
-            
+        
+    class installer_link(Registry):
+        def check_installer_link_status():
+            installer_config_path = Registry.base_folder / "data files" / "installer_config.json"
+            try:
+                with open(installer_config_path, "r") as file:
+                    installer_data = json.load(file)
+                if pathlib.Path(installer_data["installer_path"]).exists:
+                    Registry.linked_to_installer = True
+                    Registry.installer_install_path = pathlib.Path(installer_data["installer_path"])
+            except FileNotFoundError:
+                installer_data = {}
+                with open(installer_config_path, "w") as file:
+                    json.dump(installer_data, file)
+            except KeyError:
+                Registry.linked_to_installer = False
+            except json.JSONDecodeError:
+                installer_data = {}
+                with open(installer_config_path, "w") as file:
+                    json.dump(installer_data, file)
+                    
     class delete_files(Registry):
         def clear_temporary_files():
             message = None
@@ -148,10 +169,10 @@ if __name__ != "__main__":
                     
 
             if len(error_array) > 0:
-                Message = ""
+                message = ""
 
                 for error in error_array:
-                    Message += error+"\n"
+                    message += error+"\n"
                     
                 error_message = "".join(("FileUtils > pycraft_config_utils ",
                                             "> read_main_save: ",
@@ -166,7 +187,7 @@ if __name__ != "__main__":
                                                     "to recover missing data.\n",
                                                     "The following entries were ",
                                                     "missing and have been ",
-                                                    f"reset:\n{Message}"))
+                                                    f"reset:\n{message}"))
 
                 if Registry.detailed_error_messages:
                     logging_utils.create_log_message.update_log_warning(
@@ -288,14 +309,14 @@ if __name__ != "__main__":
                         file,
                         indent=1)
                         
-            except Exception as Message:
-                error_message = "FileUtils > pycraft_config_utils > SaveTOpycraft_configFILE: "+str(Message)
+            except Exception as message:
+                error_message = "FileUtils > pycraft_config_utils > SaveTOpycraft_configFILE: "+str(message)
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

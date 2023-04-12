@@ -3,9 +3,9 @@ if __name__ != "__main__":
         import os
         import pathlib
         import platform
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in registry_utils"
+        error_message = f"{message} in registry_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -27,6 +27,7 @@ if __name__ != "__main__":
         
         banner_path = base_folder / "resources" / "installer resources" / "Banner.png"
         choice = "Latest"
+        developer_version = False
         icon_path = base_folder / "resources" / "general resources" / "Icon.ico"
         initialized = False
         install_custom_version = False
@@ -38,6 +39,7 @@ if __name__ != "__main__":
             "information": False,
             "warnings": True,
             "errors": True}
+        outdated = False
         output_log = False
         pycraft_install_path = None
         pycraft_versions = None

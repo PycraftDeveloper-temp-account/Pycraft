@@ -12,9 +12,9 @@ if __name__ != "__main__":
         
         import benchmark_utils
         import error_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in extended_benchmark"
+        error_message = f"{message} in extended_benchmark"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -98,13 +98,13 @@ if __name__ != "__main__":
                             fps_list_x_3,
                             fps_list_y_3)
                 
-            except Exception as Message:
-                error_message = "Extendedbenchmark > Loadbenchmark > run: "+str(Message)
+            except Exception as message:
+                error_message = "Extendedbenchmark > Loadbenchmark > run: "+str(message)
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

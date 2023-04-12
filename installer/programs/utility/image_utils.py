@@ -7,9 +7,9 @@ if __name__ != "__main__":
         from PIL import ImageTk
         
         from registry_utils import Registry
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in image_utils"
+        error_message = f"{message} in image_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -33,7 +33,7 @@ if __name__ != "__main__":
                     x=offset_x,
                     y=offset_y)
 
-            except Exception as Message:
+            except Exception as message:
                 messagebox.showerror(
                     "Module Not Found",
                     "".join(("This installer requires the module Pillow, ",
@@ -46,7 +46,7 @@ if __name__ != "__main__":
                              "problems occur then feel free to contact the ",
                              "developer with the links available at: ",
                              "https://github.com/PycraftDeveloper/Pycraft",
-                             f"\n\nFull Error Message:\n{Message}")))
+                             f"\n\nFull Error message:\n{message}")))
                 quit()
 
 else:

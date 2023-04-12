@@ -17,9 +17,9 @@ if __name__ != "__main__":
         import drawing_utils
         import text_utils
         import image_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in home"
+        error_message = f"{message} in home"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -28,7 +28,7 @@ if __name__ != "__main__":
     class generate_home(Registry):
         def create_banner():
             try:
-                global show_message, MessageColor
+                global show_message, messageColor
 
                 timer_start = 0
                 RenderedText = False
@@ -45,7 +45,7 @@ if __name__ != "__main__":
                         RenderRect)
 
                     if (show_message is not None and
-                            MessageColor is not None and
+                            messageColor is not None and
                             RenderedText is False):
                         
                         timer_start = time.perf_counter()
@@ -58,19 +58,19 @@ if __name__ != "__main__":
                                 ("center", "bottom"),
                                 Registry.large_content_font,
                                 Registry.large_content_backup_font,
-                                font_color=MessageColor)
+                                font_color=messageColor)
 
                         else:
                             show_message = None
-                            MessageColor = None
+                            messageColor = None
                             RenderedText = False
                     else:
                         if Registry.use_mouse_input is False:
-                            MessageText = "".join(("On the controller; use the D-pad to navigate the menu, ",
+                            messageText = "".join(("On the controller; use the D-pad to navigate the menu, ",
                                          "press 'B' to confirm or press 'Y' to exit"))
 
                             text_utils.text_formatter.format_text(
-                                MessageText,
+                                messageText,
                                 ("center", "bottom"),
                                 Registry.large_content_font,
                                 Registry.large_content_backup_font)
@@ -93,23 +93,23 @@ if __name__ != "__main__":
 
                     Registry.clock.tick(target_fps/2)
                     
-            except Exception as Message:
-                if str(Message) != "display Surface quit":
+            except Exception as message:
+                if str(message) != "display Surface quit":
                     Registry.error_message = "".join(("homeScreen > generate_home > ",
-                                                 f"create_banner (thread): {str(Message)}"))
+                                                 f"create_banner (thread): {str(message)}"))
 
                     Registry.error_message_detailed = "".join(
                         traceback.format_exception(
                             None,
-                            Message,
-                            Message.__traceback__))
+                            message,
+                            message.__traceback__))
 
         def home_gui():
             try:
-                global show_message, MessageColor
+                global show_message, messageColor
 
                 show_message = None
-                MessageColor = Registry.font_color
+                messageColor = Registry.font_color
 
                 BannerThread = threading.Thread(
                     target=generate_home.create_banner)
@@ -132,7 +132,8 @@ if __name__ != "__main__":
                 hover4 = False
                 hover5 = False
                 hover6 = False
-
+                hover7 = False
+                
                 pygame.display.flip()
 
                 oldTHEME = Registry.theme
@@ -161,6 +162,9 @@ if __name__ != "__main__":
                 credits_width = 0
                 achievements_width = 0
                 benchmark_width = 0
+                
+                if Registry.linked_to_installer:
+                    installer_width = 0
 
                 prev_joystick_connected = False
 
@@ -394,17 +398,35 @@ if __name__ != "__main__":
 
                         else:
                             hover6 = False
+                        
+                        if Registry.linked_to_installer:
+                            if (Registry.mouse_y >= 502*Registry.y_scale_factor and
+                                    Registry.mouse_y <= 547*Registry.y_scale_factor and
+                                    Registry.mouse_x >= (Registry.real_window_width-(installer_width+selector_width)-2)):
 
+                                hover7 = True
+
+                                if Registry.primary_mouse_button_down:
+                                    if Registry.sound:
+                                        sound_utils.play_sound.play_click_sound()
+
+                                    Registry.go_to = "Installer"
+                                    Registry.startup_animation = True
+                                    Registry.run_timer = 0
+
+                            else:
+                                hover7 = False
+                            
                     if show_message is None:
                         if Registry.installer_new_update:
                             Registry.installer_new_update = False
                             show_message = f"Successfully updated Pycraft to v{Registry.version}"
-                            MessageColor = (0, 255, 0)
+                            messageColor = (0, 255, 0)
 
-                        elif Registry.installer_updatable:
+                        elif Registry.outdated and Registry.linked_to_installer:
                             Registry.installer_updatable = False
                             show_message = "There is an update available!"
-                            MessageColor = (0, 255, 0)
+                            messageColor = (0, 255, 0)
 
                         elif not prev_joystick_connected == Registry.joystick_connected:
                             prev_joystick_connected = Registry.joystick_connected
@@ -412,19 +434,19 @@ if __name__ != "__main__":
                                 show_message = "".join(("There is a new input device available! ",
                                                    "You can change input modes in settings"))
 
-                                MessageColor = (0, 255, 0)
+                                messageColor = (0, 255, 0)
 
                             else:
                                 if Registry.use_mouse_input:
                                     show_message = "Terminated connection to an input device"
-                                    MessageColor = (255, 0, 0)
+                                    messageColor = (255, 0, 0)
 
                                 else:
                                     show_message = "".join(("Terminated connection to current ",
                                                        "input device, returning to ",
                                                        "default setting"))
 
-                                    MessageColor = (255, 0, 0)
+                                    messageColor = (255, 0, 0)
                                     Registry.use_mouse_input = True
 
                             Registry.device_connected_update = False
@@ -488,6 +510,16 @@ if __name__ != "__main__":
                         underline=hover6)
 
                     benchmark_width = returned_text.get_width()
+                    
+                    if Registry.linked_to_installer:
+                        returned_text = text_utils.text_formatter.format_text(
+                            "Installer",
+                            ("right", 500*Registry.y_scale_factor),
+                            Registry.option_font,
+                            Registry.option_backup_font,
+                            underline=hover7)
+
+                        installer_width = returned_text.get_width()
 
                     if hover1:
                         Registry.display.blit(
@@ -543,6 +575,15 @@ if __name__ != "__main__":
                         if Registry.use_mouse_input:
                             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
                     
+                    elif hover7 and Registry.linked_to_installer:
+                        Registry.display.blit(
+                            selector,
+                            (Registry.real_window_width-(installer_width+selector_width)-2,
+                                500*Registry.y_scale_factor))
+
+                        if Registry.use_mouse_input:
+                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                    
                     else:
                         if Registry.use_mouse_input:
                             pygame.mouse.set_cursor(
@@ -588,14 +629,14 @@ if __name__ != "__main__":
                         Registry.error_message = "homeScreen: "+str(Registry.error_message)
                         return
 
-            except Exception as Message:
-                error_message = "homeScreen > generate_home > home_gui: "+ str(Message)
+            except Exception as message:
+                error_message = "homeScreen > generate_home > home_gui: "+ str(message)
                 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

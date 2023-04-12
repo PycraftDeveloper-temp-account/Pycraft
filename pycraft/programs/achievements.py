@@ -12,9 +12,9 @@ if __name__ != "__main__":
         import drawing_utils
         import error_utils
         import text_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in achievements"
+        error_message = f"{message} in achievements"
         messagebox.showerror(
             "Startup Error",
             error_message)
@@ -89,15 +89,15 @@ if __name__ != "__main__":
 
                     Registry.run_timer += time.perf_counter()-start_time
                     
-            except Exception as Message:
+            except Exception as message:
                 error_message = (
-                    f"achievements > generate_achievements > achievements: {str(Message)}")
+                    f"achievements > generate_achievements > achievements: {str(message)}")
 
                 error_message_detailed = "".join(
                     traceback.format_exception(
                         None,
-                        Message,
-                        Message.__traceback__))
+                        message,
+                        message.__traceback__))
 
                 error_utils.generate_error_screen.error_screen(
                     error_message,

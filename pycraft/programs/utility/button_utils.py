@@ -8,9 +8,9 @@ if __name__ != "__main__":
         import setting_preset_utils
         import theme_utils
         import text_utils
-    except ModuleNotFoundError as Message:
+    except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{Message} in button_utils"
+        error_message = f"{message} in button_utils"
         messagebox.showerror(
             "Startup Error",
             error_message)
