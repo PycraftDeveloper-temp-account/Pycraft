@@ -25,7 +25,7 @@ if __name__ != "__main__":
             
             tkinter.Label(
                 Registry.root,
-                text="Pycraft's installation Assistant",
+                text="Pycraft's Installation Assistant",
                 background="white",
                 font=(None, 20)).place(x=200, y=0)
 

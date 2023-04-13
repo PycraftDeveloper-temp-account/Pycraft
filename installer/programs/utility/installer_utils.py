@@ -60,17 +60,19 @@ if __name__ != "__main__":
                 return int(version_code)
             except:
                 return 0
-        
+            
+        def get_installed_pycraft_version():
+            pycraft_main_install_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "main.py"
+            pycraft_main_spec = importlib_util.spec_from_file_location(
+                "main", 
+                pycraft_main_install_path)
+            pycraft_main = importlib_util.module_from_spec(pycraft_main_spec)
+            pycraft_main_spec.loader.exec_module(pycraft_main)
+            return pycraft_main.QueryVersion()
+                
         def outdated_detector():
             try:
-                pycraft_main_install_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "main.py"
-                pycraft_main_spec = importlib_util.spec_from_file_location(
-                    "main", 
-                    pycraft_main_install_path)
-                pycraft_main = importlib_util.module_from_spec(pycraft_main_spec)
-                pycraft_main_spec.loader.exec_module(pycraft_main)
-                version_name = pycraft_main.QueryVersion()
-
+                version_name = core_installer_functionality.get_installed_pycraft_version()
                 version_code = core_installer_functionality.text_version_to_int(version_name.split(" "))
                 for key in Registry.pycraft_versions:
                     if version_code < Registry.pycraft_versions[key]:
@@ -78,13 +80,6 @@ if __name__ != "__main__":
                         break
                     
             except Exception as message:
-                import traceback
-                error_message_detailed = "".join(
-                    traceback.format_exception(
-                        None,
-                        message,
-                        message.__traceback__))
-                print(error_message_detailed)
                 messagebox.showerror(
                     "An error has occurred",
                     "".join(("We were unable to check for updates to Pycraft, ",
@@ -161,8 +156,7 @@ if __name__ != "__main__":
 
                 quit()
 
-
-        def search_files(InstallerImportData, directory):
+        def search_files(directory):
             arr = []
             print(f"Scanning {directory}")
             for dirpath, dirnames, files in os.walk(directory):
@@ -170,7 +164,6 @@ if __name__ != "__main__":
                     arr.append(f"{dirpath}\{name}")
                     
             return arr
-
 
         def remove_files(InstallerImportData, FileArray, keep_save=False):
             try:
