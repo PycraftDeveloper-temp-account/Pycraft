@@ -162,7 +162,7 @@ if __name__ != "__main__":
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
             
-            #os.rmdir(Registry.pycraft_install_path)
+            os.rmdir(Registry.pycraft_install_path)
 
             uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version} and additional files"
 
@@ -223,7 +223,7 @@ if __name__ != "__main__":
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
 
-            #os.rmdir(Registry.pycraft_install_path)
+            os.rmdir(Registry.pycraft_install_path)
 
             uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version}"
 
