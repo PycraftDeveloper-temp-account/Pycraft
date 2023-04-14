@@ -1,8 +1,8 @@
-DEVELOPER_BUILD = False
+DEVELOPER_BUILD = True
 
 if __name__ == "__main__":
+    import traceback
     try:
-        import traceback
         import __init__
         
         from registry_utils import Registry
@@ -10,7 +10,14 @@ if __name__ == "__main__":
         import logging_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
-        error_message = f"{message} in main"
+        if DEVELOPER_BUILD:
+            message = "".join((traceback.format_exception(
+                None,
+                message,
+                message.__traceback__)))
+        else:
+            error_message = f"{message} in main"
+            
         messagebox.showerror(
             "Startup Error",
             error_message)

@@ -5,8 +5,8 @@ if __name__ != "__main__":
         import subprocess
         from zipfile import ZipFile
         import pathlib
-        import requests
         from requests.adapters import TimeoutSauce
+        import requests
         import re
         from tkinter import messagebox
         import importlib.util as importlib_util
