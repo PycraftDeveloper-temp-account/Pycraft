@@ -1,7 +1,6 @@
 if __name__ != "__main__":
     try:
         import os
-        import json
         import sys
         import subprocess
         from zipfile import ZipFile
@@ -11,6 +10,8 @@ if __name__ != "__main__":
         import re
         from tkinter import messagebox
         import importlib.util as importlib_util
+        import tkinter.ttk as tkinter_ttk
+        import tkinter
         
         from registry_utils import Registry
 
@@ -36,6 +37,18 @@ if __name__ != "__main__":
     requests.adapters.TimeoutSauce = MyTimeout
 
     class core_installer_functionality(Registry):
+        def render_progress_bar(i):
+            CompletionProgressbar = tkinter_ttk.Progressbar(
+                Registry.root,
+                orient=tkinter.HORIZONTAL,
+                length=100,
+                mode="indeterminate")
+
+            CompletionProgressbar.place(x=200, y=500)
+
+            CompletionProgressbar["value"] += i
+            Registry.root.update()
+            
         def close():
             if messagebox.askokcancel(
                 "Pycraft Setup Wizard",
@@ -110,8 +123,8 @@ if __name__ != "__main__":
 
             Registry.pycraft_versions = version_IDs
             
-        def install_dependencies(pycraft_install_path):
-            requirements_file_path = pathlib.Path(pycraft_install_path) / "requirements.txt"
+        def install_dependencies():
+            requirements_file_path = pathlib.Path(Registry.pycraft_install_path) / "requirements.txt"
             subprocess.check_output(
                 f"{sys.executable} -m pip install -r \"{str(requirements_file_path)}\"")
 
@@ -164,33 +177,24 @@ if __name__ != "__main__":
                     arr.append(f"{dirpath}\{name}")
                     
             return arr
+        
+        def uninstall_dependencies():
+            requirements_file_path = pathlib.Path(Registry.pycraft_install_path) / "requirements.txt"
+            subprocess.check_output(
+                f"{sys.executable} -m pip uninstall -r \"{str(requirements_file_path)}\"")
 
-        def remove_files(InstallerImportData, FileArray, keep_save=False):
+        def remove_files(FileArray, keep_save=True):
             try:
                 for i in range(len(FileArray)):
                     try:
                         if keep_save:
-                            if not ("Data Files" in FileArray[i] or
-                                    "distutils" in FileArray[i] or
-                                    "pip" in FileArray[i] or
-                                    "setuptools" in FileArray[i] or
-                                    "pkg_resources" in FileArray[i] or
-                                    "README" in FileArray[i] or
-                                    "win32" in FileArray[i] or
-                                    "wheel" in FileArray[i]):
+                            if not (pathlib.Path(FileArray[i]).name == "pycraft_config.json" or
+                                    pathlib.Path(FileArray[i]).name == "pycraft config.json"):
 
                                 os.remove(FileArray[i])
 
                         else:
-                            if not ("distutils" in FileArray[i] or
-                                    "pip" in FileArray[i] or
-                                    "setuptools" in FileArray[i] or
-                                    "pkg_resources" in FileArray[i] or
-                                    "README" in FileArray[i] or
-                                    "win32" in FileArray[i] or
-                                    "wheel" in FileArray[i]):
-
-                                os.remove(FileArray[i])
+                            os.remove(FileArray[i])
 
                     except Exception as message:
                         print(message)

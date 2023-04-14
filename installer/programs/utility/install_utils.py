@@ -72,19 +72,6 @@ if __name__ != "__main__":
 
             Registry.root.update_idletasks()
             
-    class install_screen_three(Registry):
-        def render_progress_bar(i):
-            CompletionProgressbar = tkinter_ttk.Progressbar(
-                Registry.root,
-                orient=tkinter.HORIZONTAL,
-                length=100,
-                mode="indeterminate")
-
-            CompletionProgressbar.place(x=200, y=500)
-
-            CompletionProgressbar["value"] += i
-            Registry.root.update()
-            
     class install_screen_four(Registry):
         def desktop_is_checked(choose_create_desktop_shortcut):
             install_data.create_desktop_shortcut = choose_create_desktop_shortcut.get()

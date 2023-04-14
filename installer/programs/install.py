@@ -207,13 +207,13 @@ if __name__ != "__main__":
                         i += 1
                         Registry.root.after(
                             50,
-                            install_utils.install_screen_three.render_progress_bar(i))
+                            installer_utils.core_installer_functionality.render_progress_bar(i))
 
                     installtime = time.perf_counter()-start
                     
                     file_utils.fix_installer.get_installer_config()
                     
-                    OUTPUTtext += f" - done in {round(installtime, 4)} seconds"
+                    OUTPUTtext += f" - done in {round(installtime, 2)} seconds"
                     text_utils.installer_text.create_text(
                         OUTPUTtext)
                     
@@ -224,9 +224,7 @@ if __name__ != "__main__":
                         OUTPUTtext)
 
                     install_thread = threading.Thread(
-                        target=installer_utils.file_manipulation.install_dependencies,
-                        args=(
-                            Registry.pycraft_install_path,))
+                        target=installer_utils.file_manipulation.install_dependencies)
                     install_thread.name = "[thread]: Installing Pycraft's dependencies"
                     install_thread.start()
 
@@ -236,7 +234,7 @@ if __name__ != "__main__":
                         i += 1
                         Registry.root.after(
                             50,
-                            install_utils.install_screen_three.render_progress_bar(i))
+                            installer_utils.core_installer_functionality.render_progress_bar(i))
 
                     installtime = time.perf_counter()-start
 

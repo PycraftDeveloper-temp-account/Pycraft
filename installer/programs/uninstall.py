@@ -7,6 +7,7 @@ if __name__ != "__main__":
         import threading
         import json
         import site
+        import time
         
         from registry_utils import Registry
 
@@ -140,160 +141,103 @@ if __name__ != "__main__":
             Uninstall.finish_uninstall()
 
         def remove_all():
-            FileArray = installer_utils.file_manipulation.search_files(Registry.pycraft_install_path)
-
-            AdditionalFileArray = installer_utils.file_manipulation.search_files(
-                site.getsitepackages()[1])
-
-            FileArray = FileArray+AdditionalFileArray
-            uninstall_utils.uninstaller_data.output_text += f"\nIdentified {len(FileArray)} files to remove"
+            uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}'s dependencies"
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
 
-            threading.Thread(
-                target=installer_utils.file_manipulation.remove_files,
-                args=(FileArray,))#.start()
+            uninstall_thread = threading.Thread(
+                target=installer_utils.file_manipulation.uninstall_dependencies)
+            uninstall_thread.name = "[thread]: Uninstalling Pycraft's dependencies"
+            #uninstall_thread.start()
 
+            start = time.perf_counter()
+            i = 0
+            while threading.active_count() == 2:
+                i += 1
+                Registry.root.after(
+                    50,
+                    installer_utils.core_installer_functionality.render_progress_bar(i))
+                
+            uninstall_time = time.perf_counter()-start
+                
+            uninstall_utils.uninstaller_data.output_text += f" - done in {round(uninstall_time, 2)} seconds"
+
+            text_utils.installer_text.create_text(
+                uninstall_utils.uninstaller_data.output_text)
+            
             uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}"
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
-
-            i = 0
-            def render_progress_bar(i):
-                CompletionProgressbar = tkinter_ttk.Progressbar(
-                    orient=tkinter.HORIZONTAL,
-                    length=100,
-                    mode='indeterminate')
-
-                CompletionProgressbar.place(x=200, y=500)
-                CompletionProgressbar['value'] += i
-                Registry.root.update()
-
-            while "remove_files" in threading.enumerate():
-                i += 1
-                Registry.root.after(
-                    50,
-                    render_progress_bar(i))
+            
+            #os.rmdir(Registry.pycraft_install_path)
 
             uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version} and additional files"
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
-
-            uninstall_utils.uninstaller_data.output_text += "\nCleaning Up"
-
-            text_utils.installer_text.create_text(
-                uninstall_utils.uninstaller_data.output_text)
-
-            '''try:
-                os.rmdir(Registry.pycraft_install_path)
-                
-            except:
-                pass'''
 
         def remove_but_keep_save():
             FileArray = installer_utils.file_manipulation.search_files(Registry.pycraft_install_path)
 
-            AdditionalFileArray = installer_utils.file_manipulation.search_files(
-                site.getsitepackages()[1])
-
-            FileArray = FileArray+AdditionalFileArray
-            uninstall_utils.uninstaller_data.output_text += f"\nIdentified {len(FileArray)} files to remove"
-
-            text_utils.installer_text.create_text(
-                uninstall_utils.uninstaller_data.output_text)
-
-            threading.Thread(
-                target=installer_utils.file_manipulation.remove_files,
-                args=(FileArray,))#.start()
-
             uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}"
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
-
-            i = 0
-            def render_progress_bar(i):
-                CompletionProgressbar = tkinter_ttk.Progressbar(
-                    Registry.root,
-                    orient=tkinter.HORIZONTAL,
-                    length=100,
-                    mode='indeterminate')
-
-                CompletionProgressbar.place(x=200, y=500)
-                CompletionProgressbar['value'] += i
-                Registry.root.update()
-
-            while "remove_files" in threading.enumerate():
-                i += 1
-                Registry.root.after(
-                    50,
-                    render_progress_bar(i))
-
-            uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version} and additional files"
-
-            text_utils.installer_text.create_text(
-                uninstall_utils.uninstaller_data.output_text)
-
-            uninstall_utils.uninstaller_data.output_text += "\nCleaning Up"
-
-            text_utils.installer_text.create_text(
-                uninstall_utils.uninstaller_data.output_text)
-
-
-        def remove_but_leave():
-            FileArray = installer_utils.file_manipulation.search_files(Registry.pycraft_install_path)
-
-            uninstall_utils.uninstaller_data.output_text += f"\nIdentified {len(FileArray)} files to remove"
-
-            text_utils.installer_text.create_text(
-                uninstall_utils.uninstaller_data.output_text)
-
-            threading.Thread(
+            
+            uninstall_thread = threading.Thread(
                 target=installer_utils.file_manipulation.remove_files,
-                args=(FileArray,))#.start()
-
-            uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}"
-
-            text_utils.installer_text.create_text(
-                uninstall_utils.uninstaller_data.output_text)
-
+                args=(FileArray,))
+            uninstall_thread.name = "[thread]: Uninstalling Pycraft"
+            #uninstall_thread.start()
+            
             i = 0
-            def render_progress_bar(i):
-                CompletionProgressbar = tkinter_ttk.Progressbar(
-                    Registry.root,
-                    orient=tkinter.HORIZONTAL,
-                    length=100,
-                    mode='indeterminate')
-
-                CompletionProgressbar.place(x=200, y=500)
-                CompletionProgressbar['value'] += i
-                Registry.root.update()
-
-            while "remove_files" in threading.enumerate():
+            while threading.active_count() == 2:
                 i += 1
                 Registry.root.after(
                     50,
-                    render_progress_bar(i))
+                    installer_utils.core_installer_functionality.render_progress_bar(i))
 
             uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version}"
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
 
-            uninstall_utils.uninstaller_data.output_text += "\nCleaning Up"
+            uninstall_thread = threading.Thread(
+                target=installer_utils.file_manipulation.uninstall_dependencies)
+            uninstall_thread.name = "[thread]: Uninstalling Pycraft's dependencies"
+            #uninstall_thread.start()
+
+            uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}'s dependencies"
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
 
-            '''try:
-                os.rmdir(pycraft_install_path)
-                
-            except:
-                pass'''
+            i = 0
+            while threading.active_count() == 2:
+                i += 1
+                Registry.root.after(
+                    50,
+                    installer_utils.core_installer_functionality.render_progress_bar(i))
 
+            uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version} and additional files"
+
+            text_utils.installer_text.create_text(
+                uninstall_utils.uninstaller_data.output_text)
+
+        def remove_but_leave():
+            uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}"
+
+            text_utils.installer_text.create_text(
+                uninstall_utils.uninstaller_data.output_text)
+
+            #os.rmdir(Registry.pycraft_install_path)
+
+            uninstall_utils.uninstaller_data.output_text += f"\nSuccessfully removed {uninstall_utils.uninstaller_data.version}"
+
+            text_utils.installer_text.create_text(
+                uninstall_utils.uninstaller_data.output_text)
 
         def finish_uninstall():
             tkinter_utils.tkinter_installer.create_display()
