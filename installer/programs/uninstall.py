@@ -17,6 +17,7 @@ if __name__ != "__main__":
         import installer_utils
         import text_utils
         import uninstall_utils
+        import file_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
         error_message = f"{message} in uninstall"
@@ -117,16 +118,6 @@ if __name__ != "__main__":
             
             if uninstall_utils.uninstaller_data.uninstall_option.get() == 1:
                 Uninstall.remove_but_keep_save()
-                
-                try:
-                    if not Registry.UpdateUtility:
-                        Uninstall.finish_uninstall()
-
-                except:
-                    with open(Registry.installer_config_path, "r") as file:
-                        SavedData = json.load(file)
-                        
-                    Dir = SavedData["PATH"]
 
             elif uninstall_utils.uninstaller_data.uninstall_option.get() == 2:
                 Uninstall.remove_but_leave()
@@ -240,6 +231,9 @@ if __name__ != "__main__":
                 uninstall_utils.uninstaller_data.output_text)
 
         def finish_uninstall():
+            Registry.pycraft_install_path = None
+            file_utils.fix_installer.set_installer_config()
+            
             tkinter_utils.tkinter_installer.create_display()
 
             tkinter.Label(
