@@ -172,7 +172,7 @@ if __name__ != "__main__":
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
 
-        def remove_but_keep_save():
+        def remove_but_keep_save(updating=False):
             # Removes Pycraft - Yes
             # Removes Pycraft's saves - No
             # Removes dependencies - Yes
@@ -222,6 +222,9 @@ if __name__ != "__main__":
 
             text_utils.installer_text.create_text(
                 uninstall_utils.uninstaller_data.output_text)
+            
+            if updating:
+                install.begin_install.install_screen_one()
 
         def remove_but_leave():
             # Removes Pycraft - Yes
