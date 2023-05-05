@@ -132,6 +132,9 @@ if __name__ != "__main__":
             Uninstall.finish_uninstall()
 
         def remove_all():
+            # Removes Pycraft - Yes
+            # Removes Pycraft's saves - Yes
+            # Removes dependencies - Yes
             uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}'s dependencies"
 
             text_utils.installer_text.create_text(
@@ -140,7 +143,7 @@ if __name__ != "__main__":
             uninstall_thread = threading.Thread(
                 target=installer_utils.file_manipulation.uninstall_dependencies)
             uninstall_thread.name = "[thread]: Uninstalling Pycraft's dependencies"
-            #uninstall_thread.start()
+            uninstall_thread.start()
 
             start = time.perf_counter()
             i = 0
@@ -170,6 +173,9 @@ if __name__ != "__main__":
                 uninstall_utils.uninstaller_data.output_text)
 
         def remove_but_keep_save():
+            # Removes Pycraft - Yes
+            # Removes Pycraft's saves - No
+            # Removes dependencies - Yes
             FileArray = installer_utils.file_manipulation.search_files(Registry.pycraft_install_path)
 
             uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}"
@@ -181,7 +187,7 @@ if __name__ != "__main__":
                 target=installer_utils.file_manipulation.remove_files,
                 args=(FileArray,))
             uninstall_thread.name = "[thread]: Uninstalling Pycraft"
-            #uninstall_thread.start()
+            uninstall_thread.start()
             
             i = 0
             while threading.active_count() == 2:
@@ -198,7 +204,7 @@ if __name__ != "__main__":
             uninstall_thread = threading.Thread(
                 target=installer_utils.file_manipulation.uninstall_dependencies)
             uninstall_thread.name = "[thread]: Uninstalling Pycraft's dependencies"
-            #uninstall_thread.start()
+            uninstall_thread.start()
 
             uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}'s dependencies"
 
@@ -218,6 +224,9 @@ if __name__ != "__main__":
                 uninstall_utils.uninstaller_data.output_text)
 
         def remove_but_leave():
+            # Removes Pycraft - Yes
+            # Removes Pycraft's saves - No
+            # Removes dependencies - No
             uninstall_utils.uninstaller_data.output_text += f"\nRemoving {uninstall_utils.uninstaller_data.version}"
 
             text_utils.installer_text.create_text(
