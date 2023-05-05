@@ -14,7 +14,7 @@ if __name__ != "__main__":
         messagebox.showerror(
             "Startup Error",
             error_message)
-        sys.exit()
+        quit()
             
     class draw_setting_elements(Registry):
         def draw_multi_buttons(
@@ -53,11 +53,10 @@ if __name__ != "__main__":
                     position[1],
                     button_text_width,
                     button_text_height)
-
-                if (Registry.mouse_x > position[0] and
-                        Registry.mouse_x < position[0] + button_text_width and
-                        Registry.mouse_y > position[1] and
-                        Registry.mouse_y < position[1] + button_text_height):
+                
+                if rect.collidepoint((
+                        Registry.mouse_x,
+                        Registry.mouse_y)):
 
                     hovering = True
                     mouse_over = True
@@ -205,12 +204,11 @@ if __name__ != "__main__":
                     Registry.background_color,
                     rect,
                     border_radius=10)
-
-                if (Registry.mouse_x > position[0] and
-                    Registry.mouse_x < position[0] + button_text_width and
-                    Registry.mouse_y > position[1] and
-                    Registry.mouse_y < position[1] + button_text_height and
-                        enable):
+                
+                if (rect.collidepoint((
+                            Registry.mouse_x,
+                            Registry.mouse_y))
+                        and enable):
 
                     hovering = True
                     mouse_over = True

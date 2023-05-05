@@ -31,8 +31,7 @@ class Run(Registry):
             
             messagebox.showinfo(
                 "Incompatibility Error",
-                "We where unable to find any versions of Pycraft supported by this installer."
-            )
+                "We where unable to find any versions of Pycraft supported by this installer.")
             quit()
         
         Registry.initialized = True

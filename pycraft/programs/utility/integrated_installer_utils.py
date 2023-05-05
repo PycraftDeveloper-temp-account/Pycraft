@@ -61,19 +61,20 @@ if __name__ != "__main__":
             
         def check_versions():
             try:
-                pycraft_main_install_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "main.py"
-                pycraft_main_spec = importlib_util.spec_from_file_location(
-                    "main", 
-                    pycraft_main_install_path)
-                pycraft_main = importlib_util.module_from_spec(pycraft_main_spec)
-                pycraft_main_spec.loader.exec_module(pycraft_main)
-                version_name = pycraft_main.QueryVersion()
+                if Registry.pycraft_install_path is not None:
+                    pycraft_main_install_path = pathlib.Path(Registry.pycraft_install_path) / "pycraft" / "main.py"
+                    pycraft_main_spec = importlib_util.spec_from_file_location(
+                        "main", 
+                        pycraft_main_install_path)
+                    pycraft_main = importlib_util.module_from_spec(pycraft_main_spec)
+                    pycraft_main_spec.loader.exec_module(pycraft_main)
+                    version_name = pycraft_main.QueryVersion()
 
-                version_code = integrated_installer.text_version_to_int(version_name.split(" "))
-                for key in Registry.pycraft_versions:
-                    if version_code < Registry.pycraft_versions[key]:
-                        Registry.outdated = True
-                        break
+                    version_code = integrated_installer.text_version_to_int(version_name.split(" "))
+                    for key in Registry.pycraft_versions:
+                        if version_code < Registry.pycraft_versions[key]:
+                            Registry.outdated = True
+                            break
             except Exception as message:
                 error_message = "".join(("IntegratedInstaller > integrated_installer ",
                                              f"> check_versions: {str(message)}"))

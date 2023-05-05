@@ -2,9 +2,6 @@ if __name__ != "__main__":
     try:
         import threading
         import time
-        import json
-        import site
-        import os
         import tkinter
         import tkinter.ttk as tkinter_ttk
         from tkinter import messagebox
@@ -159,118 +156,97 @@ if __name__ != "__main__":
                 background="white",
                 font=(None, 20)).place(x=200, y=40)
 
-            ans = messagebox.askquestion(
-                "Permissions manager",
-                Registry.installer_text["install"][2])
-
-            retry = True
             i = 0
-            while retry:
-                if ans == "yes":
-                    retry = False
 
-                    infoVers = None
+            infoVers = None
 
-                    if Registry.install_custom_version is False:
-                        OUTPUTtext = f"Found latest version as: Pycraft {list(Registry.pycraft_versions.keys())[0]}"
+            if Registry.install_custom_version is False:
+                OUTPUTtext = f"Found latest version as: Pycraft {list(Registry.pycraft_versions.keys())[0]}"
 
-                        text_utils.installer_text.create_text(
-                            OUTPUTtext)
+                text_utils.installer_text.create_text(
+                    OUTPUTtext)
 
-                        infoVers = f"Pycraft {list(Registry.pycraft_versions.keys())[0]}"
-                    else:
-                        OUTPUTtext = f"Found requested version as: {Registry.choice}"
+                infoVers = f"Pycraft {list(Registry.pycraft_versions.keys())[0]}"
+            else:
+                OUTPUTtext = f"Found requested version as: {Registry.choice}"
 
-                        text_utils.installer_text.create_text(
-                            OUTPUTtext)
+                text_utils.installer_text.create_text(
+                    OUTPUTtext)
 
-                        infoVers = Registry.choice
+                infoVers = Registry.choice
 
-                    OUTPUTtext += Registry.installer_text["install"][3].format(
-                        infoVers)
+            OUTPUTtext += Registry.installer_text["install"][3].format(
+                infoVers)
 
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
+            text_utils.installer_text.create_text(
+                OUTPUTtext)
 
-                    download_thread = threading.Thread(
-                        target=installer_utils.file_manipulation.download,
-                        args=(
-                            Registry.base_folder,
-                            pathlib.Path(install_data.Dir),
-                            Registry.choice))
-                    download_thread.name = "[thread]: downloading Pycraft from GitHub"
-                    download_thread.start()
+            download_thread = threading.Thread(
+                target=installer_utils.file_manipulation.download,
+                args=(
+                    Registry.base_folder,
+                    pathlib.Path(install_data.Dir),
+                    Registry.choice))
+            download_thread.name = "[thread]: downloading Pycraft from GitHub"
+            download_thread.start()
 
-                    start = time.perf_counter()
+            start = time.perf_counter()
 
-                    while threading.active_count() == 2:
-                        i += 1
-                        Registry.root.after(
-                            50,
-                            installer_utils.core_installer_functionality.render_progress_bar(i))
+            while threading.active_count() == 2:
+                i += 1
+                Registry.root.after(
+                    50,
+                    installer_utils.core_installer_functionality.render_progress_bar(i))
 
-                    installtime = time.perf_counter()-start
-                    
-                    file_utils.fix_installer.get_installer_config()
-                    
-                    OUTPUTtext += f" - done in {round(installtime, 2)} seconds"
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
-                    
-                    OUTPUTtext += Registry.installer_text["install"][4].format(
-                        infoVers)
+            installtime = time.perf_counter()-start
+            
+            file_utils.fix_installer.get_installer_config()
+            
+            OUTPUTtext += f" - done in {round(installtime, 2)} seconds"
+            text_utils.installer_text.create_text(
+                OUTPUTtext)
+            
+            OUTPUTtext += Registry.installer_text["install"][4].format(
+                infoVers)
 
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
+            text_utils.installer_text.create_text(
+                OUTPUTtext)
 
-                    install_thread = threading.Thread(
-                        target=installer_utils.file_manipulation.install_dependencies)
-                    install_thread.name = "[thread]: Installing Pycraft's dependencies"
-                    install_thread.start()
+            install_thread = threading.Thread(
+                target=installer_utils.file_manipulation.install_dependencies)
+            install_thread.name = "[thread]: Installing Pycraft's dependencies"
+            install_thread.start()
 
-                    start = time.perf_counter()
+            start = time.perf_counter()
 
-                    while threading.active_count() == 2:
-                        i += 1
-                        Registry.root.after(
-                            50,
-                            installer_utils.core_installer_functionality.render_progress_bar(i))
+            while threading.active_count() == 2:
+                i += 1
+                Registry.root.after(
+                    50,
+                    installer_utils.core_installer_functionality.render_progress_bar(i))
 
-                    installtime = time.perf_counter()-start
+            installtime = time.perf_counter()-start
 
-                    OUTPUTtext += f" - done in {round(installtime, 4)} seconds"
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
+            OUTPUTtext += f" - done in {round(installtime, 4)} seconds"
+            text_utils.installer_text.create_text(
+                OUTPUTtext)
 
-                    OUTPUTtext += "\nSuccessfully Installed Pycraft"
-                    text_utils.installer_text.create_text(
-                        OUTPUTtext)
+            OUTPUTtext += "\nSuccessfully Installed Pycraft"
+            text_utils.installer_text.create_text(
+                OUTPUTtext)
 
-                    try:
-                        if Registry.UpdateUtility:
-                            tkinter_ttk.Button(
-                                Registry.root,
-                                text="Continue",
-                                command=lambda: begin_install.install_screen_four()).place(x=760, y=500)
+            try:
+                if Registry.UpdateUtility:
+                    tkinter_ttk.Button(
+                        Registry.root,
+                        text="Continue",
+                        command=lambda: begin_install.install_screen_four()).place(x=760, y=500)
 
-                    except:
-                        update.Update.finished_update(
-                            Registry.root)
+            except:
+                update.Update.finished_update(
+                    Registry.root)
 
-                    Registry.root.update_idletasks()
-                else:
-                    ans2 = messagebox.askquestion(
-                        "Caution",
-                        Registry.installer_text["install"][5])
-
-                    if ans2 == "no":
-                        quit()
-
-                    else:
-                        retry = True
-                        ans = messagebox.askquestion(
-                            "Permissions manager",
-                            Registry.installer_text["install"][2])
+            Registry.root.update_idletasks()
 
         def install_screen_four():
             tkinter_utils.tkinter_installer.create_display()

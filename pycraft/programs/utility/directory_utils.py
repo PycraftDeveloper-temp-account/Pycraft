@@ -55,12 +55,11 @@ if __name__ != "__main__":
             for key in Registry.file_structure:
                 width = ((Registry.real_window_width/2)/Registry.folder_size) * Registry.file_structure[key]["size"]
 
-                if ((Registry.mouse_x > position[0] + x_pos and
-                            Registry.mouse_x < position[0] + x_pos + width and
-                            Registry.mouse_y > position[1] and
-                            Registry.mouse_y < position[1] + height) or
-                        hover_id == Registry.file_structure[key]):
-
+                if (rect.collidepoint((
+                            Registry.mouse_x,
+                            Registry.mouse_y))
+                        or hover_id == Registry.file_structure[key]):
+                    
                     hovering = True
                     mouse_over = True
 
