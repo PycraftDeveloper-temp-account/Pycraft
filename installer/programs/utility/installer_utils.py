@@ -179,9 +179,18 @@ if __name__ != "__main__":
             return arr
         
         def uninstall_dependencies():
-            requirements_file_path = pathlib.Path(Registry.pycraft_install_path) / "requirements.txt"
-            subprocess.check_output(
-                f"{sys.executable} -m pip uninstall -r \"{str(requirements_file_path)}\"")
+            try:
+                requirements_file_path = pathlib.Path(Registry.pycraft_install_path) / "requirements.txt"
+                subprocess.check_output(
+                    f"{sys.executable} -m pip uninstall -r \"{str(requirements_file_path)}\"")
+                
+            except Exception as message:
+                messagebox.showerror(
+                    "An error ocurred",
+                    "".join(("We were unable to remove some files for ",
+                            f"Pycraft from your PC.\n\nFull Error message: {message}")))
+
+                quit()
 
         def remove_files(FileArray, keep_save=True):
             try:
