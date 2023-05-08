@@ -491,7 +491,7 @@ if __name__ != "__main__":
                         pygame.draw.lines(Registry.display, color, False, arr)
         
         def draw_developer_graph(self) -> None:
-            if Registry.draw_devmode_graph or True:
+            if Registry.draw_devmode_graph:
                 rect = pygame.Rect(
                     self.pos_x,
                     self.pos_y,
