@@ -17,7 +17,7 @@ if __name__ != "__main__":
             error_message)
         quit()
             
-    class splash_screen(Registry):
+    class splash_screen():
         def center(win):
             win.update_idletasks()
             width = win.winfo_width()

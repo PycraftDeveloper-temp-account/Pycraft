@@ -52,8 +52,8 @@ class Startup(Registry):
             args=(Registry.stop_splash_screen,))
         splash_screen.daemon = True
         splash_screen.name = "splash_screen"
-        Registry.stop_splash_screen.set()
         splash_screen.start()
+        Registry.stop_splash_screen.set()
     
         pygame.init()
 
@@ -62,8 +62,8 @@ class Startup(Registry):
         error_message = ""
         try:
             file_utils.pycraft_config_utils.read_main_save()
-            
         except Exception as message:
+            Registry.stop_splash_screen.clear()
             error_message = "".join(("file_utils > pycraft_config_utils ",
                                             f"> read_main_save: {str(message)}"))
 
@@ -89,6 +89,7 @@ class Startup(Registry):
                 file_utils.pycraft_config_utils.repair_lost_save()
 
             except Exception as message:
+                Registry.stop_splash_screen.clear()
                 second_error_message = "".join(("file_utils > pycraft_config_utils ",
                                             f"> repair_lost_save: {str(message)}"))
 
@@ -118,6 +119,10 @@ class Startup(Registry):
         
         logging_utils.create_log_message.update_log_information(
             "started <Pycraft_main>")
+        
+        translation_utils.TranslationFileHandling()
+        Registry.text_translator = translation_utils.TranslateText()
+        Registry.translation_cache = translation_utils.TranslationCaching()
         
         file_utils.installer_link.check_installer_link_status()
 
@@ -193,8 +198,9 @@ class Startup(Registry):
             quit()
 
 class Initialize:
-    def menu_selector():
+    def menu_selector() -> None:
         try:
+            Registry.stop_splash_screen.clear()
             while True:
                 if pygame.mixer.Channel(1).get_busy() == 1:
                     pygame.mixer.Channel(1).stop()
@@ -219,7 +225,7 @@ class Initialize:
                 Registry.primary_mouse_button_down = False
 
                 if Registry.command == "saveANDexit":
-                    translation_utils.translation_caching.write_cache()
+                    Registry.translation_cache.write_cache()
                 
                     file_utils.pycraft_config_utils.save_pycraft_config()
                     
@@ -279,7 +285,7 @@ class Initialize:
                 elif Registry.command == "Installer" and Registry.linked_to_installer:
                     pygame.quit()
                     
-                    translation_utils.translation_caching.write_cache()
+                    Registry.translation_cache.write_cache()
                 
                     file_utils.pycraft_config_utils.save_pycraft_config()
                     
@@ -332,10 +338,10 @@ class Initialize:
             Startup()
 
             try:
-                Registry.translated_text = translation_utils.translation_caching.read_cache()
+                Registry.translated_text = Registry.translation_cache.read_cache()
 
             except Exception as message:
-                log_message = "translation_utils > translation_caching > read_cache: "+str(message)
+                log_message = "translation_utils > TranslationCaching > read_cache: "+str(message)
 
                 logging_utils.create_log_message.update_log_warning(
                     log_message)
@@ -396,7 +402,7 @@ class Initialize:
                         logging_utils.create_log_message.update_log_warning(
                             log_message)
                     except Exception as message:
-                        error_message = "".join(("main > Initialize ",
+                        error_message = "".join(("pycraft_main > Initialize ",
                                             f"> start: {str(message)}"))
 
                         error_message_detailed = "".join(
@@ -455,7 +461,7 @@ class Initialize:
             Initialize.menu_selector()
             
         except Exception as message:
-            error_message = "".join(("main > Initialize ",
+            error_message = "".join(("pycraft_main > Initialize ",
                                             f"> start: {str(message)}"))
 
             error_message_detailed = "".join(

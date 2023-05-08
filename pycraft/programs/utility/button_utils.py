@@ -18,14 +18,15 @@ if __name__ != "__main__":
             
     class draw_setting_elements(Registry):
         def draw_multi_buttons(
-                button_pos,
-                button_text_array,
-                font,
-                backup_font,
+                self,
+                button_pos: int,
+                button_text_array: list,
+                font: pygame.font.Font,
+                backup_font: pygame.font.Font,
                 argument_variable,
-                hovering,
-                mouse_over,
-                scrollbar_needed):
+                hovering: bool,
+                mouse_over: bool,
+                scrollbar_needed: bool):
 
             if scrollbar_needed:
                 scroll_x_offset = 9
@@ -37,9 +38,9 @@ if __name__ != "__main__":
                 scroll_x_offset,
                 button_pos]
 
-            for i in range(len(button_text_array)):
+            for text in button_text_array:
                 returned_text = text_utils.text_formatter.format_text(
-                    button_text_array[i],
+                    text,
                     ("left", "top"),
                     font,
                     backup_font,
@@ -79,7 +80,7 @@ if __name__ != "__main__":
                         
                         updated_argument = Registry.__dict__[argument_variable]
                         
-                        updated_argument[button_text_array[i]] = not updated_argument[button_text_array[i]]
+                        updated_argument[text] = not updated_argument[text]
                         setattr(Registry, argument_variable, updated_argument)
 
                         theme_utils.determine_theme_colors.get_colors()
@@ -95,7 +96,7 @@ if __name__ != "__main__":
                             border_radius=10)
 
                 else:
-                    if Registry.__dict__[argument_variable][button_text_array[i]]:
+                    if Registry.__dict__[argument_variable][text]:
                         pygame.draw.rect(
                             Registry.display,
                             Registry.accent_color,
@@ -123,18 +124,19 @@ if __name__ != "__main__":
                 mouse_over)
 
         def draw_buttons(
-                button_pos,
-                button_text_array,
-                font,
-                backup_font,
-                value,
+                self,
+                button_pos: int,
+                button_text_array: list,
+                font: pygame.font.Font,
+                backup_font: pygame.font.Font,
+                value: str,
                 argument_variable,
-                hovering,
-                mouse_over,
-                files_to_remove,
-                clear_languages,
-                scanned_files,
-                scrollbar_needed):
+                hovering: bool,
+                mouse_over: bool,
+                files_to_remove: bool,
+                clear_languages: bool,
+                scanned_files: bool,
+                scrollbar_needed: bool):
             
             if scrollbar_needed:
                 scroll_x_offset = 9
@@ -171,10 +173,10 @@ if __name__ != "__main__":
                 scroll_x_offset,
                 button_pos]
 
-            for i in range(len(button_text_array)):
+            for text in button_text_array:
                 if enable:
                     returned_text = text_utils.text_formatter.format_text(
-                        button_text_array[i],
+                        text,
                         ("left", "top"),
                         font,
                         backup_font,
@@ -183,7 +185,7 @@ if __name__ != "__main__":
                     
                 else:
                     returned_text = text_utils.text_formatter.format_text(
-                        button_text_array[i],
+                        text,
                         ("left", "top"),
                         font,
                         backup_font,
@@ -217,7 +219,7 @@ if __name__ != "__main__":
                         Registry.primary_mouse_button_down = False
 
                         if Registry.use_mouse_input is False:
-                            mouse_y = button_pos + 5 + button_text_height
+                            Registry.mouse_y = button_pos + 5 + button_text_height
 
                         if Registry.sound:
                             sound_utils.play_sound.play_click_sound()
@@ -229,7 +231,7 @@ if __name__ != "__main__":
                             width=1,
                             border_radius=10)
                         
-                        setattr(Registry, argument_variable, button_text_array[i])
+                        setattr(Registry, argument_variable, text)
 
                         theme_utils.determine_theme_colors.get_colors()
 
@@ -244,7 +246,7 @@ if __name__ != "__main__":
                             border_radius=10)
 
                 else:
-                    if button_text_array[i] == value:
+                    if text == value:
                         pygame.draw.rect(
                             Registry.display,
                             Registry.accent_color,

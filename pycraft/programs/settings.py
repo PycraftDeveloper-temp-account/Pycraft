@@ -284,7 +284,7 @@ if __name__ != "__main__":
                             
                             if clear_languages:
                                 Registry.translated_text = {}
-                                translation_utils.translation_caching.write_cache()
+                                Registry.translation_cache.write_cache()
 
                                 clear_languages = False
                                 scan_directory = True

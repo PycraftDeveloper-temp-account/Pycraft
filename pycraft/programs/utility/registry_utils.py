@@ -229,6 +229,7 @@ if __name__ != "__main__":
         joystick_exit = False
         joystick_hat_pressed = False
         joystick_zoom = None
+        language = "en"
         language_list = googletrans.LANGUAGES
         last_run = "29/09/2021"
         linked_to_installer = False
@@ -408,10 +409,12 @@ if __name__ != "__main__":
                 (237, 125, 49),
                 (100, 100, 100)]]
         timer = 0
+        text_translator = None
         total_move_x = 0
         total_move_y = 0
         total_move_z = 0
         total_number_of_updates = 0
+        translation_cache = None
         translated_text = {}
         updated = False
         use_mouse_input = True

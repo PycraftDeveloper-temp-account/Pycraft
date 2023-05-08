@@ -114,7 +114,7 @@ if __name__ != "__main__":
                         details = [option, formatted_color]
                         button_text_array.append(details)
                                 
-                translated_output = translation_utils.string_translator.change_language(
+                translated_output = translation_utils.TranslateText.change_language(
                         button_text_array[i][0])
                 
                 returned_text = font.render(

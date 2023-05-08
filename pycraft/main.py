@@ -1,9 +1,9 @@
 DEVELOPER_BUILD = True
 
-def QueryVersion():
+def QueryVersion() -> str:
     return "pycraft v9.5.0dev8"
 
-def start():
+def start() -> None:
     try:
         import __init__
     except ModuleNotFoundError as message:

@@ -53,7 +53,7 @@ if __name__ != "__main__":
                         "Pycraft",
                         ("center", "top"),
                         Registry.title_font,
-                        Registry.title_backup_font,)
+                        Registry.title_backup_font)
 
                     Registry.theme = "light"
                     
