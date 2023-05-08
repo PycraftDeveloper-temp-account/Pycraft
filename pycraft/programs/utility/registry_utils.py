@@ -4,6 +4,7 @@ if __name__ != "__main__":
         import os
         import pathlib
         import platform
+        import time
         
         import pygame
         import pyautogui
@@ -95,14 +96,10 @@ if __name__ != "__main__":
         current_memory_usage = 0
         currently_displaying_message = False
         custom_theme = None
-        data_CPU_usage = []
-        data_CPU_usage_Max = 1
-        data_average_fps = []
-        data_average_fps_Max = 1
-        data_current_fps = []
-        data_current_fps_Max = 1
-        data_memory_usage = []
-        data_memory_usage_Max = 1
+        cpu_history = []
+        cpu_time = 0
+        fps_history = []
+        memory_usage = []
         default_game_config = {
             "game_name": "New Game",
             "game_difficulty": "normal"
@@ -207,6 +204,7 @@ if __name__ != "__main__":
         }
 
         fps = 60
+        frame = 0
         from_game_GUI = False
         from_play = False
         fullscreen = False
@@ -217,14 +215,13 @@ if __name__ != "__main__":
                                     [False, False],
                                     [False, False],
                                     [False, False]]
-        
+        process_id = os.getpid()
         go_to = None
         icon_path = base_folder / "resources" / "general resources" / "Icon.png"
         increased_speed = False
         input_configuration = None
         install_location = None
         installer_install_path = ""
-        iteration = 1
         joystick_connected = False
         joystick_exit = False
         joystick_hat_pressed = False
@@ -285,7 +282,6 @@ if __name__ != "__main__":
             "adaptive_fps": 60,
             "fps": 60,
             "average_fps": 60,
-            "iteration": 1,
             "FOV": 75,
             "camera_angle_speed": 3,
             "aa": True,

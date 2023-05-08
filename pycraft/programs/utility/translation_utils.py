@@ -57,6 +57,9 @@ if __name__ != "__main__":
                     fp=file)
 
     class TranslateText(Registry):
+        def __init__(self):
+            pass
+        
         def change_language(
                 self,
                 string: str) -> str:

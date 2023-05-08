@@ -155,7 +155,7 @@ if __name__ != "__main__":
 
                         title_width = returned_text.get_width()
 
-                        timer -= 1/(Registry.average_fps/Registry.iteration)
+                        timer -= 1/Registry.average_fps
                         VisualYdisplacement = Registry.real_window_height
                     else:
                         if IntroYDisplacement <= 0:
@@ -185,11 +185,11 @@ if __name__ != "__main__":
                                 Registry.subtitle_backup_font,
                                 font_color=Registry.secondary_font_color)
 
-                            VisualYdisplacement -= 60/(Registry.average_fps/Registry.iteration)
+                            VisualYdisplacement -= 60/Registry.average_fps
                             LoadText = True
                             if Ypos+VisualYdisplacement <= Registry.real_window_height/2:
                                 Holdon_exit = True
-                                Holdtimer += 1/(Registry.average_fps/Registry.iteration)
+                                Holdtimer += 1/Registry.average_fps
                                 if Holdtimer >= 5:
                                     Registry.go_to = "home"
                         else:
@@ -219,10 +219,10 @@ if __name__ != "__main__":
                                 Registry.subtitle_backup_font,
                                 font_color=Registry.secondary_font_color)
 
-                            IntroYDisplacement -= 90/(Registry.average_fps/Registry.iteration)
+                            IntroYDisplacement -= 90/Registry.average_fps
                             VisualYdisplacement = Registry.real_window_height
 
-                    drawing_utils.generate_graph.create_devmode_graph()
+                    drawing_utils.generate_graph().draw_developer_graph()
 
                     if Registry.go_to is None:
                         display_utils.display_animations.fade_in()

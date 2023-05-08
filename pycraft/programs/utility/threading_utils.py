@@ -35,10 +35,6 @@ if __name__ != "__main__":
                     else:
                         time.sleep(1)
 
-                    if Registry.iteration > 1000:
-                        Registry.average_fps = (Registry.average_fps/Registry.iteration)
-                        Registry.iteration = 1
-
                     if (Registry.fps < 15 or
                             Registry.fps > 500):
                         
@@ -62,7 +58,6 @@ if __name__ != "__main__":
                     else:
                         if Registry.average_fps == float("inf"):
                             Registry.average_fps = 1
-                            Registry.iteration = 1
                             
             except Exception as message:
                 Registry.error_message = "".join(("ThreadingUtils > ThreadingUtils ",

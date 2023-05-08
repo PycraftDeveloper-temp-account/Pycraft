@@ -210,7 +210,6 @@ if __name__ != "__main__":
                     "Reset average_fps from infinity")
 
                 Registry.average_fps = 1
-                Registry.iteration = 1
 
         def repair_lost_save():
             pycraft_config_path = Registry.base_folder / "data files" / "pycraft_config.json"
@@ -235,7 +234,6 @@ if __name__ != "__main__":
                     "adaptive_fps": Registry.adaptive_fps,
                     "fps": Registry.fps,
                     "average_fps": round(Registry.average_fps, 3),
-                    "iteration": Registry.iteration,
                     "FOV": Registry.FOV,
                     "camera_angle_speed": Registry.camera_angle_speed,
                     "aa": Registry.aa,

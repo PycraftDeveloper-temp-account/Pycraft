@@ -45,8 +45,8 @@ if __name__ != "__main__":
 
                 if Registry.fps_overclock:
                     try:
-                        fps_text = "".join((f"fps: 2000 current_fps: {int(Registry.current_fps)} ",
-                                        f"average_fps: N/A iteration: {Registry.iteration} | "))
+                        fps_text = "".join((f"fps: 2000 current_fps: {int(Registry.fps_history[-1])} ",
+                                        f"average_fps: N/A | "))
 
                         pygame.display.set_caption(
                             "".join((f"Pycraft: v{Registry.version}: {location} | ",
@@ -60,7 +60,7 @@ if __name__ != "__main__":
                                         f"Thread Count: {threading.active_count()}")))
 
                     except:
-                        fps_text = f"fps: 2000 current_fps: NaN* average_fps: N/A iteration: {Registry.iteration} | "
+                        fps_text = f"fps: 2000 current_fps: NaN* average_fps: N/A | "
 
                         pygame.display.set_caption(
                             "".join((f"Pycraft: v{Registry.version}: {location} | ",
@@ -74,9 +74,8 @@ if __name__ != "__main__":
                                         f"Thread Count: {threading.active_count()}")))
 
                 else:
-                    fps_text = "".join((f"fps: {Registry.fps} current_fps: {int(Registry.current_fps)} ",
-                                    f"average_fps: {int(Registry.average_fps/Registry.iteration)} ",
-                                    f"iteration: {Registry.iteration} | "))
+                    fps_text = "".join((f"fps: {Registry.fps} current_fps: {int(Registry.fps_history[-1])} ",
+                                    f"average_fps: {int(Registry.average_fps)} | "))
 
                     pygame.display.set_caption(
                         "".join((f"Pycraft: v{Registry.version}: {location} | ",
@@ -124,7 +123,7 @@ if __name__ != "__main__":
                 if Registry.fps_overclock:
                     try:
                         fps = "".join((f"fps: 2000 current_fps: {int(Registry.current_fps)} ",
-                                        f"average_fps: N/A iteration: {Registry.iteration} | "))
+                                        f"average_fps: N/A | "))
 
                         pygame.display.set_caption("".join((f"Pycraft: v{Registry.version}: Playing ",
                                                         play_time,
@@ -137,7 +136,7 @@ if __name__ != "__main__":
                                                         ThreadCount)))
                         
                     except:
-                        fps = f"fps: 2000 current_fps: NaN* average_fps: N/A iteration: {Registry.iteration} | "
+                        fps = f"fps: 2000 current_fps: NaN* average_fps: N/A | "
 
                         pygame.display.set_caption("".join((f"Pycraft: v{Registry.version}: Playing ",
                                                         play_time,
@@ -151,9 +150,8 @@ if __name__ != "__main__":
                 else:
                     try:
                         fps = "".join((f"fps: {Registry.fps} current_fps: ",
-                                f"{int(Registry.current_fps)} average_fps: ",
-                                f"{int(Registry.average_fps/Registry.iteration)} ",
-                                f"iteration: {Registry.iteration} | "))
+                                f"{int(Registry.fps_history[-1])} average_fps: ",
+                                f"{int(Registry.average_fps)} | "))
 
                         pygame.display.set_caption("".join((f"Pycraft: v{Registry.version}: Playing ",
                                                         play_time,
@@ -167,9 +165,8 @@ if __name__ != "__main__":
 
                     except:
                         fps = "".join((f"fps: {Registry.fps} current_fps: ",
-                                f"{int(Registry.current_fps)} average_fps: ",
-                                f"{int(Registry.average_fps/Registry.iteration)} ",
-                                f"iteration: {Registry.iteration} | "))
+                                f"{int(Registry.fps_history[-1])} average_fps: ",
+                                f"{int(Registry.average_fps)} | "))
 
                         pygame.display.set_caption("".join((f"Pycraft: v{Registry.version}: Playing ",
                                                         play_time,

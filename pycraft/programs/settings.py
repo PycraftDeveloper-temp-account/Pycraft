@@ -374,7 +374,7 @@ if __name__ != "__main__":
                                 for entry in range(3, len(sub_menu[item])):
                                     if str(sub_menu[item][entry]) != "directory_structure":
                                         if str(sub_menu[item][entry]) == "average_fps":
-                                            argument = int(Registry.average_fps/Registry.iteration)
+                                            argument = int(Registry.average_fps)
 
                                         elif str(sub_menu[item][entry]) == "keybinds":
                                             pass
@@ -524,9 +524,10 @@ if __name__ != "__main__":
                                         button_pos = (general_y_position + text_height + 10) - scroll
                                         button_text_array = sub_menu[item][2]["button"]
                                         
+                                        button = button_utils.draw_setting_elements()
                                         (button_height,
                                             hovering,
-                                            mouse_over) = button_utils.draw_setting_elements.draw_buttons(
+                                            mouse_over) = button.draw_buttons(
                                             button_pos,
                                             button_text_array,
                                             Registry.small_content_font,
@@ -618,9 +619,10 @@ if __name__ != "__main__":
                                         button_pos = (general_y_position + text_height + 10) - scroll
                                         button_text_array = sub_menu[item][2]["multi-button"]
 
+                                        button = button_utils.draw_setting_elements()
                                         (button_height,
                                             hovering,
-                                            mouse_over) = button_utils.draw_setting_elements.draw_multi_buttons(
+                                            mouse_over) = button.draw_multi_buttons(
                                             button_pos,
                                             button_text_array,
                                             Registry.small_content_font,
@@ -715,7 +717,7 @@ if __name__ != "__main__":
 
                     button_offset = (Registry.real_window_height - button_y_position) / 2
 
-                    drawing_utils.generate_graph.create_devmode_graph()
+                    drawing_utils.generate_graph().draw_developer_graph()
 
                     if Registry.go_to is None:
                         display_utils.display_animations.fade_in()

@@ -205,11 +205,10 @@ if __name__ != "__main__":
 
                         if increment is False:
                             RandomInt = random.randint(0, 10)
-                            if Registry.average_fps == 0 or Registry.iteration == 0:
+                            if Registry.average_fps == 0:
                                 ColourDisplacement -= RandomInt/(Registry.fps/4)
-
                             else:
-                                ColourDisplacement -= RandomInt/((Registry.average_fps/Registry.iteration)/4)
+                                ColourDisplacement -= RandomInt/(Registry.average_fps/4)
 
                             special[0] = ColourDisplacement
                             special[1] = ColourDisplacement
@@ -217,11 +216,11 @@ if __name__ != "__main__":
 
                         if increment:
                             RandomInt = random.randint(0, 10)
-                            if Registry.average_fps == 0 or Registry.iteration == 0:
+                            if Registry.average_fps == 0:
                                 ColourDisplacement += RandomInt/(Registry.fps/4)
 
                             else:
-                                ColourDisplacement += RandomInt/((Registry.average_fps/Registry.iteration)/4)
+                                ColourDisplacement += RandomInt/(Registry.average_fps/4)
 
                             special[0] = ColourDisplacement
                             special[1] = ColourDisplacement
@@ -589,7 +588,7 @@ if __name__ != "__main__":
                             pygame.mouse.set_cursor(
                                 pygame.SYSTEM_CURSOR_ARROW)
 
-                    drawing_utils.generate_graph.create_devmode_graph()
+                    drawing_utils.generate_graph().draw_developer_graph()
 
                     drawing_utils.draw_rose.create_rose(
                         colorsARRAY,

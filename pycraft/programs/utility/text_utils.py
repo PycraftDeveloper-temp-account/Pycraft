@@ -240,7 +240,7 @@ if __name__ != "__main__":
                     Registry.language == "ur"):
                 font = backup_font
 
-            translated_string = translation_utils.TranslateText.change_language(
+            translated_string = Registry.text_translator.change_language(
                 text)
                 
             # 2D array where each row is a list of words.

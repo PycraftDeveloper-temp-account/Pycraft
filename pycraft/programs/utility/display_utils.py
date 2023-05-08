@@ -2,14 +2,17 @@ if __name__ != "__main__":
     try:
         import sys
         import ctypes
+        import os
         
         import pygame
         import pyautogui
+        import psutil
 
         from registry_utils import Registry
         import sound_utils
         import logging_utils
         import tkinter_utils
+        import metrics_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
         error_message = f"{message} in display_utils"
@@ -45,7 +48,7 @@ if __name__ != "__main__":
                     axes = joystick.get_numaxes()
                     
                     for j in range(axes):
-                        multiplier = ((60 * 4) / (Registry.average_fps / Registry.iteration))
+                        multiplier = (60 * 4) / Registry.average_fps
                         axis = round(joystick.get_axis(j), 6) * multiplier
 
                         if j == 0:
@@ -122,14 +125,8 @@ if __name__ != "__main__":
                 Registry.saved_window_width = pygame.display.get_window_size()[0]
                 Registry.saved_window_height = pygame.display.get_window_size()[1]
 
-            if Registry.iteration > 1000:
-                Registry.average_fps = (Registry.average_fps/Registry.iteration)
-                Registry.iteration = 1
-                
-            Registry.current_fps = Registry.clock.get_fps()
-            Registry.average_fps += Registry.current_fps
-            Registry.iteration += 1
-
+            metrics_utils.Metrics().get_metrics()
+            
             Registry.y_scale_factor = Registry.real_window_height/720
             Registry.x_scale_factor = Registry.real_window_width/1280
 
@@ -214,17 +211,7 @@ if __name__ != "__main__":
                             if (event.key == Registry.input_key[Registry.input_configuration["keyboard"]["Toggle full-screen"]][0] and
                                     resize):
 
-                                Registry.data_average_fps = []
-                                Registry.data_CPU_usage = []
-                                Registry.data_current_fps = []
-                                Registry.data_memory_usage = []
-
                                 Registry.timer = 0
-
-                                Registry.data_average_fps_Max = 1
-                                Registry.data_CPU_usage_Max = 1
-                                Registry.data_current_fps_Max = 1
-                                Registry.data_memory_usage_Max = 1
                                 
                                 display_utils.update_display()
 

@@ -35,6 +35,7 @@ if __name__ != "__main__":
         import menu_utils
         import camera_utils
         import shadow_mapping_utils
+        import metrics_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
         error_message = f"{message} in game_engine"
@@ -834,9 +835,7 @@ if __name__ != "__main__":
 
                             pygame.mixer.Channel(2).unpause()
 
-                    Registry.current_fps = Registry.clock.get_fps()
-                    Registry.average_fps += Registry.current_fps
-                    Registry.iteration += 1
+                    metrics_utils.Metrics().get_metrics()
                     
                     if Registry.detailed_captions:
                         caption_utils.generate_captions.set_OpenGL_caption(

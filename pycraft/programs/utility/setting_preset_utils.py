@@ -20,8 +20,7 @@ if __name__ != "__main__":
                 Registry.render_fog = False
                 Registry.fancy_graphics = False
                 Registry.fancy_particles = False
-                Registry.average_fps = (Registry.average_fps/Registry.iteration)
-                Registry.iteration = 1
+                Registry.average_fps = Registry.average_fps
 
             elif Registry.settings_preset == "medium":
                 Registry.fps = 30
@@ -29,8 +28,7 @@ if __name__ != "__main__":
                 Registry.render_fog = False
                 Registry.fancy_graphics = True
                 Registry.fancy_particles = False
-                Registry.average_fps = (Registry.average_fps/Registry.iteration)
-                Registry.iteration = 1
+                Registry.average_fps = Registry.average_fps
                 
             elif Registry.settings_preset == "high":
                 Registry.fps = 60
@@ -38,8 +36,7 @@ if __name__ != "__main__":
                 Registry.render_fog = True
                 Registry.fancy_graphics = True
                 Registry.fancy_particles = True
-                Registry.average_fps = (Registry.average_fps/Registry.iteration)
-                Registry.iteration = 1
+                Registry.average_fps = Registry.average_fps
                 
             elif Registry.settings_preset == "adaptive":
                 CPU_Freq = (psutil.cpu_freq(percpu=True)[0][2])/10

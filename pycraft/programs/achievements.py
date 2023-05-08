@@ -71,7 +71,7 @@ if __name__ != "__main__":
                         Registry.subtitle_backup_font,
                         font_color=Registry.secondary_font_color)
 
-                    drawing_utils.generate_graph.create_devmode_graph()
+                    drawing_utils.generate_graph().draw_developer_graph()
 
                     if Registry.go_to is None:
                         Registry.startup_animation = display_utils.display_animations.fade_in()
