@@ -482,8 +482,6 @@ if __name__ != "__main__":
                     arr.append([x_point, 200-y_point])
                     x_pos += pointer_spacing
                 
-                print(arr[-1], color)
-                
                 if len(arr) > 2:
                     if Registry.aa:
                         pygame.draw.aalines(Registry.display, color, False, arr)

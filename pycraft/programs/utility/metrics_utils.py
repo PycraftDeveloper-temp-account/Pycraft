@@ -23,7 +23,7 @@ if __name__ != "__main__":
                 del Registry.memory_usage[0]
             if len(Registry.cpu_history) > Registry.fps*3:
                 del Registry.cpu_history[0]
-                
+            
             Registry.fps_history.append(Registry.clock.get_fps())
             Registry.average_fps = sum(Registry.fps_history)/len(Registry.fps_history)
             Registry.memory_usage.append(psutil.Process(pid=Registry.process_id).memory_full_info().uss)
