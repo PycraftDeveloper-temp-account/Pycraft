@@ -20,21 +20,6 @@ if __name__ != "__main__":
         def general_threading_utility():
             try:
                 while True:
-                    if Registry.draw_devmode_graph:
-                        if Registry.timer >= 2:
-                            CPUPercent = psutil.cpu_percent(0.5)
-                            if CPUPercent > Registry.data_CPU_usage_Max:
-                                Registry.data_CPU_usage_Max = CPUPercent
-
-                            Registry.data_CPU_usage.append([
-                                ((Registry.real_window_width/2)+100)+(Registry.timer),
-                                200-(2)*CPUPercent])
-
-                        time.sleep(0.5)
-
-                    else:
-                        time.sleep(1)
-
                     if (Registry.fps < 15 or
                             Registry.fps > 500):
                         

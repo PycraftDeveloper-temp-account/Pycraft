@@ -2,11 +2,9 @@ if __name__ != "__main__":
     try:
         import sys
         import ctypes
-        import os
         
         import pygame
         import pyautogui
-        import psutil
 
         from registry_utils import Registry
         import sound_utils
