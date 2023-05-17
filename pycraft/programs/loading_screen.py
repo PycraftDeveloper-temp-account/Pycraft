@@ -14,6 +14,7 @@ if __name__ != "__main__":
         import text_utils
         import drawing_utils
         import logging_utils
+        import translation_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
         error_message = f"{message} in loading_screen"
@@ -26,6 +27,10 @@ if __name__ != "__main__":
         def __init__(dictionary):
             for key in dictionary:
                 setattr(Registry, key, dictionary[key])
+                
+            translation_utils.TranslationFileHandling()
+            Registry.text_translator = translation_utils.TranslateText()
+            Registry.translation_cache = translation_utils.TranslationCaching()
                 
             pygame.init()
 
@@ -127,6 +132,9 @@ if __name__ != "__main__":
                         try:
                             modifier = current_load_time/average_load_time
                         except Exception as message:
+                            if type(message) == ZeroDivisionError:
+                                average_load_time = 1
+
                             warning_message = str(message)
                             logging_utils.create_log_message.update_log_warning(
                                 warning_message)
@@ -142,7 +150,7 @@ if __name__ != "__main__":
                         if loading_bar > Registry.real_window_width-100:
                             loading_bar = Registry.real_window_width-100
                         
-                        caption_utils.generate_captions.get_normal_caption(
+                        caption_utils.generate_captions.set_caption(
                             "Loading")
 
                         if not (Registry.error_message is None or

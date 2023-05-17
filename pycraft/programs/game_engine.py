@@ -838,17 +838,7 @@ if __name__ != "__main__":
                     metrics_utils.Metrics().get_metrics()
                     
                     if Registry.detailed_captions:
-                        caption_utils.generate_captions.set_OpenGL_caption(
-                            play_time,
-                            Time_Percent,
-                            total_move_x,
-                            total_move_y,
-                            total_move_z,
-                            camera)
-
-                    total_move_x = 0
-                    total_move_y = 0
-                    total_move_z = 0
+                        caption_utils.generate_captions.set_caption()
 
                     try:
                         if (pygame.mixer.Channel(2).get_busy() is False and

@@ -153,7 +153,7 @@ if __name__ != "__main__":
                     Map2.convert()
                     MapIcon.convert_alpha()
                     while True:
-                        caption_utils.generate_captions.get_normal_caption(
+                        caption_utils.generate_captions.set_caption(
                             "Map")
 
                         Registry.display.fill(Registry.background_color)

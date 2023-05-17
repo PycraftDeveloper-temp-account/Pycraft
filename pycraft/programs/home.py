@@ -117,7 +117,7 @@ if __name__ != "__main__":
                 BannerThread.daemon = True
                 BannerThread.start()
 
-                caption_utils.generate_captions.get_normal_caption(
+                caption_utils.generate_captions.set_caption(
                     "Home")
 
                 theme_path = Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
@@ -274,7 +274,7 @@ if __name__ != "__main__":
                     display_utils.display_functionality.core_display_functions(
                         location="saveANDexit")
 
-                    caption_utils.generate_captions.get_normal_caption(
+                    caption_utils.generate_captions.set_caption(
                         "Home")
 
                     if Registry.go_to is None:

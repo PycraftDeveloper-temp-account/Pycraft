@@ -24,7 +24,7 @@ if __name__ != "__main__":
     class generate_credits(Registry, Exception):
         def credits_gui():
             try:
-                caption_utils.generate_captions.get_normal_caption(
+                caption_utils.generate_captions.set_caption(
                     "Credits")
 
                 credits_config_path = Registry.base_folder / "data files" / "credits_config.json"
@@ -78,7 +78,7 @@ if __name__ != "__main__":
                         
                         error_utils.generate_error_screen.error_screen()
 
-                    caption_utils.generate_captions.get_normal_caption(
+                    caption_utils.generate_captions.set_caption(
                         "Credits")
 
                     display_utils.display_functionality.core_display_functions()

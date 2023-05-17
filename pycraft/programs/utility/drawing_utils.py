@@ -467,9 +467,9 @@ if __name__ != "__main__":
     class generate_graph(Registry):
         def __init__(self) -> None:
             self.pos_x = (Registry.real_window_width/2)+100
-            self.pos_y = 0
+            self.pos_y = 20
             self.x_size = Registry.real_window_width-self.pos_x
-            self.y_size = 200
+            self.y_size = 180
             
         def plotter(self, argument, color) -> None:
             if not max(argument) == 0:
@@ -478,8 +478,8 @@ if __name__ != "__main__":
                 pointer_spacing = self.x_size/len(argument)
                 for element in argument:
                     x_point = x_pos
-                    y_point = (200/max(argument))*element
-                    arr.append([x_point, 200-y_point])
+                    y_point = (self.y_size/max(argument))*element
+                    arr.append([x_point, self.pos_y+self.y_size-y_point])
                     x_pos += pointer_spacing
                 
                 if len(arr) > 2:

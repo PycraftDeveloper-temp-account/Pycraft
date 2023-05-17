@@ -23,7 +23,7 @@ if __name__ != "__main__":
     class generate_character_designer(Registry):
         def character_designer_gui():
             try:
-                caption_utils.generate_captions.get_normal_caption(
+                caption_utils.generate_captions.set_caption(
                     "Character Designer")
 
                 title_width = 0
@@ -38,7 +38,7 @@ if __name__ != "__main__":
 
                     display_utils.display_functionality.core_display_functions()
 
-                    caption_utils.generate_captions.get_normal_caption(
+                    caption_utils.generate_captions.set_caption(
                         "Character Designer")
 
                     Registry.display.fill(Registry.background_color)

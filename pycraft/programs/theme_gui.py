@@ -32,7 +32,7 @@ if __name__ != "__main__":
                     display_utils.display_functionality.core_display_functions(
                         location="saveANDexit")
 
-                    caption_utils.generate_captions.get_normal_caption(
+                    caption_utils.generate_captions.set_caption(
                         "Theme selector")
 
                     LightRect = pygame.Rect(

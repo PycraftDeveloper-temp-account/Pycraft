@@ -140,7 +140,7 @@ if __name__ != "__main__":
                         starting_y_pos = 100
                         button_text_height = 0
                         
-                        caption_utils.generate_captions.get_normal_caption(
+                        caption_utils.generate_captions.set_caption(
                             "Inventory")
 
                         if not (Registry.error_message is None or

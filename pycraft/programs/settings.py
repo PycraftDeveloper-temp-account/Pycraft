@@ -50,7 +50,7 @@ if __name__ != "__main__":
 
         def settings_gui():
             try:
-                caption_utils.generate_captions.get_normal_caption(
+                caption_utils.generate_captions.set_caption(
                     "Settings")
 
                 button_offset = 0
@@ -137,7 +137,7 @@ if __name__ != "__main__":
                                         if scroll_enabled:
                                             scroll += 5
 
-                    caption_utils.generate_captions.get_normal_caption(
+                    caption_utils.generate_captions.set_caption(
                         "Settings")
 
                     Registry.display.fill(Registry.background_color)
@@ -712,6 +712,7 @@ if __name__ != "__main__":
                                 scroll = 0
 
                         button_id += 1
+                        break
                         
                     button_y_position *= Registry.y_scale_factor
 

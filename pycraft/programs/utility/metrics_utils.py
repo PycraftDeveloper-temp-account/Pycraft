@@ -40,11 +40,13 @@ if __name__ != "__main__":
                 if memory_usage != Registry.memory_usage[-1]:
                     Registry.memory_usage.append(memory_usage)
                 
-            cpu_times = psutil.Process(pid=Registry.process_id).cpu_times()
+            process = psutil.Process(pid=Registry.process_id)
+            cpu_times = process.cpu_times()
             previous_total_cpu_process_time = Registry.cpu_time
             total_cpu_process_time = cpu_times.user + cpu_times.system
             delta_total_cpu_process_time = total_cpu_process_time - previous_total_cpu_process_time
             Registry.cpu_time = total_cpu_process_time
+            Registry.cpu_usage = process.cpu_percent()
             
             if len(Registry.cpu_history) < 2:
                 Registry.cpu_history.append(delta_total_cpu_process_time)
