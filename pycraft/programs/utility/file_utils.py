@@ -288,6 +288,7 @@ if __name__ != "__main__":
                     "installer_path": Registry.installer_path,
                     "installer_new_update": False,
                     "installer_updatable": Registry.installer_updatable,
+                    "render_ratio": Registry.render_ratio,
                     # temp
                     "position": [0, 0, 0],
                     "rotation": [0, 0],

@@ -94,6 +94,17 @@
             "average_fps"
         ],
         [
+            "Force graphics frame offset: {}.",
+            "This setting allows you to control the ratio between the compute and render cycles. You can adjust the maximum number of compute cycles per second in the slider above, and this slider determines every nth frame to update graphics at. The larger the value here, the greater the efficiency of Pycraft in some menus.",
+            {
+                "slider": [
+                    1,
+                    15
+                ]
+            },
+            "render_ratio"
+        ],
+        [
             "FOV: {}.",
             "This setting will set the default FOV for Pycraft.",
             {"slider": [

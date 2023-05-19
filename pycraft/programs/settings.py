@@ -712,7 +712,6 @@ if __name__ != "__main__":
                                 scroll = 0
 
                         button_id += 1
-                        break
                         
                     button_y_position *= Registry.y_scale_factor
 

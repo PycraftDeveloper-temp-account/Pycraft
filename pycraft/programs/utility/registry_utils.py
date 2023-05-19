@@ -260,6 +260,7 @@ if __name__ != "__main__":
         redraw_window = True
         remove_file_permission = None
         render_fog = True
+        render_ratio = 4
         reset_pycraft = False
         resolution = "(1280, 720)"
         resolutions_list = {
@@ -367,6 +368,7 @@ if __name__ != "__main__":
             "installer_path": None,
             "installer_new_update": True,
             "installer_updatable": False,
+            "render_ratio": 4,
             # temp
             "position": [0, 0, 0],
             "rotation": [0, 0],
