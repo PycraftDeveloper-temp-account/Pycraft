@@ -54,6 +54,15 @@ if __name__ != "__main__":
                 if delta_total_cpu_process_time != Registry.cpu_history[-1]:
                     Registry.cpu_history.append(delta_total_cpu_process_time)
             
+            if len(Registry.frame_efficiency) >= Registry.render_ratio:
+                Registry.efficiency = round(100*(sum(Registry.frame_efficiency)/len(Registry.frame_efficiency)), 2)
+                Registry.frame_efficiency = []
+                Registry.forced_frame = True
+                
+            if Registry.forced_frame:
+                Registry.frame_efficiency.append(0)
+            else:
+                Registry.frame_efficiency.append(1)
 else:
     print("You need to run this as part of Pycraft")
     from tkinter import messagebox

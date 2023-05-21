@@ -158,7 +158,7 @@
         ],
         [
             "Resolution: {}.",
-            "This setting allows you to adjust the rendering resolution of Pycraft when in the game engine and in fullscreen. Lowering the rendering resolution may improve Pycraft's performance with the compromise of worse visuals.",
+            "This setting allows you to adjust the rendering resolution of Pycraft when in the game engine and in full-screen. Lowering the rendering resolution may improve Pycraft's performance with the compromise of worse visuals.",
             {"dropdown": "<rendering_resolutions>"},
             "resolution"
         ],
@@ -414,7 +414,7 @@
         ],
         [
             "Detailed captions: {}.",
-            "This setting allows you to see some performance metrics for Pycraft in your caption. This is very useful for checking for bugs.",
+            "This setting allows you to see some performance metrics for Pycraft in your caption. This is very useful for checking certain variables and metrics at-a-glance. The detailed caption includes the normal caption and also: The amount of time spent in the 3D game engine, the camera position in the 3D game engine, the camera velocity in the 3D game engine, the current target (or maximum) frame rate, the current actual frame rate, the average frame rate over the last 3 seconds when running at the target frame rate (as a rolling average), the efficiency between compute and render frames (as a percentage, higher is better), the current memory usage of Pycraft (in megabytes, MB), the current cpu usage of Pycraft (as a percentage of total cpu time), the current weather condition in the 3D game engine and the number of threads Pycraft is currently using.",
             {"toggle": [
                     true,
                     false

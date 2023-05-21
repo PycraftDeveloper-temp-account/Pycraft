@@ -127,6 +127,7 @@ if __name__ != "__main__":
         dont_use_set_resolution = False
         draw_devmode_graph = False
         current_fps = 60
+        efficiency = 0
         error_message = None
         error_message_detailed = None
         event = configure_seasonal_event.is_seasonal_event()
@@ -187,6 +188,7 @@ if __name__ != "__main__":
                         files_to_trash.append(file_path)
         
         font_color = (255, 255, 255)
+        forced_frame = True
         FOV = 90
         format_text_chars = {
             "$r": (255, 0, 0), # red
@@ -206,6 +208,7 @@ if __name__ != "__main__":
 
         fps = 60
         frame = 0
+        frame_efficiency = [0]
         from_game_GUI = False
         from_play = False
         fullscreen = False

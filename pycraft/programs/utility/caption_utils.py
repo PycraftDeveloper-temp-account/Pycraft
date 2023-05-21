@@ -56,12 +56,12 @@ if __name__ != "__main__":
                 
                 memory_usage = round(Registry.current_memory_usage, 2)
                 cpu_usage = round(Registry.cpu_usage, 2)
-                
                 caption = f"Pycraft: v{Registry.version}: {location} | "
                 caption += f"Play time: {time} | "
                 caption += f"Position: {position} | "
                 caption += f"Velocity: {velocity} | "
                 caption += f"Frame-rates: {fps} | "
+                caption += f"Efficiency: {Registry.efficiency}%  "
                 caption += f"Memory usage: {memory_usage}% | "
                 caption += f"CPU usage: {cpu_usage}% | "
                 caption += f"Weather: {Registry.weather} | "

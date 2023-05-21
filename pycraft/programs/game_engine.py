@@ -430,13 +430,7 @@ if __name__ != "__main__":
 
                 Time_Percent = 0
 
-                total_move_x = 0
-                total_move_y = 0
-                total_move_z = 0
-
                 timer = 0
-
-                play_time = 0
 
                 WeatherDelta = 1
                 DefaultSkyCol = 1.0
@@ -1126,6 +1120,14 @@ if __name__ != "__main__":
                         transform_vao1, transform_vao2 = transform_vao2, transform_vao1
                         render_vao1, render_vao2 = render_vao2, render_vao1
                         vbo1, vbo2 = vbo2, vbo1
+                    
+                    Registry.total_move_x = camera.position.x - Registry.x
+                    Registry.total_move_y = camera.position.y - Registry.y
+                    Registry.total_move_z = camera.position.z - Registry.z
+                    
+                    Registry.x = camera.position.x
+                    Registry.y = camera.position.y
+                    Registry.z = camera.position.z
 
                     frametime = Registry.clock.get_time() / 1000
                     timer = time.perf_counter() - game_starts_running
