@@ -26,6 +26,89 @@ if __name__ != "__main__":
         quit()
             
     class generate_home(Registry):
+        def __init__(self):
+            self.theme_path = self.get_theme_path()
+            self.selector = pygame.image.load(self.theme_path)
+            self.selector.convert()
+
+            self.selector_width = self.selector.get_width()
+        
+        def get_theme_path():
+            return Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
+        
+        def compute(self):
+            if not oldTHEME == Registry.theme:
+                self.theme_path = self.get_theme_path()
+                selector = pygame.image.load(self.theme_path)
+                selector.convert()
+
+                self.selector_width = selector.get_width()
+                oldTHEME = Registry.theme
+        
+        def render(self, special):
+            RenderRect = pygame.Rect(
+                0,
+                0,
+                Registry.real_window_width,
+                Registry.real_window_height-40)
+            
+            if Registry.fancy_graphics:
+                colorsARRAY = []
+                if anim:
+                    anim = False
+                    TargetARRAY = []
+                    for a in range(random.randint(0, 32)):
+                        TargetARRAY.append(a)
+
+                if len(TargetARRAY) == 0:
+                    TargetARRAY = [33]
+
+                for i in range(32):
+                    for j in range(len(TargetARRAY)):
+                        if i == TargetARRAY[j]:
+                            colorsARRAY.append(special)
+
+                        else:
+                            colorsARRAY.append(Registry.shape_color)
+
+                if increment is False:
+                    RandomInt = random.randint(0, 10)
+                    if Registry.average_fps == 0:
+                        ColourDisplacement -= RandomInt/(Registry.fps/4)
+                    else:
+                        ColourDisplacement -= RandomInt/(Registry.average_fps/4)
+
+                    special[0] = ColourDisplacement
+                    special[1] = ColourDisplacement
+                    special[2] = ColourDisplacement
+
+                if increment:
+                    RandomInt = random.randint(0, 10)
+                    if Registry.average_fps == 0:
+                        ColourDisplacement += RandomInt/(Registry.fps/4)
+
+                    else:
+                        ColourDisplacement += RandomInt/(Registry.average_fps/4)
+
+                    special[0] = ColourDisplacement
+                    special[1] = ColourDisplacement
+                    special[2] = ColourDisplacement
+
+                if special[0] <= 30:
+                    increment = True
+                    special[0] = 30
+                    special[1] = 30
+                    special[2] = 30
+
+                if special[0] >= 80:
+                    increment = False
+                    anim = True
+                    special[0] = 80
+                    special[1] = 80
+                    special[2] = 80
+            else:
+                colorsARRAY = Registry.fancy_graphics
+            
         def create_banner():
             try:
                 global show_message, messageColor
@@ -104,7 +187,7 @@ if __name__ != "__main__":
                             message,
                             message.__traceback__))
 
-        def home_gui():
+        def home_gui(self):
             try:
                 global show_message, messageColor
 
@@ -172,76 +255,18 @@ if __name__ != "__main__":
 
                 while True:
                     start_time = time.perf_counter()
-
+                    
                     if not (Registry.error_message is None or Registry.error_message_detailed is None):
                         error_utils.generate_error_screen.error_screen(
                             Registry.error_message,
                             Registry.error_message_detailed)
+                        
+                    generate_home.compute(self)
+                    
+                    if Registry.forced_frame:
+                        generate_home.render(self, special)
 
-                    RenderRect = pygame.Rect(
-                        0,
-                        0,
-                        Registry.real_window_width,
-                        Registry.real_window_height-40)
-
-                    if Registry.fancy_graphics:
-                        colorsARRAY = []
-                        if anim:
-                            anim = False
-                            TargetARRAY = []
-                            for a in range(random.randint(0, 32)):
-                                TargetARRAY.append(a)
-
-                        if len(TargetARRAY) == 0:
-                            TargetARRAY = [33]
-
-                        for i in range(32):
-                            for j in range(len(TargetARRAY)):
-                                if i == TargetARRAY[j]:
-                                    colorsARRAY.append(special)
-
-                                else:
-                                    colorsARRAY.append(Registry.shape_color)
-
-                        if increment is False:
-                            RandomInt = random.randint(0, 10)
-                            if Registry.average_fps == 0:
-                                ColourDisplacement -= RandomInt/(Registry.fps/4)
-                            else:
-                                ColourDisplacement -= RandomInt/(Registry.average_fps/4)
-
-                            special[0] = ColourDisplacement
-                            special[1] = ColourDisplacement
-                            special[2] = ColourDisplacement
-
-                        if increment:
-                            RandomInt = random.randint(0, 10)
-                            if Registry.average_fps == 0:
-                                ColourDisplacement += RandomInt/(Registry.fps/4)
-
-                            else:
-                                ColourDisplacement += RandomInt/(Registry.average_fps/4)
-
-                            special[0] = ColourDisplacement
-                            special[1] = ColourDisplacement
-                            special[2] = ColourDisplacement
-
-                        if special[0] <= 30:
-                            increment = True
-                            special[0] = 30
-                            special[1] = 30
-                            special[2] = 30
-
-                        if special[0] >= 80:
-                            increment = False
-                            anim = True
-                            special[0] = 80
-                            special[1] = 80
-                            special[2] = 80
-                    else:
-                        colorsARRAY = Registry.fancy_graphics
-
-                    if str(Registry.display) == "<Surface(Dead display)>":
+                    '''if str(Registry.display) == "<Surface(Dead display)>":
                         Registry.data_average_fps = []
                         Registry.data_CPU_usage = []
                         Registry.data_current_fps = []
@@ -259,15 +284,9 @@ if __name__ != "__main__":
 
                         display_utils.display_utils.set_display(
                                 fullscreen_x,
-                                fullscreen_y)
+                                fullscreen_y)'''
 
-                    if not oldTHEME == Registry.theme:
-                        theme_path = Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
-                        selector = pygame.image.load(theme_path)
-                        selector.convert()
-
-                        selector_width = selector.get_width()
-                        oldTHEME = Registry.theme
+                    
 
                     Registry.display.fill(Registry.background_color, RenderRect)
 

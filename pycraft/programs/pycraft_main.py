@@ -302,7 +302,7 @@ class Initialize:
 
                 else:
                     Registry.command = "Undefined"
-                    Registry.command = home.generate_home.home_gui()
+                    Registry.command = home.generate_home().home_gui()
                     continue
                 
         except Exception as message:
