@@ -20,6 +20,7 @@ if __name__ != "__main__":
                 width,
                 height):
 
+            Registry.forced_frame = True
             x_scale_factor = width/524
             y_scale_factor = height/524
 
@@ -490,6 +491,7 @@ if __name__ != "__main__":
         
         def draw_developer_graph(self) -> None:
             if Registry.draw_devmode_graph:
+                Registry.forced_frame = True
                 rect = pygame.Rect(
                     self.pos_x,
                     self.pos_y,

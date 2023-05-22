@@ -454,6 +454,7 @@ if __name__ != "__main__":
                 size="full"):
             
             if Registry.startup_animation:
+                Registry.forced_frame = True
                 if size == "full":
                     HideSurface = pygame.Surface(
                         (Registry.real_window_width, Registry.real_window_height))
@@ -475,6 +476,7 @@ if __name__ != "__main__":
                 size="full"):
             
             if Registry.startup_animation:
+                Registry.forced_frame = True
                 if size == "full":
                     HideSurface = pygame.Surface(
                         (Registry.real_window_width, Registry.real_window_height-100))

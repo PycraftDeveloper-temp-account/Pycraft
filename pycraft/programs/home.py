@@ -27,92 +27,485 @@ if __name__ != "__main__":
             
     class generate_home(Registry):
         def __init__(self):
+            self.show_message = None
+            self.messageColor = Registry.font_color
             self.theme_path = self.get_theme_path()
             self.selector = pygame.image.load(self.theme_path)
             self.selector.convert()
 
             self.selector_width = self.selector.get_width()
+            
+            self.hover1 = False
+            self.hover2 = False
+            self.hover3 = False
+            self.hover4 = False
+            self.hover5 = False
+            self.hover6 = False
+            self.hover7 = False
+            
+            self.play_width = 0
+            self.settings_width = 0
+            self.char_designer_width = 0
+            self.credits_width = 0
+            self.achievements_width = 0
+            self.benchmark_width = 0
+            
+            if Registry.linked_to_installer:
+                self.installer_width = 0
+                
+            self.increment = False
+            self.ColourDisplacement = 80
+            
+            self.oldTHEME = Registry.theme
+            self.create_image_of_surface = False
+            self.prev_joystick_connected = False
+            
+            self.special = [
+                30,
+                30,
+                30]
+            
+            self.anim = False
+            self.TargetARRAY = []
         
-        def get_theme_path():
+        def get_theme_path(self):
             return Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
         
         def compute(self):
-            if not oldTHEME == Registry.theme:
+            display_utils.display_functionality.core_display_functions(
+                location="saveANDexit")
+
+            caption_utils.generate_captions.set_caption(
+                "Home")
+                    
+            if not self.oldTHEME == Registry.theme:
                 self.theme_path = self.get_theme_path()
                 selector = pygame.image.load(self.theme_path)
                 selector.convert()
 
                 self.selector_width = selector.get_width()
-                oldTHEME = Registry.theme
+                self.oldTHEME = Registry.theme
+                
+            if Registry.go_to is None:
+                if (Registry.mouse_y >= 202*Registry.y_scale_factor and
+                        Registry.mouse_y <= 247*Registry.y_scale_factor and
+                        Registry.mouse_x >= (Registry.real_window_width-(self.play_width+self.selector_width))-2):
+
+                    self.hover1 = True
+                    Registry.forced_frame = True
+
+                    if Registry.primary_mouse_button_down:
+                        if Registry.sound:
+                            sound_utils.play_sound.play_click_sound()
+
+                        if Registry.show_strobe_effects is None:
+                            Registry.show_strobe_effects = messagebox.askquestion(
+                                "Check Permission",
+                                "".join(("Strobe effects and bright flashes of light can ",
+                                            "cause discomfort, (for example lightning), you can choose here ",
+                                            "whether to enable or disable those ",
+                                            "strobe effects in Pycraft.\n\n",
+                                            "Click 'yes' to allow for strobe effects, or 'no' ",
+                                            "to turn them off. You can always adjust this in ",
+                                            "Pycraft's settings, under 'Storage and permissions'.")))
+
+                            if Registry.show_strobe_effects == "yes":
+                                Registry.show_strobe_effects = True
+
+                            else:
+                                Registry.show_strobe_effects = False
+                                
+                        Registry.go_to = "level_selector"
+                        #Registry.startup_animation = True
+                        Registry.run_timer = 0
+                        self.create_image_of_surface = True
+
+                else:
+                    self.hover1 = False
+
+                if (Registry.mouse_y >= 252*Registry.y_scale_factor and
+                        Registry.mouse_y <= 297*Registry.y_scale_factor and
+                        Registry.mouse_x >= (Registry.real_window_width-(self.settings_width+self.selector_width))-2):
+
+                    self.hover2 = True
+                    Registry.forced_frame = True
+
+                    if Registry.primary_mouse_button_down:
+                        if Registry.sound:
+                            sound_utils.play_sound.play_click_sound()
+
+                        Registry.go_to = "settings"
+                        Registry.startup_animation = True
+                        Registry.run_timer = 0
+
+                else:
+                    self.hover2 = False
+
+                if (Registry.mouse_y >= 302*Registry.y_scale_factor and
+                        Registry.mouse_y <= 347*Registry.y_scale_factor and
+                        Registry.mouse_x >= (Registry.real_window_width-(self.char_designer_width+self.selector_width)-2)):
+
+                    self.hover3 = True
+                    Registry.forced_frame = True
+
+                    if Registry.primary_mouse_button_down:
+                        if Registry.sound:
+                            sound_utils.play_sound.play_click_sound()
+
+                        Registry.go_to = "character_designer"
+                        Registry.startup_animation = True
+                        Registry.run_timer = 0
+
+                else:
+                    self.hover3 = False
+
+                if (Registry.mouse_y >= 402*Registry.y_scale_factor and
+                        Registry.mouse_y <= 447*Registry.y_scale_factor and
+                        Registry.mouse_x >= (Registry.real_window_width-(self.achievements_width+self.selector_width)-2)):
+
+                    self.hover4 = True
+                    Registry.forced_frame = True
+
+                    if Registry.primary_mouse_button_down:
+                        if Registry.sound:
+                            sound_utils.play_sound.play_click_sound()
+
+                        Registry.go_to = "achievements"
+                        Registry.startup_animation = True
+                        Registry.run_timer = 0
+
+                else:
+                    self.hover4 = False
+
+                if (Registry.mouse_y >= 352*Registry.y_scale_factor and
+                        Registry.mouse_y <= 397*Registry.y_scale_factor and
+                        Registry.mouse_x >= (Registry.real_window_width-(self.credits_width+self.selector_width)-2)):
+
+                    self.hover5 = True
+                    Registry.forced_frame = True
+
+                    if Registry.primary_mouse_button_down:
+                        if Registry.sound:
+                            sound_utils.play_sound.play_click_sound()
+
+                        Registry.go_to = "credits"
+                        Registry.startup_animation = True
+                        Registry.run_timer = 0
+
+                else:
+                    self.hover5 = False
+
+                if (Registry.mouse_y >= 452*Registry.y_scale_factor and
+                        Registry.mouse_y <= 497*Registry.y_scale_factor and
+                        Registry.mouse_x >= (Registry.real_window_width-(self.benchmark_width+self.selector_width)-2)):
+
+                    self.hover6 = True
+                    Registry.forced_frame = True
+
+                    if Registry.primary_mouse_button_down:
+                        if Registry.sound:
+                            sound_utils.play_sound.play_click_sound()
+
+                        Registry.go_to = "benchmark"
+                        Registry.startup_animation = True
+                        Registry.run_timer = 0
+
+                else:
+                    self.hover6 = False
+                
+                if Registry.linked_to_installer:
+                    if (Registry.mouse_y >= 502*Registry.y_scale_factor and
+                            Registry.mouse_y <= 547*Registry.y_scale_factor and
+                            Registry.mouse_x >= (Registry.real_window_width-(self.installer_width+self.selector_width)-2)):
+
+                        self.hover7 = True
+                        Registry.forced_frame = True
+
+                        if Registry.primary_mouse_button_down:
+                            if Registry.sound:
+                                sound_utils.play_sound.play_click_sound()
+
+                            Registry.go_to = "Installer"
+                            Registry.startup_animation = True
+                            Registry.run_timer = 0
+
+                    else:
+                        self.hover7 = False
+                    
+            if self.show_message is None:
+                if Registry.installer_new_update:
+                    Registry.installer_new_update = False
+                    self.show_message = f"Successfully updated Pycraft to v{Registry.version}"
+                    self.messageColor = (0, 255, 0)
+
+                elif Registry.outdated and Registry.linked_to_installer:
+                    Registry.installer_updatable = False
+                    self.show_message = "There is an update available!"
+                    self.messageColor = (0, 255, 0)
+
+                elif not self.prev_joystick_connected == Registry.joystick_connected:
+                    self.prev_joystick_connected = Registry.joystick_connected
+                    if Registry.joystick_connected:
+                        self.show_message = "".join(("There is a new input device available! ",
+                                            "You can change input modes in settings"))
+
+                        self.messageColor = (0, 255, 0)
+
+                    else:
+                        if Registry.use_mouse_input:
+                            self.show_message = "Terminated connection to an input device"
+                            self.messageColor = (255, 0, 0)
+
+                        else:
+                            self.show_message = "".join(("Terminated connection to current ",
+                                                "input device, returning to ",
+                                                "default setting"))
+
+                            self.messageColor = (255, 0, 0)
+                            Registry.use_mouse_input = True
+
+                    Registry.device_connected_update = False
+                    
+            if self.hover1:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+            elif self.hover2:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+            elif self.hover3:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+            elif self.hover5:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+            elif self.hover4:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+            elif self.hover6:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+            elif self.hover7 and Registry.linked_to_installer:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+            else:
+                if Registry.use_mouse_input:
+                    pygame.mouse.set_cursor(
+                        pygame.SYSTEM_CURSOR_ARROW)
+            
+            if self.create_image_of_surface:
+                if Registry.use_transparency_effects:
+                    self.create_image_of_surface = False
+
+                    image_utils.convert_image.surface_to_pil_image(Registry.display)
+                        
         
-        def render(self, special):
+        def render(self):
             RenderRect = pygame.Rect(
                 0,
                 0,
                 Registry.real_window_width,
                 Registry.real_window_height-40)
             
+            Registry.display.fill(Registry.background_color, RenderRect)
+            
             if Registry.fancy_graphics:
                 colorsARRAY = []
-                if anim:
-                    anim = False
-                    TargetARRAY = []
+                if self.anim:
+                    self.anim = False
+                    self.TargetARRAY = []
                     for a in range(random.randint(0, 32)):
-                        TargetARRAY.append(a)
+                        self.TargetARRAY.append(a)
 
-                if len(TargetARRAY) == 0:
-                    TargetARRAY = [33]
+                if len(self.TargetARRAY) == 0:
+                    self.TargetARRAY = [33]
 
                 for i in range(32):
-                    for j in range(len(TargetARRAY)):
-                        if i == TargetARRAY[j]:
-                            colorsARRAY.append(special)
+                    for j in range(len(self.TargetARRAY)):
+                        if i == self.TargetARRAY[j]:
+                            colorsARRAY.append(self.special)
 
                         else:
                             colorsARRAY.append(Registry.shape_color)
 
-                if increment is False:
+                if self.increment is False:
                     RandomInt = random.randint(0, 10)
                     if Registry.average_fps == 0:
-                        ColourDisplacement -= RandomInt/(Registry.fps/4)
+                        self.ColourDisplacement -= RandomInt/(Registry.fps/4)
                     else:
-                        ColourDisplacement -= RandomInt/(Registry.average_fps/4)
+                        self.ColourDisplacement -= RandomInt/(Registry.average_fps/4)
 
-                    special[0] = ColourDisplacement
-                    special[1] = ColourDisplacement
-                    special[2] = ColourDisplacement
+                    self.special[0] = self.ColourDisplacement
+                    self.special[1] = self.ColourDisplacement
+                    self.special[2] = self.ColourDisplacement
 
-                if increment:
+                if self.increment:
                     RandomInt = random.randint(0, 10)
                     if Registry.average_fps == 0:
-                        ColourDisplacement += RandomInt/(Registry.fps/4)
+                        self.ColourDisplacement += RandomInt/(Registry.fps/4)
 
                     else:
-                        ColourDisplacement += RandomInt/(Registry.average_fps/4)
+                        self.ColourDisplacement += RandomInt/(Registry.average_fps/4)
 
-                    special[0] = ColourDisplacement
-                    special[1] = ColourDisplacement
-                    special[2] = ColourDisplacement
+                    self.special[0] = self.ColourDisplacement
+                    self.special[1] = self.ColourDisplacement
+                    self.special[2] = self.ColourDisplacement
 
-                if special[0] <= 30:
-                    increment = True
-                    special[0] = 30
-                    special[1] = 30
-                    special[2] = 30
+                if self.special[0] <= 30:
+                    self.increment = True
+                    self.special[0] = 30
+                    self.special[1] = 30
+                    self.special[2] = 30
 
-                if special[0] >= 80:
-                    increment = False
-                    anim = True
-                    special[0] = 80
-                    special[1] = 80
-                    special[2] = 80
+                if self.special[0] >= 80:
+                    self.increment = False
+                    self.anim = True
+                    self.special[0] = 80
+                    self.special[1] = 80
+                    self.special[2] = 80
             else:
                 colorsARRAY = Registry.fancy_graphics
-            
-        def create_banner():
-            try:
-                global show_message, messageColor
+                
+            text_utils.text_formatter.format_text(
+                "Pycraft",
+                ("center", "top"),
+                Registry.title_font,
+                Registry.title_backup_font)
 
+            returned_text = text_utils.text_formatter.format_text(
+                "Play",
+                ("right", 200*Registry.y_scale_factor),
+                Registry.option_font,
+                Registry.option_backup_font,
+                underline=self.hover1)
+
+            self.play_width = returned_text.get_width()
+
+            returned_text = text_utils.text_formatter.format_text(
+                "Settings",
+                ("right", 250*Registry.y_scale_factor),
+                Registry.option_font,
+                Registry.option_backup_font,
+                underline=self.hover2)
+
+            self.settings_width = returned_text.get_width()
+
+            returned_text = text_utils.text_formatter.format_text(
+                "Character Designer",
+                ("right", 300*Registry.y_scale_factor),
+                Registry.option_font,
+                Registry.option_backup_font,
+                underline=self.hover3)
+
+            self.char_designer_width = returned_text.get_width()
+
+            returned_text = text_utils.text_formatter.format_text(
+                "Credits",
+                ("right", 350*Registry.y_scale_factor),
+                Registry.option_font,
+                Registry.option_backup_font,
+                underline=self.hover5)
+
+            self.credits_width = returned_text.get_width()
+
+            returned_text = text_utils.text_formatter.format_text(
+                "Achievements",
+                ("right", 400*Registry.y_scale_factor),
+                Registry.option_font,
+                Registry.option_backup_font,
+                underline=self.hover4)
+
+            self.achievements_width = returned_text.get_width()
+
+            returned_text = text_utils.text_formatter.format_text(
+                "Benchmark",
+                ("right", 450*Registry.y_scale_factor),
+                Registry.option_font,
+                Registry.option_backup_font,
+                underline=self.hover6)
+
+            self.benchmark_width = returned_text.get_width()
+            
+            if Registry.linked_to_installer:
+                returned_text = text_utils.text_formatter.format_text(
+                    "Installer",
+                    ("right", 500*Registry.y_scale_factor),
+                    Registry.option_font,
+                    Registry.option_backup_font,
+                    underline=self.hover7)
+
+                self.installer_width = returned_text.get_width()
+
+            if self.hover1:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.play_width+self.selector_width)-2,
+                        200*Registry.y_scale_factor))
+
+            elif self.hover2:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.settings_width+self.selector_width)-2,
+                        250*Registry.y_scale_factor))
+
+            elif self.hover3:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.char_designer_width+self.selector_width)-2,
+                        300*Registry.y_scale_factor))
+
+            elif self.hover5:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.credits_width+self.selector_width)-2,
+                        350*Registry.y_scale_factor))
+
+            elif self.hover4:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.achievements_width+self.selector_width)-2,
+                        400*Registry.y_scale_factor))
+
+            elif self.hover6:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.benchmark_width+self.selector_width)-2,
+                        450*Registry.y_scale_factor))
+            
+            elif self.hover7 and Registry.linked_to_installer:
+                Registry.display.blit(
+                    self.selector,
+                    (Registry.real_window_width-(self.installer_width+self.selector_width)-2,
+                        500*Registry.y_scale_factor))
+                    
+            drawing_utils.generate_graph().draw_developer_graph()
+
+            drawing_utils.draw_rose.create_rose(
+                colorsARRAY,
+                51,
+                142,
+                524*Registry.x_scale_factor,
+                524*Registry.y_scale_factor)
+
+            if Registry.go_to is None:
+                display_utils.display_animations.fade_in(
+                    size="limited")
+                    
+            else:
+                display_utils.display_animations.fade_out(
+                    size="limited")
+
+            pygame.display.update(RenderRect)
+            Registry.forced_frame = False
+            
+        def create_banner(self):
+            try:
                 timer_start = 0
                 RenderedText = False
 
@@ -127,8 +520,8 @@ if __name__ != "__main__":
                         Registry.background_color,
                         RenderRect)
 
-                    if (show_message is not None and
-                            messageColor is not None and
+                    if (self.show_message is not None and
+                            self.messageColor is not None and
                             RenderedText is False):
                         
                         timer_start = time.perf_counter()
@@ -137,15 +530,15 @@ if __name__ != "__main__":
                     if RenderedText:
                         if time.perf_counter()-timer_start < 3:
                             text_utils.text_formatter.format_text(
-                                show_message,
+                                self.show_message,
                                 ("center", "bottom"),
                                 Registry.large_content_font,
                                 Registry.large_content_backup_font,
-                                font_color=messageColor)
+                                font_color=self.messageColor)
 
                         else:
-                            show_message = None
-                            messageColor = None
+                            self.show_message = None
+                            self.messageColor = None
                             RenderedText = False
                     else:
                         if Registry.use_mouse_input is False:
@@ -189,13 +582,9 @@ if __name__ != "__main__":
 
         def home_gui(self):
             try:
-                global show_message, messageColor
-
-                show_message = None
-                messageColor = Registry.font_color
-
                 BannerThread = threading.Thread(
-                    target=generate_home.create_banner)
+                    target=generate_home.create_banner,
+                    args=(self,))
                 BannerThread.name = "[thread]: create_banner"
                 BannerThread.daemon = True
                 BannerThread.start()
@@ -203,55 +592,12 @@ if __name__ != "__main__":
                 caption_utils.generate_captions.set_caption(
                     "Home")
 
-                theme_path = Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
-
-                selector = pygame.image.load(theme_path)
-                selector.convert()
-
-                selector_width = selector.get_width()
-                hover1 = False
-                hover2 = False
-                hover3 = False
-                hover4 = False
-                hover5 = False
-                hover6 = False
-                hover7 = False
-                
                 pygame.display.flip()
-
-                oldTHEME = Registry.theme
-                colorsARRAY = []
-
-                anim = False
-
-                special = [30,
-                           30,
-                           30]
-
-                TargetARRAY = []
-
-                ColourDisplacement = 80
-
-                increment = False
 
                 Registry.currently_displaying_message = False
 
                 Registry.mouse_x = Registry.real_window_width/2
                 Registry.mouse_y = Registry.real_window_height/2
-
-                play_width = 0
-                settings_width = 0
-                char_designer_width = 0
-                credits_width = 0
-                achievements_width = 0
-                benchmark_width = 0
-                
-                if Registry.linked_to_installer:
-                    installer_width = 0
-
-                prev_joystick_connected = False
-
-                create_image_of_surface = False
 
                 while True:
                     start_time = time.perf_counter()
@@ -264,374 +610,7 @@ if __name__ != "__main__":
                     generate_home.compute(self)
                     
                     if Registry.forced_frame:
-                        generate_home.render(self, special)
-
-                    '''if str(Registry.display) == "<Surface(Dead display)>":
-                        Registry.data_average_fps = []
-                        Registry.data_CPU_usage = []
-                        Registry.data_current_fps = []
-                        Registry.data_memory_usage = []
-
-                        Registry.timer = 0
-
-                        Registry.data_average_fps_Max = 1
-                        Registry.data_CPU_usage_Max = 1
-                        Registry.data_current_fps_Max = 1
-                        Registry.data_memory_usage_Max = 1
-
-                        fullscreen_x = pyautogui.size()[0]
-                        fullscreen_y = pyautogui.size()[1]
-
-                        display_utils.display_utils.set_display(
-                                fullscreen_x,
-                                fullscreen_y)'''
-
-                    
-
-                    Registry.display.fill(Registry.background_color, RenderRect)
-
-                    display_utils.display_functionality.core_display_functions(
-                        location="saveANDexit")
-
-                    caption_utils.generate_captions.set_caption(
-                        "Home")
-
-                    if Registry.go_to is None:
-                        if (Registry.mouse_y >= 202*Registry.y_scale_factor and
-                                Registry.mouse_y <= 247*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(play_width+selector_width))-2):
-
-                            hover1 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                if Registry.show_strobe_effects is None:
-                                    Registry.show_strobe_effects = messagebox.askquestion(
-                                        "Check Permission",
-                                        "".join(("Strobe effects and bright flashes of light can ",
-                                                 "cause discomfort, (for example lightning), you can choose here ",
-                                                 "whether to enable or disable those ",
-                                                 "strobe effects in Pycraft.\n\n",
-                                                 "Click 'yes' to allow for strobe effects, or 'no' ",
-                                                 "to turn them off. You can always adjust this in ",
-                                                 "Pycraft's settings, under 'Storage and permissions'.")))
-
-                                    if Registry.show_strobe_effects == "yes":
-                                        Registry.show_strobe_effects = True
-
-                                    else:
-                                        Registry.show_strobe_effects = False
-                                        
-                                Registry.go_to = "level_selector"
-                                #Registry.startup_animation = True
-                                Registry.run_timer = 0
-                                create_image_of_surface = True
-
-                        else:
-                            hover1 = False
-
-                        if (Registry.mouse_y >= 252*Registry.y_scale_factor and
-                                Registry.mouse_y <= 297*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(settings_width+selector_width))-2):
-
-                            hover2 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                Registry.go_to = "settings"
-                                Registry.startup_animation = True
-                                Registry.run_timer = 0
-
-                        else:
-                            hover2 = False
-
-                        if (Registry.mouse_y >= 302*Registry.y_scale_factor and
-                                Registry.mouse_y <= 347*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(char_designer_width+selector_width)-2)):
-
-                            hover3 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                Registry.go_to = "character_designer"
-                                Registry.startup_animation = True
-                                Registry.run_timer = 0
-
-                        else:
-                            hover3 = False
-
-                        if (Registry.mouse_y >= 402*Registry.y_scale_factor and
-                                Registry.mouse_y <= 447*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(achievements_width+selector_width)-2)):
-
-                            hover4 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                Registry.go_to = "achievements"
-                                Registry.startup_animation = True
-                                Registry.run_timer = 0
-
-                        else:
-                            hover4 = False
-
-                        if (Registry.mouse_y >= 352*Registry.y_scale_factor and
-                                Registry.mouse_y <= 397*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(credits_width+selector_width)-2)):
-
-                            hover5 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                Registry.go_to = "credits"
-                                Registry.startup_animation = True
-                                Registry.run_timer = 0
-
-                        else:
-                            hover5 = False
-
-                        if (Registry.mouse_y >= 452*Registry.y_scale_factor and
-                                Registry.mouse_y <= 497*Registry.y_scale_factor and
-                                Registry.mouse_x >= (Registry.real_window_width-(benchmark_width+selector_width)-2)):
-
-                            hover6 = True
-
-                            if Registry.primary_mouse_button_down:
-                                if Registry.sound:
-                                    sound_utils.play_sound.play_click_sound()
-
-                                Registry.go_to = "benchmark"
-                                Registry.startup_animation = True
-                                Registry.run_timer = 0
-
-                        else:
-                            hover6 = False
-                        
-                        if Registry.linked_to_installer:
-                            if (Registry.mouse_y >= 502*Registry.y_scale_factor and
-                                    Registry.mouse_y <= 547*Registry.y_scale_factor and
-                                    Registry.mouse_x >= (Registry.real_window_width-(installer_width+selector_width)-2)):
-
-                                hover7 = True
-
-                                if Registry.primary_mouse_button_down:
-                                    if Registry.sound:
-                                        sound_utils.play_sound.play_click_sound()
-
-                                    Registry.go_to = "Installer"
-                                    Registry.startup_animation = True
-                                    Registry.run_timer = 0
-
-                            else:
-                                hover7 = False
-                            
-                    if show_message is None:
-                        if Registry.installer_new_update:
-                            Registry.installer_new_update = False
-                            show_message = f"Successfully updated Pycraft to v{Registry.version}"
-                            messageColor = (0, 255, 0)
-
-                        elif Registry.outdated and Registry.linked_to_installer:
-                            Registry.installer_updatable = False
-                            show_message = "There is an update available!"
-                            messageColor = (0, 255, 0)
-
-                        elif not prev_joystick_connected == Registry.joystick_connected:
-                            prev_joystick_connected = Registry.joystick_connected
-                            if Registry.joystick_connected:
-                                show_message = "".join(("There is a new input device available! ",
-                                                   "You can change input modes in settings"))
-
-                                messageColor = (0, 255, 0)
-
-                            else:
-                                if Registry.use_mouse_input:
-                                    show_message = "Terminated connection to an input device"
-                                    messageColor = (255, 0, 0)
-
-                                else:
-                                    show_message = "".join(("Terminated connection to current ",
-                                                       "input device, returning to ",
-                                                       "default setting"))
-
-                                    messageColor = (255, 0, 0)
-                                    Registry.use_mouse_input = True
-
-                            Registry.device_connected_update = False
-
-                    text_utils.text_formatter.format_text(
-                        "Pycraft",
-                        ("center", "top"),
-                        Registry.title_font,
-                        Registry.title_backup_font)
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Play",
-                        ("right", 200*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover1)
-
-                    play_width = returned_text.get_width()
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Settings",
-                        ("right", 250*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover2)
-
-                    settings_width = returned_text.get_width()
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Character Designer",
-                        ("right", 300*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover3)
-
-                    char_designer_width = returned_text.get_width()
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Credits",
-                        ("right", 350*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover5)
-
-                    credits_width = returned_text.get_width()
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Achievements",
-                        ("right", 400*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover4)
-
-                    achievements_width = returned_text.get_width()
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Benchmark",
-                        ("right", 450*Registry.y_scale_factor),
-                        Registry.option_font,
-                        Registry.option_backup_font,
-                        underline=hover6)
-
-                    benchmark_width = returned_text.get_width()
-                    
-                    if Registry.linked_to_installer:
-                        returned_text = text_utils.text_formatter.format_text(
-                            "Installer",
-                            ("right", 500*Registry.y_scale_factor),
-                            Registry.option_font,
-                            Registry.option_backup_font,
-                            underline=hover7)
-
-                        installer_width = returned_text.get_width()
-
-                    if hover1:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(play_width+selector_width)-2,
-                                200*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-                    elif hover2:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(settings_width+selector_width)-2,
-                                250*Registry.y_scale_factor))
-                        
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-                    elif hover3:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(char_designer_width+selector_width)-2,
-                                300*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-                    elif hover5:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(credits_width+selector_width)-2,
-                                350*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-                    elif hover4:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(achievements_width+selector_width)-2,
-                                400*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-                    elif hover6:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(benchmark_width+selector_width)-2,
-                                450*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-                    
-                    elif hover7 and Registry.linked_to_installer:
-                        Registry.display.blit(
-                            selector,
-                            (Registry.real_window_width-(installer_width+selector_width)-2,
-                                500*Registry.y_scale_factor))
-
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-                    
-                    else:
-                        if Registry.use_mouse_input:
-                            pygame.mouse.set_cursor(
-                                pygame.SYSTEM_CURSOR_ARROW)
-
-                    drawing_utils.generate_graph().draw_developer_graph()
-
-                    drawing_utils.draw_rose.create_rose(
-                        colorsARRAY,
-                        51,
-                        142,
-                        524*Registry.x_scale_factor,
-                        524*Registry.y_scale_factor)
-
-                    if Registry.go_to is None:
-                        display_utils.display_animations.fade_in(
-                            size="limited")
-                            
-                    else:
-                        display_utils.display_animations.fade_out(
-                            size="limited")
-
-                    pygame.display.update(RenderRect)
-
-                    if create_image_of_surface:
-                        if Registry.use_transparency_effects:
-                            create_image_of_surface = False
-
-                            image_utils.convert_image.surface_to_pil_image(Registry.display)
-                        
+                        generate_home.render(self)
 
                     if (Registry.startup_animation is False and
                             (Registry.go_to is not None)):
