@@ -20,7 +20,6 @@ if __name__ != "__main__":
                 width,
                 height):
 
-            Registry.forced_frame = True
             x_scale_factor = width/524
             y_scale_factor = height/524
 

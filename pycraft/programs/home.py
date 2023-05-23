@@ -4,6 +4,7 @@ if __name__ != "__main__":
         import traceback
         import threading
         import random
+        import pathlib
 
         import pygame
         import pyautogui
@@ -26,7 +27,7 @@ if __name__ != "__main__":
         quit()
             
     class generate_home(Registry):
-        def __init__(self):
+        def __init__(self) -> None:
             self.show_message = None
             self.messageColor = Registry.font_color
             self.theme_path = self.get_theme_path()
@@ -68,15 +69,15 @@ if __name__ != "__main__":
             self.anim = False
             self.TargetARRAY = []
         
-        def get_theme_path(self):
+        def get_theme_path(self) -> pathlib.Path:
             return Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
         
-        def compute(self):
+        def compute(self) -> None:
             display_utils.display_functionality.core_display_functions(
-                location="saveANDexit")
+                location="saveANDexit") # slow?
 
             caption_utils.generate_captions.set_caption(
-                "Home")
+                "Home") # slow? profile this
                     
             if not self.oldTHEME == Registry.theme:
                 self.theme_path = self.get_theme_path()
@@ -91,8 +92,9 @@ if __name__ != "__main__":
                         Registry.mouse_y <= 247*Registry.y_scale_factor and
                         Registry.mouse_x >= (Registry.real_window_width-(self.play_width+self.selector_width))-2):
 
+                    if self.hover1 is False:
+                        Registry.forced_frame = True
                     self.hover1 = True
-                    Registry.forced_frame = True
 
                     if Registry.primary_mouse_button_down:
                         if Registry.sound:
@@ -127,8 +129,9 @@ if __name__ != "__main__":
                         Registry.mouse_y <= 297*Registry.y_scale_factor and
                         Registry.mouse_x >= (Registry.real_window_width-(self.settings_width+self.selector_width))-2):
 
+                    if self.hover2 is False:
+                        Registry.forced_frame = True
                     self.hover2 = True
-                    Registry.forced_frame = True
 
                     if Registry.primary_mouse_button_down:
                         if Registry.sound:
@@ -145,8 +148,9 @@ if __name__ != "__main__":
                         Registry.mouse_y <= 347*Registry.y_scale_factor and
                         Registry.mouse_x >= (Registry.real_window_width-(self.char_designer_width+self.selector_width)-2)):
 
+                    if self.hover3 is False:
+                        Registry.forced_frame = True
                     self.hover3 = True
-                    Registry.forced_frame = True
 
                     if Registry.primary_mouse_button_down:
                         if Registry.sound:
@@ -163,8 +167,9 @@ if __name__ != "__main__":
                         Registry.mouse_y <= 447*Registry.y_scale_factor and
                         Registry.mouse_x >= (Registry.real_window_width-(self.achievements_width+self.selector_width)-2)):
 
+                    if self.hover4 is False:
+                        Registry.forced_frame = True
                     self.hover4 = True
-                    Registry.forced_frame = True
 
                     if Registry.primary_mouse_button_down:
                         if Registry.sound:
@@ -181,8 +186,9 @@ if __name__ != "__main__":
                         Registry.mouse_y <= 397*Registry.y_scale_factor and
                         Registry.mouse_x >= (Registry.real_window_width-(self.credits_width+self.selector_width)-2)):
 
+                    if self.hover5 is False:
+                        Registry.forced_frame = True
                     self.hover5 = True
-                    Registry.forced_frame = True
 
                     if Registry.primary_mouse_button_down:
                         if Registry.sound:
@@ -199,8 +205,9 @@ if __name__ != "__main__":
                         Registry.mouse_y <= 497*Registry.y_scale_factor and
                         Registry.mouse_x >= (Registry.real_window_width-(self.benchmark_width+self.selector_width)-2)):
 
+                    if self.hover6 is False:
+                        Registry.forced_frame = True
                     self.hover6 = True
-                    Registry.forced_frame = True
 
                     if Registry.primary_mouse_button_down:
                         if Registry.sound:
@@ -218,8 +225,9 @@ if __name__ != "__main__":
                             Registry.mouse_y <= 547*Registry.y_scale_factor and
                             Registry.mouse_x >= (Registry.real_window_width-(self.installer_width+self.selector_width)-2)):
 
+                        if self.hover7 is False:
+                            Registry.forced_frame = True
                         self.hover7 = True
-                        Registry.forced_frame = True
 
                         if Registry.primary_mouse_button_down:
                             if Registry.sound:
@@ -296,8 +304,9 @@ if __name__ != "__main__":
             
             else:
                 if Registry.use_mouse_input:
-                    pygame.mouse.set_cursor(
-                        pygame.SYSTEM_CURSOR_ARROW)
+                    if pygame.mouse.get_cursor() != pygame.SYSTEM_CURSOR_ARROW:
+                        pygame.mouse.set_cursor(
+                            pygame.SYSTEM_CURSOR_ARROW)
             
             if self.create_image_of_surface:
                 if Registry.use_transparency_effects:
@@ -306,7 +315,8 @@ if __name__ != "__main__":
                     image_utils.convert_image.surface_to_pil_image(Registry.display)
                         
         
-        def render(self):
+        def render(self) -> None:
+            Registry.forced_frame = False
             RenderRect = pygame.Rect(
                 0,
                 0,
@@ -315,7 +325,10 @@ if __name__ != "__main__":
             
             Registry.display.fill(Registry.background_color, RenderRect)
             
-            if Registry.fancy_graphics:
+            if (Registry.fancy_graphics and
+                    Registry.aa is False):
+                
+                Registry.forced_frame = True
                 colorsARRAY = []
                 if self.anim:
                     self.anim = False
@@ -370,7 +383,7 @@ if __name__ != "__main__":
                     self.special[1] = 80
                     self.special[2] = 80
             else:
-                colorsARRAY = Registry.fancy_graphics
+                colorsARRAY = False
                 
             text_utils.text_formatter.format_text(
                 "Pycraft",
@@ -502,7 +515,6 @@ if __name__ != "__main__":
                     size="limited")
 
             pygame.display.update(RenderRect)
-            Registry.forced_frame = False
             
         def create_banner(self):
             try:
@@ -598,7 +610,6 @@ if __name__ != "__main__":
 
                 Registry.mouse_x = Registry.real_window_width/2
                 Registry.mouse_y = Registry.real_window_height/2
-
                 while True:
                     start_time = time.perf_counter()
                     
@@ -606,7 +617,7 @@ if __name__ != "__main__":
                         error_utils.generate_error_screen.error_screen(
                             Registry.error_message,
                             Registry.error_message_detailed)
-                        
+                    
                     generate_home.compute(self)
                     
                     if Registry.forced_frame:
