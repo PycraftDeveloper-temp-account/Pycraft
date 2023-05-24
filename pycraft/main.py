@@ -57,6 +57,7 @@ if __name__ == "__main__":
                 "Startup Error",
                 error_message)
             quit()
+            
         else:
             counter = 0
             for proc in psutil.process_iter(["pid", "name", "username"]):

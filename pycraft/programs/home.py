@@ -80,6 +80,7 @@ if __name__ != "__main__":
                 location="saveANDexit")
 
             caption_utils.generate_captions.set_caption(
+                "Home")
                     
             if not self.oldTHEME == Registry.theme:
                 self.theme_path = self.get_theme_path()
