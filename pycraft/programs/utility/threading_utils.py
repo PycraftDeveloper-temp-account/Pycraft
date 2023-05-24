@@ -7,6 +7,7 @@ if __name__ != "__main__":
         import GPUtil
 
         from registry_utils import Registry
+        import metrics_utils
         import logging_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
@@ -20,6 +21,7 @@ if __name__ != "__main__":
         def general_threading_utility():
             try:
                 while True:
+                    metrics_utils.Metrics().get_memory_metrics()
                     if (Registry.fps < 15 or
                             Registry.fps > 500):
                         
@@ -43,7 +45,7 @@ if __name__ != "__main__":
                     else:
                         if Registry.average_fps == float("inf"):
                             Registry.average_fps = 1
-                            
+                    time.sleep(1/30)
             except Exception as message:
                 Registry.error_message = "".join(("ThreadingUtils > ThreadingUtils ",
                                              f"> general_threading_utility: {str(message)}"))

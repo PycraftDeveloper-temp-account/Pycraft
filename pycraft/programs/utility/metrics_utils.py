@@ -16,6 +16,14 @@ if __name__ != "__main__":
         def __init__(self):
             pass
         
+        def get_memory_metrics(self):
+            memory_usage = psutil.Process(pid=Registry.process_id).memory_full_info().uss
+            if len(Registry.memory_usage) < 2:
+                Registry.memory_usage.append(memory_usage)
+            else:
+                if memory_usage != Registry.memory_usage[-1]:
+                    Registry.memory_usage.append(memory_usage)
+        
         def get_metrics(self):
             if len(Registry.fps_history) > Registry.fps*3:
                 del Registry.fps_history[0]
@@ -32,13 +40,6 @@ if __name__ != "__main__":
                     Registry.fps_history.append(fps)
                 
             Registry.average_fps = sum(Registry.fps_history)/len(Registry.fps_history)
-            
-            memory_usage = psutil.Process(pid=Registry.process_id).memory_full_info().uss
-            if len(Registry.memory_usage) < 2:
-                Registry.memory_usage.append(memory_usage)
-            else:
-                if memory_usage != Registry.memory_usage[-1]:
-                    Registry.memory_usage.append(memory_usage)
                 
             process = psutil.Process(pid=Registry.process_id)
             cpu_times = process.cpu_times()

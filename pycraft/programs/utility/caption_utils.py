@@ -32,6 +32,7 @@ if __name__ != "__main__":
                 
         def set_caption(
                 location="Playing"):
+            
             if Registry.detailed_captions:
                 hours = int((Registry.play_time/60)/60)
                 minutes = int(Registry.play_time/60)
@@ -70,8 +71,10 @@ if __name__ != "__main__":
                 pygame.display.set_caption(caption)
             
             else:
-                pygame.display.set_caption(
-                    f"Pycraft: v{Registry.version}: {location}")
+                caption = f"Pycraft: v{Registry.version}: {location}"
+                if pygame.display.get_caption() != caption:
+                    pygame.display.set_caption(
+                        caption)
 
 else:
     print("You need to run this as part of Pycraft")

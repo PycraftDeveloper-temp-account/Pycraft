@@ -68,16 +68,18 @@ if __name__ != "__main__":
             
             self.anim = False
             self.TargetARRAY = []
+            
+            self.banner_RenderedText = False
+            self.banner_timer_start = 0
         
         def get_theme_path(self) -> pathlib.Path:
             return Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
         
         def compute(self) -> None:
             display_utils.display_functionality.core_display_functions(
-                location="saveANDexit") # slow?
+                location="saveANDexit")
 
             caption_utils.generate_captions.set_caption(
-                "Home") # slow? profile this
                     
             if not self.oldTHEME == Registry.theme:
                 self.theme_path = self.get_theme_path()
@@ -245,14 +247,18 @@ if __name__ != "__main__":
                     Registry.installer_new_update = False
                     self.show_message = f"Successfully updated Pycraft to v{Registry.version}"
                     self.messageColor = (0, 255, 0)
+                    Registry.forced_frame = True
 
                 elif Registry.outdated and Registry.linked_to_installer:
                     Registry.installer_updatable = False
                     self.show_message = "There is an update available!"
                     self.messageColor = (0, 255, 0)
+                    Registry.forced_frame = True
 
                 elif not self.prev_joystick_connected == Registry.joystick_connected:
                     self.prev_joystick_connected = Registry.joystick_connected
+                    Registry.forced_frame = True
+                    Registry.device_connected_update = False
                     if Registry.joystick_connected:
                         self.show_message = "".join(("There is a new input device available! ",
                                             "You can change input modes in settings"))
@@ -271,8 +277,6 @@ if __name__ != "__main__":
 
                             self.messageColor = (255, 0, 0)
                             Registry.use_mouse_input = True
-
-                    Registry.device_connected_update = False
                     
             if self.hover1:
                 if Registry.use_mouse_input:
@@ -515,67 +519,71 @@ if __name__ != "__main__":
                     size="limited")
 
             pygame.display.update(RenderRect)
+        
+        def render_banner(self):
+            RenderRect = pygame.Rect(
+                0,
+                Registry.real_window_height-40,
+                Registry.real_window_width,
+                Registry.real_window_height)
+
+            Registry.display.fill(
+                Registry.background_color,
+                RenderRect)
             
+            if (self.show_message is not None and
+                    self.messageColor is not None and
+                    self.banner_RenderedText is False):
+                
+                self.banner_timer_start = time.perf_counter()
+                self.banner_RenderedText = True
+                
+            if self.banner_RenderedText:
+                if time.perf_counter()-self.banner_timer_start < 3:
+                    text_utils.text_formatter.format_text(
+                        self.show_message,
+                        ("center", "bottom"),
+                        Registry.large_content_font,
+                        Registry.large_content_backup_font,
+                        font_color=self.messageColor)
+
+            else:
+                if Registry.use_mouse_input is False:
+                    messageText = "".join(("On the controller; use the D-pad to navigate the menu, ",
+                                    "press 'B' to confirm or press 'Y' to exit"))
+
+                    text_utils.text_formatter.format_text(
+                        messageText,
+                        ("center", "bottom"),
+                        Registry.large_content_font,
+                        Registry.large_content_backup_font)
+
+            text_utils.text_formatter.format_text(
+                "By PycraftDev",
+                ("left", "bottom"),
+                Registry.large_content_font,
+                Registry.large_content_backup_font)
+
+            text_utils.text_formatter.format_text(
+                f"Version: {Registry.version}",
+                ("right", "bottom"),
+                Registry.large_content_font,
+                Registry.large_content_backup_font)
+
+            pygame.display.update(RenderRect)
+                    
         def create_banner(self):
             try:
-                timer_start = 0
-                RenderedText = False
-
                 while Registry.command == "Undefined":
-                    RenderRect = pygame.Rect(
-                        0,
-                        Registry.real_window_height-40,
-                        Registry.real_window_width,
-                        Registry.real_window_height)
-
-                    Registry.display.fill(
-                        Registry.background_color,
-                        RenderRect)
-
-                    if (self.show_message is not None and
-                            self.messageColor is not None and
-                            RenderedText is False):
-                        
-                        timer_start = time.perf_counter()
-                        RenderedText = True
-
-                    if RenderedText:
-                        if time.perf_counter()-timer_start < 3:
-                            text_utils.text_formatter.format_text(
-                                self.show_message,
-                                ("center", "bottom"),
-                                Registry.large_content_font,
-                                Registry.large_content_backup_font,
-                                font_color=self.messageColor)
-
-                        else:
+                    if self.banner_RenderedText:
+                        if time.perf_counter()-self.banner_timer_start > 3:
+                            Registry.forced_frame = True
                             self.show_message = None
                             self.messageColor = None
-                            RenderedText = False
-                    else:
-                        if Registry.use_mouse_input is False:
-                            messageText = "".join(("On the controller; use the D-pad to navigate the menu, ",
-                                         "press 'B' to confirm or press 'Y' to exit"))
-
-                            text_utils.text_formatter.format_text(
-                                messageText,
-                                ("center", "bottom"),
-                                Registry.large_content_font,
-                                Registry.large_content_backup_font)
-
-                    text_utils.text_formatter.format_text(
-                        "By PycraftDev",
-                        ("left", "bottom"),
-                        Registry.large_content_font,
-                        Registry.large_content_backup_font)
-
-                    text_utils.text_formatter.format_text(
-                        f"Version: {Registry.version}",
-                        ("right", "bottom"),
-                        Registry.large_content_font,
-                        Registry.large_content_backup_font)
-
-                    pygame.display.update(RenderRect)
+                            self.banner_RenderedText = False
+                            
+                    if Registry.forced_frame:
+                        generate_home.render_banner(self)
 
                     target_fps = display_utils.display_utils.get_play_status()
 
