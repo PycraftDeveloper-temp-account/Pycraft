@@ -252,7 +252,12 @@ class Initialize:
                     continue
 
                 elif Registry.command == "settings":
-                    settings.generate_settings.settings_gui()
+                    from line_profiler import LineProfiler
+                    #settings.generate_settings.settings_gui()
+                    lp = LineProfiler()
+                    lp_wrapper = lp(settings.generate_settings.settings_gui)
+                    lp_wrapper()
+                    lp.print_stats()
                     Registry.command = "Undefined"
                     continue
 
@@ -414,18 +419,6 @@ class Initialize:
                         error_utils.generate_error_screen.error_screen(
                             error_message,
                             error_message_detailed)
-
-            Registry.data_average_fps = []
-            Registry.data_CPU_usage = []
-            Registry.data_current_fps = []
-            Registry.data_memory_usage = []
-
-            Registry.timer = 0
-
-            Registry.data_average_fps_Max = 1
-            Registry.data_CPU_usage_Max = 1
-            Registry.data_current_fps_Max = 1
-            Registry.data_memory_usage_Max = 1
             
             Initialize.destroy_splash_screen()
                 

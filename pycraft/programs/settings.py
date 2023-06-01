@@ -217,7 +217,7 @@ if __name__ != "__main__":
 
                         button_blit_y = (button_y_position * Registry.y_scale_factor) + button_offset
 
-                        returned_text = text_utils.text_formatter.format_text(
+                        returned_text = text_utils.text_formatter.format_text( #slow
                             key,
                             ("right", button_blit_y),
                             Registry.option_font,
@@ -600,7 +600,7 @@ if __name__ != "__main__":
                                             hovering,
                                             mouse_over,
                                             dropdown_hovering,
-                                            dropdown_scroll) = dropdown_utils.draw_setting_elements.draw_dropdown(
+                                            dropdown_scroll) = dropdown_utils.draw_setting_elements.draw_dropdown( # slow
                                             dropdown_scroll,
                                             button_pos,
                                             Registry.small_content_font,

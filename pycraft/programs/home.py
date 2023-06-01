@@ -71,6 +71,8 @@ if __name__ != "__main__":
             
             self.banner_RenderedText = False
             self.banner_timer_start = 0
+            
+            self.message_start_time = None
         
         def get_theme_path(self) -> pathlib.Path:
             return Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
@@ -81,6 +83,14 @@ if __name__ != "__main__":
 
             caption_utils.generate_captions.set_caption(
                 "Home")
+            
+            if self.message_start_time is not None:
+                if time.perf_counter()-self.message_start_time > 3:
+                    Registry.forced_frame = True
+                    self.show_message = None
+                    self.messageColor = None
+                    self.banner_RenderedText = False
+                    self.message_start_time = None
                     
             if not self.oldTHEME == Registry.theme:
                 self.theme_path = self.get_theme_path()
@@ -248,17 +258,20 @@ if __name__ != "__main__":
                     Registry.installer_new_update = False
                     self.show_message = f"Successfully updated Pycraft to v{Registry.version}"
                     self.messageColor = (0, 255, 0)
+                    self.message_start_time = time.perf_counter()
                     Registry.forced_frame = True
 
                 elif Registry.outdated and Registry.linked_to_installer:
                     Registry.installer_updatable = False
                     self.show_message = "There is an update available!"
                     self.messageColor = (0, 255, 0)
+                    self.message_start_time = time.perf_counter()
                     Registry.forced_frame = True
 
                 elif not self.prev_joystick_connected == Registry.joystick_connected:
                     self.prev_joystick_connected = Registry.joystick_connected
                     Registry.forced_frame = True
+                    self.message_start_time = time.perf_counter()
                     Registry.device_connected_update = False
                     if Registry.joystick_connected:
                         self.show_message = "".join(("There is a new input device available! ",
@@ -322,13 +335,8 @@ if __name__ != "__main__":
         
         def render(self) -> None:
             Registry.forced_frame = False
-            RenderRect = pygame.Rect(
-                0,
-                0,
-                Registry.real_window_width,
-                Registry.real_window_height-40)
             
-            Registry.display.fill(Registry.background_color, RenderRect)
+            Registry.display.fill(Registry.background_color)
             
             if (Registry.fancy_graphics and
                     Registry.aa is False):
@@ -501,46 +509,9 @@ if __name__ != "__main__":
                     self.selector,
                     (Registry.real_window_width-(self.installer_width+self.selector_width)-2,
                         500*Registry.y_scale_factor))
-                    
-            drawing_utils.generate_graph().draw_developer_graph()
-
-            drawing_utils.draw_rose.create_rose(
-                colorsARRAY,
-                51,
-                142,
-                524*Registry.x_scale_factor,
-                524*Registry.y_scale_factor)
-
-            if Registry.go_to is None:
-                display_utils.display_animations.fade_in(
-                    size="limited")
-                    
-            else:
-                display_utils.display_animations.fade_out(
-                    size="limited")
-
-            pygame.display.update(RenderRect)
-        
-        def render_banner(self):
-            RenderRect = pygame.Rect(
-                0,
-                Registry.real_window_height-40,
-                Registry.real_window_width,
-                Registry.real_window_height)
-
-            Registry.display.fill(
-                Registry.background_color,
-                RenderRect)
-            
-            if (self.show_message is not None and
-                    self.messageColor is not None and
-                    self.banner_RenderedText is False):
                 
-                self.banner_timer_start = time.perf_counter()
-                self.banner_RenderedText = True
-                
-            if self.banner_RenderedText:
-                if time.perf_counter()-self.banner_timer_start < 3:
+            if self.message_start_time is not None:
+                if time.perf_counter()-self.message_start_time < 3:
                     text_utils.text_formatter.format_text(
                         self.show_message,
                         ("center", "bottom"),
@@ -570,46 +541,28 @@ if __name__ != "__main__":
                 ("right", "bottom"),
                 Registry.large_content_font,
                 Registry.large_content_backup_font)
-
-            pygame.display.update(RenderRect)
                     
-        def create_banner(self):
-            try:
-                while Registry.command == "Undefined":
-                    if self.banner_RenderedText:
-                        if time.perf_counter()-self.banner_timer_start > 3:
-                            Registry.forced_frame = True
-                            self.show_message = None
-                            self.messageColor = None
-                            self.banner_RenderedText = False
-                            
-                    if Registry.forced_frame:
-                        generate_home.render_banner(self)
+            drawing_utils.generate_graph().draw_developer_graph()
 
-                    target_fps = display_utils.display_utils.get_play_status()
+            drawing_utils.draw_rose.create_rose(
+                colorsARRAY,
+                51,
+                142,
+                524*Registry.x_scale_factor,
+                524*Registry.y_scale_factor)
 
-                    Registry.clock.tick(target_fps/2)
+            if Registry.go_to is None:
+                display_utils.display_animations.fade_in(
+                    size="limited")
                     
-            except Exception as message:
-                if str(message) != "display Surface quit":
-                    Registry.error_message = "".join(("homeScreen > generate_home > ",
-                                                 f"create_banner (thread): {str(message)}"))
+            else:
+                display_utils.display_animations.fade_out(
+                    size="limited")
 
-                    Registry.error_message_detailed = "".join(
-                        traceback.format_exception(
-                            None,
-                            message,
-                            message.__traceback__))
+            pygame.display.flip()
 
         def home_gui(self):
             try:
-                BannerThread = threading.Thread(
-                    target=generate_home.create_banner,
-                    args=(self,))
-                BannerThread.name = "[thread]: create_banner"
-                BannerThread.daemon = True
-                BannerThread.start()
-
                 caption_utils.generate_captions.set_caption(
                     "Home")
 
@@ -639,7 +592,7 @@ if __name__ != "__main__":
                         
                     target_fps = display_utils.display_utils.get_play_status()
 
-                    Registry.clock.tick(target_fps/2)
+                    Registry.clock.tick(target_fps)
                     Registry.run_timer += time.perf_counter()-start_time
 
                     if Registry.error_message is not None:

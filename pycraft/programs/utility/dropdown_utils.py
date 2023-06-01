@@ -149,7 +149,7 @@ if __name__ != "__main__":
                         if (argument_variable == "language" and
                                 list(content.keys())[list(content.values()).index(text_array[item])] != Registry.__dict__[argument_variable]):
 
-                            translated_text = {}
+                            Registry.translated_text = {}
                             
                         pygame.mouse.set_pos(
                             scroll_x_offset+max_width+10,
