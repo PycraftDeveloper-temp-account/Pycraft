@@ -190,20 +190,20 @@ if __name__ != "__main__":
         font_color = (255, 255, 255)
         forced_frame = True
         FOV = 90
-        format_text_chars = {
-            "$r": (255, 0, 0), # red
-            "$g": (0, 255, 0), # green
-            "$b": (0, 0, 255), # blue
-            "$y": (255, 255, 0), # yellow
-            "$t": (0, 255, 255), # turquoise
-            "$p": (255, 0, 255), # purple
-            "$u": "<underline>", # underlines font
-            "$c": "<bold>", # makes the font bold
-            "$i": "<italics>", # makes the font to italics
-            "$s": "<shape_color>", # sets the color to the (themed) shape color
-            "$a": "<accent_color>", # sets the color to the (themed) accent color
-            "$v": "<secondary_font_color>", # sets the color to the (themed) secondary font color
-            "$/": "<fake_space>" # acts like the space character, but isn't displayed
+        format_text_chars = { # preceded by '$'. Must be surrounded by brackets.
+            "r": (255, 0, 0), # red
+            "g": (0, 255, 0), # green
+            "b": (0, 0, 255), # blue
+            "y": (255, 255, 0), # yellow
+            "t": (0, 255, 255), # turquoise
+            "p": (255, 0, 255), # purple
+            "u": "<underline>", # underlines font
+            "c": "<bold>", # makes the font bold
+            "i": "<italics>", # makes the font to italics
+            "s": "<shape_color>", # sets the color to the (themed) shape color
+            "a": "<accent_color>", # sets the color to the (themed) accent color
+            "v": "<secondary_font_color>", # sets the color to the (themed) secondary font color
+            "/": "<fake_space>" # acts like the space character, but isn't displayed
         }
 
         fps = 60

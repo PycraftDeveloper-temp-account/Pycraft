@@ -153,6 +153,17 @@ if __name__ != "__main__":
                         Registry.background_color,
                         cover_Rect)
 
+                    '''###
+                    from line_profiler import LineProfiler
+                    lp = LineProfiler()
+                    lp_wrapper = lp(text_utils.text_formatter.format_text)
+                    lp_wrapper("Pycraft",
+                        ("center", "top"),
+                        Registry.title_font,
+                        Registry.title_backup_font)
+                    lp.print_stats()
+                    ###'''
+                    
                     returned_text = text_utils.text_formatter.format_text(
                         "Pycraft",
                         ("center", "top"),

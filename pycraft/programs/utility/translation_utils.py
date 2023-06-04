@@ -4,6 +4,7 @@ if __name__ != "__main__":
         import pathlib
 
         import googletrans
+        import pygame
         
         from registry_utils import Registry
         
@@ -63,7 +64,9 @@ if __name__ != "__main__":
         def change_language(
                 self,
                 string: str) -> str:
+            
             if Registry.language != "en" and len(str(string).strip()) > 0:
+                pygame.event.pump()
                 found = False
                 try:
                     for key in Registry.translated_text:

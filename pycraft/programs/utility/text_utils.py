@@ -34,6 +34,31 @@ if __name__ != "__main__":
             root.update_idletasks()
 
     class text_formatter(Registry):
+        def special_character_removal(self, string):
+            if not "$" in string:
+                return string
+            
+            string_list = list(string)
+
+            while "$" in string_list:
+                for string_index in range(len(string_list)):
+                    if string_list[string_index] == "$":
+                        break
+                string_list[string_index] = ""
+                if string_list[string_index+1] == "(":
+                    for character_index in range(string_index, len(string_list)):
+                        if string_list[character_index] == ")":
+                            string_list[character_index] = ""
+                            break
+                        
+                        string_list[character_index] = ""
+
+            string = ""
+            for element in string_list:
+                string += element
+                
+            return string
+        
         def format_text(
                 string,
                 position,
@@ -48,18 +73,15 @@ if __name__ != "__main__":
             if font_color is None:
                 font_color = Registry.font_color
             
-            pygame.event.pump()
-            
             font.set_underline(underline)
             font.set_bold(bold)
             font.set_italic(italics)
             
             position = [*position]
 
-            broken_string = string.split(" ")
             color = font_color
 
-            broken_string = re.split('(\W)', string)
+            broken_string = text_formatter().special_character_removal(string)
 
             if (Registry.language == "ar" or
                     Registry.language == "hy" or
@@ -140,6 +162,12 @@ if __name__ != "__main__":
                 text = font.render(translated_string, Registry.aa, color)
                 height = text.get_height()
                 position[1] = (pygame.display.get_window_size()[1] - height)/2
+            
+            else:
+                if position[1]+font.get_height() < 0:
+                    if position[1] > Registry.real_window_height-font.get_height():
+                        returned_text = font.render(translated_string, Registry.aa, color)
+                        return returned_text
 
             returned_text = font.render(translated_string, Registry.aa, color)
 
