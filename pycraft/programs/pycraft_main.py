@@ -252,7 +252,13 @@ class Initialize:
                     continue
 
                 elif Registry.command == "settings":
-                    settings.generate_settings.settings_gui()
+                    from line_profiler import LineProfiler
+                    lp = LineProfiler()
+                    lp_wrapper = lp(settings.generate_settings.settings_gui)
+                    lp_wrapper()
+                    lp.print_stats()
+                    
+                    #settings.generate_settings.settings_gui()
                     Registry.command = "Undefined"
                     continue
 
