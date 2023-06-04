@@ -2,13 +2,10 @@ if __name__ != "__main__":
     try:
         import random
         import tkinter
-        import re
 
         import pygame
 
         from registry_utils import Registry
-        
-        import translation_utils
     except ModuleNotFoundError as message:
         from tkinter import messagebox
         error_message = f"{message} in text_utils"
