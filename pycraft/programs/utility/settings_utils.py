@@ -411,16 +411,16 @@ if __name__ != "__main__":
                             argument = not Registry.__dict__[item[entry]]
                         else:
                             argument = Registry.__dict__[item[entry]]
-                        data.append(argument)
+                        #data.append(argument)
                             
-                        if "float" in str(type(argument)):
+                        if type(argument) == float:
                             data.append(int(argument))
 
                         if item[3] == "dont_use_set_resolution":
                             inverted_value = argument
                             data.append(not inverted_value)
                             
-                        if argument is True:
+                        if argument:
                             data.append("Enabled")
                             
                         if argument is False:
@@ -477,7 +477,7 @@ if __name__ != "__main__":
                 font_color = Registry.font_color
                 if item[3] == "language":
                     language = data[0]
-                    data = Registry.language_list[language].capitalize()
+                    data = Registry.language_list[language].capitalize() # Problems...
                     text_to_render = str(item[0]).format(data)
                     
                 else:

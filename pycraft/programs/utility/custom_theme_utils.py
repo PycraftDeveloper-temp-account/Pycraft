@@ -74,12 +74,11 @@ if __name__ != "__main__":
                 if custom_theme_choice == list(Registry.custom_theme)[i]:
                     index = 0
                     string = str(Registry.custom_theme[list(Registry.custom_theme)[i]])[1:-1]
-                    for event in Registry.display_events:
+                    for event in display_events:
                         if event.type == pygame.KEYDOWN:
                             if event.key == pygame.K_BACKSPACE:
                                 if len(string) == 0:
-                                    theme_utils.determine_theme_colors.get_colors(
-                                        "custom")
+                                    theme_utils.determine_theme_colors.get_colors()
 
                                     default_custom_theme = {
                                         "font_color": Registry.font_color,

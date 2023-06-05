@@ -139,19 +139,20 @@ if __name__ != "__main__":
 
         folder_size = 0
 
-        colors = [(224, 175, 160),
-                            (181, 68, 110),
-                            (144, 227, 154),
-                            (125, 131, 255),
-                            (43, 65, 98),
-                            (175, 66, 174),
-                            (77, 157, 224),
-                            (0, 212, 140),
-                            (6, 141, 157),
-                            (109, 157, 197),
-                            (232, 141, 103),
-                            (97, 61, 193),
-                            (155, 197, 61)]
+        colors = [
+            (224, 175, 160),
+            (181, 68, 110),
+            (144, 227, 154),
+            (125, 131, 255),
+            (43, 65, 98),
+            (175, 66, 174),
+            (77, 157, 224),
+            (0, 212, 140),
+            (6, 141, 157),
+            (109, 157, 197),
+            (232, 141, 103),
+            (97, 61, 193),
+            (155, 197, 61)]
             
         chosen_colors = []
 
@@ -161,15 +162,16 @@ if __name__ != "__main__":
             chosen_colors.append(temporary_colors[index])
             del temporary_colors[index]
             
-        file_structure = {"Source code": {"size": 0, "color": chosen_colors[0]},
-                                    "Data files": {"size": 0, "color": chosen_colors[1]},
-                                    "Audio": {"size": 0, "color": chosen_colors[2]},
-                                    "Video": {"size": 0, "color": chosen_colors[3]},
-                                    "Images": {"size": 0, "color": chosen_colors[4]},
-                                    "3D objects": {"size": 0, "color": chosen_colors[5]},
-                                    "Temporary": {"size": 0, "color": chosen_colors[6]},
-                                    "Fonts": {"size": 0, "color": chosen_colors[7]},
-                                    "Misc": {"size": 0, "color": chosen_colors[8]}}
+        file_structure = {
+            "Source code": {"size": 0, "color": chosen_colors[0]},
+            "Data files": {"size": 0, "color": chosen_colors[1]},
+            "Audio": {"size": 0, "color": chosen_colors[2]},
+            "Video": {"size": 0, "color": chosen_colors[3]},
+            "Images": {"size": 0, "color": chosen_colors[4]},
+            "3D objects": {"size": 0, "color": chosen_colors[5]},
+            "Temporary": {"size": 0, "color": chosen_colors[6]},
+            "Fonts": {"size": 0, "color": chosen_colors[7]},
+            "Misc": {"size": 0, "color": chosen_colors[8]}}
 
         files_to_trash = [
                 pathlib.Path("resources//benchmark resources//Crate.obj.bin"),
@@ -215,10 +217,12 @@ if __name__ != "__main__":
         fullscreen_x = pyautogui.size()[0]
         fullscreen_y = pyautogui.size()[1]
         
-        game_engine_control = [[False, False],
-                                    [False, False],
-                                    [False, False],
-                                    [False, False]]
+        game_engine_control = [
+            [False, False],
+            [False, False],
+            [False, False],
+            [False, False]]
+        
         process_id = os.getpid()
         go_to = None
         icon_path = base_folder / "resources" / "general resources" / "Icon.png"
@@ -267,8 +271,6 @@ if __name__ != "__main__":
         reset_pycraft = False
         resolution = "(1280, 720)"
         resolutions_list = {
-            "(1024, 576)": "(16:9) 1024 x 576",
-            "(1152, 648)": "(16:9) 1152 x 648",
             "(1280, 720)": "(16:9) 1280 x 720 (HD)",
             "(1366, 768)": "(16:9) 1366 x 768",
             "(1600, 900)": "(16:9) 1600 x 900",

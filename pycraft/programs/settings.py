@@ -76,48 +76,8 @@ if __name__ != "__main__":
 
                     Registry.display.fill(Registry.background_color)
 
-                    cover_Rect = pygame.Rect(
-                        0,
-                        0,
-                        Registry.real_window_width,
-                        90)
-
-                    pygame.draw.rect(
-                        Registry.display,
-                        Registry.background_color,
-                        cover_Rect)
-                    
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Pycraft",
-                        ("center", "top"),
-                        Registry.title_font,
-                        Registry.title_backup_font)
-
-                    settings_utils.settings_variables.title_width = returned_text.get_width()
-
-                    returned_text = text_utils.text_formatter.format_text(
-                        "Settings",
-                        (((Registry.real_window_width-settings_utils.settings_variables.title_width)/2)+55, 50),
-                        Registry.subtitle_font,
-                        Registry.subtitle_backup_font,
-                        font_color=Registry.secondary_font_color)
-
                     if settings_utils.settings_variables.initial_theme != Registry.theme:
                         settings_utils.settings_variables.initial_theme = Registry.theme
-                        returned_text = text_utils.text_formatter.format_text(
-                            "Pycraft",
-                            ("center", "top"),
-                            Registry.title_font,
-                            Registry.title_backup_font)
-
-                        settings_utils.settings_variables.title_width = returned_text.get_width()
-
-                        returned_text = text_utils.text_formatter.format_text(
-                            "Settings",
-                            (((Registry.real_window_width-settings_utils.settings_variables.title_width)/2)+55, 50),
-                            Registry.subtitle_font,
-                            Registry.subtitle_backup_font,
-                            font_color=Registry.secondary_font_color)
 
                         selector_path = Registry.base_folder / "resources" / "general resources" / f"selectorICON{Registry.theme}.png"
                 
@@ -279,6 +239,32 @@ if __name__ != "__main__":
                     button_y_position *= Registry.y_scale_factor
 
                     settings_utils.settings_variables.button_offset = (Registry.real_window_height - button_y_position) / 2
+                    
+                    cover_Rect = pygame.Rect(
+                        0,
+                        0,
+                        Registry.real_window_width,
+                        100)
+
+                    pygame.draw.rect(
+                        Registry.display,
+                        Registry.background_color,
+                        cover_Rect)
+                    
+                    returned_text = text_utils.text_formatter.format_text(
+                        "Pycraft",
+                        ("center", "top"),
+                        Registry.title_font,
+                        Registry.title_backup_font)
+
+                    settings_utils.settings_variables.title_width = returned_text.get_width()
+
+                    returned_text = text_utils.text_formatter.format_text(
+                        "Settings",
+                        (((Registry.real_window_width-settings_utils.settings_variables.title_width)/2)+55, 50),
+                        Registry.subtitle_font,
+                        Registry.subtitle_backup_font,
+                        font_color=Registry.secondary_font_color)
 
                     drawing_utils.generate_graph().draw_developer_graph()
 
