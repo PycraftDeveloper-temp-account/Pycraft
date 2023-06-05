@@ -31,9 +31,16 @@ if __name__ != "__main__":
             root.update_idletasks()
 
     class text_formatter(Registry):
-        def special_character_removal(self, string):
+        def special_character_removal(
+                self,
+                string:str) -> str:
+            
+            if string is None:
+                return ""
+            
             if not "$" in string:
                 return string
+            print("Special character detected! Currently not implemented")
             
             string_list = list(string)
 
@@ -41,6 +48,7 @@ if __name__ != "__main__":
                 for string_index in range(len(string_list)):
                     if string_list[string_index] == "$":
                         break
+                    
                 string_list[string_index] = ""
                 if string_list[string_index+1] == "(":
                     for character_index in range(string_index, len(string_list)):
@@ -104,32 +112,8 @@ if __name__ != "__main__":
                     Registry.language == "ur"):
                 font = backup_font
 
-            cleaned_string = ""
-            for word in range(len(broken_string)):
-                pos = 0
-                for letter in range(len(broken_string[word])):
-                    try:
-                        if broken_string[word][pos] == "$":
-                            if broken_string[word][pos+1] == "(":
-                                while not broken_string[word][pos] == ")":
-                                    print("Special character detected! Currently not implemented", broken_string[word][pos])
-                                    pos += 1
-                            else:
-                                pos += 1
-                            if broken_string[word][pos+1] == "*":
-                                pos += 1
-                            print("Special character detected! Currently not implemented")
-                        else:
-                            cleaned_string += broken_string[word][pos]
-
-                        pos += 1
-                    except:
-                        break
-
-                cleaned_string += ""
-
             translated_string = Registry.text_translator.change_language(
-                cleaned_string)
+                broken_string)
 
             if str(position[0]).lower() == "left":
                 position[0] = 0
@@ -220,7 +204,8 @@ if __name__ != "__main__":
                             "Multi-Dimensional! (Oooh)",
                             "Easter Egg?",
                             "What's this for?",
-                            "False by default!"]
+                            "False by default!",
+                            "Configlicious"]
 
             locat = random.randint(0, (len(LoadingText)-1))
             text = LoadingText[locat]
