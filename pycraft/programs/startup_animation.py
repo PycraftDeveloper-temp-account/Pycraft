@@ -3,11 +3,11 @@ if __name__ != "_main_":
         import traceback
         import threading
         import time
-        
+
         import pygame
-        
+
         from registry_utils import Registry
-        
+
         import theme_utils
         import display_utils
         import error_utils
@@ -19,14 +19,14 @@ if __name__ != "_main_":
             "Startup Error",
             error_message)
         quit()
-            
+
     class generate_startup_gui(Registry):
         def startup_gui():
             try:
                 if Registry.theme is False:
                     Registry.theme = "dark"
                     update_theme_later = True
-                    
+
                 else:
                     update_theme_later = False
 
@@ -36,7 +36,7 @@ if __name__ != "_main_":
                     Registry.theme = False
 
                 font_path = Registry.base_folder / "fonts" / "Book Antiqua.ttf"
-                
+
                 NameFont = pygame.font.Font(
                     font_path,
                     45)
@@ -52,7 +52,7 @@ if __name__ != "_main_":
                 Registry.real_window_height = pygame.display.get_window_size()[1]
 
                 Registry.display.fill(Registry.background_color)
-                
+
                 pygame.display.flip()
                 pygame.display.set_caption(f"Pycraft: v{Registry.version}: Welcome")
 
@@ -79,7 +79,7 @@ if __name__ != "_main_":
 
                 Registry.clock = pygame.time.Clock()
 
-                InterpolateSpeed = 0.02
+                InterpolateSpeed = 1
 
                 timer = 2
 
@@ -89,7 +89,7 @@ if __name__ != "_main_":
                         resize=False)
 
                     Registry.display.fill(Registry.background_color)
-                    
+
                     timer -= 0.01
 
                     Registry.display.blit(
@@ -126,9 +126,9 @@ if __name__ != "_main_":
                     if "Thread_ResourceCheck" not in str(threading.enumerate()):
                         if not (Registry.error_message is None or
                                     Registry.error_message_detailed is None):
-                            
+
                             error_utils.generate_error_screen.error_screen()
-                            
+
                         PycraftstartPos = pygame.math.Vector2.lerp(
                             PycraftstartPos,
                             PycraftEndPos,
