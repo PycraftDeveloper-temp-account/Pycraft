@@ -205,7 +205,12 @@ if __name__ != "__main__":
                             "Easter Egg?",
                             "What's this for?",
                             "False by default!",
-                            "Configlicious"]
+                            "Configlicious",
+                            "Spirit level not required",
+                            "Some assembily required",
+                            "No hammer needed",
+                            "Screws included",
+                            "Testing... 1... 2... 3..."]
 
             locat = random.randint(0, (len(LoadingText)-1))
             text = LoadingText[locat]
