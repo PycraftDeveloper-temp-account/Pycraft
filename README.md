@@ -19,7 +19,7 @@ Made with Python 3 64-bit and Microsoft Visual Studio Code.
 > * * [Installing using Pipenv](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-using-pipenv)
 > * [Running The Program](https://github.com/PycraftDeveloper/Pycraft/tree/dev#running-the-program)
 > * [Credits](https://github.com/PycraftDeveloper/Pycraft/tree/dev#credits)
-> * [Uncompiled Pycraft Dependancies](https://github.com/PycraftDeveloper/Pycraft/tree/dev#uncompiled-pycraft-dependencies-)
+> * [Uncompiled Pycraft Dependencies](https://github.com/PycraftDeveloper/Pycraft/tree/dev#uncompiled-pycraft-dependencies-)
 > * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#changes)
 > * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#understanding-the-release-notes)
 > * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/dev#input-mapping)
@@ -33,7 +33,6 @@ Made with Python 3 64-bit and Microsoft Visual Studio Code.
 > * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Planned_Storyline.md#the-planned-storyline)
 > * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Sound_Preview.md#pycrafts-sound-files---preview-1)
 > * [Difficulty Comparison](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Difficulty_Comparison.md)
-> * [Repository Structure](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Repository%20Structure.md)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
@@ -95,7 +94,7 @@ And to start the game: ``pipenv run python <PATH to 'main.py'>``
 ## Running The Program
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program.
 
-Now you have the program properly installed hopefully (you'll find out if you haven't promptly!) you need to locate and run the file "main.py" if it crashes on your first run then chances are you haven't installed the program correctly, if it still doesn't work then you can contact us. We do hope however that it works alright for you and you have a pleasant experience. This program has been developed on a Windows 64-bit computer however should run fine on a 32-bit Windows machine (uncompiled) or through MacOS although they remain untested for now. 
+Now you have the program properly installed hopefully (you'll find out if you haven't promptly!) you need to locate and run the file "main.py" if it crashes on your first run then chances are you haven't installed the program correctly, if it still doesn't work then you can contact us. We do hope however that it works alright for you and you have a pleasant experience. This program has been developed on a Windows 64-bit computer however should run fine on a 32-bit Windows machine (uncompiled) or through MacOS although they remain untested for now.
 
 We recommend creating a shortcut for the "main.py" file too so it's easier to locate.
 
@@ -113,7 +112,7 @@ We recommend creating a shortcut for the "main.py" file too so it's easier to lo
 ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) 
+![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)
 
 - Tom Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
 - Count of Freshness Traversal @ www.twitter.com/DmitryChunikhin <br />
@@ -171,22 +170,6 @@ pip is usually installed by default when installing Python with most versions.
 
 _Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
-## Changes
-Pycraft v9.5.5 is now live! Here is a list of all the added features to this minor update: <br />
-
-* Feature: We have extensively reworked the directory structure of Pycraft to make it more user friendly and easier to find and access necessary files.
-* Feature: Pycraft has been entirely restructured to reduce the reliance on the 'self' parameter to make Pycraft's source code easier to work with.
-* Feature: We have simplified events in Pycraft now so that they all use the same method of detecting them regardless of if you’re using Pycraft's 2D or 3D engine.
-* Feature: We have changed the 3D windowing engine to match the 2D windowing engine to bring feature parity and to make the transition between windowing engines easier. By doing this we managed to improve in game performance, significantly simplify the method of sharing data between windowing engines, allow changes to the new settings menu to control more of the 3D engine, and to allow changes to the settings in the settings menu to be applied to the 3D engine without necessitating a restart.
-* Feature: We have added back in the Loading, Inventory and Map UIs, and all of them have been extensively reworked and changed to be more featureful and behave better with the new 3D engine.
-* Feature: A new dropdown element in the settings menu has been added.
-* Feature: We have used the new dropdown element for the settings menu to add in translations and adjustments to the rendering resolution of Pycraft.
-* Bug-Fix: we have finished one of the most extensive pre-release testing processes yet - due to the large number of changes we have made - and fixed a variety of known bugs, with a particular focus on the 3D engine, controller compatibility and the installer.
-* Documentation: We have started the process of adding in docstrings to the start of every class, function and procedure in Pycraft, and later this will extend to also include at the start of each module.
-* Documentation: We have completely restarted the documentation for Pycraft and will be using a new automated method to make the process of compiling the new docstrings together and formatting them properly, in addition to formatting this ReadMe automated for future ease of use. This has yet to be publicly released though.
-
-Again, feedback would be much appreciated this update was released on; 23/12/2022 (date format; DD/MM/YYYY). As always, we hope you enjoy this new release and feel free to leave feedback.
-
 ## Understanding the release notes
 This section will hopefully provide additional information on helping to read the release notes.
 * Points detailed after the "Feature" tag are what was focused on in the update and will likely always be present in each update, often this is the most significant area of the update.
@@ -196,22 +179,13 @@ This section will hopefully provide additional information on helping to read th
 * Points detailed after the final "Documentation" tag are indicators of significant improvements to the documentation. The "PEP8" tag is used to signify that significant changes have been made to Pycraft to bring it in line with the PEP8 standards.
 
 ## Input mapping
-This section will be replaced with a dedicated file for keymapping as well as an in-game guide when this area of Pycraft is completed.
+This section will be replaced with a dedicated file for key-mapping as well as an in-game guide when this area of Pycraft is completed.
 ### Keyboard
 
-* Use W, A, S, D in game to move around, and use these keys in the map GUI to move that around.
-* Use SPACE to jump in game, reset your zoom in the map GUI, start the benchmark section, or press 10 times to enter Devmode.
-* Use E in game to access your inventory
-* Use R in game to access the map
+* Use W, A, S, D in game to move around.
+* Use SPACE to jump in game or to control the camera spin in the 2D engine.
 * Use F11 to toggle full-screen
-* Use Q to access a resource value screen
 * Use L in game to toggle locking your mouse (forcing it to stay in the window or not)
-* Use X to exit Devmode
-
-### Mouse
-
-* SCROLL in the map to zoom in/out, or to scroll the settings menu
-* LEFT CLICK to select
 
 _A detailed map of inputs for keyboard and mouse or controller combinations is coming; for now, see the section below, toggling between full-screen is currently not bound to a button on the controller because we will need all the different buttons for gameplay_
 

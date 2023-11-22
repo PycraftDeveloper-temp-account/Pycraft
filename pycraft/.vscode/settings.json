@@ -1,7 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./pycraft/programs/utility"
-    ],
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
-}

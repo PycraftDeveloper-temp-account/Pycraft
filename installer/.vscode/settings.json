@@ -1,8 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./programs/utility",
-        "./programs"
-    ],
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
-}
