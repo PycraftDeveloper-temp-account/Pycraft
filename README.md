@@ -2,11 +2,10 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://github.com/PycraftDeveloper/Pycraft/assets/81379254/66cf677f-b4c9-4ee3-b487-69243f01ba34" alt="my banner"></a>
 </p>
 
-Pycraft is an OpenGL, open world, video game made entirely with Python. This project is a game to shed some light on OpenGL programming in Python as it is a seldom touched area of Python's vast amount of uses. Feel free to give this project a run, and message us if you have any feedback! <br />
-Made with Python 3 64-bit and Microsoft Visual Studio Code.
+<p align="center">Pycraft is the OpenGL, open world, video game made entirely with Python.</p>
 
 [![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
-![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/PycraftDeveloper/Pycraft) ![GitHub repo size](https://img.shields.io/github/repo-size/PycraftDeveloper/Pycraft)
+![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total)
 
 ## Contents
 
@@ -15,9 +14,6 @@ Made with Python 3 64-bit and Microsoft Visual Studio Code.
 > * [Setup](https://github.com/PycraftDeveloper/Pycraft/tree/dev#setup)
 > * * [Installing the project from GitHub (Method 1)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-from-github-method-1)
 > * * [Installing the project from GitHub (Method 2)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-from-github-method-2)
-> * * [Installing from PyPi (preferred)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-from-pypi-preferred)
-> * * [Installing using Pipenv](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-using-pipenv)
-> * [Running The Program](https://github.com/PycraftDeveloper/Pycraft/tree/dev#running-the-program)
 > * [Credits](https://github.com/PycraftDeveloper/Pycraft/tree/dev#credits)
 > * [Uncompiled Pycraft Dependencies](https://github.com/PycraftDeveloper/Pycraft/tree/dev#uncompiled-pycraft-dependencies-)
 > * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#changes)
@@ -46,50 +42,8 @@ Made with Python 3 64-bit and Microsoft Visual Studio Code.
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in Python have been ignored, we believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for us hasn't been an easy experience, far from it but we have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that gap in documentation. Pycraft then is a trial project, as we learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because we are learning and testing what we have learned, so hopefully for people in the future it will be an easier experience. Also, don't forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as we learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
 
 ## Setup
-### Installing the project from GitHub (Method 1)
-The project will download as a (.zip) compressed file. Please make sure you have the project decompressed before use. Next make sure that any folders and files outside of the 'Pycraft' folder are removed and that the 'Pycraft' file is in the intended place for the file to be run from. This file can be freely moved around, transported between drives, computers and folders in this form!
-
-_Just make sure that if you plan to use the installer that you make sure the file location is correct after you have moved the project, to do this simply remove everything in the 'pycraft/Data_Files/InstallerConfig.json' file and re-load the game, it will try to repair the file and write the new path instead, during this process it may appear that Pycraft has crashed as it will likely bring up an error message, a more user-friendly experience is coming soon_
-
-When running the program please make sure you have a minimum of 1GB of free space on the drive and also have Python 3.7 or above installed on your device. This can be found here: (www.python.org/downloads). The version of Python isn't too important in this circumstance however the project has been tested in Python 3.7 and above and is known to work. In addition to all this please make sure you have the following modules installed on your device:
-
-Pygame, Numpy, Pillow, PyAutoGUI, Psutil, PyWaveFront, CPUinfo, Ctypes, ModernGL, ModernGL_Window, GPUtil, Pyrr, PyJoystick, Noise and Matplotlib.
-
-For those not familiar they can be found here: (pypi.org).
-
-You can use the following syntax to install, update and remove these modules:
-
-``pip install <module>``
-``pip uninstall <module>``
-
-Here is a short video tutorial walk you through all this: (https://youtu.be/DG5YbE-umw0)
-
-### Installing the project from GitHub (Method 2)
-If you are installing the project from the GitHub releases page or through Source Forge, then this will be relevant for you.
-After you have selected your preferred file type (it'll be either a compiled (.exe) file or a (.zip) file, those that download the (.zip) file will find the information above more relevant.
-
-If you, however, download the (.exe) type file, then this will be more relevant for you. If you locate the file in your file explorer and double click it, then this will run the project. You do not need Python, or any of the projects required modules, as they come built-in with this method. This method does also not install anything extra to your devise, to remove the project, simply delete the (.exe) file in your file explorer. Please note that it can take a few moments for everything in the (.exe) file to load and initialise, so nothing might not appear to happen at first. Also, you can only run one instance of Pycraft at any time (even if you are using another method).
-
-### Installing from PyPi (preferred)
-If you are installing the project from PyPi, then you will need an up-to-date build of Python (3.7 or greater ideally) and also permission to install additional files to your device. Then you need to open a command-line interface (or CLI), we recommend Terminal on Apple based devises, and Command Prompt on Windows based machines. You install the latest version of Pycraft, and all its needed files though this command:
-
-``pip install Python-Pycraft``
-
-and you can also uninstall the project using the command:
-
-``pip uninstall Python-Pycraft``
-
-And now you can run the project as normal.
-Please note that at present it can be a bit tricky to locate the files that have downloaded, you can import the project into another python file using:
-
-``import Pycraft``
-
-### Installing using Pipenv
-You can alternatively run these commands in the directory containing a file called `Pipfile`:
-
-``pip install pipenv`` then: ``pipenv install python-pycraft``
-
-And to start the game: ``pipenv run python <PATH to 'main.py'>``
+### Installing the project (perferred method)
+You can
 
 ## Running The Program
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program.
