@@ -2,26 +2,28 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://github.com/PycraftDeveloper/Pycraft/assets/81379254/66cf677f-b4c9-4ee3-b487-69243f01ba34" alt="my banner"></a>
 </p>
 
-<p align="center">Pycraft is the OpenGL, open world, video game made entirely with Python.</p>
+<h1 align="center">Pycraft is the OpenGL, open world, video game made entirely with Python.</h1>
+
+<h3 align="center">This is the installer branch of Pycraft - where the installer is developed and maintained!</h3>
 
 [![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
 ![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total)
 
 ## Contents
 
-> * [About](https://github.com/PycraftDeveloper/Pycraft/tree/dev#about)
+> * [About](https://github.com/PycraftDeveloper/Pycraft/tree/main#about)
 > * [Preview Video](https://youtu.be/shAprkrcaiI)
-> * [Setup](https://github.com/PycraftDeveloper/Pycraft/tree/dev#setup)
-> * * [Installing the project (recommended)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-recommended)
-> * * [Installing the project (manual approach)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-manual-approach)
-> * [Execution](https://github.com/PycraftDeveloper/Pycraft/tree/dev#execution)
-> * [Credits](https://github.com/PycraftDeveloper/Pycraft/tree/dev#credits)
-> * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#changes)
-> * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#understanding-the-release-notes)
-> * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/dev#input-mapping)
-> * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft/tree/dev#our-update-policy)
-> * [Version Naming](https://github.com/PycraftDeveloper/Pycraft/tree/dev#version-naming)
-> * [Final Notices](https://github.com/PycraftDeveloper/Pycraft/tree/dev#final-notices)
+> * [Setup](https://github.com/PycraftDeveloper/Pycraft/tree/main#setup)
+> * * [Installing the project (recommended)](https://github.com/PycraftDeveloper/Pycraft/tree/main#installing-the-project-recommended)
+> * * [Installing the project (manual approach)](https://github.com/PycraftDeveloper/Pycraft/tree/main#installing-the-project-manual-approach)
+> * [Execution](https://github.com/PycraftDeveloper/Pycraft/tree/main#execution)
+> * [Credits](https://github.com/PycraftDeveloper/Pycraft/tree/main#credits)
+> * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/main#changes)
+> * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/main#understanding-the-release-notes)
+> * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/main#input-mapping)
+> * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft/tree/main#our-update-policy)
+> * [Version Naming](https://github.com/PycraftDeveloper/Pycraft/tree/main#version-naming)
+> * [Final Notices](https://github.com/PycraftDeveloper/Pycraft/tree/main#final-notices)
 
 > * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Planned_Storyline.md#the-planned-storyline)
 > * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Sound_Preview.md#pycrafts-sound-files---preview-1)
