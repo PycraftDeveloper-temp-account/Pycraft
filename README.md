@@ -45,7 +45,7 @@ Pycraft is a 3D open-source, open-world video game made in Python. For a long ti
 ### Installing the project (recommended)
 The way to install Pycraft is changing. For the best experience, we recommend this installation approach:
 
-1. Navigate to the most recent release of Pycraft in the ![releases section](https://github.com/PycraftDeveloper/Pycraft/releases)
+1. Navigate to the most recent release of Pycraft in the [releases section](https://github.com/PycraftDeveloper/Pycraft/releases)
 
 ## Running The Program
 When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program.
