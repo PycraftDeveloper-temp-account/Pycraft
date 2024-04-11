@@ -42,17 +42,32 @@
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in Python have been ignored, we believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for us hasn't been an easy experience, far from it but we have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that gap in documentation. Pycraft then is a trial project, as we learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because we are learning and testing what we have learned, so hopefully for people in the future it will be an easier experience. Also, don't forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as we learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
 
 ## Setup
+_Note: Python version 3.7 or newer is required_
 ### Installing the project (recommended)
 The way to install Pycraft is changing. For the best experience, we recommend this installation approach:
 
 1. Navigate to the most recent release of Pycraft in the [releases section](https://github.com/PycraftDeveloper/Pycraft/releases)
+2. Download the installer in your desired format.
+3. Run the installer and follow the installation instructions.
 
-## Running The Program
-When running the program, you will either have a (.exe) file, downloaded from the releases page, or you will have the developer preview, if you have the developer preview, which can be found in the files section of this repository then this is how you run that program.
+### Installing the project (manual approach)
+The way we develop Pycraft is changing with code developed here and the resources hosted through MediaFire. The new installer is built to handle this, and is recommended, however if you wanted to install Pycraft on your system manually, do the following:
 
-Now you have the program properly installed hopefully (you'll find out if you haven't promptly!) you need to locate and run the file "main.py" if it crashes on your first run then chances are you haven't installed the program correctly, if it still doesn't work then you can contact us. We do hope however that it works alright for you and you have a pleasant experience. This program has been developed on a Windows 64-bit computer however should run fine on a 32-bit Windows machine (uncompiled) or through MacOS although they remain untested for now.
+1. Download the source code for the most recent release of Pycraft in the [releases section](https://github.com/PycraftDeveloper/Pycraft/releases)
+2. Extract the contents to a directory of your choosing on your system.
+3. Download the resources for Pycraft, found [here](https://www.mediafire.com/folder/8t7wsdvzdzazx/pycraft_resources)
+4. Extract the contents to the same directory as the code on your system.
+5. You should end up with two sub-directories called: `src` and `resources`.
+6. Run the command: `pip install -r requirements.txt` from the directory you just installed Pycraft to. This installs Pycraft's dependencies.
 
-We recommend creating a shortcut for the "main.py" file too so it's easier to locate.
+_Note: When installing Pycraft manually, you will not automatically be updated to the latest version when a newer version is available._
+
+## Execution
+Regardless of how you installed Pycraft, automatically or manually, the same process applies to you:
+You need to locate in that installation directory to a file called `main.py`. Run this Python file through your preferred version of Python.
+*** Custom environments! **
+
+_Note: We strongly advise you make a shortcut to this location on your system_
 
 ## Credits
 ### With thanks to; <br />
@@ -70,24 +85,10 @@ We recommend creating a shortcut for the "main.py" file too so it's easier to lo
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)
 
-- Tom Jebbo (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
+- Thomas Jebson (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
 - Count of Freshness Traversal @ www.twitter.com/DmitryChunikhin <br />
 - Dogukan Demir (demirdogukan) @ www.github.com/demirdogukan <br />
 - Henri Post (HenryFBP) @ www.github.com/HenryFBP <br />
-- PyPi @ www.pypi.org <br />
-- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-- Pygame @ www.github.com/pygame/pygame <br />
-- Numpy @ www.github.com/numpy/numpy <br />
-- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-- Psutil @ www.github.com/giampaolo/psutil <br />
-- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-- Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-- GPUtil @ www.github.com/anderskm/gputil <br />
-- Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ www.github.com/moderngl/moderngl <br />
-- Moderngl_window @ www.github.com/moderngl/moderngl-window <br />
-- PyJoystick @ www.github.com/justengel/pyjoystick <br />
-- Matplotlib @ www.github.com/matplotlib/matplotlib <br />
 - FreeSound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
 - FreeSound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
 - FreeSound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
@@ -100,31 +101,6 @@ We recommend creating a shortcut for the "main.py" file too so it's easier to lo
 - Freesound: - Kangaroovindaloo's 'Thunder Clap' @ www.freesound.org/people/kangaroovindaloo/sounds/585077/ <br />
 - Freesound: - Laribum's 'Thunder » thunder_01' @ www.freesound.org/people/laribum/sounds/353025/ <br />
 - Freesound: - Jmbphilmes's 'Rain » Rain light 2 (rural)' @ www.freesound.org/people/jmbphilmes/sounds/200273/ <br />
-
-## Uncompiled Pycraft Dependencies
-When you're installing the uncompiled Pycraft variant from here you need to install the following 'modules', which can be done through your Control Panel in Windows (First; press <windows key + r> then type "cmd" then run the below syntax) or on Apple systems in Terminal.
-
-```
-pip install <module>
-pip uninstall <module>
-```
-pip is usually installed by default when installing Python with most versions.
-
-- PIL (Pillow or Python Imaging Library) @ www.github.com/python-pillow/Pillow <br />
-- Pygame @ www.github.com/pygame/pygame <br />
-- Numpy @ www.github.com/numpy/numpy <br />
-- PyAutoGUI @ www.github.com/asweigart/pyautogui <br />
-- Psutil @ www.github.com/giampaolo/psutil <br />
-- PyWaveFront @ www.github.com/pywavefront/PyWavefront <br />
-- Py-CPUinfo @ www.github.com/pytorch/cpuinfo <br />
-- GPUtil @ www.github.com/anderskm/gputil <br />
-- Tabulate @ www.github.com/p-ranav/tabulate <br />
-- Moderngl @ www.github.com/moderngl/moderngl <br />
-- Moderngl_window @ www.github.com/moderngl/moderngl-window <br />
-- PyJoystick @ www.github.com/justengel/pyjoystick <br />
-- Matplotlib @ www.github.com/matplotlib/matplotlib <br />
-
-_Disclaimer; unfortunately, lots of these python modules (first and third party) can require some external modules that will be installed during the installing process of the above modules, unfortunately this makes it really difficult to give credit to those modules, if you have any recommendations, please contact me appropriately._
 
 ## Understanding the release notes
 This section will hopefully provide additional information on helping to read the release notes.
@@ -154,13 +130,7 @@ Pycraft's versions will always now follow the structure; "vA.B.C"
 * Where "B" is the minor revision number.
 * Where "C" is the patch and developer preview numbers (combined).
 
-Every version of Pycraft as of the 27/10/2022 (DD/MM/YYYY) must feature all 3 values. Updates also now go sequentially, so Pycraft v9.6.4 is newer than Pycraft v9.5.7. If either of the "A" or "B" version numbers is incremented in a release, documentation MUST be suitably updated, in addition Pycraft MUST be released on PyPi, SourceForge and as a release on GitHub.
-
-## Releases
-All past versions of Pycraft are available under the releases section of Pycraft, this is a new change, but just as before, major releases like Pycraft v0.9 and Pycraft v0.8 will have (.exe) releases, but smaller sub-releases will not, this is in light of a change coming to Pycraft, this should help with the confusion behind releases, and be more accommodating to the installer that's being worked on as a part of Pycraft v0.9.4. This brings me on to another point, all past updates to Pycraft will be located at the releases page (Thats all versions), and the previous section on the home-page with branches will change. The default branch will be the most recent release, then there will be branches for all the sub-releases to Pycraft there too; and the sister program; Pycraft-Insider-Preview will be deprecated and all data moved to relevant places in this repository, this should hopefully cut down on the confusion and make the project more user-friendly.
-
-## Other Sources
-We now post a roughly monthly article about Pycraft, showing behind the scenes, tips and tricks and additional information, this is shared to both Medium (medium.com/@PycraftDev) and Dev (dev.to/PycraftDev) and builds on the regular posts we share to Twitter (twitter.com/PycraftDev) and Dev (dev.to/PycraftDev).
+Every version of Pycraft as of the 27/10/2022 (DD/MM/YYYY) must feature all 3 values. Updates also now go sequentially, so Pycraft v9.6.4 is newer than Pycraft v9.5.7.
 
 ## Final Notices
 Thank you greatly for supporting this project simply by running it, we are sorry in advance for any spelling mistakes. The program will be updated frequently and we shall do my best to keep this up to date too. we also want to add that you are welcome to view and change the program and share it with your friends however please may we have some credit, just a name would do and if you find any bugs or errors, please feel free to comment in the comments section any feedback so we can improve my program, it will all be much appreciated and give as much detail as you wish to give out.
