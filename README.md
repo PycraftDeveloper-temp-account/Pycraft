@@ -2,7 +2,7 @@
   <a href="https://github.com/PycraftDeveloper" target="_blank" rel="noreferrer"><img src="https://github.com/PycraftDeveloper/Pycraft/assets/81379254/66cf677f-b4c9-4ee3-b487-69243f01ba34" alt="my banner"></a>
 </p>
 
-<p align="center">Pycraft is the OpenGL, open world, video game made entirely with Python.</p>
+<h1 align="center">Pycraft is the OpenGL, open world, video game made entirely with Python.</h1>
 
 [![](https://img.shields.io/badge/python-3.10-blue.svg)](www.python.org/downloads/release/python-3100) [![](https://img.shields.io/badge/python-3.9-blue.svg)](www.python.org/downloads/release/python-390) [![](https://img.shields.io/badge/python-3.8-blue.svg)](www.python.org/downloads/release/python-380) [![](https://img.shields.io/badge/python-3.7-blue.svg)](www.python.org/downloads/release/python-370) <br />
 ![](https://img.shields.io/github/license/PycraftDeveloper/Pycraft) ![](https://img.shields.io/github/stars/PycraftDeveloper/Pycraft) ![GitHub all releases](https://img.shields.io/github/downloads/PycraftDeveloper/Pycraft/total)
