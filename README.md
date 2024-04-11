@@ -79,22 +79,22 @@ _Note: We strongly advise you make a shortcut to this location on your system_
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)
 
-- Thomas Jebson (PycraftDeveloper) @ www.github.com/PycraftDeveloper <br />
-- Count of Freshness Traversal @ www.twitter.com/DmitryChunikhin <br />
-- Dogukan Demir (demirdogukan) @ www.github.com/demirdogukan <br />
-- Henri Post (HenryFBP) @ www.github.com/HenryFBP <br />
-- FreeSound: - Erokia's "ambient wave compilation" @ www.freesound.org/s/473545 <br />
-- FreeSound: - Soundholder's "ambient meadow near forest" @ www.freesound.org/s/425368 <br />
-- FreeSound: - monte32's "Footsteps_6_Dirt_shoe" @ www.freesound.org/people/monte32/sounds/353799 <br />
-- Freesound: - Straget's 'Thunder' @ www.freesound.org/people/straget/sounds/527664/ <br />
-- Freesound: - FlatHill's 'Rain and Thunder 4' @ www.freesound.org/people/FlatHill/sounds/237729/ <br />
-- Freesound: - BlueDelta's 'Heavy Thunder Strike - no Rain - QUADRO' @ - www.freesound.org/people/BlueDelta/sounds/446753/ <br />
-- Freesound: - Justkiddink's 'Thunder » Dry thunder1' @ www.freesound.org/people/juskiddink/sounds/101933/ <br />
-- Freesound: - Netaj's 'Thunder' @ www.freesound.org/people/netaj/sounds/193170/ <br />
-- Freesound: - Nimlos' 'Thunders » Rain Thunder' @ www.freesound.org/people/Nimlos/sounds/359151/ <br />
-- Freesound: - Kangaroovindaloo's 'Thunder Clap' @ www.freesound.org/people/kangaroovindaloo/sounds/585077/ <br />
-- Freesound: - Laribum's 'Thunder » thunder_01' @ www.freesound.org/people/laribum/sounds/353025/ <br />
-- Freesound: - Jmbphilmes's 'Rain » Rain light 2 (rural)' @ www.freesound.org/people/jmbphilmes/sounds/200273/ <br />
+- [Thomas Jebson (PycraftDeveloper)](www.github.com/PycraftDeveloper) <br />
+- [Count of Freshness Traversal](www.twitter.com/DmitryChunikhin) <br />
+- [Dogukan Demir (demirdogukan)](www.github.com/demirdogukan) <br />
+- [Henri Post (HenryFBP)](www.github.com/HenryFBP) <br />
+- [FreeSound: - Erokia's "ambient wave compilation"](www.freesound.org/s/473545) <br />
+- [FreeSound: - Soundholder's "ambient meadow near forest"](www.freesound.org/s/425368) <br />
+- [FreeSound: - monte32's "Footsteps_6_Dirt_shoe"](www.freesound.org/people/monte32/sounds/353799) <br />
+- [Freesound: - Straget's 'Thunder'](www.freesound.org/people/straget/sounds/527664/) <br />
+- [Freesound: - FlatHill's 'Rain and Thunder 4'](www.freesound.org/people/FlatHill/sounds/237729/) <br />
+- [Freesound: - BlueDelta's 'Heavy Thunder Strike - no Rain - QUADRO'](www.freesound.org/people/BlueDelta/sounds/446753/) <br />
+- [Freesound: - Justkiddink's 'Thunder » Dry thunder1'](www.freesound.org/people/juskiddink/sounds/101933/) <br />
+- [Freesound: - Netaj's 'Thunder'](www.freesound.org/people/netaj/sounds/193170/) <br />
+- [Freesound: - Nimlos' 'Thunders » Rain Thunder'](www.freesound.org/people/Nimlos/sounds/359151/) <br />
+- [Freesound: - Kangaroovindaloo's 'Thunder Clap'](www.freesound.org/people/kangaroovindaloo/sounds/585077/) <br />
+- [Freesound: - Laribum's 'Thunder » thunder_01'](www.freesound.org/people/laribum/sounds/353025/) <br />
+- [Freesound: - Jmbphilmes's 'Rain » Rain light 2 (rural)'](www.freesound.org/people/jmbphilmes/sounds/200273/) <br />
 
 ## Understanding the release notes
 This section will hopefully provide additional information on helping to read the release notes.
