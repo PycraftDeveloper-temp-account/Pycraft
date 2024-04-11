@@ -119,7 +119,7 @@ _A detailed map of inputs for keyboard and mouse or controller combinations is c
 New releases will be introduced regularly, it is likely that there will be some form of error or bug, therefore unless you intend to use this project for development and feedback purposes (Thank you all!) we recommend you use the latest stable release; below is how to identify the stable releases.
 
 ## Version Naming
-Pycraft's versions will always now follow the structure; "vA.B.C"
+Pycraft's versions will always follow the semantic versioning structure; "vA.B.C"
 * Where "A" is the major revision number.
 * Where "B" is the minor revision number.
 * Where "C" is the patch and developer preview numbers (combined).
