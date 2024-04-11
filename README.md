@@ -12,31 +12,25 @@
 > * [About](https://github.com/PycraftDeveloper/Pycraft/tree/dev#about)
 > * [Preview Video](https://youtu.be/shAprkrcaiI)
 > * [Setup](https://github.com/PycraftDeveloper/Pycraft/tree/dev#setup)
-> * * [Installing the project from GitHub (Method 1)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-from-github-method-1)
-> * * [Installing the project from GitHub (Method 2)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-from-github-method-2)
+> * * [Installing the project (recommended)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-recommended)
+> * * [Installing the project (manual approach)](https://github.com/PycraftDeveloper/Pycraft/tree/dev#installing-the-project-manual-approach)
+> * [Execution](https://github.com/PycraftDeveloper/Pycraft/tree/dev#execution)
 > * [Credits](https://github.com/PycraftDeveloper/Pycraft/tree/dev#credits)
-> * [Uncompiled Pycraft Dependencies](https://github.com/PycraftDeveloper/Pycraft/tree/dev#uncompiled-pycraft-dependencies-)
 > * [Changes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#changes)
 > * [Understanding the Release Notes](https://github.com/PycraftDeveloper/Pycraft/tree/dev#understanding-the-release-notes)
 > * [Input Mapping](https://github.com/PycraftDeveloper/Pycraft/tree/dev#input-mapping)
 > * [Our Update Policy](https://github.com/PycraftDeveloper/Pycraft/tree/dev#our-update-policy)
 > * [Version Naming](https://github.com/PycraftDeveloper/Pycraft/tree/dev#version-naming)
-> * [Releases](https://github.com/PycraftDeveloper/Pycraft/tree/dev#releases)
-> * [Other Sources](https://github.com/PycraftDeveloper/Pycraft/tree/dev#other-sources)
 > * [Final Notices](https://github.com/PycraftDeveloper/Pycraft/tree/dev#final-notices)
 
-> * [Update Timeline](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Update_Timeline.md#update-timeline)
 > * [The Planned Storyline](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Planned_Storyline.md#the-planned-storyline)
 > * [Sound Preview](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Sound_Preview.md#pycrafts-sound-files---preview-1)
 > * [Difficulty Comparison](https://github.com/PycraftDeveloper/Pycraft/blob/dev/Difficulty_Comparison.md)
 
 > * [The Documentation for Pycraft (Read-The-Docs)](https://python-pycraft.readthedocs.io/en/latest/)
 > * [The Documentation for Pycraft (GitHub Wikis)](https://github.com/PycraftDeveloper/Pycraft/wiki)
-> * [The project's PyPi page](https://pypi.org/project/Python-Pycraft/)
 
 > * [Contact me on Twitter](https://twitter.com/PycraftDev)
-> * [Contact me on Dev](https://dev.to/pycraftdev)
-> * [Pycraft's Discord Server Invite](https://discord.gg/83EBntQqpf)
 
 ## About
 Pycraft is a 3D open-source, open-world video game made in Python. For a long time attempts to make large 3D games in Python have been ignored, we believe there are two reasons: one; People use Python primarily for data handling and processing and not graphics and, two; there is little to no documentation out there to do anything more than make a 3D rotating cube in Python. Making a 3D game in Python for us hasn't been an easy experience, far from it but we have decided to share my project, complete with tutorials, explanations, articles and code explanations in the hope that 3D game development in Python can be seen as a more easily attainable target, and to fill that gap in documentation. Pycraft then is a trial project, as we learn and experiment on what goes best where and how thing go together, this is why development can sometimes appear to have stopped, because we are learning and testing what we have learned, so hopefully for people in the future it will be an easier experience. Also, don't forget there is more to game development than just graphics, there is AI, sound, physics and all the other GUIs that go with it, and as we learn the quality of the overall program will improve. Pycraft is not going to be the final name of the game, however until something better becomes available, we shall stick to it.
