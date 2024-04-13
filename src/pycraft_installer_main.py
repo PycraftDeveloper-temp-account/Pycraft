@@ -1,9 +1,12 @@
 if __name__ != "__main__":
     try:
-        import tkinter
+        import tkinter as tk
         from PIL import Image, ImageTk
+        import tkinter.font as font
 
         from registry_utils import Registry
+
+        import main_menu
 
         import tkinter_utils
     except Exception as error:
@@ -17,7 +20,7 @@ if __name__ != "__main__":
         def __init__(self):
             Registry.tkinter_utils = tkinter_utils.TkinterUtils()
 
-            Registry.root = tkinter.Tk()
+            Registry.root = tk.Tk()
             Registry.root.eval('tk::PlaceWindow . center')
             Registry.tkinter_utils.set_size(695, 501)
             Registry.root.title("Pycraft: Installer")
@@ -34,9 +37,14 @@ if __name__ != "__main__":
 
             Registry.root.wm_iconphoto(False, Registry.icon_image)
 
+            fonts = font.nametofont('TkTextFont').actual()
+            Registry.default_font_size = fonts["size"]
+
+            self.main_screen = main_menu.MainMenu()
+
         def main(self):
             Registry.tkinter_utils.basic_window_configuration()
-            Registry.root.mainloop()
+            self.main_screen.main()
 
     def init():
         Core().main()

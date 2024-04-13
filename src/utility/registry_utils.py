@@ -1,5 +1,7 @@
 if __name__ != "__main__":
     try:
+        import pathlib
+
         import path_utils
     except Exception as error:
         from tkinter import messagebox
@@ -18,6 +20,8 @@ if __name__ != "__main__":
         icon_path = path_utils.Path(f"{base_path}/resources/images/icon.png").path
         icon_image = None
         version = "5.2.0"
+        DEFAULT_INSTALLER_PATH = path_utils.Path(str(pathlib.Path.home()))
+        progressbar = None
 
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "

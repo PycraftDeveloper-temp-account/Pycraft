@@ -1,15 +1,8 @@
 if __name__ != "__main__":
     try:
-        import pathlib
-        import os
-        import sys
         import tkinter as tk
-        import tkinter.font as font
-        import tkinter.filedialog as filedialog
         from tkinter import ttk
-        import shutil
         from tkinter import messagebox
-        from PIL import Image, ImageTk
 
         from registry_utils import Registry
     except Exception as error:
@@ -60,7 +53,7 @@ if __name__ != "__main__":
         def basic_window_configuration(self):
             Registry.root.configure(background="white")
             panel = tk.Label(Registry.root, image=Registry.banner_image, highlightthickness=0, borderwidth=0)
-            panel.place(x=0, y=0)
+            panel.pack(side=tk.LEFT)
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "
     MESSAGE += "Please run the 'main.py' file."
