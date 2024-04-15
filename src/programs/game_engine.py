@@ -235,6 +235,7 @@ if __name__ != "__main__":
                 self.jump_starting_y_pos = 0
                 self.sun_lightpos = None
                 self.moon_lightpos = None
+                self.game_run_time = 0
             except Exception as error:
                 error_utils.Error(error=error)
 
@@ -275,9 +276,9 @@ if __name__ != "__main__":
                         mouse_motion = [0, 0]
 
                         Registry.camera.set_position(
-                            math.sin(modifier*(time.perf_counter()-self.orbit_start_time)/10)*300,
+                            math.sin(modifier*self.game_run_time/10)*300,
                             50,
-                            math.cos(modifier*(time.perf_counter()-self.orbit_start_time)/10)*300)
+                            math.cos(modifier*self.game_run_time/10)*300)
 
                     self.matrix, self.position = camera_utils.compute_camera.get_camera_values(
                         self.camera_up,

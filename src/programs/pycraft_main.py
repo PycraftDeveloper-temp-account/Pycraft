@@ -2,18 +2,19 @@ if __name__ != "__main__":
     try:
         import multiprocessing
         import sys
+        import threading
 
         import pygame
         import moderngl
         import moderngl_window
         from moderngl_window import geometry
 
-        import splash_menu
         import main_menu
 
         from registry_utils import Registry
 
         import game_engine
+        import loading_menu
 
         import file_utils
         import error_utils
@@ -24,6 +25,7 @@ if __name__ != "__main__":
         import theme_utils
         import hud_utils
         import event_utils
+        import menu_utils
     except Exception as error:
         from tkinter import messagebox
 
@@ -39,14 +41,8 @@ if __name__ != "__main__":
 
             moderngl_window.activate_context(Registry.wnd, Registry.ctx)
 
-            Registry.wnd.size
-
         def __init__(self) -> None:
             try:
-                Registry.splash_process = multiprocessing.Process(
-                    target=splash_menu.SplashMenu)
-                Registry.splash_process.start()
-
                 pygame.init()
 
                 directory_utils.Check()
@@ -70,8 +66,14 @@ if __name__ != "__main__":
                 lp_wrapper()
                 lp.print_stats()'''
 
-                Registry.game_engine = game_engine.create_game_engine()
+                Registry.menu_resources = menu_utils.MenuResources()
+                Registry.loading_menu = loading_menu.LoadingMenu()
+
                 Registry.hud = hud_utils.HUD()
+
+                Registry.hud.update(Registry.loading_menu.draw, 255, render_game_engine=False, background=Registry.loading_menu.tex2)
+
+                Registry.game_engine = game_engine.create_game_engine()
 
                 Registry.main_menu = main_menu.Home()
                 Registry.main_menu.main()

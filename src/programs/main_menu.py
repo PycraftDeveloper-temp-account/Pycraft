@@ -19,11 +19,6 @@ if __name__ != "__main__":
     class Home(Registry):
         def __init__(self):
             sound_utils.play_sound.play_inventory_sound()
-            logo_path = f"{Registry.base_path}/src/resources"
-            logo_path = f"{logo_path}/general"
-            logo_path = f"{logo_path}/pycraft_logo.png"
-            self.logo_path = path_utils.Path(logo_path).path
-            self.logo = pygame.image.load(self.logo_path).convert_alpha()
             self.start = time.perf_counter()
             self.alpha = 0
 
@@ -35,8 +30,10 @@ if __name__ != "__main__":
                 pygame.draw.rect(Registry.hud.canvas, (30, 30, 30, 100), rect, border_radius=10)
                 pygame.draw.rect(Registry.hud.canvas, (80, 80, 80, 100), rect, width=1, border_radius=10)
 
-                self.logo.set_alpha(self.alpha)
-                Registry.hud.canvas.blit(self.logo, ((Registry.display_size[0]-self.logo.get_width())/2, (Registry.display_size[1]-self.logo.get_height())/2))
+                Registry.hud.canvas.blit(
+                    Registry.menu_resources.logo,
+                    ((Registry.display_size[0]-Registry.menu_resources.logo.get_width())/2,
+                        (Registry.display_size[1]-Registry.menu_resources.logo.get_height())/2))
 
         def main(self):
             run = True
@@ -44,21 +41,23 @@ if __name__ != "__main__":
             initial_run = True
             Registry.spin = True
             Registry.in_hud = True
+            Registry.update_graphics = True
             while run:
-                r = int((255/2)*(1+math.sin(time.perf_counter()-self.start)))
-                if int(r) != self.alpha:
-                    self.alpha = r
-                    Registry.update_graphics = True
+                run_start_time = time.perf_counter()
+                (events, run) = Registry.events.handle()
+                for event in events:
+                    if event.type == pygame.VIDEORESIZE:
+                        self.logo = Registry.menu_resources.logo
 
-                (_, run) = Registry.events.handle()
                 Registry.hud.update(self.draw, 255)
 
                 if initial_run:
                     initial_run = False
-                    Registry.splash_process.terminate()
 
                 pygame.display.flip()
                 Registry.clock.tick(Registry.fps)
+                if Registry.spin:
+                    Registry.game_engine.game_run_time += time.perf_counter() - run_start_time
 
 else:
     MESSAGE = "You need to run this as part of Pycraft, please run the 'main.py' file"
