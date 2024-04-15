@@ -22,6 +22,7 @@ if __name__ != "__main__":
         version = "5.2.0"
         DEFAULT_INSTALLER_PATH = path_utils.Path(str(pathlib.Path.home()))
         progressbar = None
+        install_directory = DEFAULT_INSTALLER_PATH.path
 
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "

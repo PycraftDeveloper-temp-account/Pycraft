@@ -50,6 +50,7 @@ if __name__ != "__main__":
             self.selected_file_path_entry.delete(0, tk.END)
             self.selected_file_path_entry.insert(tk.END, filename)
             self.selected_file_path_entry.config(state='readonly')
+            Registry.install_directory = filename
 
             self.install_button['state'] = tk.NORMAL if self.is_installable(filename) else tk.DISABLED
 
