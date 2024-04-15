@@ -9,6 +9,7 @@ if __name__ != "__main__":
         import venv
         import requests
         import json
+        import platform
 
         from registry_utils import Registry
 
@@ -39,6 +40,10 @@ if __name__ != "__main__":
             self.resources_directory = path_utils.Path(f"{self.install_directory}/resources").path
             self.environment_directory = path_utils.Path(f"{self.install_directory}/venv").path
             self.pycraft_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft").path
+            if platform.system() == "Windows":
+                self.activate_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft/Scripts/activate.bat").path
+            else:
+                self.activate_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft/bin/activate").path
             self.setup_directories()
 
             environment_setup_thread = threading.Thread(target=self.setup_venv)
@@ -49,6 +54,11 @@ if __name__ != "__main__":
 
             environment_setup_thread.join()
             download_source_code_thread.join()
+
+            download_resources_thread = threading.Thread(target=self.download_resources)
+            download_resources_thread.start()
+
+            download_resources_thread.join()
 
         def setup_directories(self): # 1/8 or 12.5
             try:
@@ -101,15 +111,15 @@ if __name__ != "__main__":
             except Exception:
                 messagebox.showerror("Pycraft: Installer", "Pycraft's installation has failed.\nUnable to get latest online version from GitHub")
 
-            print(online_version)
+            base_url = "http://api.github.com/repos/PycraftDeveloper/Pycraft/zipball/"
+            online_content_url = f"{base_url}{str(online_version)}"
 
-            base_url = "api.github.com/repos/PycraftDeveloper/Pycraft/zipball/"
-            online_content_url = f"{base_url}{str(Registry.online_version)}"
-
-            request = requests.get(self.new_version_url)
+            request = requests.get(online_content_url)
             download_size = len(request.content)
 
-            source_code_download_file =
+            progress = self.component_progress/download_size
+
+            source_code_download_file = path_utils.Path(f"{self.temporary_directory}/pycraft_sc.zip").path
 
             with requests.get(
                 online_content_url,
@@ -117,18 +127,37 @@ if __name__ != "__main__":
 
                 request.raise_for_status()
                 with open(
-                        self.temporary_directory,
+                        source_code_download_file,
                         'wb') as file:
 
                     for chunk in request.iter_content(
                             chunk_size=None):
+                        Registry.progressbar['value'] += progress*len(chunk)
                         file.write(chunk)
 
         def extract_source_code(self):
             pass
 
+        def activate_venv(self, additional_command):
+            if platform.system() == "Windows":
+                command = ""
+            else:
+                command = "source"
+            command = f"{command} {self.activate_environment_directory} && {additional_command}"
+
+            return subprocess.Popen([*command.split()])
+
         def download_resources(self):
-            pass
+            self.activate_venv("pip install mediafiregrabber").communicate()
+
+            resource_downloader_file = path_utils.Path(f"{Registry.base_path}/src/utility/resource_downloader.py").path
+
+            downloaded_resources_folder = path_utils.Path(f"{self.temporary_directory}/pycraft_rs").path
+
+            os.mkdir(downloaded_resources_folder)
+
+            resource_downloader_process = subprocess.Popen([sys.executable, resource_downloader_file, downloaded_resources_folder])
+            resource_downloader_process.communicate()
 
         def install_dependencies(self):
             pass
