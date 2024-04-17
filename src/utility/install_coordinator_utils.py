@@ -10,6 +10,7 @@ if __name__ != "__main__":
         import requests
         import json
         import platform
+        import zipfile
 
         from registry_utils import Registry
 
@@ -58,7 +59,12 @@ if __name__ != "__main__":
             download_resources_thread = threading.Thread(target=self.download_resources)
             download_resources_thread.start()
 
+            extract_source_code_thread = threading.Thread(target=self.extract_source_code)
+            extract_source_code_thread.start()
+
             download_resources_thread.join()
+
+            extract_source_code_thread.join()
 
         def setup_directories(self): # 1/8 or 12.5
             try:
@@ -74,17 +80,13 @@ if __name__ != "__main__":
             except:
                 messagebox.showerror("Pycraft: Installer", "Pycraft's installation has failed.\nThis is likely because of a file permission error.")
 
-            Registry.progressbar['value'] += self.component_progress/6
+            Registry.progressbar['value'] += self.component_progress/4
             os.mkdir(self.temporary_directory)
-            Registry.progressbar['value'] += self.component_progress/6
-            os.mkdir(self.src_directory)
-            Registry.progressbar['value'] += self.component_progress/6
-            os.mkdir(self.resources_directory)
-            Registry.progressbar['value'] += self.component_progress/6
+            Registry.progressbar['value'] += self.component_progress/4
             os.mkdir(self.environment_directory)
-            Registry.progressbar['value'] += self.component_progress/6
+            Registry.progressbar['value'] += self.component_progress/4
             os.mkdir(self.pycraft_environment_directory)
-            Registry.progressbar['value'] += self.component_progress/6
+            Registry.progressbar['value'] += self.component_progress/4
 
         def setup_venv(self):
             venv.create(self.pycraft_environment_directory, with_pip=True)
@@ -136,11 +138,32 @@ if __name__ != "__main__":
                         file.write(chunk)
 
         def extract_source_code(self):
-            pass
+            source_code_download_file = path_utils.Path(f"{self.temporary_directory}/pycraft_sc.zip").path
+            extracted_source_code_directory = path_utils.Path(f"{self.temporary_directory}/pycraft_sc").path
+            with zipfile.ZipFile(source_code_download_file, "r") as zip_ref:
+                zip_ref.extractall(extracted_source_code_directory)
+
+            Registry.progressbar['value'] += self.component_progress/2
+
+            dir_name = os.listdir(extracted_source_code_directory)
+
+            if len(dir_name) > 1:
+                raise Exception("More than one directory in zip file")
+
+            source_path = path_utils.Path(f"{extracted_source_code_directory}/{dir_name[0]}").path
+
+            file_names = os.listdir(source_path)
+
+            for file_name in file_names:
+                shutil.move(os.path.join(source_path, file_name), self.install_directory)
+
+            Registry.progressbar['value'] += self.component_progress/2
 
         def activate_venv(self, additional_command):
             if platform.system() == "Windows":
                 command = ""
+            elif platform.system() == "Linux":
+                command = path_utils.Path("/bin/sh").path
             else:
                 command = "source"
             command = f"{command} {self.activate_environment_directory} && {additional_command}"
@@ -149,6 +172,7 @@ if __name__ != "__main__":
 
         def download_resources(self):
             self.activate_venv("pip install mediafiregrabber").communicate()
+            Registry.progressbar['value'] += self.component_progress/2
 
             resource_downloader_file = path_utils.Path(f"{Registry.base_path}/src/utility/resource_downloader.py").path
 
@@ -158,6 +182,8 @@ if __name__ != "__main__":
 
             resource_downloader_process = subprocess.Popen([sys.executable, resource_downloader_file, downloaded_resources_folder])
             resource_downloader_process.communicate()
+
+            Registry.progressbar['value'] += self.component_progress/2
 
         def install_dependencies(self):
             pass

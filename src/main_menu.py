@@ -64,7 +64,7 @@ if __name__ != "__main__":
 
             self.size_label = ttk.Label(self.main_menu_frame, text="A minimum of 5 GB of free space is required")
 
-            self.content_text = tk.Text(self.main_menu_frame, wrap="word", relief=tk.FLAT)
+            self.content_text = tk.Text(self.main_menu_frame, wrap="word", relief=tk.FLAT, height=5)
             self.content_text.configure(font=content_font)
             self.content_text.insert(
                 tk.INSERT,
