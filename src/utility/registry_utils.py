@@ -23,6 +23,9 @@ if __name__ != "__main__":
         DEFAULT_INSTALLER_PATH = path_utils.Path(str(pathlib.Path.home()))
         progressbar = None
         install_directory = DEFAULT_INSTALLER_PATH.path
+        install_finished = False
+        cancel_install = False
+        installer_stopped = False
 
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "
