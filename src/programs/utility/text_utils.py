@@ -1,14 +1,8 @@
 if __name__ != "__main__":
     try:
-        import os
         from tkinter import font
 
         import pygame
-
-        from registry_utils import Registry
-
-        import color_utils
-        import path_utils
     except Exception as error:
         from tkinter import messagebox
 
@@ -16,31 +10,21 @@ if __name__ != "__main__":
             "Unable to start Pycraft",
             f"A problem occurred whilst trying to start Pycraft (text_utils.py).\nMore Details: {error}")
 
-    CENTERED = "Centered"
-    LEFT = "Left"
-    RIGHT = "Right"
-    TOP = "Top"
-    BOTTOM = "Bottom"
-
     def get_system_font(size=None, bold=None, italic=None):
         system_font = font.nametofont("TkTextFont")
         system_font_dictionary = system_font.actual()
-        pygame.font.SysFont(system_font_dictionary["family"], 16)
 
+        name = system_font_dictionary["family"]
+        if size is None:
+            size = system_font_dictionary["size"]
 
-    class TextFormatter(Registry):
-        pass
+        if bold is None:
+            bold = system_font_dictionary["weight"] == "bold"
 
-    class FontStyleNotFoundError(Exception):
-        def __init__(self) -> None:
-            Exception.__init__(self, "Font style not found")
+        if italic is None:
+            italic = system_font_dictionary["slant"] == "italic"
 
-    class InvalidCharacterError(Exception):
-        def __init__(self) -> None:
-            Exception.__init__(self, "Character entered is invalid")
-
-    class TextRenderer(Registry):
-        pass
+        return pygame.font.SysFont(name, size, bold, italic)
 
 else:
     print("You need to run this as part of Pycraft")
