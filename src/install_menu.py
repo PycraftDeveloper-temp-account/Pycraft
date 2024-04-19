@@ -1,11 +1,8 @@
 if __name__ != "__main__":
     try:
-        import pathlib
-        import os
         import sys
         import tkinter as tk
         import tkinter.font as font
-        import tkinter.filedialog as filedialog
         from tkinter import ttk
         import shutil
         from tkinter import messagebox
@@ -16,7 +13,6 @@ if __name__ != "__main__":
 
         import finish_menu
 
-        import path_utils
         import install_coordinator_utils
     except Exception as error:
         from tkinter import messagebox

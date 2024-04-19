@@ -1,7 +1,5 @@
 if __name__ != "__main__":
     try:
-        import pathlib
-        import os
         import sys
         import tkinter as tk
         import tkinter.font as font
