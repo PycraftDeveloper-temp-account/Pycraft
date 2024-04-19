@@ -46,6 +46,8 @@ if __name__ != "__main__":
             Registry.tkinter_utils.basic_window_configuration()
             self.main_screen.main()
 
+            Registry.root.mainloop()
+
     def init():
         Core().main()
 

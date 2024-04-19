@@ -112,8 +112,6 @@ begin the install process.\nNote that Pycraft is portable and can be installed o
         def main(self):
             self.main_menu_frame.pack(fill=tk.BOTH, expand=True)
 
-            Registry.root.mainloop()
-
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "
     MESSAGE += "Please run the 'main.py' file."

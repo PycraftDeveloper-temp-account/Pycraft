@@ -40,6 +40,17 @@ if __name__ != "__main__":
             self.written_install_progress.set("Install progress: 100% - Complete!")
             self.finish_button['state'] = tk.NORMAL
 
+            countdown = 5
+            for count in range(countdown, -1, -1):
+                time.sleep(1)
+                self.finish_button.configure(text=f"Finish ({count})")
+
+            self.finish()
+
+        def finish(self):
+            self.install_menu_frame.destroy()
+            self.finish_menu.main()
+
         def exit(self):
             do_cancel = messagebox.askyesno("Pycraft Installer", "Are you sure you want to cancel the installation?\n\nIf you do, bear with us as we terminate the installation process.")
 
@@ -87,7 +98,7 @@ This may take a few minutes, we will let you know when it's finished!")
             self.cancel_button = ttk.Button(self.button_frame, text="Cancel", command=self.exit)
 
             self.finish_menu = finish_menu.FinishMenu()
-            self.finish_button = ttk.Button(self.button_frame, text="Finish", command= lambda: [self.install_menu_frame.destroy(), self.finish_menu.main()])
+            self.finish_button = ttk.Button(self.button_frame, text="Finish", command=self.finish)
             self.finish_button['state'] = tk.DISABLED
 
             self.finish_button.pack(side=tk.RIGHT, padx=5, pady=5)
@@ -109,8 +120,6 @@ This may take a few minutes, we will let you know when it's finished!")
             self.label_updater_thread.start()
             self.coordinator.start()
             self.install_menu_frame.pack(fill=tk.BOTH, expand=True)
-
-            Registry.root.mainloop()
 
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "

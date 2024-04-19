@@ -36,8 +36,6 @@ if __name__ != "__main__":
         def main(self):
             self.finish_menu_frame.pack(fill=tk.BOTH, expand=True)
 
-            Registry.root.mainloop()
-
 else:
     MESSAGE = "You need to run this as part of Pycraft's Installer. "
     MESSAGE += "Please run the 'main.py' file."
