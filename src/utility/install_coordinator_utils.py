@@ -76,7 +76,7 @@ if __name__ != "__main__":
             self.environment_directory = path_utils.Path(f"{self.install_directory}/venv").path
             self.pycraft_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft").path
             if platform.system() == "Windows":
-                self.activate_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft/Scripts/activate.bat").path
+                self.activate_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft/Scripts/python.exe").path
             else:
                 self.activate_environment_directory = path_utils.Path(f"{self.install_directory}/venv/pycraft/bin/python").path
 
@@ -91,6 +91,8 @@ if __name__ != "__main__":
             download_source_code_thread.start()
 
             environment_setup_thread.join()
+            self.activate_venv("pip install --upgrade pip").communicate()
+
             download_source_code_thread.join()
 
             download_resources_thread = threading.Thread(target=self.download_resources)
@@ -124,7 +126,7 @@ if __name__ != "__main__":
                 os.mkdir(self.install_directory)
             except FileExistsError:
                 try:
-                    answer = messagebox.askyesno("Pycraft: Installer", "This directory is not empty.\nDo you want to overwrite it?")
+                    answer = messagebox.askyesno("Pycraft: Installer", "There is already a folder at this location named Pycraft.\nDo you want to overwrite it?")
                     if answer:
                         shutil.rmtree(self.install_directory)
                         os.mkdir(self.install_directory)
@@ -225,7 +227,7 @@ if __name__ != "__main__":
 
             resource_downloader_file = path_utils.Path(f"{Registry.base_path}/src/utility/resource_downloader.py").path
 
-            resource_downloader_process = subprocess.Popen([sys.executable, resource_downloader_file, self.temporary_directory])
+            resource_downloader_process = subprocess.Popen([self.activate_environment_directory, resource_downloader_file, self.temporary_directory])
             resource_downloader_process.communicate()
 
             Registry.progressbar['value'] += self.component_progress/2
