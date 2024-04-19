@@ -77,6 +77,7 @@ if __name__ != "__main__":
                 "We are currently in the process of installing Pycraft onto your system.\n\
 This may take a few minutes, we will let you know when it's finished!")
             self.content_text.config(state=tk.DISABLED)
+            self.content_text.config(highlightthickness = 0, borderwidth=0)
 
             self.written_install_progress = tk.StringVar()
             self.written_install_progress.set("Install progress: 0%")

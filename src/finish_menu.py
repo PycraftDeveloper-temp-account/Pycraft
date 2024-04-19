@@ -56,6 +56,7 @@ In order to run the application, please use the following command:{newline}{newl
 Note that this can be copied using the button below, and we also recommend making a \
 shortcut to this location on your system for easier access.")
             self.content_text.config(state=tk.DISABLED)
+            self.content_text.config(highlightthickness = 0, borderwidth=0)
 
             self.button_frame = ttk.Frame(self.finish_menu_frame)
 

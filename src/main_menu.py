@@ -70,6 +70,7 @@ if __name__ != "__main__":
 Please select an install location with at least 5 GB of available space, then click 'install' to \
 begin the install process.\nNote that Pycraft is portable and can be installed on removable media.")
             self.content_text.config(state=tk.DISABLED)
+            self.content_text.config(highlightthickness = 0, borderwidth=0)
 
             self.entry_frame = ttk.Frame(self.main_menu_frame)
 
