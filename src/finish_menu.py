@@ -6,6 +6,7 @@ if __name__ != "__main__":
         from tkinter import ttk
         from tkinter import messagebox
         import platform
+        import subprocess
 
         import pyperclip
 
@@ -24,7 +25,9 @@ if __name__ != "__main__":
             sys.exit()
 
         def copy(self):
-            pyperclip.copy(self.run_command)
+            clipboard_manager_path = path_utils.Path(f"{Registry.base_path}/src/utility/clipboard_manager.py").path
+
+            subprocess.Popen([self.activate_environment_directory, clipboard_manager_path, self.run_command])
 
         def __init__(self):
             self.finish_menu_frame = ttk.Frame(Registry.root)

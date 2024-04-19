@@ -241,6 +241,8 @@ if __name__ != "__main__":
                         self.activate_venv(f"pip install {line.strip()}").communicate()
                         Registry.progressbar['value'] += self.component_progress/len(line_data)
 
+            self.activate_venv("pip install pyperclip").communicate()
+
         def extract_resources(self):
             resources_download_file = path_utils.Path(f"{self.temporary_directory}/pycraft_resources/resources.zip").path
             extracted_resources_directory = path_utils.Path(f"{self.temporary_directory}/pycraft_rs").path
