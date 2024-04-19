@@ -42,6 +42,10 @@ if __name__ != "__main__":
 
             self.main_screen = main_menu.MainMenu()
 
+            #tmp
+            import finish_menu
+            self.main_screen = finish_menu.FinishMenu()
+
         def main(self):
             Registry.tkinter_utils.basic_window_configuration()
             self.main_screen.main()
