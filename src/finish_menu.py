@@ -8,8 +8,6 @@ if __name__ != "__main__":
         import platform
         import subprocess
 
-        import pyperclip
-
         from registry_utils import Registry
 
         import path_utils
@@ -25,9 +23,14 @@ if __name__ != "__main__":
             sys.exit()
 
         def copy(self):
-            clipboard_manager_path = path_utils.Path(f"{Registry.base_path}/src/utility/clipboard_manager.py").path
+            try:
+                clipboard_manager_path = path_utils.Path(f"{Registry.base_path}/src/utility/clipboard_manager.py").path
 
-            subprocess.Popen([self.activate_environment_directory, clipboard_manager_path, self.run_command])
+                subprocess.Popen([self.activate_environment_directory, clipboard_manager_path, self.run_command])
+            except:
+                messagebox.showerror(
+                    "Pycraft Installer",
+                    "Unfortunately it hasn't been possible to copy this to your clipboard, this is likely due to the configuration of your system.")
 
         def __init__(self):
             self.finish_menu_frame = ttk.Frame(Registry.root)
