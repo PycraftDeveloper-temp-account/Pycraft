@@ -16,7 +16,7 @@ if __name__ != "__main__":
 
         messagebox.showerror(
             "Unable to start Pycraft Installer",
-            f"A problem occurred whilst trying to start Pycraft Installer.\nMore Details: {error}")
+            f"A problem occurred whilst trying to start Pycraft Installer (finish_menu.py).\nMore Details: {error}")
 
     class FinishMenu:
         def close(self):

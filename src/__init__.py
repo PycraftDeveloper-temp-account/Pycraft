@@ -8,7 +8,7 @@ if __name__ != "__main__":
 
         messagebox.showerror(
             "Unable to start Pycraft Installer",
-            f"A problem occurred whilst trying to start Pycraft Installer.\nMore Details: {error}")
+            f"A problem occurred whilst trying to start Pycraft Installer (__init__.py).\nMore Details: {error}")
 
     SEPARATOR = os.sep
 

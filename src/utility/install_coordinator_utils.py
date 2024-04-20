@@ -20,7 +20,7 @@ if __name__ != "__main__":
 
         messagebox.showerror(
             "Unable to start Pycraft Installer",
-            f"A problem occurred whilst trying to start Pycraft Installer.\nMore Details: {error}")
+            f"A problem occurred whilst trying to start Pycraft Installer (install_coordinator_utils.py).\nMore Details: {error}")
 
     class thread_with_trace(threading.Thread):
         def __init__(self, *args, **keywords):

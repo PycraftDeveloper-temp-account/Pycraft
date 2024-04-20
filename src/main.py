@@ -7,4 +7,4 @@ except Exception as error:
 
     messagebox.showerror(
         "Unable to start Pycraft Installer",
-        f"A problem occurred whilst trying to start Pycraft Installer.\nMore Details: {error}")
+        f"A problem occurred whilst trying to start Pycraft Installer (main.py).\nMore Details: {error}")
